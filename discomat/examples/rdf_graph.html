@@ -27,7 +27,7 @@
 
 
         <center>
-          <h1>Visualisation of mygraph.html</h1>
+          <h1>Visualisation of rdf_graph.html</h1>
         </center>
         <style type="text/css">
 
@@ -70,19 +70,21 @@
                             >
                                 <option selected>Select a Node by ID</option>
                                 
-                                    <option value="cuds_iri_7e812bb7-9a41-4016-80f5-7789600bc1a4">cuds_iri_7e812bb7-9a41-4016-80f5-7789600bc1a4</option>
+                                    <option value="PersonA">PersonA</option>
                                 
-                                    <option value="Cuds">Cuds</option>
+                                    <option value="CompanyX">CompanyX</option>
                                 
-                                    <option value="2024-08-16T16:54:12.697049">2024-08-16T16:54:12.697049</option>
+                                    <option value="Alice">Alice</option>
                                 
-                                    <option value="cuds_pid_7e812bb7-9a41-4016-80f5-7789600bc1a4">cuds_pid_7e812bb7-9a41-4016-80f5-7789600bc1a4</option>
+                                    <option value="PersonB">PersonB</option>
                                 
-                                    <option value="7e812bb7-9a41-4016-80f5-7789600bc1a4">7e812bb7-9a41-4016-80f5-7789600bc1a4</option>
+                                    <option value="Person">Person</option>
                                 
-                                    <option value="None">None</option>
+                                    <option value="CityY">CityY</option>
                                 
-                                    <option value="This is a CUDS without Description!">This is a CUDS without Description!</option>
+                                    <option value="Bob">Bob</option>
+                                
+                                    <option value="Agent">Agent</option>
                                 
                             </select>
                         </div>
@@ -306,8 +308,8 @@
                   
 
                   // parsing and collecting nodes and edges from the python
-                  nodes = new vis.DataSet([{"color": "red", "id": "cuds_iri_7e812bb7-9a41-4016-80f5-7789600bc1a4", "label": "cuds_iri_7e812bb7-9a41-4016-80f5-7789600bc1a4", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio#cuds_iri_7e812bb7-9a41-4016-80f5-7789600bc1a4"}, {"color": "green", "id": "Cuds", "label": "Cuds", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio#Cuds"}, {"color": "green", "id": "2024-08-16T16:54:12.697049", "label": "2024-08-16T16:54:12.697049", "shape": "dot", "size": 10, "title": "2024-08-16T16:54:12.697049"}, {"color": "green", "id": "cuds_pid_7e812bb7-9a41-4016-80f5-7789600bc1a4", "label": "cuds_pid_7e812bb7-9a41-4016-80f5-7789600bc1a4", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio#cuds_pid_7e812bb7-9a41-4016-80f5-7789600bc1a4"}, {"color": "green", "id": "7e812bb7-9a41-4016-80f5-7789600bc1a4", "label": "7e812bb7-9a41-4016-80f5-7789600bc1a4", "shape": "dot", "size": 10, "title": "7e812bb7-9a41-4016-80f5-7789600bc1a4"}, {"color": "green", "id": "None", "label": "None", "shape": "dot", "size": 10, "title": "None"}, {"color": "green", "id": "This is a CUDS without Description!", "label": "This is a CUDS without Description!", "shape": "dot", "size": 10, "title": "This is a CUDS without Description!"}]);
-                  edges = new vis.DataSet([{"arrows": "to", "color": "red", "from": "cuds_iri_7e812bb7-9a41-4016-80f5-7789600bc1a4", "label": "type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "Cuds", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_7e812bb7-9a41-4016-80f5-7789600bc1a4", "label": "generatedAtTime", "title": "http://www.w3.org/ns/prov#generatedAtTime", "to": "2024-08-16T16:54:12.697049", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_7e812bb7-9a41-4016-80f5-7789600bc1a4", "label": "Pid", "title": "http://www.ddmd.io/mio/cuds#Pid", "to": "cuds_pid_7e812bb7-9a41-4016-80f5-7789600bc1a4", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_7e812bb7-9a41-4016-80f5-7789600bc1a4", "label": "uuid", "title": "http://www.ddmd.io/mio/cuds#uuid", "to": "7e812bb7-9a41-4016-80f5-7789600bc1a4", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_7e812bb7-9a41-4016-80f5-7789600bc1a4", "label": "label", "title": "http://www.ddmd.io/mio/cuds#label", "to": "None", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_7e812bb7-9a41-4016-80f5-7789600bc1a4", "label": "description", "title": "http://www.ddmd.io/mio/cuds#description", "to": "This is a CUDS without Description!", "width": 1}]);
+                  nodes = new vis.DataSet([{"color": "red", "id": "PersonA", "label": "PersonA", "shape": "dot", "size": 10, "title": "http://example.org/PersonA"}, {"color": "red", "id": "CompanyX", "label": "CompanyX", "shape": "dot", "size": 10, "title": "http://example.org/CompanyX"}, {"color": "green", "id": "Alice", "label": "Alice", "shape": "dot", "size": 10, "title": "Alice"}, {"color": "red", "id": "PersonB", "label": "PersonB", "shape": "dot", "size": 10, "title": "http://example.org/PersonB"}, {"color": "orange", "id": "Person", "label": "Person", "shape": "dot", "size": 10, "title": "http://example.org/Person"}, {"color": "green", "id": "CityY", "label": "CityY", "shape": "dot", "size": 10, "title": "CityY"}, {"color": "green", "id": "Bob", "label": "Bob", "shape": "dot", "size": 10, "title": "Bob"}, {"color": "green", "id": "Agent", "label": "Agent", "shape": "dot", "size": 10, "title": "http://www.w3.org/ns/prov#Agent"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "red", "from": "PersonA", "label": "worksAt", "title": "http://example.org/worksAt", "to": "CompanyX", "width": 1}, {"arrows": "to", "color": "red", "from": "PersonA", "label": "name", "title": "http://xmlns.com/foaf/0.1/name", "to": "Alice", "width": 1}, {"arrows": "to", "color": "red", "from": "PersonA", "label": "knows", "title": "http://xmlns.com/foaf/0.1/knows", "to": "PersonB", "width": 1}, {"arrows": "to", "color": "red", "from": "PersonA", "label": "type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "Person", "width": 1}, {"arrows": "to", "color": "red", "from": "CompanyX", "label": "locatedIn", "title": "http://example.org/locatedIn", "to": "CityY", "width": 1}, {"arrows": "to", "color": "red", "from": "PersonB", "label": "name", "title": "http://xmlns.com/foaf/0.1/name", "to": "Bob", "width": 1}, {"arrows": "to", "color": "red", "from": "PersonB", "label": "type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "Person", "width": 1}, {"arrows": "to", "color": "orange", "from": "Person", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Agent", "width": 1}]);
 
                   nodeColors = {};
                   allNodes = nodes.get({ returnType: "Object" });

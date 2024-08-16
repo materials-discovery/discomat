@@ -83,7 +83,7 @@ def gvis(graph: Graph, output_html_file: str = 'mygraph.html'):
     # Create a Pyvis network
     net = Network(
         height='850px',
-        heading="PyVis+NetworkX Visualisation",
+        heading=f"Visualisation of {output_html_file}",
         neighborhood_highlight=True,
         directed=True,
         notebook=False,  # Ensure this is set to False for non-notebook environments

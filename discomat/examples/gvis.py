@@ -8,7 +8,7 @@ This version works well, for now, I only need to figure out why the title comes 
 import networkx as nx
 from pyvis.network import Network
 from rdflib import Graph, URIRef, RDF, RDFS, OWL
-
+import wget
 from discomat.visualisation.cuds_vis import gvis
 
 g = Graph()
@@ -33,15 +33,12 @@ g.parse(data='''
     ex:CompanyX ex:locatedIn "CityY" .
 ''', format='turtle')
 
-pyvis_graph_to_js(g, 'rdf_graph.html')
+gvis(g, 'rdf_graph.html')
 
-
-#g2=Graph()
-#g2.parse("/Users/adham/dev/materials-discovery/MIO/mio/mio.ttl")
-#pyvis_graph_to_js(g2, 'rdf_graph3.html')
-#
-#
-#n=Graph()
-#n.parse("/Users/adham/Downloads/nasicon.ttl")
-#pyvis_graph_to_js(n, 'nasicon_graph.html')
-#
+# note you may need to do this: Install Certificates.command (search the command in your python environment)
+mio_url = "http://raw.githubusercontent.com/materials-discovery/MIO/main/mio/mio.ttl"
+mio_file = "./mio.ttl"
+wget.download(mio_url, out=mio_file)
+mio=Graph()
+mio.parse("./mio.ttl")
+gvis(mio, 'mio_graph.html')

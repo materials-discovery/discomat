@@ -1,0 +1,567 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+                <link href="lib/tom-select/tom-select.css" rel="stylesheet">
+                <script src="lib/tom-select/tom-select.complete.min.js"></script>
+            
+        
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1>Visualisation of mio_graph.html</h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 850px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="Raw_Data">Raw_Data</option>
+                                
+                                    <option value="Raw Data">Raw Data</option>
+                                
+                                    <option value="Data">Data</option>
+                                
+                                    <option value="SDS">SDS</option>
+                                
+                                    <option value="CUDS">CUDS</option>
+                                
+                                    <option value="Semantic Data Structure or Set">Semantic Data Structure or Set</option>
+                                
+                                    <option value="Common Universal and Unified Data Structure">Common Universal and Unified Data Structure</option>
+                                
+                                    <option value="DataSet">DataSet</option>
+                                
+                                    <option value="Measurement">Measurement</option>
+                                
+                                    <option value="Process_Step">Process_Step</option>
+                                
+                                    <option value="Process">Process</option>
+                                
+                                    <option value="Process Step or Unit of work">Process Step or Unit of work</option>
+                                
+                                    <option value="Test_Environment">Test_Environment</option>
+                                
+                                    <option value="Environment">Environment</option>
+                                
+                                    <option value="Test Environment">Test Environment</option>
+                                
+                                    <option value="Matter">Matter</option>
+                                
+                                    <option value="Spatial">Spatial</option>
+                                
+                                    <option value="Mereotopological">Mereotopological</option>
+                                
+                                    <option value="Literal">Literal</option>
+                                
+                                    <option value="Sign">Sign</option>
+                                
+                                    <option value="n25540393c2624fef83f81bdb3037ac8cb2">n25540393c2624fef83f81bdb3037ac8cb2</option>
+                                
+                                    <option value="Material">Material</option>
+                                
+                                    <option value="Restriction">Restriction</option>
+                                
+                                    <option value="hasPart">hasPart</option>
+                                
+                                    <option value="Experiment">Experiment</option>
+                                
+                                    <option value="Work">Work</option>
+                                
+                                    <option value="Cognition">Cognition</option>
+                                
+                                    <option value="RelativeProperty">RelativeProperty</option>
+                                
+                                    <option value="MereotopologicalProperty">MereotopologicalProperty</option>
+                                
+                                    <option value="has">has</option>
+                                
+                                    <option value="Data_Analysis">Data_Analysis</option>
+                                
+                                    <option value="Data Analysis">Data Analysis</option>
+                                
+                                    <option value="Anaysis">Anaysis</option>
+                                
+                                    <option value="Description">Description</option>
+                                
+                                    <option value="Indentifying_Property">Indentifying_Property</option>
+                                
+                                    <option value="Displayed_Data">Displayed_Data</option>
+                                
+                                    <option value="Displayed Data">Displayed Data</option>
+                                
+                                    <option value="Mathematical">Mathematical</option>
+                                
+                                    <option value="Test">Test</option>
+                                
+                                    <option value="Ordered">Ordered</option>
+                                
+                                    <option value="Output">Output</option>
+                                
+                                    <option value="Superceding">Superceding</option>
+                                
+                                    <option value="Stages">Stages</option>
+                                
+                                    <option value="Visualization_Software">Visualization_Software</option>
+                                
+                                    <option value="Visualization Software">Visualization Software</option>
+                                
+                                    <option value="Data_Analysis_Tool">Data_Analysis_Tool</option>
+                                
+                                    <option value="Medium">Medium</option>
+                                
+                                    <option value="Composite_Material">Composite_Material</option>
+                                
+                                    <option value="Composite Material">Composite Material</option>
+                                
+                                    <option value="Reference_Property">Reference_Property</option>
+                                
+                                    <option value="Property">Property</option>
+                                
+                                    <option value="Data Set">Data Set</option>
+                                
+                                    <option value="Encoded_Data">Encoded_Data</option>
+                                
+                                    <option value="Data_Visualization">Data_Visualization</option>
+                                
+                                    <option value="Data Visualization">Data Visualization</option>
+                                
+                                    <option value="name">name</option>
+                                
+                                    <option value="FunctionalProperty">FunctionalProperty</option>
+                                
+                                    <option value="Hardware">Hardware</option>
+                                
+                                    <option value="Tool">Tool</option>
+                                
+                                    <option value="Analysis">Analysis</option>
+                                
+                                    <option value="Overlapping">Overlapping</option>
+                                
+                                    <option value="Geometrical">Geometrical</option>
+                                
+                                    <option value="Material_Manufacturing">Material_Manufacturing</option>
+                                
+                                    <option value="n25540393c2624fef83f81bdb3037ac8cb1">n25540393c2624fef83f81bdb3037ac8cb1</option>
+                                
+                                    <option value="Material Manufacturing">Material Manufacturing</option>
+                                
+                                    <option value="Stage">Stage</option>
+                                
+                                    <option value="Relative">Relative</option>
+                                
+                                    <option value="Specimen_Preparation_Equipment">Specimen_Preparation_Equipment</option>
+                                
+                                    <option value="Specimen Preparation Equipment">Specimen Preparation Equipment</option>
+                                
+                                    <option value="isSuperceededBy">isSuperceededBy</option>
+                                
+                                    <option value="Document">Document</option>
+                                
+                                    <option value="Stakeholder">Stakeholder</option>
+                                
+                                    <option value="Participant">Participant</option>
+                                
+                                    <option value="entity">entity</option>
+                                
+                                    <option value="Physical_Property">Physical_Property</option>
+                                
+                                    <option value="Preceding">Preceding</option>
+                                
+                                    <option value="IsPreceededBy">IsPreceededBy</option>
+                                
+                                    <option value="isOverlapping">isOverlapping</option>
+                                
+                                    <option value="Test_Result">Test_Result</option>
+                                
+                                    <option value="Result">Result</option>
+                                
+                                    <option value="Sample">Sample</option>
+                                
+                                    <option value="Test_Equipment">Test_Equipment</option>
+                                
+                                    <option value="Test Equipment">Test Equipment</option>
+                                
+                                    <option value="Data_Storage_Tool">Data_Storage_Tool</option>
+                                
+                                    <option value="Data Storage Tool">Data Storage Tool</option>
+                                
+                                    <option value="Software">Software</option>
+                                
+                                    <option value="Entity">Entity</option>
+                                
+                                    <option value="Actor">Actor</option>
+                                
+                                    <option value="Agent">Agent</option>
+                                
+                                    <option value="Input">Input</option>
+                                
+                                    <option value="Specimen">Specimen</option>
+                                
+                                    <option value=""></option>
+                                
+                                    <option value="Ontology">Ontology</option>
+                                
+                                    <option value="Date">Date</option>
+                                
+                                    <option value="Quantity">Quantity</option>
+                                
+                                    <option value="Condition">Condition</option>
+                                
+                                    <option value="Datum">Datum</option>
+                                
+                                    <option value="hasValue">hasValue</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+              <div id="filter-menu" class="card-header">
+                <div class="row no-gutters">
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'item')"
+                            id="select-item"
+                        >
+                        <option value="">Select a network item</option>
+                        <option value="edge">edge</option>
+                        <option value="node">node</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'property')"
+                            id="select-property"
+                        >
+                        <option value="">Select a property...</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            id="select-value"
+                        >
+                        <option value="">Select value(s)...</option>
+                    </select>
+                  </div>
+                  <div class="col-1 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="highlightFilter(filter);">Filter</button>
+                  </div>
+                  <div class="col-2 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="clearFilter(true)">Reset Selection</button>
+                  </div>
+                </div>
+              </div>
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+                  // explicitly using onItemAdd and this function as we need to save multiple values
+                  let updateValueFilter = function() {
+                      return function () {
+                      filter['value'].push(arguments[0])
+                      }
+                  }
+
+                  let valueControl = new TomSelect("#select-value",{
+                      maxItems: null,
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: updateValueFilter()
+                  });
+
+                  let addValues = function() {
+                      return function () {
+                          // clear the current value options and add the selected attribute values
+                          // tom-select handles duplicates
+                          let selectedProperty = arguments[0];
+                          valueControl.clear();
+                          valueControl.clearOptions();
+                          filter['value'] = []
+                          if (filter['item'] === 'node') {
+                              for (let each in allNodes) {
+                                  valueControl.addOption({
+                                      id:allNodes[each][selectedProperty],
+                                      title:allNodes[each][selectedProperty]
+                                  })
+                              }
+                          }
+                          else if (filter['item'] === 'edge') {
+                              for (let each in allEdges) {
+                                  valueControl.addOption({
+                                      id:allEdges[each][selectedProperty],
+                                      title:allEdges[each][selectedProperty]
+                                  })
+                              }
+                          }
+                      }
+                  };
+
+                  let propControl = new TomSelect("#select-property",{
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addValues()
+                  });
+
+                  let addProperties = function() {
+                      return function () {
+                          // loops through the selected network item and adds the attributes to dropdown
+                          // tom-select handles duplicates
+                          clearFilter(false)
+                          if (arguments[0] === 'edge') {
+                              for (let each in allEdges) {
+                                  if (allEdges.hasOwnProperty(each)) {
+                                      for (let eachProp in allEdges[each]) {
+                                          if (allEdges[each].hasOwnProperty(eachProp)) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                          else if (arguments[0] === 'node') {
+                              for (let each in allNodes) {
+                                  if (allNodes.hasOwnProperty(each)) {
+                                      for (let eachProp in allNodes[each]) {
+                                          if (allNodes[each].hasOwnProperty(eachProp)
+                                              && (eachProp !== 'hidden' && eachProp !== 'savedLabel'
+                                                  && eachProp !== 'hiddenLabel')) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  };
+
+                  let itemControl = new TomSelect("#select-item",{
+                      create: false,
+                      sortField:{
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addProperties()
+                  });
+
+                  function clearFilter(reset) {
+                      // utility function to clear all the selected filter options
+                      // if reset is set to true, the existing filter will be removed
+                      // else, only the dropdown options are cleared
+                      propControl.clear();
+                      propControl.clearOptions();
+                      valueControl.clear();
+                      valueControl.clearOptions();
+                      filter = {
+                          item : '',
+                          property : '',
+                          value : []
+                      }
+                      if (reset) {
+                          itemControl.clear();
+                          filterHighlight({nodes: []})
+                      }
+                  }
+
+                  function updateFilter(value, key) {
+                      // key could be 'item' or 'property' and value is as selected in dropdown
+                      filter[key] = value
+                  }
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "orange", "id": "Raw_Data", "label": "Raw_Data", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Raw_Data"}, {"color": "green", "id": "Raw Data", "label": "Raw Data", "shape": "dot", "size": 10, "title": "Raw Data"}, {"color": "orange", "id": "Data", "label": "Data", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Data"}, {"color": "orange", "id": "SDS", "label": "SDS", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/SDS"}, {"color": "orange", "id": "CUDS", "label": "CUDS", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/CUDS"}, {"color": "green", "id": "Semantic Data Structure or Set", "label": "Semantic Data Structure or Set", "shape": "dot", "size": 10, "title": "Semantic Data Structure or Set"}, {"color": "green", "id": "Common Universal and Unified Data Structure", "label": "Common Universal and Unified Data Structure", "shape": "dot", "size": 10, "title": "Common Universal and Unified Data Structure"}, {"color": "orange", "id": "DataSet", "label": "DataSet", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/DataSet"}, {"color": "orange", "id": "Measurement", "label": "Measurement", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Measurement"}, {"color": "orange", "id": "Process_Step", "label": "Process_Step", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Process_Step"}, {"color": "orange", "id": "Process", "label": "Process", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Process"}, {"color": "green", "id": "Process Step or Unit of work", "label": "Process Step or Unit of work", "shape": "dot", "size": 10, "title": "Process Step or Unit of work"}, {"color": "orange", "id": "Test_Environment", "label": "Test_Environment", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Test_Environment"}, {"color": "orange", "id": "Environment", "label": "Environment", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Environment"}, {"color": "green", "id": "Test Environment", "label": "Test Environment", "shape": "dot", "size": 10, "title": "Test Environment"}, {"color": "orange", "id": "Matter", "label": "Matter", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Matter"}, {"color": "orange", "id": "Spatial", "label": "Spatial", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Spatial"}, {"color": "orange", "id": "Mereotopological", "label": "Mereotopological", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Mereotopological"}, {"color": "orange", "id": "Literal", "label": "Literal", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Literal"}, {"color": "orange", "id": "Sign", "label": "Sign", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Sign"}, {"color": "red", "id": "n25540393c2624fef83f81bdb3037ac8cb2", "label": "n25540393c2624fef83f81bdb3037ac8cb2", "shape": "dot", "size": 10, "title": "n25540393c2624fef83f81bdb3037ac8cb2"}, {"color": "green", "id": "Material", "label": "Material", "shape": "dot", "size": 10, "title": "Material"}, {"color": "green", "id": "Restriction", "label": "Restriction", "shape": "dot", "size": 10, "title": "http://www.w3.org/2002/07/owl#Restriction"}, {"color": "red", "id": "hasPart", "label": "hasPart", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/hasPart"}, {"color": "green", "id": "Experiment", "label": "Experiment", "shape": "dot", "size": 10, "title": "Experiment"}, {"color": "orange", "id": "Work", "label": "Work", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Work"}, {"color": "orange", "id": "Cognition", "label": "Cognition", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Cognition"}, {"color": "red", "id": "RelativeProperty", "label": "RelativeProperty", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/RelativeProperty"}, {"color": "red", "id": "MereotopologicalProperty", "label": "MereotopologicalProperty", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/MereotopologicalProperty"}, {"color": "red", "id": "has", "label": "has", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/has"}, {"color": "orange", "id": "Data_Analysis", "label": "Data_Analysis", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Data_Analysis"}, {"color": "green", "id": "Data Analysis", "label": "Data Analysis", "shape": "dot", "size": 10, "title": "Data Analysis"}, {"color": "green", "id": "Anaysis", "label": "Anaysis", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Anaysis"}, {"color": "orange", "id": "Description", "label": "Description", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Description"}, {"color": "orange", "id": "Indentifying_Property", "label": "Indentifying_Property", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Indentifying_Property"}, {"color": "orange", "id": "Displayed_Data", "label": "Displayed_Data", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Displayed_Data"}, {"color": "green", "id": "Displayed Data", "label": "Displayed Data", "shape": "dot", "size": 10, "title": "Displayed Data"}, {"color": "orange", "id": "Mathematical", "label": "Mathematical", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Mathematical"}, {"color": "green", "id": "Test", "label": "Test", "shape": "dot", "size": 10, "title": "Test"}, {"color": "orange", "id": "Ordered", "label": "Ordered", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Ordered"}, {"color": "green", "id": "Output", "label": "Output", "shape": "dot", "size": 10, "title": "Output"}, {"color": "orange", "id": "Superceding", "label": "Superceding", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Superceding"}, {"color": "orange", "id": "Stages", "label": "Stages", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Stages"}, {"color": "orange", "id": "Visualization_Software", "label": "Visualization_Software", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Visualization_Software"}, {"color": "green", "id": "Visualization Software", "label": "Visualization Software", "shape": "dot", "size": 10, "title": "Visualization Software"}, {"color": "orange", "id": "Data_Analysis_Tool", "label": "Data_Analysis_Tool", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Data_Analysis_Tool"}, {"color": "orange", "id": "Medium", "label": "Medium", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Medium"}, {"color": "orange", "id": "Composite_Material", "label": "Composite_Material", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Composite_Material"}, {"color": "green", "id": "Composite Material", "label": "Composite Material", "shape": "dot", "size": 10, "title": "Composite Material"}, {"color": "orange", "id": "Reference_Property", "label": "Reference_Property", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Reference_Property"}, {"color": "orange", "id": "Property", "label": "Property", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Property"}, {"color": "green", "id": "Data Set", "label": "Data Set", "shape": "dot", "size": 10, "title": "Data Set"}, {"color": "orange", "id": "Encoded_Data", "label": "Encoded_Data", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Encoded_Data"}, {"color": "orange", "id": "Data_Visualization", "label": "Data_Visualization", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Data_Visualization"}, {"color": "green", "id": "Data Visualization", "label": "Data Visualization", "shape": "dot", "size": 10, "title": "Data Visualization"}, {"color": "red", "id": "name", "label": "name", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/name"}, {"color": "green", "id": "FunctionalProperty", "label": "FunctionalProperty", "shape": "dot", "size": 10, "title": "http://www.w3.org/2002/07/owl#FunctionalProperty"}, {"color": "orange", "id": "Hardware", "label": "Hardware", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Hardware"}, {"color": "orange", "id": "Tool", "label": "Tool", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Tool"}, {"color": "green", "id": "Analysis", "label": "Analysis", "shape": "dot", "size": 10, "title": "Analysis"}, {"color": "orange", "id": "Overlapping", "label": "Overlapping", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Overlapping"}, {"color": "green", "id": "Geometrical", "label": "Geometrical", "shape": "dot", "size": 10, "title": "Geometrical"}, {"color": "orange", "id": "Material_Manufacturing", "label": "Material_Manufacturing", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Material_Manufacturing"}, {"color": "red", "id": "n25540393c2624fef83f81bdb3037ac8cb1", "label": "n25540393c2624fef83f81bdb3037ac8cb1", "shape": "dot", "size": 10, "title": "n25540393c2624fef83f81bdb3037ac8cb1"}, {"color": "green", "id": "Material Manufacturing", "label": "Material Manufacturing", "shape": "dot", "size": 10, "title": "Material Manufacturing"}, {"color": "green", "id": "Stage", "label": "Stage", "shape": "dot", "size": 10, "title": "Stage"}, {"color": "orange", "id": "Relative", "label": "Relative", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Relative"}, {"color": "orange", "id": "Specimen_Preparation_Equipment", "label": "Specimen_Preparation_Equipment", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Specimen_Preparation_Equipment"}, {"color": "green", "id": "Specimen Preparation Equipment", "label": "Specimen Preparation Equipment", "shape": "dot", "size": 10, "title": "Specimen Preparation Equipment"}, {"color": "red", "id": "isSuperceededBy", "label": "isSuperceededBy", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/isSuperceededBy"}, {"color": "orange", "id": "Document", "label": "Document", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Document"}, {"color": "orange", "id": "Stakeholder", "label": "Stakeholder", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Stakeholder"}, {"color": "orange", "id": "Participant", "label": "Participant", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Participant"}, {"color": "orange", "id": "entity", "label": "entity", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/entity"}, {"color": "orange", "id": "Physical_Property", "label": "Physical_Property", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Physical_Property"}, {"color": "orange", "id": "Preceding", "label": "Preceding", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Preceding"}, {"color": "red", "id": "IsPreceededBy", "label": "IsPreceededBy", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/IsPreceededBy"}, {"color": "red", "id": "isOverlapping", "label": "isOverlapping", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/isOverlapping"}, {"color": "orange", "id": "Test_Result", "label": "Test_Result", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Test_Result"}, {"color": "orange", "id": "Result", "label": "Result", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Result"}, {"color": "orange", "id": "Sample", "label": "Sample", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Sample"}, {"color": "orange", "id": "Test_Equipment", "label": "Test_Equipment", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Test_Equipment"}, {"color": "green", "id": "Test Equipment", "label": "Test Equipment", "shape": "dot", "size": 10, "title": "Test Equipment"}, {"color": "orange", "id": "Data_Storage_Tool", "label": "Data_Storage_Tool", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Data_Storage_Tool"}, {"color": "green", "id": "Data Storage Tool", "label": "Data Storage Tool", "shape": "dot", "size": 10, "title": "Data Storage Tool"}, {"color": "orange", "id": "Software", "label": "Software", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Software"}, {"color": "green", "id": "Entity", "label": "Entity", "shape": "dot", "size": 10, "title": "Entity"}, {"color": "orange", "id": "Actor", "label": "Actor", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Actor"}, {"color": "orange", "id": "Agent", "label": "Agent", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Agent"}, {"color": "orange", "id": "Input", "label": "Input", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Input"}, {"color": "green", "id": "Specimen", "label": "Specimen", "shape": "dot", "size": 10, "title": "Specimen"}, {"color": "red", "id": "", "label": "", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/"}, {"color": "green", "id": "Ontology", "label": "Ontology", "shape": "dot", "size": 10, "title": "http://www.w3.org/2002/07/owl#Ontology"}, {"color": "green", "id": "Date", "label": "Date", "shape": "dot", "size": 10, "title": "Date"}, {"color": "orange", "id": "Quantity", "label": "Quantity", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Quantity"}, {"color": "orange", "id": "Condition", "label": "Condition", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Condition"}, {"color": "orange", "id": "Datum", "label": "Datum", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/Datum"}, {"color": "red", "id": "hasValue", "label": "hasValue", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio/hasValue"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "red", "from": "Raw_Data", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Raw Data", "width": 1}, {"arrows": "to", "color": "orange", "from": "Raw_Data", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Data", "width": 1}, {"arrows": "to", "color": "orange", "from": "SDS", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "CUDS", "width": 1}, {"arrows": "to", "color": "red", "from": "SDS", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Semantic Data Structure or Set", "width": 1}, {"arrows": "to", "color": "red", "from": "CUDS", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Common Universal and Unified Data Structure", "width": 1}, {"arrows": "to", "color": "orange", "from": "CUDS", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "DataSet", "width": 1}, {"arrows": "to", "color": "orange", "from": "Measurement", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Process_Step", "width": 1}, {"arrows": "to", "color": "orange", "from": "Process_Step", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Process", "width": 1}, {"arrows": "to", "color": "red", "from": "Process_Step", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Process Step or Unit of work", "width": 1}, {"arrows": "to", "color": "orange", "from": "Test_Environment", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Environment", "width": 1}, {"arrows": "to", "color": "red", "from": "Test_Environment", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Test Environment", "width": 1}, {"arrows": "to", "color": "orange", "from": "Environment", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Matter", "width": 1}, {"arrows": "to", "color": "red", "from": "Spatial", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Spatial", "width": 1}, {"arrows": "to", "color": "orange", "from": "Spatial", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Mereotopological", "width": 1}, {"arrows": "to", "color": "orange", "from": "Literal", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Sign", "width": 1}, {"arrows": "to", "color": "red", "from": "n25540393c2624fef83f81bdb3037ac8cb2", "label": "someValuesFrom", "title": "http://www.w3.org/2002/07/owl#someValuesFrom", "to": "Material", "width": 1}, {"arrows": "to", "color": "red", "from": "n25540393c2624fef83f81bdb3037ac8cb2", "label": "type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "Restriction", "width": 1}, {"arrows": "to", "color": "red", "from": "n25540393c2624fef83f81bdb3037ac8cb2", "label": "onProperty", "title": "http://www.w3.org/2002/07/owl#onProperty", "to": "hasPart", "width": 1}, {"arrows": "to", "color": "orange", "from": "Material", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Matter", "width": 1}, {"arrows": "to", "color": "red", "from": "Material", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Material", "width": 1}, {"arrows": "to", "color": "orange", "from": "Experiment", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Process", "width": 1}, {"arrows": "to", "color": "red", "from": "Experiment", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Experiment", "width": 1}, {"arrows": "to", "color": "orange", "from": "Process", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Work", "width": 1}, {"arrows": "to", "color": "red", "from": "Cognition", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Cognition", "width": 1}, {"arrows": "to", "color": "orange", "from": "Cognition", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Process", "width": 1}, {"arrows": "to", "color": "red", "from": "RelativeProperty", "label": "subPropertyOf", "title": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf", "to": "MereotopologicalProperty", "width": 1}, {"arrows": "to", "color": "red", "from": "MereotopologicalProperty", "label": "subPropertyOf", "title": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf", "to": "has", "width": 1}, {"arrows": "to", "color": "red", "from": "Data_Analysis", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Data Analysis", "width": 1}, {"arrows": "to", "color": "orange", "from": "Data_Analysis", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Anaysis", "width": 1}, {"arrows": "to", "color": "red", "from": "Description", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Description", "width": 1}, {"arrows": "to", "color": "orange", "from": "Description", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Indentifying_Property", "width": 1}, {"arrows": "to", "color": "orange", "from": "Displayed_Data", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Data", "width": 1}, {"arrows": "to", "color": "red", "from": "Displayed_Data", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Displayed Data", "width": 1}, {"arrows": "to", "color": "red", "from": "Data", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Data", "width": 1}, {"arrows": "to", "color": "orange", "from": "Data", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Sign", "width": 1}, {"arrows": "to", "color": "orange", "from": "Mathematical", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Sign", "width": 1}, {"arrows": "to", "color": "orange", "from": "Test", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Experiment", "width": 1}, {"arrows": "to", "color": "red", "from": "Test", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Test", "width": 1}, {"arrows": "to", "color": "red", "from": "Ordered", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Ordered", "width": 1}, {"arrows": "to", "color": "orange", "from": "Ordered", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Mereotopological", "width": 1}, {"arrows": "to", "color": "orange", "from": "Output", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Superceding", "width": 1}, {"arrows": "to", "color": "red", "from": "Output", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Output", "width": 1}, {"arrows": "to", "color": "red", "from": "Superceding", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Superceding", "width": 1}, {"arrows": "to", "color": "orange", "from": "Superceding", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Stages", "width": 1}, {"arrows": "to", "color": "red", "from": "Visualization_Software", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Visualization Software", "width": 1}, {"arrows": "to", "color": "orange", "from": "Visualization_Software", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Data_Analysis_Tool", "width": 1}, {"arrows": "to", "color": "red", "from": "Medium", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Medium", "width": 1}, {"arrows": "to", "color": "orange", "from": "Medium", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Environment", "width": 1}, {"arrows": "to", "color": "red", "from": "Composite_Material", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Composite Material", "width": 1}, {"arrows": "to", "color": "orange", "from": "Composite_Material", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Material", "width": 1}, {"arrows": "to", "color": "orange", "from": "Reference_Property", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Property", "width": 1}, {"arrows": "to", "color": "red", "from": "DataSet", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Data Set", "width": 1}, {"arrows": "to", "color": "orange", "from": "DataSet", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Encoded_Data", "width": 1}, {"arrows": "to", "color": "red", "from": "Data_Visualization", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Data Visualization", "width": 1}, {"arrows": "to", "color": "orange", "from": "Data_Visualization", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Data_Analysis", "width": 1}, {"arrows": "to", "color": "orange", "from": "Data_Visualization", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Displayed_Data", "width": 1}, {"arrows": "to", "color": "red", "from": "name", "label": "type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "FunctionalProperty", "width": 1}, {"arrows": "to", "color": "orange", "from": "Hardware", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Tool", "width": 1}, {"arrows": "to", "color": "orange", "from": "Analysis", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Process_Step", "width": 1}, {"arrows": "to", "color": "red", "from": "Analysis", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Analysis", "width": 1}, {"arrows": "to", "color": "red", "from": "Mereotopological", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Mereotopological", "width": 1}, {"arrows": "to", "color": "red", "from": "Overlapping", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Overlapping", "width": 1}, {"arrows": "to", "color": "orange", "from": "Overlapping", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Stages", "width": 1}, {"arrows": "to", "color": "orange", "from": "Geometrical", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Mereotopological", "width": 1}, {"arrows": "to", "color": "red", "from": "Geometrical", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Geometrical", "width": 1}, {"arrows": "to", "color": "orange", "from": "Material_Manufacturing", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "n25540393c2624fef83f81bdb3037ac8cb1", "width": 1}, {"arrows": "to", "color": "orange", "from": "Material_Manufacturing", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Process", "width": 1}, {"arrows": "to", "color": "red", "from": "Material_Manufacturing", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Material Manufacturing", "width": 1}, {"arrows": "to", "color": "red", "from": "n25540393c2624fef83f81bdb3037ac8cb1", "label": "onProperty", "title": "http://www.w3.org/2002/07/owl#onProperty", "to": "hasPart", "width": 1}, {"arrows": "to", "color": "red", "from": "n25540393c2624fef83f81bdb3037ac8cb1", "label": "someValuesFrom", "title": "http://www.w3.org/2002/07/owl#someValuesFrom", "to": "Process_Step", "width": 1}, {"arrows": "to", "color": "red", "from": "n25540393c2624fef83f81bdb3037ac8cb1", "label": "type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "Restriction", "width": 1}, {"arrows": "to", "color": "red", "from": "Stages", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Stage", "width": 1}, {"arrows": "to", "color": "orange", "from": "Stages", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Relative", "width": 1}, {"arrows": "to", "color": "red", "from": "Specimen_Preparation_Equipment", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Specimen Preparation Equipment", "width": 1}, {"arrows": "to", "color": "orange", "from": "Specimen_Preparation_Equipment", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Hardware", "width": 1}, {"arrows": "to", "color": "red", "from": "Relative", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Relative", "width": 1}, {"arrows": "to", "color": "orange", "from": "Relative", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Ordered", "width": 1}, {"arrows": "to", "color": "orange", "from": "Encoded_Data", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Data", "width": 1}, {"arrows": "to", "color": "red", "from": "isSuperceededBy", "label": "subPropertyOf", "title": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf", "to": "RelativeProperty", "width": 1}, {"arrows": "to", "color": "orange", "from": "Document", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Encoded_Data", "width": 1}, {"arrows": "to", "color": "orange", "from": "Stakeholder", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Participant", "width": 1}, {"arrows": "to", "color": "orange", "from": "Participant", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "entity", "width": 1}, {"arrows": "to", "color": "orange", "from": "Physical_Property", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Property", "width": 1}, {"arrows": "to", "color": "red", "from": "hasPart", "label": "subPropertyOf", "title": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf", "to": "has", "width": 1}, {"arrows": "to", "color": "red", "from": "Preceding", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Preceding", "width": 1}, {"arrows": "to", "color": "orange", "from": "Preceding", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Stages", "width": 1}, {"arrows": "to", "color": "red", "from": "IsPreceededBy", "label": "subPropertyOf", "title": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf", "to": "RelativeProperty", "width": 1}, {"arrows": "to", "color": "red", "from": "isOverlapping", "label": "subPropertyOf", "title": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf", "to": "RelativeProperty", "width": 1}, {"arrows": "to", "color": "orange", "from": "Test_Result", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Result", "width": 1}, {"arrows": "to", "color": "orange", "from": "Result", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Output", "width": 1}, {"arrows": "to", "color": "orange", "from": "Sample", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Matter", "width": 1}, {"arrows": "to", "color": "orange", "from": "Sample", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "n25540393c2624fef83f81bdb3037ac8cb2", "width": 1}, {"arrows": "to", "color": "red", "from": "Sample", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Sample", "width": 1}, {"arrows": "to", "color": "red", "from": "Test_Equipment", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Test Equipment", "width": 1}, {"arrows": "to", "color": "orange", "from": "Test_Equipment", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Hardware", "width": 1}, {"arrows": "to", "color": "red", "from": "Data_Storage_Tool", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Data Storage Tool", "width": 1}, {"arrows": "to", "color": "orange", "from": "Data_Storage_Tool", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Software", "width": 1}, {"arrows": "to", "color": "orange", "from": "Data_Analysis_Tool", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Software", "width": 1}, {"arrows": "to", "color": "red", "from": "entity", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Entity", "width": 1}, {"arrows": "to", "color": "orange", "from": "Indentifying_Property", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Property", "width": 1}, {"arrows": "to", "color": "orange", "from": "Actor", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Agent", "width": 1}, {"arrows": "to", "color": "orange", "from": "Agent", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Stakeholder", "width": 1}, {"arrows": "to", "color": "orange", "from": "Software", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Tool", "width": 1}, {"arrows": "to", "color": "orange", "from": "Input", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Preceding", "width": 1}, {"arrows": "to", "color": "orange", "from": "Specimen", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Sample", "width": 1}, {"arrows": "to", "color": "red", "from": "Specimen", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Specimen", "width": 1}, {"arrows": "to", "color": "red", "from": "", "label": "type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "Ontology", "width": 1}, {"arrows": "to", "color": "orange", "from": "Date", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Reference_Property", "width": 1}, {"arrows": "to", "color": "red", "from": "Date", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Date", "width": 1}, {"arrows": "to", "color": "orange", "from": "Quantity", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Sign", "width": 1}, {"arrows": "to", "color": "red", "from": "Condition", "label": "label", "title": "http://www.w3.org/2000/01/rdf-schema#label", "to": "Condition", "width": 1}, {"arrows": "to", "color": "orange", "from": "Condition", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Overlapping", "width": 1}, {"arrows": "to", "color": "orange", "from": "Datum", "label": "subClassOf", "title": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "to": "Encoded_Data", "width": 1}, {"arrows": "to", "color": "red", "from": "hasValue", "label": "subPropertyOf", "title": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf", "to": "hasPart", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "physics",
+            "nodes"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+                    network.on("click", neighbourhoodHighlight);
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
