@@ -1,4 +1,7 @@
 import uuid, datetime
+from collections import defaultdict
+from urllib.parse import urlparse, urldefrag, urlsplit
+
 from rdflib import Dataset, Graph, URIRef, Literal, RDF, RDFS
 from rdflib.namespace import DC, DCTERMS, PROV, XSD
 from discomat.ontology.namespaces import CUDS, MIO
@@ -62,7 +65,6 @@ class Cuds:
 
         self.uuid = uuid.uuid4()  # Generate a unique UUID for each instance
 
-
         self.iri = iri if iri else f"http://www.ddmd.io/mio#cuds_iri_{self.uuid}"
         self.rdf_iri = URIRef(self.iri)  # make sure it is a URIRef
 
@@ -85,8 +87,9 @@ class Cuds:
         self.pid = pid or f"http://www.ddmd.io/mio#cuds_pid_{self.uuid}"
         # fixme use str(CUDS) or {str(MIO)}cuds_pid/... should stay the same for the same CUDS
 
-        def_str = f"http://www.ddmd.io/mio#cuds_pid_{self.uuid}"  # fixme use str(CUDS) or {str(MIO)}cuds_pid/..
-        self.description = description or def_str
+        self._graph.add((self.rdf_iri, CUDS.hasPid, Literal(str(self.pid))))
+
+        self.description = description or f"This is a CUDS without Description!"
         self._graph.add((self.rdf_iri, CUDS.description, Literal(str(self.description))))
 
         self.creation_time = datetime.datetime.now()
@@ -94,18 +97,63 @@ class Cuds:
 
     @property
     def properties(self):
-        # all the properties (predicates and other) and objects
-        properties = {}
+        # Retrieve all properties (predicates) and objects for c.iri
+        properties = defaultdict(list)
         for p, o in self._graph.predicate_objects(self.rdf_iri):
-            properties[p] = o
+            namespace, fragment = self.split_uri2(p)
+            properties[namespace].append((fragment, o))
         return properties
 
-    def print(self):
+    def split_uri(self, uri):
+        # Split the URI into namespace and fragment
+        parsed_uri = urlparse(uri)
+        path = parsed_uri.path
+        if "#" in path:
+            namespace, fragment = path.split("#")
+        elif "/" in path:
+            namespace, fragment = path.rsplit("/", 1)
+        else:
+            namespace, fragment = path, ''
+        return parsed_uri.scheme + "://" + parsed_uri.netloc + namespace + "/", fragment
+
+    def print_graph(self):
+        # Print the graph in a readable format (e.g., Turtle)
         print(self._graph.serialize(format="turtle"))
 
     def __repr__(self):
         # Pretty print format for the instance
         properties = self.properties
+        output = [f"c.iri: {self.rdf_iri}\n"]
+        for namespace, props in properties.items():
+            output.append(f"Namespace: {namespace}")
+            for fragment, obj in props:
+                output.append(f"  {fragment}: {obj}")
+            output.append("")  # Add a blank line between namespaces
+        return "\n".join(output)
+
+    def split_uri2(self, uri):
+        # Split the URI into namespace and fragment
+        frag_split = urldefrag(uri)
+        if frag_split[1]:  # If there's a fragment after #
+            return frag_split[0] + "#", frag_split[1]
+        else:  # Otherwise split at the last /
+            split = urlsplit(uri)
+            path_parts = split.path.rsplit('/', 1)
+            if len(path_parts) > 1:
+                return split.scheme + "://" + split.netloc + path_parts[0] + "/", path_parts[1]
+            else:
+                return uri, ''  # Fallback case
+
+    @property
+    def properties2(self):
+        # Retrieve all properties (predicates) and objects for c.iri
+        properties = {}
+        for p, o in self._graph.predicate_objects(self.rdf_iri):
+            properties[p] = o
+        return properties
+
+    def __repr__2(self):
+        # Pretty print format for the instance
+        properties = self.properties
         properties_str = "\n".join([f"  {p}: {o}" for p, o in properties.items()])
         return f"c.iri: {self.iri}\nProperties:\n{properties_str}"
-
