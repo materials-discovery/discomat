@@ -12,7 +12,7 @@ The main purpose is to get a graph, assuming it is not huge, and focusing on sho
 import networkx as nx
 from pyvis.network import Network
 from rdflib import Graph, URIRef, RDF, RDFS, OWL
-
+from discomat.utils.uuid import uuid_from_string
 
 
 def extract_fragment(iri):  # we have this in so many versions and incarnations, should fixme move to utils
@@ -54,31 +54,35 @@ def gvis(graph: Graph, output_html_file: str = 'mygraph.html'):
         p_fragment = extract_fragment(str(p))
         o_fragment = extract_fragment(str(o))
 
+        #s_fragment = uuid_from_string(s_fragment, 5) or s_fragment
+        # o_fragment = uuid_from_string(o_fragment, 5) or o_fragment
 
         # Identify if the subject or object is a class
         if (s, None, RDFS.Class) in graph or (s, None, OWL.Class) in graph:
             G.add_node(s_fragment, title=str(s), color='orange')  # classes are RED
         elif (s, None, None) not in graph:
-            G.add_node(s_fragment, title=str(s), color='yellow')  
+            G.add_node(s_fragment, title=str(s), color='green')
         else:
             G.add_node(s_fragment, title=str(s), color='red')  
 
         if (o, None, RDFS.Class) in graph or (o, None, OWL.Class) in graph:
             G.add_node(o_fragment, title=str(o), color='orange')  
         elif (o, None, None) not in graph:
-            G.add_node(o_fragment, title=str(o), color='yellow')  
+            G.add_node(o_fragment, title=str(o), color='green')
         else:
             G.add_node(o_fragment, title=str(o), color='red')  
 
         # Add edges, using thick orange for subclass relations
-        edge_color = 'orange' if p == RDFS.subClassOf else 'magenta'
+        edge_color = 'orange' if p == RDFS.subClassOf else 'red'
         edge_width = 5 if p == RDFS.subClassOf else 2
 
         G.add_edge(s_fragment, o_fragment, label=p_fragment, title=str(p), color=edge_color, width=edge_width)
-
+        # edges = G.edges(data=True)
+        # for edge in edges:
+        #     print(edge)
     # Create a Pyvis network
     net = Network(
-        height='1500px',
+        height='850px',
         heading="PyVis+NetworkX Visualisation",
         neighborhood_highlight=True,
         directed=True,
@@ -89,8 +93,11 @@ def gvis(graph: Graph, output_html_file: str = 'mygraph.html'):
     )
 
     net.from_nx(G)  # Create directly from the NetworkX graph
-    #net.show_buttons(filter_=['physics', 'nodes'])  # Show physics control in the UI
 
+
+    net.show_buttons(filter_=['physics', 'nodes'])  # Show physics control in the UI
+    # for edge in net.edges:
+    #     print(edge)
     # Save the network to an HTML file
     net.write_html(output_html_file)  # Write HTML file
     print(f"Graph saved to {output_html_file}")

@@ -79,18 +79,17 @@ class Cuds:
         self._graph.add((self.rdf_iri, RDF.type, URIRef(self.ontology_type)))
 
         self.description = description or f"This is CUDS version 1.0 - No description was given."
-        self._graph.add((self.rdf_iri, CUDS.description, Literal(description)))
+        #self._graph.add((self.rdf_iri, CUDS.description, Literal(description)))
+        self.description = description or f"This is a CUDS without Description!"
+        self._graph.add((self.rdf_iri, CUDS.description, Literal(str(self.description))))
 
         self.label = str(label) if label is not None else None
-        self._graph.add((self.rdf_iri, CUDS.label, Literal(str(self.label))))
+        self._graph.add((self.rdf_iri, CUDS.label, Literal(str(self.label), datatype=XSD.string)))
 
         self.pid = pid or f"http://www.ddmd.io/mio#cuds_pid_{self.uuid}"
         # fixme use str(CUDS) or {str(MIO)}cuds_pid/... should stay the same for the same CUDS
+        self._graph.add((self.rdf_iri, CUDS.Pid, Literal(str(self.pid), datatype=XSD.string)))
 
-        self._graph.add((self.rdf_iri, CUDS.hasPid, Literal(str(self.pid))))
-
-        self.description = description or f"This is a CUDS without Description!"
-        self._graph.add((self.rdf_iri, CUDS.description, Literal(str(self.description))))
 
         self.creation_time = datetime.datetime.now()
         self._graph.set((self.rdf_iri, PROV.generatedAtTime, Literal(self.creation_time, datatype=XSD.dateTime)))
