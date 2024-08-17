@@ -15,6 +15,8 @@ def to_iri(e: Union[str, URIRef]):
             e = URIRef(e)
         elif isinstance(e, URIRef):
             pass
+        elif e is None:
+            return None
         else:
             raise TypeError(f"in to_iri: Wrong, unsupported type {type(e)}")
     return e

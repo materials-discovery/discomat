@@ -165,3 +165,29 @@ class Cuds:
         except TypeError as e:
             print(f"Wrong typ {e}")
             return None
+
+
+    def remove(self, p, o):
+        try:
+            self._graph.remove((self.rdf_iri, to_iri(p), to_iri(o)))
+            # fixme: use safe_uri from scigraph, as well as make this an utility function to get the proper iri from
+            #  either an argument which is cuds, iri, or str.
+        except TypeError as e:
+            print(f"Wrong typ {e}")
+            return None
+
+    def __iter__(self):
+        # Delegate the iteration to rdflib Graph
+        return iter(self._graph)
+
+    # def __getattr__(self, name):
+    #     print(f"Delegating atttribute: {name}")
+    #     # Delegate attribute access to self._graph
+    #     # Avoid infinite recursion by checking if the attribute is _graph
+    #     if name in ['_graph', '__deepcopy__']:
+    #         raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{name}'")
+    #     return getattr(self._graph, name)
+    @property
+    def graph(self):
+        return self._graph
+

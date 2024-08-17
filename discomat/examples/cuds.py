@@ -2,7 +2,8 @@ from discomat.cuds.cuds import Cuds
 from discomat.visualisation.cuds_vis import gvis
 from discomat.cuds.utils import uuid_from_string, to_iri
 from discomat.cuds.session import Session
-from rdflib import URIRef
+from rdflib import URIRef, Graph
+import copy
 
 c = Cuds()
 print(c)  # pretty print, organised to name spaces.
@@ -22,7 +23,7 @@ assert extracted_uuid == expected_uuid, f"Expected {expected_uuid} but got {extr
 # test plot of Cuds
 gvis(c, f"Cuds_graph.html")
 
-print(f"TESTING to_iti {50 * '-'}")
+print(f"TESTING to_iri \n {50 * '-'}")
 original_iri = "https://predicate.org/predicate"
 obtained_iri = to_iri(original_iri)
 print(f"original_iri: {original_iri} of type {type(original_iri)}")
@@ -35,7 +36,7 @@ print(f"original_iri: {original_iri} of type {type(original_iri)}")
 print(f"Testing to_iri:  obtained_iri = {obtained_iri} is "
       f"of type:"
       f" {type(obtained_iri)}")
-assert isinstance(obtained_iri, URIRef)
+assert isinstance(obtained_iri, URIRef), f"Expected type URIRef but got {type(obtained_iri)}"
 
 original_iri = c.iri
 obtained_iri = to_iri(original_iri)
@@ -59,14 +60,38 @@ c.add("https://predicate.org/1predicate_str_iri", URIRef("https://1subject.org/s
 c.add("https://predicate.org/1predicate_str_iri",c) # fixme
 
 
-gvis(c, f"Cuds_graph_add_test.html")
-print(f"Printing C after adding {c}")
+print(f"Testing the Cuds.remove Method")
+# c1 = Graph().parse(data=c.serialize(format="turtle"), format="turtle")
+c1=copy.deepcopy(c)
+gvis(c1, "deep_copy_c.html")
+c1.add("ThePredicate", "TheObject")
+gvis(c1, "c1.html")
+c2=copy.deepcopy(c1)
+c2.remove("ThePredicate", "TheObject")
+gvis(c2, "c2.html")
+
+cdiff = c1.graph - c2.graph
+gvis(cdiff, "cdiff.html") # gvis works both on Cuds and graph alike.
+
+
+
+print(f"TESTING Iter on Cuds: \n{50*'-'}")
+triple_count=0
+for s, p, o in c.graph:
+    triple_count=triple_count +1
+
+print(f"c has  {len(c._graph)} == {triple_count} triples")
+assert (len(c._graph) == triple_count), f"iterator is not working"
+
+if (c.rdf_iri, None, None) in c.graph:
+    print("Cuds contains triples about itself!")
+else:
+    print(f"Something is Wrong {c.rdf_iri}")
+
 # test session
-
-
 s = Session("http://example.org/mySession/1234",
             None,
             description="This is a simple Session",
             label="session_1",
             engine="walla")
-print(f"Printing session  {s}")
+print(f"TESTING Cuds Session {50*'*'}")

@@ -27,7 +27,7 @@
 
 
         <center>
-          <h1>Visualisation of mygraph.html</h1>
+          <h1>Visualisation of c2.html</h1>
         </center>
         <style type="text/css">
 
@@ -42,12 +42,6 @@
 
              
 
-             
-             #config {
-                 float: left;
-                 width: 400px;
-                 height: 600px;
-             }
              
 
              
@@ -70,19 +64,21 @@
                             >
                                 <option selected>Select a Node by ID</option>
                                 
-                                    <option value="cuds_iri_f45f2fe2-58be-4927-8d04-6fd091930c1b">cuds_iri_f45f2fe2-58be-4927-8d04-6fd091930c1b</option>
+                                    <option value="cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630">cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630</option>
+                                
+                                    <option value="subject_uriref_iri">subject_uriref_iri</option>
+                                
+                                    <option value="cuds_pid_c5ac9a27-b130-48df-af29-fb7e58b77630">cuds_pid_c5ac9a27-b130-48df-af29-fb7e58b77630</option>
+                                
+                                    <option value="c5ac9a27-b130-48df-af29-fb7e58b77630">c5ac9a27-b130-48df-af29-fb7e58b77630</option>
                                 
                                     <option value="This is a CUDS without Description!">This is a CUDS without Description!</option>
                                 
-                                    <option value="Cuds">Cuds</option>
-                                
                                     <option value="None">None</option>
                                 
-                                    <option value="cuds_pid_f45f2fe2-58be-4927-8d04-6fd091930c1b">cuds_pid_f45f2fe2-58be-4927-8d04-6fd091930c1b</option>
+                                    <option value="2024-08-18T00:48:02.413194">2024-08-18T00:48:02.413194</option>
                                 
-                                    <option value="2024-08-17T22:00:10.694050">2024-08-17T22:00:10.694050</option>
-                                
-                                    <option value="f45f2fe2-58be-4927-8d04-6fd091930c1b">f45f2fe2-58be-4927-8d04-6fd091930c1b</option>
+                                    <option value="Cuds">Cuds</option>
                                 
                             </select>
                         </div>
@@ -139,8 +135,6 @@
         </div>
 
         
-        
-            <div id="config"></div>
         
 
         <script type="text/javascript">
@@ -306,8 +300,8 @@
                   
 
                   // parsing and collecting nodes and edges from the python
-                  nodes = new vis.DataSet([{"color": "red", "id": "cuds_iri_f45f2fe2-58be-4927-8d04-6fd091930c1b", "label": "cuds_iri_f45f2fe2-58be-4927-8d04-6fd091930c1b", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio#cuds_iri_f45f2fe2-58be-4927-8d04-6fd091930c1b"}, {"color": "green", "id": "This is a CUDS without Description!", "label": "This is a CUDS without Description!", "shape": "dot", "size": 10, "title": "This is a CUDS without Description!"}, {"color": "green", "id": "Cuds", "label": "Cuds", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio#Cuds"}, {"color": "green", "id": "None", "label": "None", "shape": "dot", "size": 10, "title": "None"}, {"color": "green", "id": "cuds_pid_f45f2fe2-58be-4927-8d04-6fd091930c1b", "label": "cuds_pid_f45f2fe2-58be-4927-8d04-6fd091930c1b", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio#cuds_pid_f45f2fe2-58be-4927-8d04-6fd091930c1b"}, {"color": "green", "id": "2024-08-17T22:00:10.694050", "label": "2024-08-17T22:00:10.694050", "shape": "dot", "size": 10, "title": "2024-08-17T22:00:10.694050"}, {"color": "green", "id": "f45f2fe2-58be-4927-8d04-6fd091930c1b", "label": "f45f2fe2-58be-4927-8d04-6fd091930c1b", "shape": "dot", "size": 10, "title": "f45f2fe2-58be-4927-8d04-6fd091930c1b"}]);
-                  edges = new vis.DataSet([{"arrows": "to", "color": "red", "from": "cuds_iri_f45f2fe2-58be-4927-8d04-6fd091930c1b", "label": "description", "title": "http://www.ddmd.io/mio/cuds#description", "to": "This is a CUDS without Description!", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_f45f2fe2-58be-4927-8d04-6fd091930c1b", "label": "type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "Cuds", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_f45f2fe2-58be-4927-8d04-6fd091930c1b", "label": "label", "title": "http://www.ddmd.io/mio/cuds#label", "to": "None", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_f45f2fe2-58be-4927-8d04-6fd091930c1b", "label": "Pid", "title": "http://www.ddmd.io/mio/cuds#Pid", "to": "cuds_pid_f45f2fe2-58be-4927-8d04-6fd091930c1b", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_f45f2fe2-58be-4927-8d04-6fd091930c1b", "label": "generatedAtTime", "title": "http://www.w3.org/ns/prov#generatedAtTime", "to": "2024-08-17T22:00:10.694050", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_f45f2fe2-58be-4927-8d04-6fd091930c1b", "label": "uuid", "title": "http://www.ddmd.io/mio/cuds#uuid", "to": "f45f2fe2-58be-4927-8d04-6fd091930c1b", "width": 1}]);
+                  nodes = new vis.DataSet([{"color": "red", "id": "cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630", "label": "cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio#cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630"}, {"color": "green", "id": "subject_uriref_iri", "label": "subject_uriref_iri", "shape": "dot", "size": 10, "title": "https://subject.org/subject_uriref_iri"}, {"color": "green", "id": "cuds_pid_c5ac9a27-b130-48df-af29-fb7e58b77630", "label": "cuds_pid_c5ac9a27-b130-48df-af29-fb7e58b77630", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio#cuds_pid_c5ac9a27-b130-48df-af29-fb7e58b77630"}, {"color": "green", "id": "c5ac9a27-b130-48df-af29-fb7e58b77630", "label": "c5ac9a27-b130-48df-af29-fb7e58b77630", "shape": "dot", "size": 10, "title": "c5ac9a27-b130-48df-af29-fb7e58b77630"}, {"color": "green", "id": "This is a CUDS without Description!", "label": "This is a CUDS without Description!", "shape": "dot", "size": 10, "title": "This is a CUDS without Description!"}, {"color": "green", "id": "None", "label": "None", "shape": "dot", "size": 10, "title": "None"}, {"color": "green", "id": "2024-08-18T00:48:02.413194", "label": "2024-08-18T00:48:02.413194", "shape": "dot", "size": 10, "title": "2024-08-18T00:48:02.413194"}, {"color": "green", "id": "Cuds", "label": "Cuds", "shape": "dot", "size": 10, "title": "http://www.ddmd.io/mio#Cuds"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "red", "from": "cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630", "label": "1predicate_str_iri", "title": "https://predicate.org/1predicate_str_iri", "to": "subject_uriref_iri", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630", "label": "predicate_uriref_iri", "title": "https://predicate.org/predicate_uriref_iri", "to": "subject_uriref_iri", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630", "label": "Pid", "title": "http://www.ddmd.io/mio/cuds#Pid", "to": "cuds_pid_c5ac9a27-b130-48df-af29-fb7e58b77630", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630", "label": "uuid", "title": "http://www.ddmd.io/mio/cuds#uuid", "to": "c5ac9a27-b130-48df-af29-fb7e58b77630", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630", "label": "1predicate_str_iri", "title": "https://predicate.org/1predicate_str_iri", "to": "cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630", "label": "description", "title": "http://www.ddmd.io/mio/cuds#description", "to": "This is a CUDS without Description!", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630", "label": "label", "title": "http://www.ddmd.io/mio/cuds#label", "to": "None", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630", "label": "generatedAtTime", "title": "http://www.w3.org/ns/prov#generatedAtTime", "to": "2024-08-18T00:48:02.413194", "width": 1}, {"arrows": "to", "color": "red", "from": "cuds_iri_c5ac9a27-b130-48df-af29-fb7e58b77630", "label": "type", "title": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "to": "Cuds", "width": 1}]);
 
                   nodeColors = {};
                   allNodes = nodes.get({ returnType: "Object" });
@@ -318,47 +312,11 @@
                   // adding nodes and edges to the graph
                   data = {nodes: nodes, edges: edges};
 
-                  var options = {
-    "configure": {
-        "enabled": true,
-        "filter": [
-            "physics",
-            "nodes"
-        ]
-    },
-    "edges": {
-        "color": {
-            "inherit": true
-        },
-        "smooth": {
-            "enabled": true,
-            "type": "dynamic"
-        }
-    },
-    "interaction": {
-        "dragNodes": true,
-        "hideEdgesOnDrag": false,
-        "hideNodesOnDrag": false
-    },
-    "physics": {
-        "enabled": true,
-        "stabilization": {
-            "enabled": true,
-            "fit": true,
-            "iterations": 1000,
-            "onlyDynamicEdges": false,
-            "updateInterval": 50
-        }
-    }
-};
+                  var options = {"configure": {"enabled": true, "filter": ["physics"]}, "physics": {"barnesHut": {"gravitationalConstant": -36200, "springLength": 40}, "minVelocity": 0.75}};
 
                   
 
 
-                  
-                  // if this network requires displaying the configure window,
-                  // put it in its div
-                  options.configure["container"] = document.getElementById("config");
                   
 
                   network = new vis.Network(container, data, options);

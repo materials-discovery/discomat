@@ -1,7 +1,7 @@
+import copy
 import uuid, datetime
 from collections import defaultdict
 from urllib.parse import urlparse, urldefrag, urlsplit
-
 from rdflib import Dataset, Graph, URIRef, Literal, RDF, RDFS
 from rdflib.namespace import DC, DCTERMS, PROV, XSD
 from rdflib import Namespace
@@ -76,3 +76,15 @@ class Session(Cuds):
         if not any([s, p, o]):  # or use all() for all not None, not sure...
             raise ValueError("s, p, and o are all None, at least one should be not None")
         self.engine.remove_triple(graph_id, s, p, o)  # need to add provenance...
+
+    def get_cuds(self, iri):
+        """
+        given an iri or the Cuds, search the session, i.e., all graphs for the
+        properties needed for this Cuds.
+
+        A Cuds is an iri with all direct relations including the basic ones (uuid, pid, etc).
+
+        if A cuds cannot be built, create one using any partial information available.
+
+
+        """
