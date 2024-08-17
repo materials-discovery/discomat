@@ -15,6 +15,7 @@ from types import MappingProxyType
 from typing import Union
 
 from rdflib import Namespace
+from discomat.cuds.utils import to_iri
 
 
 class Cuds:
@@ -79,7 +80,7 @@ class Cuds:
         self._graph.add((self.rdf_iri, RDF.type, URIRef(self.ontology_type)))
 
         self.description = description or f"This is CUDS version 1.0 - No description was given."
-        #self._graph.add((self.rdf_iri, CUDS.description, Literal(description)))
+        # self._graph.add((self.rdf_iri, CUDS.description, Literal(description)))
         self.description = description or f"This is a CUDS without Description!"
         self._graph.add((self.rdf_iri, CUDS.description, Literal(str(self.description))))
 
@@ -89,7 +90,6 @@ class Cuds:
         self.pid = pid or f"http://www.ddmd.io/mio#cuds_pid_{self.uuid}"
         # fixme use str(CUDS) or {str(MIO)}cuds_pid/... should stay the same for the same CUDS
         self._graph.add((self.rdf_iri, CUDS.Pid, Literal(str(self.pid), datatype=XSD.string)))
-
 
         self.creation_time = datetime.datetime.now()
         self._graph.set((self.rdf_iri, PROV.generatedAtTime, Literal(self.creation_time, datatype=XSD.dateTime)))
@@ -103,7 +103,7 @@ class Cuds:
             properties[namespace].append((fragment, o))
         return properties
 
-    def split_uri(self, uri):
+    def split_uri(self, uri):  # fixme move to utils
         # Split the URI into namespace and fragment
         parsed_uri = urlparse(uri)
         path = parsed_uri.path
@@ -130,7 +130,7 @@ class Cuds:
             output.append("")  # Add a blank line between namespaces
         return "\n".join(output)
 
-    def split_uri2(self, uri):
+    def split_uri2(self, uri):  # fixme move to utils
         # Split the URI into namespace and fragment
         frag_split = urldefrag(uri)
         if frag_split[1]:  # If there's a fragment after #
@@ -156,3 +156,12 @@ class Cuds:
         properties = self.properties
         properties_str = "\n".join([f"  {p}: {o}" for p, o in properties.items()])
         return f"c.iri: {self.iri}\nProperties:\n{properties_str}"
+
+    def add(self, p, o):
+        try:
+            self._graph.add((self.rdf_iri, to_iri(p), to_iri(o)))
+            # fixme: use safe_uri from scigraph, as well as make this an utility function to get the proper iri from
+            #  either an argument which is cuds, iri, or str.
+        except TypeError as e:
+            print(f"Wrong typ {e}")
+            return None
