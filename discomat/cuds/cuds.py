@@ -94,6 +94,28 @@ class Cuds:
         self.creation_time = datetime.datetime.now()
         self._graph.set((self.rdf_iri, PROV.generatedAtTime, Literal(self.creation_time, datatype=XSD.dateTime)))
 
+    # def __setattr__(self, name, value):
+        """
+        this (inactive) method enables adding automatically all attributes to teh internal graph, 
+        but there is not yet much flexibility in changing the predicate, so keeping for future updates
+        
+        """
+    #     if name.startswith('_'):
+    #         super().__setattr__(name, value)
+    #     else:
+    #         super().__setattr__(name, value)
+    #         if hasattr(self, 'rdf_iri'):
+    #             self._graph.set((self.rdf_iri, CUDS[name], Literal(value)))
+
+    # def __getattr__(self, name):
+    #     """
+    #     the opposite of setattr.
+    #     """
+    #     if name in self.__dict__:
+    #         return self.__dict__[name]
+    #     else:
+    #         return self._graph.value(self.rdf_iri, CUDS[name])
+
     @property
     def properties(self):
         # Retrieve all properties (predicates) and objects for c.iri

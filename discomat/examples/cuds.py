@@ -92,6 +92,7 @@ else:
 s = Session("http://example.org/mySession/1234",
             None,
             description="This is a simple Session",
-            engine="walla")
+            engine="SomeEngine")
 print(f"TESTING Cuds Session {50*'*'}")
 print(s)
+gvis(s, "cuds_local_session.html")
