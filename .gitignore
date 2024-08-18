@@ -1,0 +1,14 @@
+*.egg-info*
+*for_later
+.for_later
+.for_later/
+bin/		include/	lib/		pyvenv.cfg
+for_later*
+.idea*
+pvm external
+*__pycache__*
+pvm 
+external
+external/
+pvm/
+*.egg-info
