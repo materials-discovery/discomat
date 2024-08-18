@@ -74,7 +74,6 @@ cdiff = c1.graph - c2.graph
 gvis(cdiff, "cdiff.html") # gvis works both on Cuds and graph alike.
 
 
-
 print(f"TESTING Iter on Cuds: \n{50*'-'}")
 triple_count=0
 for s, p, o in c.graph:
@@ -89,10 +88,11 @@ else:
     print(f"Something is Wrong {c.rdf_iri}")
 
 # test session
-s = Session("http://example.org/mySession/1234",
-            None,
-            description="This is a simple Session",
-            engine="SomeEngine")
+s = Session(iri="http://example.org/mySession/1234",
+            description="This is a simple Session")
 print(f"TESTING Cuds Session {50*'*'}")
 print(s)
 gvis(s, "cuds_local_session.html")
+
+print(f" This session has an engine of type: {type(s.engine)}")
+gvis(s.engine, "engine.html")

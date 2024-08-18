@@ -9,7 +9,7 @@ from discomat.cuds.utils import mnemonic_label
 from discomat.ontology.namespaces import CUDS, MIO
 from discomat.cuds.cuds import Cuds
 # from discomat.cuds.session_manager import SessionManager
-
+from discomat.cuds.engine import Engine, rdflib_engine
 from pyvis.network import Network
 from IPython.display import display, HTML
 
@@ -37,7 +37,7 @@ class Session(Cuds):
         description = description or f"Session: No Description provided, dont be lazy.."
         super().__init__(iri, pid, ontology_type, description, label)
 
-        self.engine = engine or "local" # fixme
+        self.engine = engine or rdflib_engine() # fixme
         self.add(CUDS.engine, self.engine)
 
         # new relationship, should be added and tracked. fixme: use the __set and __get attr methods to automanage.
@@ -82,10 +82,11 @@ class Session(Cuds):
 
     def list_graphs(self):
         # return a list of all graphs (graph_id's)
-        return self.engine.list_graphs()
+        for g in self.engine.graphs:
+            print(g)
 
     def graphs(self):
-        return self.list_graphs()
+        return self.engine.graphs
 
     def query(self, query=None):
         """
@@ -114,17 +115,28 @@ class Session(Cuds):
         # by default, all the graphs are queried (Conjuctive) unless a graph is specified.
         return self.engine.query(query)
 
-    def add(self, s=None, p=None, o=None, g_id=None):
+    def add_triple (self, s=None, p=None, o=None):
         # added None as python does not allow no default following default
         # if not any([s, p, o]):  # or use all() for all not None, not sure...
         #     raise ValueError("s, p, and o are all None, at least one should be not None")
         # print(f"need to check provenance...")
-        self.engine.add(s, p, o, g)
+        self.engine.add_triple(s, p, o)
 
-    def remove (self, s=None, p=None, o=None, g_id=None ):
+    def add_quad (self, s=None, p=None, o=None, g_id=None):
+        # added None as python does not allow no default following default
+        # if not any([s, p, o]):  # or use all() for all not None, not sure...
+        #     raise ValueError("s, p, and o are all None, at least one should be not None")
+        # print(f"need to check provenance...")
+        self.engine.add_quad(s, p, o, gid)
+    def remove_triple (self, s=None, p=None, o=None ):
         if not any([s, p, o]):  # or use all() for all not None, not sure...
             raise ValueError("s, p, and o are all None, at least one should be not None")
-        self.engine.remove_triple(graph_id, s, p, o)  # need to add provenance...
+        self.engine.remove_triple(s, p, o)  # need to add provenance...
+
+    def remove_quad (self, s=None, p=None, o=None, g_id=None ):
+        if not any([s, p, o]):  # or use all() for all not None, not sure...
+            raise ValueError("s, p, and o are all None, at least one should be not None")
+        self.engine.remove_quad(s, p, o, g_id)  # need to add provenance...
 
     def get_cuds(self, iri):
         """
