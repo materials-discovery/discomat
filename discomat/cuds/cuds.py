@@ -15,7 +15,7 @@ from types import MappingProxyType
 from typing import Union
 
 from rdflib import Namespace
-from discomat.cuds.utils import to_iri
+from discomat.cuds.utils import to_iri, mnemonic_label
 
 
 class Cuds:
@@ -84,7 +84,7 @@ class Cuds:
         self.description = description or f"This is a CUDS without Description!"
         self._graph.add((self.rdf_iri, CUDS.description, Literal(str(self.description))))
 
-        self.label = str(label) if label is not None else None
+        self.label = str(label) if label is not None else mnemonic_label(2)
         self._graph.add((self.rdf_iri, CUDS.label, Literal(str(self.label), datatype=XSD.string)))
 
         self.pid = pid or f"http://www.ddmd.io/mio#cuds_pid_{self.uuid}"

@@ -5,7 +5,7 @@ from urllib.parse import urlparse, urldefrag, urlsplit
 from rdflib import Dataset, Graph, URIRef, Literal, RDF, RDFS
 from rdflib.namespace import DC, DCTERMS, PROV, XSD
 from rdflib import Namespace
-
+from discomat.cuds.utils import mnemonic_label
 from discomat.ontology.namespaces import CUDS, MIO
 from discomat.cuds.cuds import Cuds
 #from discomat.cuds.session_manager import SessionManager
@@ -33,11 +33,13 @@ class Session(Cuds):
                  pid: Union[str, URIRef] = None,
                  description: str = None,
                  label: str = None,
-                 engine: 'Engine' = None,
+                 engine: 'Engine' = None
                  ):
-        ontology_type = CUDS.Session,
-
-        super().__init__(iri, pid, ontology_type, description, label)
+        ontology_type = CUDS.Session
+        self.engine =  engine or None  #  this is always a local engine.
+        self.description = description or f"Session: No Description provided, dont be lazy.."
+        self.label = label or mnemonic_label(2)
+        super().__init__(iri, pid, ontology_type, self.description, self.label)
         self.session_id = self.uuid
         self.engine = 'No Engine Implemented Yet'
         # self.engine = engine or LocalEngine(
@@ -50,9 +52,11 @@ class Session(Cuds):
 
     def create_graph(self, graph_id):
         # here by default, graph_id is required.
+        print(f"should register the graph in the session manager and add it to provenance? or at least mark provenance")
         return self.engine.create_graph(graph_id)
 
     def delete_graph(self, graph_id):
+        print(f"should de-register the graph in the session manager and add it to provenance")
         return self.engine.delete_graph(graph_id)
 
     def list_graphs(self):
@@ -66,10 +70,10 @@ class Session(Cuds):
         return self.engine.query_graph(graph_id, query)
 
     def add_triple(self, graph_id=None, s=None, p=None, o=None):
-        # added None as python does not allow non
-        # default following default
+        # added None as python does not allow no default following default
         if not any([s, p, o]):  # or use all() for all not None, not sure...
             raise ValueError("s, p, and o are all None, at least one should be not None")
+        print(f"need to check provenance...")
         self.engine.add_triple(graph_id, s, p, o)
 
     def remove_triple(self, graph_id=None, s=None, p=None, o=None):
@@ -88,3 +92,23 @@ class Session(Cuds):
 
 
         """
+        return NotImplemented
+
+    def add_cuds(self, cuds):
+        """add the cuds to the session, optionally specifying the graph.  """
+
+        return NotImplemented
+
+    def search_cuds(self, cuds):
+        """ search for the CUDS, find if it is in the system using the iri of the CUDS
+        could be feplaced by smart __contains__ method, that based on the type of element queried, activates various
+        methods. could be as simple as calling the negine with ehcuds iri on all graphs. """
+
+        return NotImplemented
+
+    def get_cuds_region(self, cuds, radiud):
+        """        get teh cuds up to a specific radius
+        could be same as get_cuds but with optional radius, see ontology manager etc for implementations.
+
+        """
+

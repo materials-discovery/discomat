@@ -5,6 +5,9 @@ from rdflib import URIRef
 from typing import Union
 import re
 
+import requests, random
+from mnemonic import Mnemonic
+
 
 def to_iri(e: Union[str, URIRef]):
     try:
@@ -46,3 +49,18 @@ def uuid_from_string(s: str = None, length: int = None):
 def extract_fragment(iri):  # we have this in so many versions and incarnations, should fixme move to utils
     """extract the fragment or the last part of an IRI."""
     return iri.split('#')[-1].split('/')[-1]
+
+
+def mnemonic_label(number_of_words:int=2):
+
+    # word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
+    # response = requests.get(word_site)
+    # WORDS = response.content.splitlines()
+    # print (WORDS)
+
+    mnemo = Mnemonic("english")
+    words = mnemo.generate(strength=128)
+    label='_'.join(random.sample(list(words.split()), number_of_words))
+    # seed = mnemo.to_seed(words, passphrase="")
+    # entropy = mnemo.to_entropy(words)
+    return label

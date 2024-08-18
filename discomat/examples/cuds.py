@@ -92,6 +92,6 @@ else:
 s = Session("http://example.org/mySession/1234",
             None,
             description="This is a simple Session",
-            label="session_1",
             engine="walla")
 print(f"TESTING Cuds Session {50*'*'}")
+print(s)
