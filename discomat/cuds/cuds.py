@@ -28,9 +28,6 @@ class Cuds:
     as a python class, but keep its rdf nature. CUDS is simply a class that adds one more layer to any IRI
     so that we can trace it and add some bookkeeping, including translating between wengine backends and storing.
     the below implementation is the only one we need to keep in sync with the ontology (see mio.owl).
-
-
-
     """
 
     def __init__(self,
@@ -93,6 +90,9 @@ class Cuds:
 
         self.creation_time = datetime.datetime.now()
         self._graph.set((self.rdf_iri, PROV.generatedAtTime, Literal(self.creation_time, datatype=XSD.dateTime)))
+
+        self.Session = None
+        self.add(CUDS.Session, Literal(None))
 
     # def __setattr__(self, name, value):
         """

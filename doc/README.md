@@ -41,10 +41,10 @@ from rdflib import RDF, RDFS, Graph
 PROV = Namespace("http://www.w3.org/ns/prov#")
 CUDS = Namespace("http://ddmd.io/mio#")
 
-PROVENANCE = CUDS.PROVENANCE
+Provenance = CUDS.Provenance
 
 g=Graph()
-g.add((PROVENANCE, RDF.type, RDFS.Class))
+g.add((Provenance, RDF.type, RDFS.Class))
 
 provo_classes = [
     PROV.Entity,
@@ -53,24 +53,26 @@ provo_classes = [
 ]
 
 for _class in provo_classes:
-    g.add((_class, RDFS.subClassOf, PROVENANCE))
+    g.add((_class, RDFS.subClassOf, Provenance))
 
 ```
 
 
-### PROV-O summary
+### PROV-O summary (excerpts and comments added to text from ref.)
 
 ```
-PROV-O:
-
 prov:Entity: Represents entities, including different versions of datasets.
 prov:Activity: Represents processes or activities that produce new versions.
 prov:Agent: Represents agents such as authors or maintainers.
+
 prov:wasGeneratedBy: Links an entity to the activity that generated it.
 prov:used: Links an activity to the entity it used.
+
 prov:wasDerivedFrom: Indicates that an entity was derived from another.
 prov:wasAttributedTo: Links an entity to the agent responsible for it.
 prov:wasAssociatedWith: Links an activity to the agent associated with it.
+```
+```
 VO (Versioning Ontology):
 
 vo:Version: Represents different versions of datasets.
@@ -87,18 +89,47 @@ vo:predecessorVersion: Links a version to its immediate predecessor.
 [the PROV-O Data Model](https://www.w3.org/TR/2013/REC-prov-dm-20130430/)
 
 ## Intuitive overview of PROV
-This section provides an explanation of the main concepts in PROV. As with the rest of this document, it should be treated as a starting point for understanding the model. The PROV data model document [PROV-DM] provides precise definitions and constraints [PROV-CONSTRAINTS] to be followed.
 
-The following diagram provides a high level overview of the structure of PROV records, limited to some key PROV concepts discussed in this document. Note that because PROV is meant to describe how things were created or delivered, PROV relations are named so they can be used in assertions about the past.
+The following diagram provides a high level overview of the structure of PROV records. Note that because PROV is meant to describe how things were created or delivered, PROV relations are named so they can be used in assertions about the past.
 
 ![img.png](img.png)
 
 ## PROV key concepts overview
 ### Entities
-In PROV, physical, digital, conceptual, or other kinds of thing are called entities. Examples of such entities are a web page, a chart, and a spellchecker. Provenance records can describe the provenance of entities, and an entity’s provenance may refer to many other entities. For example, a document D is an entity whose provenance refers to other entities such as a chart inserted into D, and the dataset that was used to create that chart. Entities may be described as having different attributes and be described from different perspectives. For example, document D as stored in my file system, the second version of document D, and D as an evolving document, are three distinct entities for which we may describe provenance.
+In PROV, *physical, digital, conceptual, or other kinds of thing* are called entities. Examples of such entities are a web page, a chart, and a spellchecker. 
+
+Provenance records can describe the provenance of entities, and an entity’s provenance may refer to many other entities. 
+
+For example, a document D is an entity whose provenance refers to other entities such as a chart inserted into D, and the dataset that was used to create that chart. 
+
+Entities may be described as having different attributes and be described from different perspectives. 
+
+For example, document D as stored in my file system, the second version of document D, and D as an evolving document, are three distinct entities for which we may describe provenance.
+
+#### Notes: 
+
+A Cuds is therefore an entity that may live simultaneously in various sessions, containers, graphs, databases, etc. 
+
+> Each `CUDS` has a unique uuid (`CUDS.uuid`) and a persistence identifier (`CUDS.pid`). 
+
+> Each version of the `CUDS` is distinct if and only if it has a different `CUDS.uuid`.
+ 
+> Each Instance of a `CUDS` represents the same entity if and only if it has the same `CUDS.pid`
+
+The last statement is equivalent to : 
+
+>  Each Instance of a `CUDS`  is the same entity in different states if and only if it has the same `CUDS.pid`
+
+From this we deduce that every CUDS instance can represent the same entity (same pid) in many states (each state different uuid).
+
+This provides another layer on top of provo to manage the many states expected for modelling and experimental applications. 
 
 ### Activities
-Activities are how entities come into existence and how their attributes change to become new entities, often making use of previously existing entities to achieve this. They are dynamic aspects of the world, such as actions, processes, etc. For example, if the second version of document D was generated by a translation from the first version of the document in another language, then this translation is an activity.
+Activities are how entities come into existence and how their attributes change to become new entities, often making use of previously existing entities to achieve this. 
+
+They are dynamic aspects of the world, such as actions, processes, etc. 
+
+For example, if the second version of document D was generated by a translation from the first version of the document in another language, then this translation is an activity.
 
 ### Usage and Generation
 Activities generate new entities. For example, writing a document brings the document into existence, while revising the document brings a new version into existence. Activities also make use of entities. For example, revising a document to fix spelling mistakes uses the original version of the document as well as a list of corrections. Generation does not always occur at the end of an activity, and an activity may generate entities part-way through. Likewise, usage does not always occur at the beginning of an activity.

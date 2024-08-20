@@ -8,8 +8,8 @@ from rdflib import Namespace
 from discomat.cuds.utils import mnemonic_label
 from discomat.ontology.namespaces import CUDS, MIO
 from discomat.cuds.cuds import Cuds
-# from discomat.cuds.session_manager import SessionManager
-from discomat.cuds.engine import Engine, rdflib_engine
+from discomat.cuds.session_manager import SessionManager
+from discomat.cuds.engine import Engine, RdflibEngine
 from pyvis.network import Network
 from IPython.display import display, HTML
 
@@ -26,6 +26,7 @@ class Session(Cuds):
     Open a session, which by default uses the default local engine (its just easier way for us to handle the
     dataset of rdflib essentially).
     """
+
     def __init__(self,
                  iri: Union[str, URIRef] = None,
                  pid: Union[str, URIRef] = None,
@@ -37,7 +38,7 @@ class Session(Cuds):
         description = description or f"Session: No Description provided, dont be lazy.."
         super().__init__(iri, pid, ontology_type, description, label)
 
-        self.engine = engine or rdflib_engine() # fixme
+        self.engine = engine or RdflibEngine()  # fixme
         self.add(CUDS.engine, self.engine)
 
         # new relationship, should be added and tracked. fixme: use the __set and __get attr methods to automanage.
@@ -47,13 +48,14 @@ class Session(Cuds):
         self.is_open = False
         self.add(CUDS.sessionStatus, self.is_open)
 
-
         # self.session_manager = SessionManager()  # fixme: move the definition of SessionManager before Session.
         # self.session_manager.register(self)  # pass self to session manager
 
         # we need to define the graphs managed by the session, these are managed by the engire.
         # dict of all graphs.
         self._session_graphs = {}
+        self._session_graphs['default'] = self.engine.default_graph_id
+
         # Note: for q in d.quads((None, None, None, URIRef('urn:x-rdflib:default'))):
         #     print(q)
 
@@ -75,10 +77,10 @@ class Session(Cuds):
         return iter(self.engine)
 
     def quads(self, s=None, p=None, o=None, g=None):
-        return self.engine.quads(s,p,o,g)
+        return self.engine.quads(s, p, o, g)
 
     def triples(self, s=None, p=None, o=None, g=None):
-        return self.engine.quads(s,p,o,g)
+        return self.engine.quads(s, p, o, g)
 
     def list_graphs(self):
         # return a list of all graphs (graph_id's)
@@ -115,25 +117,26 @@ class Session(Cuds):
         # by default, all the graphs are queried (Conjuctive) unless a graph is specified.
         return self.engine.query(query)
 
-    def add_triple (self, s=None, p=None, o=None):
+    def add_triple(self, s=None, p=None, o=None):
         # added None as python does not allow no default following default
         # if not any([s, p, o]):  # or use all() for all not None, not sure...
         #     raise ValueError("s, p, and o are all None, at least one should be not None")
         # print(f"need to check provenance...")
         self.engine.add_triple(s, p, o)
 
-    def add_quad (self, s=None, p=None, o=None, g_id=None):
+    def add_quad(self, s=None, p=None, o=None, g_id=None):
         # added None as python does not allow no default following default
         # if not any([s, p, o]):  # or use all() for all not None, not sure...
         #     raise ValueError("s, p, and o are all None, at least one should be not None")
         # print(f"need to check provenance...")
         self.engine.add_quad(s, p, o, gid)
-    def remove_triple (self, s=None, p=None, o=None ):
+
+    def remove_triple(self, s=None, p=None, o=None):
         if not any([s, p, o]):  # or use all() for all not None, not sure...
             raise ValueError("s, p, and o are all None, at least one should be not None")
         self.engine.remove_triple(s, p, o)  # need to add provenance...
 
-    def remove_quad (self, s=None, p=None, o=None, g_id=None ):
+    def remove_quad(self, s=None, p=None, o=None, g_id=None):
         if not any([s, p, o]):  # or use all() for all not None, not sure...
             raise ValueError("s, p, and o are all None, at least one should be not None")
         self.engine.remove_quad(s, p, o, g_id)  # need to add provenance...
@@ -147,8 +150,15 @@ class Session(Cuds):
         """
         return NotImplemented
 
+    def remove_cuds(self, iri):
+        """
+        """
+        return NotImplemented
+
     def add_cuds(self, cuds):
         """add the cuds to the session, optionally specifying the graph.  """
+        # every cuds instance (version) can belong to one and only one session
+        cuds.session = self.session_id
         return NotImplemented
 
     def search_cuds(self, cuds):

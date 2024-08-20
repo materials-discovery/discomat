@@ -117,7 +117,7 @@ class Engine(Cuds):
 
 
 
-class rdflib_engine(Engine):
+class RdflibEngine(Engine):
     """
     essentially uses an rdflib Dataset which is a modified conjuctive graph.
     """
