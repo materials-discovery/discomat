@@ -1,4 +1,6 @@
 *.egg-info*
+*package.json
+*.html
 *for_later
 .for_later
 .for_later/
@@ -12,3 +14,4 @@ external
 external/
 pvm/
 *.egg-info
+package.json
