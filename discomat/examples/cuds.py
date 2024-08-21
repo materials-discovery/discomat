@@ -5,6 +5,8 @@ from discomat.cuds.session import Session
 from rdflib import URIRef, Graph
 import copy
 
+to_iri(123)
+
 c = Cuds()
 print(c)  # pretty print, organised to name spaces.
 

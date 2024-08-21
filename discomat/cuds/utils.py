@@ -1,9 +1,10 @@
 from typing import Union
 from rdflib import URIRef
 
-from rdflib import URIRef
+from rdflib import URIRef, Literal
 from typing import Union
 import re
+import uuid
 
 import requests, random
 from mnemonic import Mnemonic
@@ -14,14 +15,16 @@ def to_iri(e: Union[str, URIRef]):
         # first, we assume it is a CUds (we do not want to import it to avoid circular import).
         e = to_iri(e.iri)
     except AttributeError:
-        if isinstance(e, str):
+        if isinstance(e, str) and (e.startswith("http://") or e.startswith("https://")):
             e = URIRef(e)
         elif isinstance(e, URIRef):
             pass
+        elif isinstance(e, uuid.UUID):
+            e = Literal(e)
         elif e is None:
-            return None
+            return Literal("None")
         else:
-            raise TypeError(f"in to_iri: Wrong, unsupported type {type(e)}")
+            e = Literal(str(e))
     return e
 
 
@@ -51,8 +54,7 @@ def extract_fragment(iri):  # we have this in so many versions and incarnations,
     return iri.split('#')[-1].split('/')[-1]
 
 
-def mnemonic_label(number_of_words:int=2):
-
+def mnemonic_label(number_of_words: int = 2):
     # word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
     # response = requests.get(word_site)
     # WORDS = response.content.splitlines()
@@ -60,7 +62,7 @@ def mnemonic_label(number_of_words:int=2):
 
     mnemo = Mnemonic("english")
     words = mnemo.generate(strength=128)
-    label='_'.join(random.sample(list(words.split()), number_of_words))
+    label = '_'.join(random.sample(list(words.split()), number_of_words))
     # seed = mnemo.to_seed(words, passphrase="")
     # entropy = mnemo.to_entropy(words)
     return label

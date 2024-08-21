@@ -17,6 +17,8 @@ from typing import Union
 from rdflib import Namespace
 from discomat.cuds.utils import to_iri, mnemonic_label
 
+from discomat.ontology.ontomap import ONTOMAP
+
 
 class Cuds:
     """
@@ -52,6 +54,20 @@ class Cuds:
         # this is useful for errors, should actually re-evaluate if it should be used.
 
         self.path = sys.modules[__name__].__file__ if __name__ == "__main__" else __file__
+        self._graph = Graph()  # a CUDS is a little Graph Data Structure. This is the container concept.
+
+        _uuid = uuid.uuid4()  # unique uuid for each cuds
+        self.iri = iri if iri else f"https://www.ddmd.io/mio#cuds_iri_{_uuid}"
+
+        self.uuid = _uuid
+
+        self.rdf_iri = URIRef(self.iri)  # make sure it is a URIRef
+
+        print(f"self.uuid {self.uuid}")
+
+        #self._graph.add((self.rdf_iri, CUDS.uuid, Literal(self.uuid)))
+        # uuid is a data property and at the same time part of the iri, unless the user specified different iri.
+        # in this sense, if the iri is given, it may result in overlap with another CUDS, so should be avoided.
 
         if description is not None and len(description) > 500:
             raise ValueError("in {self.path}: The description cannot exceed 500 characters")
@@ -59,47 +75,35 @@ class Cuds:
         if label is not None and len(str(label)) > 20:
             raise ValueError("in {self.path}: The description cannot exceed 500 characters")
 
-        self._graph = Graph()  # a CUDS is a little Graph Data Structure. This is the container concept.
-
-        self.uuid = uuid.uuid4()  # Generate a unique UUID for each instance
-
-        self.iri = iri if iri else f"http://www.ddmd.io/mio#cuds_iri_{self.uuid}"
-        self.rdf_iri = URIRef(self.iri)  # make sure it is a URIRef
-
-        self._graph.add((self.rdf_iri, CUDS.uuid, Literal(self.uuid)))
-
-        # Should be unique for each CUDS, leave /none.
-        # Defines a different version of the same CUDS if it has the same
-        # PID
-
         self.ontology_type = ontology_type if ontology_type else MIO.Cuds
         # this is the RDF.type of the individual. Note: classes are not defined as Cuds, but only individuals
-        self._graph.add((self.rdf_iri, RDF.type, URIRef(self.ontology_type)))
+        #self._graph.add((self.rdf_iri, RDF.type, URIRef(self.ontology_type)))
 
-        self.description = description or f"This is CUDS version 1.0 - No description was given."
+        #self.description = description or f"This is CUDS version 1.0 - No description was given."
         # self._graph.add((self.rdf_iri, CUDS.description, Literal(description)))
         self.description = description or f"This is a CUDS without Description!"
-        self._graph.add((self.rdf_iri, CUDS.description, Literal(str(self.description))))
+        #self._graph.add((self.rdf_iri, CUDS.description, Literal(str(self.description))))
 
         self.label = str(label) if label is not None else mnemonic_label(2)
-        self._graph.add((self.rdf_iri, CUDS.label, Literal(str(self.label), datatype=XSD.string)))
+        #self._graph.add((self.rdf_iri, CUDS.label, Literal(str(self.label), datatype=XSD.string)))
 
         self.pid = pid or f"http://www.ddmd.io/mio#cuds_pid_{self.uuid}"
         # fixme use str(CUDS) or {str(MIO)}cuds_pid/... should stay the same for the same CUDS
-        self._graph.add((self.rdf_iri, CUDS.Pid, Literal(str(self.pid), datatype=XSD.string)))
+        #self._graph.add((self.rdf_iri, CUDS.Pid, Literal(str(self.pid), datatype=XSD.string)))
 
         self.creation_time = datetime.datetime.now()
-        self._graph.set((self.rdf_iri, PROV.generatedAtTime, Literal(self.creation_time, datatype=XSD.dateTime)))
+        #self._graph.set((self.rdf_iri, PROV.generatedAtTime, Literal(self.creation_time, datatype=XSD.dateTime)))
 
         self.Session = None
-        self.add(CUDS.Session, Literal(None))
+        #self.add(CUDS.Session, Literal(None))
 
-    # def __setattr__(self, name, value):
+        # def __setattr__(self, name, value):
         """
         this (inactive) method enables adding automatically all attributes to teh internal graph, 
         but there is not yet much flexibility in changing the predicate, so keeping for future updates
         
         """
+
     #     if name.startswith('_'):
     #         super().__setattr__(name, value)
     #     else:
@@ -115,6 +119,21 @@ class Cuds:
     #         return self.__dict__[name]
     #     else:
     #         return self._graph.value(self.rdf_iri, CUDS[name])
+    def __setattr__(self, key, value):
+        if key == 'iri':
+            super().__setattr__(key, value)
+            return
+        elif key in ONTOMAP:
+            self._graph.add((to_iri(self.iri), to_iri(ONTOMAP[key]), to_iri(value)))
+        else:
+            super().__setattr__(key, value)
+
+    def __getattr__(self, key):
+        if key in ONTOMAP:
+            return self._graph.value(subject=to_iri(self.iri), predicate=to_iri(ONTOMAP[key]), any=True)
+        else:
+            super().__getattribute__(key)
+
 
     @property
     def properties(self):
@@ -188,7 +207,6 @@ class Cuds:
             print(f"Wrong typ {e}")
             return None
 
-
     def remove(self, p, o):
         try:
             self._graph.remove((self.rdf_iri, to_iri(p), to_iri(o)))
@@ -212,4 +230,3 @@ class Cuds:
     @property
     def graph(self):
         return self._graph
-

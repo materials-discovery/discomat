@@ -7,6 +7,8 @@ This version works well, for now, I only need to figure out why the title comes 
 The main purpose is to get a graph, assuming it is not huge, and focusing on showing the main class and individual relations with basic filtering. 
 
 """
+import argparse
+
 from typing import Union
 import networkx as nx
 from pyvis.network import Network
@@ -155,3 +157,20 @@ def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
 # n.parse("/Users/adham/Downloads/nasicon.ttl")
 # pyvis_graph_to_js(n, 'nasicon_graph.html')
 #
+def main():
+    parser = argparse.ArgumentParser(description="Visualize an ontology into a javascript/html file.")
+
+    parser.add_argument('in_file', type=str, help='Input File Path  (e.g.; ontology.ttl).')
+    parser.add_argument('out_file', type=str, nargs='?', default='mygraph.html', help='HTML File Path  (e.g.; '
+                                                                                      'ontology.html).')
+
+    args = parser.parse_args()
+
+    g = Graph()
+    g.parse(args.in_file)
+    gvis(g, args.out_file)
+
+
+# Check if the script is being run directly
+if __name__ == "__main__":
+    main()
