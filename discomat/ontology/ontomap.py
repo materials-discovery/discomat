@@ -1,3 +1,4 @@
+from rdflib import Namespace
 from discomat.ontology.namespaces import CUDS
 
 """
@@ -8,8 +9,6 @@ example: CUDS.description could be
 c.cuds.description 
 c.rdfs.class --> RDFS.Class etc 
 here is an example:
-
-
 """
 ONTOMAP = {
     'uuid': CUDS.uuid,
@@ -17,6 +16,10 @@ ONTOMAP = {
     'pid': CUDS.PID,
     'label': CUDS.label,
     'create_time': CUDS.CreationTime,
+    'ontology_type': CUDS.type,
+    'session': CUDS.Session,
+    'engine_iri': CUDS.Engine,
+    'session_id': CUDS.SessionId,
+    'session_status': CUDS.SessionStatus,
 
-    # Add more mappings as needed
 }

@@ -49,6 +49,27 @@ def uuid_from_string(s: str = None, length: int = None):
         return None
 
 
+def short_uuid(s: str) -> str:
+    # Regular expression to find the UUID pattern in the string
+    uuid_pattern = r'(\w{8}-\w{4}-\w{4}-\w{4}-\w{12})'
+
+    match = re.search(uuid_pattern, s)
+    if not match:
+        if len(s)>50:
+            return(s[-12:])
+        else:
+            return(s)
+    # Everything before the UUID is treated as the prefix
+    prefix = s[:match.start()]
+    uuid = match.group(1)
+
+    # Get the last 4 characters of the UUID
+    short_suffix = uuid[-4:]
+
+    # Combine prefix with short suffix
+    return f"{prefix}{short_suffix}".rstrip('_')  # Remove trailing underscore if no prefix
+
+
 def extract_fragment(iri):  # we have this in so many versions and incarnations, should fixme move to utils
     """extract the fragment or the last part of an IRI."""
     return iri.split('#')[-1].split('/')[-1]

@@ -13,7 +13,7 @@ from typing import Union
 import networkx as nx
 from pyvis.network import Network
 from rdflib import Graph, URIRef, RDF, RDFS, OWL
-from discomat.cuds.utils import uuid_from_string
+from discomat.cuds.utils import uuid_from_string, short_uuid
 from discomat.cuds.cuds import Cuds
 from discomat.cuds.utils import extract_fragment
 
@@ -60,6 +60,16 @@ def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
 
         # s_fragment = uuid_from_string(s_fragment, 5) or s_fragment
         # o_fragment = uuid_from_string(o_fragment, 5) or o_fragment
+        if len(o_fragment)>8:
+            print(o_fragment)
+            o_fragment = short_uuid(o_fragment)
+
+        if len(s_fragment) > 8:
+            print(s_fragment)
+            s_fragment = short_uuid(s_fragment)
+
+
+        # fixme: quick code, it has duplication and not efficient...
 
         # Identify if the subject or object is a class
         if (s, None, RDFS.Class) in graph or (s, None, OWL.Class) in graph:

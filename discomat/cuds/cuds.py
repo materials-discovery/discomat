@@ -5,16 +5,11 @@ from urllib.parse import urlparse, urldefrag, urlsplit
 from rdflib import Dataset, Graph, URIRef, Literal, RDF, RDFS
 from rdflib.namespace import DC, DCTERMS, PROV, XSD
 from discomat.ontology.namespaces import CUDS, MIO
-# from .ontology_item import OntologyItem
-# from .utils import SES # this should be defined.
-from pyvis.network import Network
 from IPython.display import display, HTML
-from abc import ABC, abstractmethod
 import os, sys, warnings, pickle
 from types import MappingProxyType
 from typing import Union
 
-from rdflib import Namespace
 from discomat.cuds.utils import to_iri, mnemonic_label
 
 from discomat.ontology.ontomap import ONTOMAP
@@ -22,15 +17,16 @@ from discomat.ontology.ontomap import ONTOMAP
 
 class Cuds:
     """
-    Everything, when possible, is a CUDS!
+    Everything, when possible, is a CUDS (Common Universal data Structure)!
     CUDS has built in support for provenance and persistent identifiers (PID) though we are not
     doing this with a "formal external authority yet".
 
     Unlike SimPhoNy, we do not aim to make every ontology entity (class or individual, or relation) etc
     as a python class, but keep its rdf nature. CUDS is simply a class that adds one more layer to any IRI
     so that we can trace it and add some bookkeeping, including translating between wengine backends and storing.
-    the below implementation is the only one we need to keep in sync with the ontology (see mio.owl).
+    The below implementation is the only one we need to keep in sync with the ontology (see mio.owl).
     """
+    # todo use pydantic and data structures instead of complex number of args
 
     def __init__(self,
                  iri: Union[str, URIRef] = None,
@@ -41,84 +37,63 @@ class Cuds:
         """
         iri: The iri should be unique, but default it is a uuid with MIO/CUDS as prefix.
 
-        ontology_type: this is equivalent to RDF.type
+        Ontology_type: this is equivalent to RDF.type
 
-        pid: a persistent identifier in the FAIR sense (locally managed for now)
+        Pid: a persistent identifier in the FAIR sense (locally managed for now)
 
-        description:for human consumption
-        label:for human consumption
+        Description:for human consumption
+
+        Label:for human consumption, by default is a mnemonic
 
         A Cuds will have an iri, which is unique for this instance of the CUDS.
 
+        Parameters
+        ----------
+        iri
+        pid
+        ontology_type
+        description
+        label
+
+        Cuds has a modified __setattr_ which uses an rdf graph to store the properties
+        of the CUDS, these are not limited to data properties.
+        so doing
+
+        c=Cuds()
+        c.foo, and if ONTOMAP[foo]=bar, then this translates to c._g.add(c.iri, foo, bar)
+        otherwise it is a normal attribute (if already defined). 
+        
+        this is a step towards having all ontology classes represented on the fly as classes with out the 
+        need to load them in.
         """
         # this is useful for errors, should actually re-evaluate if it should be used.
 
         self.path = sys.modules[__name__].__file__ if __name__ == "__main__" else __file__
-        self._graph = Graph()  # a CUDS is a little Graph Data Structure. This is the container concept.
-
-        _uuid = uuid.uuid4()  # unique uuid for each cuds
+        self._graph = Graph()  # A CUDS is a little Graph Data Structure. This is the container concept.
+        _uuid = uuid.uuid4()
         self.iri = iri if iri else f"https://www.ddmd.io/mio#cuds_iri_{_uuid}"
-
         self.uuid = _uuid
-
         self.rdf_iri = URIRef(self.iri)  # make sure it is a URIRef
-
-        print(f"self.uuid {self.uuid}")
-
-        #self._graph.add((self.rdf_iri, CUDS.uuid, Literal(self.uuid)))
-        # uuid is a data property and at the same time part of the iri, unless the user specified different iri.
-        # in this sense, if the iri is given, it may result in overlap with another CUDS, so should be avoided.
 
         if description is not None and len(description) > 500:
             raise ValueError("in {self.path}: The description cannot exceed 500 characters")
 
         if label is not None and len(str(label)) > 20:
-            raise ValueError("in {self.path}: The description cannot exceed 500 characters")
+            raise ValueError("in {self.path}: The label cannot exceed 20 characters")
+
+        self.description = description or f"This is a CUDS without Description!"
+        self.label = str(label) if label is not None else mnemonic_label(2)
 
         self.ontology_type = ontology_type if ontology_type else MIO.Cuds
-        # this is the RDF.type of the individual. Note: classes are not defined as Cuds, but only individuals
-        #self._graph.add((self.rdf_iri, RDF.type, URIRef(self.ontology_type)))
-
-        #self.description = description or f"This is CUDS version 1.0 - No description was given."
-        # self._graph.add((self.rdf_iri, CUDS.description, Literal(description)))
-        self.description = description or f"This is a CUDS without Description!"
-        #self._graph.add((self.rdf_iri, CUDS.description, Literal(str(self.description))))
-
-        self.label = str(label) if label is not None else mnemonic_label(2)
-        #self._graph.add((self.rdf_iri, CUDS.label, Literal(str(self.label), datatype=XSD.string)))
 
         self.pid = pid or f"http://www.ddmd.io/mio#cuds_pid_{self.uuid}"
         # fixme use str(CUDS) or {str(MIO)}cuds_pid/... should stay the same for the same CUDS
-        #self._graph.add((self.rdf_iri, CUDS.Pid, Literal(str(self.pid), datatype=XSD.string)))
 
         self.creation_time = datetime.datetime.now()
-        #self._graph.set((self.rdf_iri, PROV.generatedAtTime, Literal(self.creation_time, datatype=XSD.dateTime)))
 
-        self.Session = None
-        #self.add(CUDS.Session, Literal(None))
+        self.session = None
 
-        # def __setattr__(self, name, value):
-        """
-        this (inactive) method enables adding automatically all attributes to teh internal graph, 
-        but there is not yet much flexibility in changing the predicate, so keeping for future updates
-        
-        """
 
-    #     if name.startswith('_'):
-    #         super().__setattr__(name, value)
-    #     else:
-    #         super().__setattr__(name, value)
-    #         if hasattr(self, 'rdf_iri'):
-    #             self._graph.set((self.rdf_iri, CUDS[name], Literal(value)))
-
-    # def __getattr__(self, name):
-    #     """
-    #     the opposite of setattr.
-    #     """
-    #     if name in self.__dict__:
-    #         return self.__dict__[name]
-    #     else:
-    #         return self._graph.value(self.rdf_iri, CUDS[name])
     def __setattr__(self, key, value):
         if key == 'iri':
             super().__setattr__(key, value)

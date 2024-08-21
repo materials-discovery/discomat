@@ -38,23 +38,23 @@ class Session(Cuds):
         description = description or f"Session: No Description provided, dont be lazy.."
         super().__init__(iri, pid, ontology_type, description, label)
 
-        self.engine = engine or RdflibEngine()  # fixme
-        self.add(CUDS.engine, self.engine)
+        self.remove(CUDS.Session, self.session)  # a session has no session
+
+        self.engine_iri = engine or RdflibEngine()  # this will bexome the iri of the engine
+        self.engine = engine or RdflibEngine()  # this is teh actual engine
 
         # new relationship, should be added and tracked. fixme: use the __set and __get attr methods to automanage.
         self.session_id = self.uuid
-        self.add(CUDS.sessionId, self.session_id)
 
-        self.is_open = False
-        self.add(CUDS.sessionStatus, self.is_open)
-
-        # self.session_manager = SessionManager()  # fixme: move the definition of SessionManager before Session.
-        # self.session_manager.register(self)  # pass self to session manager
+        self.is_open = False  # this is a helper, we do not need it in the ontology.
 
         # we need to define the graphs managed by the session, these are managed by the engire.
         # dict of all graphs.
         self._session_graphs = {}
         self._session_graphs['default'] = self.engine.default_graph_id
+
+        # self.session_manager = SessionManager()  # fixme: move the definition of SessionManager before Session.
+        # self.session_manager.register(self)  # pass self to session manager
 
         # Note: for q in d.quads((None, None, None, URIRef('urn:x-rdflib:default'))):
         #     print(q)
