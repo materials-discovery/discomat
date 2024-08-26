@@ -18,8 +18,9 @@ ONTOMAP = {
     'create_time': CUDS.CreationTime,
     'ontology_type': CUDS.type,
     'session': CUDS.Session,
-    'engine_iri': CUDS.Engine,
+    'engine_iri': CUDS.EngineIri,
     'session_id': CUDS.SessionId,
     'session_status': CUDS.SessionStatus,
+    'default_graph_id': CUDS.DefaultGraphId
 
 }

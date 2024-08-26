@@ -13,6 +13,74 @@ from typing import Union
 from discomat.cuds.utils import to_iri, mnemonic_label
 
 from discomat.ontology.ontomap import ONTOMAP
+from functools import wraps
+
+
+def add_to_root(func):
+    """
+    decorator to add connection with root in a graph.
+    """
+    @wraps(func)
+    def wrapper(*args):
+        print("Side effect: logging arguments")
+        print(f"Arguments: {args}")
+        _self = args[0]
+        s = args[1]
+        p = args[2]
+        o = args[3]
+
+        if len(args) == 5:
+            graph_id = args[4] or _self.default_graph_id
+        else:
+            graph_id = _self.default_graph_id
+
+        # graph_id = graph_id or _self.default_graph_id
+        print(f"s={s}, p={p}, o={o}, gid={graph_id}")
+        print(list(_self.graphs.keys()))
+        try:
+            graph = _self.graphs[graph_id]
+        except KeyError:
+            raise KeyError(f"Graph {graph_id} does not exist in this session. I cannot yet create graphs on teh fly.")
+
+
+
+        # check if the graph has a root
+        query = f"""
+            SELECT ?subject WHERE {{
+                ?subject <{RDF.type}> <{CUDS.RootNode}> .
+            }}
+        """
+        res = graph.query(query)
+        for row in res:
+            print(f"---> Result Row:", row)
+        subjects = [str(row.subject) for row in res]
+        has_root = subjects[0] if len(subjects) > 0 else None
+        print(f"---> has_root = {subjects}")
+        if not has_root:
+            print("=====================================")
+            print(f"No Root in Graph {graph}")
+            print("=====================================")
+            return func(*args, **kwargs)
+        else:
+            print("We have a ROOT \n")
+        # is this subject not connected to anything, connect to has_root.
+        query = f"""
+             ASK WHERE {{
+                ?subject ?predicate <{s}> .
+             }}
+        """
+        s_as_o = bool(graph.query(query).askAnswer)
+        if s_as_o:
+            print(f"{s} is not orphan object")
+            return func(*args)
+        else:
+            print(f"we are connecting {s} to {has_root}")
+
+        graph.add((graph_id, CUDS.ConnectedTo, to_iri(s)))
+
+        return func(*args)
+
+    return wrapper
 
 
 class Cuds:
@@ -26,6 +94,7 @@ class Cuds:
     so that we can trace it and add some bookkeeping, including translating between wengine backends and storing.
     The below implementation is the only one we need to keep in sync with the ontology (see mio.owl).
     """
+
     # todo use pydantic and data structures instead of complex number of args
 
     def __init__(self,
@@ -93,12 +162,12 @@ class Cuds:
 
         self.session = None
 
-
     def __setattr__(self, key, value):
         if key == 'iri':
             super().__setattr__(key, value)
             return
         elif key in ONTOMAP:
+            self._graph.remove((to_iri(self.iri), to_iri(ONTOMAP[key]), None))
             self._graph.add((to_iri(self.iri), to_iri(ONTOMAP[key]), to_iri(value)))
         else:
             super().__setattr__(key, value)
@@ -108,7 +177,6 @@ class Cuds:
             return self._graph.value(subject=to_iri(self.iri), predicate=to_iri(ONTOMAP[key]), any=True)
         else:
             super().__getattribute__(key)
-
 
     @property
     def properties(self):
@@ -137,6 +205,8 @@ class Cuds:
 
     def __repr__(self):
         # Pretty print format for the instance
+        print("Printing CUDS")
+        print("=============")
         properties = self.properties
         output = [f"c.iri: {self.rdf_iri}\n"]
         for namespace, props in properties.items():
@@ -176,8 +246,6 @@ class Cuds:
     def add(self, p, o):
         try:
             self._graph.add((self.rdf_iri, to_iri(p), to_iri(o)))
-            # fixme: use safe_uri from scigraph, as well as make this an utility function to get the proper iri from
-            #  either an argument which is cuds, iri, or str.
         except TypeError as e:
             print(f"Wrong typ {e}")
             return None
@@ -185,8 +253,6 @@ class Cuds:
     def remove(self, p, o):
         try:
             self._graph.remove((self.rdf_iri, to_iri(p), to_iri(o)))
-            # fixme: use safe_uri from scigraph, as well as make this an utility function to get the proper iri from
-            #  either an argument which is cuds, iri, or str.
         except TypeError as e:
             print(f"Wrong typ {e}")
             return None

@@ -1,3 +1,4 @@
+from functools import wraps
 from typing import Union
 from rdflib import URIRef
 
@@ -55,10 +56,10 @@ def short_uuid(s: str) -> str:
 
     match = re.search(uuid_pattern, s)
     if not match:
-        if len(s)>50:
-            return(s[-12:])
+        if len(s) > 50:
+            return (s[-12:])
         else:
-            return(s)
+            return (s)
     # Everything before the UUID is treated as the prefix
     prefix = s[:match.start()]
     uuid = match.group(1)
@@ -87,3 +88,40 @@ def mnemonic_label(number_of_words: int = 2):
     # seed = mnemo.to_seed(words, passphrase="")
     # entropy = mnemo.to_entropy(words)
     return label
+
+
+def _arg_to_iri(func):
+    def wrapper(*args, **kwargs):
+        args = tuple(to_iri(arg) for arg in args)
+        kwargs = {key: to_iri(value) for key, value in kwargs.items()}
+        return func(*args, **kwargs)
+
+    return wrapper
+
+
+def arg_to_iri(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if args and hasattr(args[0], "__class__"):
+            self, *new_args = args
+            new_args = tuple(to_iri(arg) for arg in new_args)
+            new_kwargs = {key: to_iri(value) for key, value in kwargs.items()}
+            return func(self, *new_args, **new_kwargs)
+        else:
+            new_args = tuple(to_iri(arg) for arg in args)
+            new_kwargs = {key: to_iri(value) for key, value in kwargs.items()}
+            return func(*new_args, **new_kwargs)
+
+    return wrapper
+
+
+
+def pr(s):
+    print(s.format(**locals()))
+
+
+def prd(s):
+    dashes = '-' * len(s)
+    # print(dashes)
+    print(s)
+    print(dashes)

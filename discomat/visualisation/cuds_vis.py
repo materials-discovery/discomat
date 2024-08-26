@@ -7,14 +7,14 @@ This version works well, for now, I only need to figure out why the title comes 
 The main purpose is to get a graph, assuming it is not huge, and focusing on showing the main class and individual relations with basic filtering. 
 
 """
-import argparse
-
+import argparse, urllib.parse, os
 from typing import Union
 import networkx as nx
 from pyvis.network import Network
 from rdflib import Graph, URIRef, RDF, RDFS, OWL
 from discomat.cuds.utils import uuid_from_string, short_uuid
 from discomat.cuds.cuds import Cuds
+from discomat.cuds.session import Session
 from discomat.cuds.utils import extract_fragment
 
 def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
@@ -38,7 +38,12 @@ def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
     A MultiDiGraph in Python's NetworkX library is a 
     directed graph that allows multiple edges between any pair of nodes. 
     """
-    if isinstance(graph, Cuds):
+    if isinstance(graph, Session):
+        x=Graph()
+        for g in graph:
+            x=x+g
+        graph = x+graph._graph
+    elif isinstance(graph, Cuds):
         graph = graph._graph
 
     for s, p, o in graph:
@@ -61,11 +66,9 @@ def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
         # s_fragment = uuid_from_string(s_fragment, 5) or s_fragment
         # o_fragment = uuid_from_string(o_fragment, 5) or o_fragment
         if len(o_fragment)>8:
-            print(o_fragment)
             o_fragment = short_uuid(o_fragment)
 
         if len(s_fragment) > 8:
-            print(s_fragment)
             s_fragment = short_uuid(s_fragment)
 
 
@@ -130,7 +133,11 @@ def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
     #     print(edge)
     # Save the network to an HTML file
     net.write_html(output_html_file)  # Write HTML file
-    print(f"Graph saved to {output_html_file}")
+
+    file_uri = os.path.join(os.getcwd(), output_html_file)
+    file_uri = f"file://{urllib.parse.quote(file_uri)}"
+
+    print(f"Graph saved to {file_uri}")
 
 # Usage example
 # g = Graph()
