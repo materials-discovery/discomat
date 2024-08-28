@@ -20,6 +20,7 @@ def add_to_root(func):
     """
     decorator to add connection with root in a graph.
     """
+
     @wraps(func)
     def wrapper(*args):
         print("Side effect: logging arguments")
@@ -41,8 +42,6 @@ def add_to_root(func):
             graph = _self.graphs[graph_id]
         except KeyError:
             raise KeyError(f"Graph {graph_id} does not exist in this session. I cannot yet create graphs on teh fly.")
-
-
 
         # check if the graph has a root
         query = f"""
@@ -98,11 +97,11 @@ class Cuds:
     # todo use pydantic and data structures instead of complex number of args
 
     def __init__(self,
-                 iri: Union[str, URIRef] = None,
-                 pid: Union[str, URIRef] = None,
                  ontology_type=None,
+                 iri: Union[str, URIRef] = None,
                  description=None,
-                 label=None):
+                 label=None,
+                 pid: Union[str, URIRef] = None):
         """
         iri: The iri should be unique, but default it is a uuid with MIO/CUDS as prefix.
 
@@ -137,7 +136,7 @@ class Cuds:
         """
         # this is useful for errors, should actually re-evaluate if it should be used.
 
-        self.path = sys.modules[__name__].__file__ if __name__ == "__main__" else __file__
+        # self.path = sys.modules[__name__].__file__ if __name__ == "__main__" else __file__
         self._graph = Graph()  # A CUDS is a little Graph Data Structure. This is the container concept.
         _uuid = uuid.uuid4()
         self.iri = iri if iri else f"https://www.ddmd.io/mio#cuds_iri_{_uuid}"
@@ -201,6 +200,13 @@ class Cuds:
 
     def print_graph(self):
         # Print the graph in a readable format (e.g., Turtle)
+        print(self._graph.serialize(format="turtle"))
+
+    def serialize(self):
+        # serialise the CUDS and return a string (as ttl).
+        # first, make sure all attributes are in the _graph.
+        # different that ptint_graph in that is supports iri rint too.
+
         print(self._graph.serialize(format="turtle"))
 
     def __repr__(self):

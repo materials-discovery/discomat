@@ -1,14 +1,11 @@
-from functools import wraps
-from typing import Union
-from rdflib import URIRef
-
-from rdflib import URIRef, Literal
-from typing import Union
+import random
 import re
 import uuid
+from functools import wraps
+from typing import Union
 
-import requests, random
 from mnemonic import Mnemonic
+from rdflib import URIRef, Literal
 
 
 def to_iri(e: Union[str, URIRef]):
@@ -115,7 +112,6 @@ def arg_to_iri(func):
     return wrapper
 
 
-
 def pr(s):
     print(s.format(**locals()))
 
@@ -125,3 +121,79 @@ def prd(s):
     # print(dashes)
     print(s)
     print(dashes)
+
+
+"""
+simple but often used sparql queries
+
+"""
+
+
+class query_lib:
+    @staticmethod
+    def all_triples():
+        return """
+        SELECT ?s ?p ?o WHERE {
+          ?s ?p ?o .
+        }"""
+
+    @staticmethod
+    def all_subjects():
+        return """
+        SELECT DISTINCT ?s WHERE {
+          ?s ?p ?o .
+        }"""
+
+    @staticmethod
+    def all_predicates():
+        return """
+        SELECT DISTINCT ?p WHERE {
+          ?s ?p ?o .
+        }"""
+
+    @staticmethod
+    def all_objects():
+        return """
+        SELECT DISTINCT ?o WHERE {
+          ?s ?p ?o .
+        }"""
+
+    @staticmethod
+    def subject_contains(substring):
+        return f"""
+        SELECT ?s ?p ?o WHERE {{
+          ?s ?p ?o .
+          FILTER(CONTAINS(LCASE(STR(?s)), "{substring.lower()}"))
+        }}"""
+
+    @staticmethod
+    def all_objects_containing(substring):
+        return f"""
+        SELECT ?s ?p ?o WHERE {{
+          ?s ?p ?o .
+          FILTER(CONTAINS(LCASE(STR(?o)), "{substring.lower()}"))
+        }}"""
+
+    @staticmethod
+    def all_subjects_containing(substring):
+        return f"""
+        SELECT ?s ?p ?o WHERE {{
+          ?s ?p ?o .
+          FILTER(CONTAINS(LCASE(STR(?s)), "{substring.lower()}"))
+        }}"""
+
+    @staticmethod
+    def all_predicates_containing(substring):
+        return f"""
+            SELECT ?s ?p ?o WHERE {{
+              ?s ?p ?o .
+              FILTER(CONTAINS(LCASE(STR(?p)), "{substring.lower()}"))
+            }}"""
+
+    @staticmethod
+    def all_triples_with_literal_objects():
+        return """
+            SELECT ?s ?p ?o WHERE {
+              ?s ?p ?o .
+              FILTER(isLiteral(?o))
+            }"""

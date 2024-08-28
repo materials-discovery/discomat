@@ -36,7 +36,7 @@ class Session(Cuds):
                  ):
         ontology_type = CUDS.Session
         description = description or f"Session: No Description provided, dont be lazy.."
-        super().__init__(iri, pid, ontology_type, description, label)
+        super().__init__(ontology_type=ontology_type, iri=iri, pid=pid, description=description, label=label)
 
         self.remove(CUDS.Session, self.session)  # a session has no session
         self.engine = engine or RdflibEngine()  # this is teh actual engine
@@ -190,10 +190,12 @@ class Session(Cuds):
         """
         return NotImplemented
 
-    def add_cuds(self, cuds):
+    def add_cuds(self, cuds, g_id):
         """add the cuds to the session, optionally specifying the graph.  """
         # every cuds instance (version) can belong to one and only one session
+        g_id = to_iri(g_id)
         cuds.session = self.session_id
+
         return NotImplemented
 
     def search_cuds(self, cuds):

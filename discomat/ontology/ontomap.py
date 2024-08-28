@@ -15,7 +15,7 @@ ONTOMAP = {
     'description': CUDS.description,
     'pid': CUDS.PID,
     'label': CUDS.label,
-    'create_time': CUDS.CreationTime,
+    'creation_time': CUDS.CreationTime,
     'ontology_type': CUDS.type,
     'session': CUDS.Session,
     'engine_iri': CUDS.EngineIri,

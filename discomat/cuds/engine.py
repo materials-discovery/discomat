@@ -37,7 +37,7 @@ class Engine(Cuds):
         ontology_type = CUDS.Engine
         description = description or f"Engine: No Description provided, dont be lazy.."
 
-        super().__init__(iri, pid, ontology_type, description, label)
+        super().__init__(iri=iri, pid=pid, ontology_type=ontology_type, description=description, label=label)
         self._graphs = {}
         self.default_graph_id = to_iri(CUDS.defaultGraph)  # URIRef("urn:x-rdflib:default")
 
