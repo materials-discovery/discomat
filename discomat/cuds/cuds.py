@@ -101,7 +101,8 @@ class Cuds:
                  iri: Union[str, URIRef] = None,
                  description=None,
                  label=None,
-                 pid: Union[str, URIRef] = None):
+                 pid: Union[str, URIRef] = None,
+                 serialised_cuds=None):
         """
         iri: The iri should be unique, but default it is a uuid with MIO/CUDS as prefix.
 
@@ -137,11 +138,22 @@ class Cuds:
         # this is useful for errors, should actually re-evaluate if it should be used.
 
         # self.path = sys.modules[__name__].__file__ if __name__ == "__main__" else __file__
+
+        if serialised_cuds:
+            g = Graph()
+            g.parse(serialised_cuds, format='turtle')
+            # get the iri
+            res = g.query_lib.all_subjects()
+            iri = res[0]['s']
+            print(iri)
+
         self._graph = Graph()  # A CUDS is a little Graph Data Structure. This is the container concept.
         _uuid = uuid.uuid4()
-        self.iri = iri if iri else f"https://www.ddmd.io/mio#cuds_iri_{_uuid}"
+        self.iri = to_iri(iri) if iri else URIRef(f"https://www.ddmd.io/mio#cuds_iri_{_uuid}")
+        self.add(CUDS.iri, to_iri(iri))  # thi is not really needed.
         self.uuid = _uuid
-        self.rdf_iri = URIRef(self.iri)  # make sure it is a URIRef
+        self.rdf_iri = self.iri
+        # URIRef(self.iri)  # make sure it is a URIRef
 
         if description is not None and len(description) > 500:
             raise ValueError("in {self.path}: The description cannot exceed 500 characters")
@@ -207,7 +219,7 @@ class Cuds:
         # first, make sure all attributes are in the _graph.
         # different that ptint_graph in that is supports iri rint too.
 
-        print(self._graph.serialize(format="turtle"))
+        return self._graph.serialize(format="turtle")
 
     def __repr__(self):
         # Pretty print format for the instance
@@ -251,7 +263,7 @@ class Cuds:
 
     def add(self, p, o):
         try:
-            self._graph.add((self.rdf_iri, to_iri(p), to_iri(o)))
+            self._graph.add((self.iri, to_iri(p), to_iri(o)))
         except TypeError as e:
             print(f"Wrong typ {e}")
             return None

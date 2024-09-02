@@ -197,3 +197,39 @@ class query_lib:
               ?s ?p ?o .
               FILTER(isLiteral(?o))
             }"""
+    @staticmethod
+    def triples_with_p_and_o_containing(pstr, ostr):
+        return f"""
+        SELECT ?s ?p ?o WHERE {{
+          ?s ?p ?o .
+          FILTER(CONTAINS(LCASE(STR(?p)), "{pstr.lower()}") && CONTAINS(LCASE(STR(?o)), "{ostr.lower()}"))
+        }}"""
+
+    @staticmethod
+    def triples_with_p_and_o(pstr, ostr):
+        return f"""
+        SELECT ?s ?p ?o
+        WHERE {{
+          BIND (<{pstr}> AS ?p) .
+          BIND (<{ostr}> AS ?o) .
+          ?s ?p ?o .
+          }}
+        """
+
+    @staticmethod
+    def all_graphs_in_dataset():
+        return """
+        SELECT ?g ?s ?p ?o
+        WHERE {
+          {
+            GRAPH ?g {
+              ?s ?p ?o .
+            }
+          }
+          UNION
+          {
+            VALUES ?g { UNDEF } .
+            ?s ?p ?o .
+          }
+        }
+        """
