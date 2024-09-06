@@ -21,7 +21,7 @@ gvis(sim, "sim.html")
 gvis(g, "g.html")
 
 
-s = Session(iri="https://ddmd.io/simulations/sim1", description="This is a simulation session")
+s = Session()
 s.add(sim)
 
 # graph into cuds, given a subject, the function searches the graph for label, iri, description, etc and then calls
