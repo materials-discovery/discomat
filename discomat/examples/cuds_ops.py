@@ -3,11 +3,12 @@ from discomat.visualisation.cuds_vis import gvis
 from discomat.cuds.utils import uuid_from_string, to_iri
 from discomat.cuds.session import Session
 from rdflib import URIRef, Graph, PROV, Literal
+
 import copy
 
 from discomat.ontology.namespaces import CUDS, MISO, MIO
 
-my_simulation = Cuds(iri=CUDS.MySimulation1, ontology_type=CUDS.Simulation)
+my_simulation = Cuds(iri=CUDS.MySimulation1, ontology_type=MISO.Simulation)
 
 # First adding using string (iri)
 my_simulation.add(MIO.has, MIO.something_1)
@@ -51,3 +52,9 @@ gvis(other_simulation, f"other_simulation.html")
 
 sim1_session = Session(iri=MIO.SessionOne)
 
+sim1_proxy=sim1_session.add_cuds(my_simulation)
+
+print(f"and the proxy is: {sim1_proxy}")
+
+
+# print(f"my_simulation={my_simulation} ")

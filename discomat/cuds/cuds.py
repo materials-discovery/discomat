@@ -10,7 +10,7 @@ import os, sys, warnings, pickle
 from types import MappingProxyType
 from typing import Union
 
-from discomat.cuds.utils import to_iri, mnemonic_label
+from discomat.cuds.utils import to_iri, mnemonic_label, query_lib
 
 from discomat.ontology.ontomap import ONTOMAP
 from functools import wraps
@@ -101,8 +101,7 @@ class Cuds:
                  iri: Union[str, URIRef] = None,
                  description=None,
                  label=None,
-                 pid: Union[str, URIRef] = None,
-                 serialised_cuds=None):
+                 pid: Union[str, URIRef] = None):  # fix me, we need to organise this using tying hints.
         """
         iri: The iri should be unique, but default it is a uuid with MIO/CUDS as prefix.
 
@@ -139,14 +138,6 @@ class Cuds:
 
         # self.path = sys.modules[__name__].__file__ if __name__ == "__main__" else __file__
 
-        if serialised_cuds:
-            g = Graph()
-            g.parse(serialised_cuds, format='turtle')
-            # get the iri
-            res = g.query_lib.all_subjects()
-            iri = res[0]['s']
-            print(iri)
-
         self._graph = Graph()  # A CUDS is a little Graph Data Structure. This is the container concept.
         _uuid = uuid.uuid4()
         self.iri = to_iri(iri) if iri else URIRef(f"https://www.ddmd.io/mio#cuds_iri_{_uuid}")
@@ -181,7 +172,8 @@ class Cuds:
             self._graph.remove((to_iri(self.iri), to_iri(ONTOMAP[key]), None))
             self._graph.add((to_iri(self.iri), to_iri(ONTOMAP[key]), to_iri(value)))
         else:
-            super().__setattr__(key, value)
+            super().__setattr__(key, value)  # fixme there should be no "normal attributes" apaer from iri,
+            # so this should be gone.
 
     def __getattr__(self, key):
         if key in ONTOMAP:
@@ -223,14 +215,13 @@ class Cuds:
 
     def __repr__(self):
         # Pretty print format for the instance
-        print("Printing CUDS")
         print("=============")
         properties = self.properties
-        output = [f"c.iri: {self.rdf_iri}\n"]
+        output = [f"\n============================\n Printing The CUDS with iri: {self.rdf_iri}"]
         for namespace, props in properties.items():
-            output.append(f"Namespace: {namespace}")
+            output.append(f"- Namespace: {namespace}")
             for fragment, obj in props:
-                output.append(f"  {fragment}: {obj}")
+                output.append(f"  - {fragment}: {obj}")
             output.append("")  # Add a blank line between namespaces
         return "\n".join(output)
 
@@ -289,3 +280,33 @@ class Cuds:
     @property
     def graph(self):
         return self._graph
+
+    def create_copy(self):
+        """    if serialised_cuds:  # fix me, should be
+            g = Graph()
+            g.parse(data=serialised_cuds, format='turtle')
+            # get the iri
+        elif from_cuds:
+            g = Graph()
+            for s, p, o in from_cuds:
+                g.add((s, p, o))
+            print(g.serialize())
+
+        res = g.query(query_lib.all_subjects())
+        subs = [str(row[0]) for row in res] if len(res) > 0 else None
+        iri = subs[0] if subs else None
+        print(iri)
+        """
+        return NotImplemented
+
+    def add_cuds(self, Cuds):
+        """
+        add a CUDS to an existing one with provision for
+        Parameters
+        ----------
+        Cuds
+
+        Returns
+        -------
+
+        """

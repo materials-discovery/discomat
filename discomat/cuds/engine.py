@@ -240,3 +240,112 @@ class RdflibEngine(Engine):
 
     def get_cuds_region(self, cuds, radiud):
         pass
+
+
+class FusekiEngine(Engine):
+    """
+    uses some aspects of OMI ToolBox.
+    for now just a compy of rdflib engine.
+    """
+
+    def __init__(self,
+                 iri: Union[str, URIRef] = None,
+                 pid: Union[str, URIRef] = None,
+                 description=None,
+                 label=None):
+
+        ontology_type = CUDS.FusekiEngine
+        description = description or f"Feski Engine"
+
+        super().__init__(iri, pid, description, label)
+        self._dataset = Dataset()
+        self.default_graph_id = DATASET_DEFAULT_GRAPH_ID  # URIRef("urn:x-rdflib:default")
+
+        g = self._dataset.graph(self.default_graph_id)
+        graph_id = to_iri(self.default_graph_id)
+
+        self._graphs = {graph_id: g}
+        g.add((graph_id, RDF.type, CUDS.GraphId))
+        g.add((graph_id, RDF.type, CUDS.RootNode))
+
+    def create_graph(self, graph_id):
+        """
+        Parameters
+        ----------
+        graph_id
+
+        """
+        if graph_id is None:
+            raise ValueError("We do not accept None as a name for named graph!")
+        graph_id = to_iri(graph_id)
+        g = self._dataset.graph(graph_id)
+        # Add the basic root to the graph
+        g.add((graph_id, RDF.type, CUDS.GraphId))
+        g.add((graph_id, RDF.type, CUDS.RootNode))
+        self.add(CUDS.hasGraphId, graph_id)
+        self._graphs[graph_id] = g
+        return graph_id
+
+    def remove_graph(self, graph_id):  # fixme, we need a type for graph_id and then do Union[g_id or Graph]
+        try:
+            graph_id = to_iri(graph_id)
+            g = self._graphs[graph_id]
+            from discomat.cuds.utils import prd
+            prd(f"in remove graph deep inside the engine: {g}, {graph_id}")
+            self._dataset.remove_graph(g)
+            del self._graphs[graph_id]
+            self.remove(CUDS.hasGraphId, graph_id)
+        except KeyError:
+            raise ValueError(f"Graph '{graph_id}' does not exist in this engine.")
+
+        # todo:add log and provenance
+
+    @property
+    def graphs(self):
+        """
+        use https://docs.python.org/3/library/types.html#types.MappingProxyType
+        give back a read only proxy of the dict, so the user cannot change the graphs directly,
+        only the engine can manage its own graphs.
+        """
+        return MappingProxyType(self._graphs)  # Return a read-only proxy to the dictionary
+
+    def __iter__(self):
+        return iter(self._graphs.values())
+
+    def quads(self, s=None, p=None, o=None, g=None,/):
+        return self._dataset.quads((s, p, o, g))
+
+    def triples(self, s=None, p=None, o=None,/):
+        return self._dataset.triples((s, p, o))
+
+    def query(self, query):
+        return self._dataset.query(query)
+
+    @add_to_root
+    def add_triple(self, s=None, p=None, o=None):
+        self._dataset.add((s, p, o))
+        # for i, j, k in self._dataset.triples((None, None, None)):
+        #     print(i, j, k)
+
+    @add_to_root
+    def add_quad(self, s=None, p=None, o=None, g_id=None):
+        return self._dataset.add((s, p, o, g_id))
+
+    def remove_triple(self, s=None, p=None, o=None):
+        return self._dataset.remove((s, p, o))
+
+    def remove_quad(self, s=None, p=None, o=None, g_id=None):
+        return self._dataset.remove((s, p, o, g_id))
+
+    def get_cuds(self, iri):
+        pass
+
+    def add_cuds(self, cuds):
+        pass
+
+    def search_cuds(self, cuds):
+        pass
+
+    def get_cuds_region(self, cuds, radiud):
+        pass
+

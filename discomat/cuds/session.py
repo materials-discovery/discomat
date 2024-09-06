@@ -190,13 +190,21 @@ class Session(Cuds):
         """
         return NotImplemented
 
-    def add_cuds(self, cuds, g_id):
+    def add_cuds(self, cuds: Cuds, g_id=None):
         """add the cuds to the session, optionally specifying the graph.  """
         # every cuds instance (version) can belong to one and only one session
-        g_id = to_iri(g_id)
+        g_id = to_iri(g_id) if g_id else None
         cuds.session = self.session_id
 
-        return NotImplemented
+        _cuds = Cuds(iri=cuds.iri, description="copy of a CUDS/test")
+        # for s, p, o in cuds:
+        #     cuds._graph.remove((s, p, o))
+        #     _cuds._graph.add((s, p, o))
+        _cuds._graph = cuds._graph
+        cuds._graph=Graph() # empty
+        cuds.add(CUDS.Is, CUDS.Deleted) #should be type deleted. fixme: catch CUDS.Is and render the iri as being
+        # subclass of deleted.
+        return _cuds
 
     def search_cuds(self, cuds):
         """ search for the CUDS, find if it is in the system using the iri of the CUDS
