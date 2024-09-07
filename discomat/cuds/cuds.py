@@ -139,11 +139,14 @@ class Cuds:
         # self.path = sys.modules[__name__].__file__ if __name__ == "__main__" else __file__
 
         self._graph = Graph()  # A CUDS is a little Graph Data Structure. This is the container concept.
+        # fixme change _graph to _data or _self_graph... as this is the data or knowledge this CUDS has
+
         _uuid = uuid.uuid4()
         self.iri = to_iri(iri) if iri else URIRef(f"https://www.ddmd.io/mio#cuds_iri_{_uuid}")
         self.add(CUDS.iri, to_iri(iri))  # thi is not really needed.
+
         self.uuid = _uuid
-        self.rdf_iri = self.iri
+        self.rdf_iri = self.iri #fixme this is probably not needed. can be factored out
         # URIRef(self.iri)  # make sure it is a URIRef
 
         if description is not None and len(description) > 500:
@@ -152,7 +155,7 @@ class Cuds:
         if label is not None and len(str(label)) > 20:
             raise ValueError("in {self.path}: The label cannot exceed 20 characters")
 
-        self.description = description or f"This is a CUDS without Description!"
+        self.description = description or None # f"This is a CUDS without Description!"
         self.label = str(label) if label is not None else mnemonic_label(2)
 
         self.ontology_type = ontology_type if ontology_type else MIO.Cuds
@@ -163,6 +166,9 @@ class Cuds:
         self.creation_time = datetime.datetime.now()
 
         self.session = None
+        """
+        if session is not None, we have a proxy (in the session). 
+        """
 
     def __setattr__(self, key, value):
         if key == 'iri':
