@@ -1,5 +1,6 @@
 from rdflib import Namespace
 from discomat.ontology.namespaces import CUDS
+from rdflib import RDF
 
 """
 ideally we would have an automatic way to get from python attribute/property to ontology
@@ -16,7 +17,8 @@ ONTOMAP = {
     'pid': CUDS.PID,
     'label': CUDS.label,
     'creation_time': CUDS.CreationTime,
-    'ontology_type': CUDS.type,
+    'ontology_type': RDF.type,
+    'RDF.type': RDF.type,
     'session': CUDS.Session,
     'engine_iri': CUDS.EngineIri,
     'session_id': CUDS.SessionId,

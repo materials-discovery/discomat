@@ -1,19 +1,17 @@
-import uuid, datetime
+import datetime
+import uuid
+import warnings
 from collections import defaultdict
+from functools import wraps
+from typing import Union
 from urllib.parse import urlparse, urldefrag, urlsplit
 
-from rdflib import Dataset, Graph, URIRef, Literal, RDF, RDFS
-from rdflib.namespace import DC, DCTERMS, PROV, XSD
+from rdflib import Graph, URIRef, RDF
+
+from discomat.cuds.session_manager import SessionManager
+from discomat.cuds.utils import to_iri, mnemonic_label
 from discomat.ontology.namespaces import CUDS, MIO
-from IPython.display import display, HTML
-import os, sys, warnings, pickle
-from types import MappingProxyType
-from typing import Union
-
-from discomat.cuds.utils import to_iri, mnemonic_label, query_lib
-
 from discomat.ontology.ontomap import ONTOMAP
-from functools import wraps
 
 
 def add_to_root(func):
@@ -143,10 +141,11 @@ class Cuds:
 
         _uuid = uuid.uuid4()
         self.iri = to_iri(iri) if iri else URIRef(f"https://www.ddmd.io/mio#cuds_iri_{_uuid}")
-        self.add(CUDS.iri, to_iri(iri))  # thi is not really needed.
+        self.add(CUDS.iri, to_iri(self.iri))
+        self.add(RDF.type, CUDS.Cuds)
 
         self.uuid = _uuid
-        self.rdf_iri = self.iri #fixme this is probably not needed. can be factored out
+        self.rdf_iri = self.iri  # fixme this is probably not needed. can be factored out
         # URIRef(self.iri)  # make sure it is a URIRef
 
         if description is not None and len(description) > 500:
@@ -155,7 +154,7 @@ class Cuds:
         if label is not None and len(str(label)) > 20:
             raise ValueError("in {self.path}: The label cannot exceed 20 characters")
 
-        self.description = description or None # f"This is a CUDS without Description!"
+        self.description = description or None  # f"This is a CUDS without Description!"
         self.label = str(label) if label is not None else mnemonic_label(2)
 
         self.ontology_type = ontology_type if ontology_type else MIO.Cuds
@@ -175,7 +174,8 @@ class Cuds:
             super().__setattr__(key, value)
             return
         elif key in ONTOMAP:
-            self._graph.remove((to_iri(self.iri), to_iri(ONTOMAP[key]), None))
+            if key != 'ontology_type':  # only one value is allowed, exceot the type.
+                self._graph.remove((to_iri(self.iri), to_iri(ONTOMAP[key]), None))
             self._graph.add((to_iri(self.iri), to_iri(ONTOMAP[key]), to_iri(value)))
         else:
             super().__setattr__(key, value)  # fixme there should be no "normal attributes" apaer from iri,
@@ -191,7 +191,7 @@ class Cuds:
     def properties(self):
         # Retrieve all properties (predicates) and objects for c.iri
         properties = defaultdict(list)
-        for p, o in self._graph.predicate_objects(self.rdf_iri):
+        for p, o in self._graph.predicate_objects(self.iri):
             namespace, fragment = self.split_uri2(p)
             properties[namespace].append((fragment, o))
         return properties
@@ -303,6 +303,90 @@ class Cuds:
         iri = subs[0] if subs else None
         print(iri)
         """
+        return NotImplemented
+
+
+class ProxyCuds(Cuds):  # should be inhereting from ABC_CUDS rather form CUDS (so is CUDS)
+    """
+    Actually very similar to Session,
+    """
+
+    def __init__(self,
+                 cuds: Cuds):
+
+        ontology_type = CUDS.CudsProxy
+
+        # note we cannot use super, as the self will still be an instance of this class, i.e., proxy one.
+        # and this will lead to recursion.
+        # super().__init__(ontology_type=ontology_type, iri=cuds.iri, pid=cuds.pid, description=cuds.description,
+        #                  label=cuds.label)
+        object.__setattr__(self, 'session_id', cuds.session_id)
+        object.__setattr__(self, 'iri', cuds.iri)
+        object.__setattr__(self, '_graph', Graph())
+
+        for _ in cuds._graph:
+            self._graph.add(_)
+
+        sm = SessionManager()
+        s=sm.get_session(self.session_id)
+
+        if isinstance(s, bool):
+            print(f"cannot find session")
+        else:
+            print(f"Creating a CUDS proxy with session  {s.session_id}")
+
+    def __setattr__(self, key, value):
+        self.session_.proxy_handler(self.iri, "setattr", key, value)
+
+    def __getattr__(self, key):
+        return self.session.proxy_handler(self.iri, "getattr", key)
+    @property
+    def properties(self):
+        # Retrieve all properties (predicates) and objects for c.iri
+        properties = self.session.proxy_handler(self.iri, "properties")
+        return properties
+
+    def print_graph(self):
+        # Print the graph in a readable format (e.g., Turtle)
+        print(self.session.proxy_handler(self.iri, "print_graph"))
+
+    def serialize(self):
+        # serialise the CUDS and return a string (as ttl).
+        # a CUDS has only first neighbor relations, i.e, one edge only (depth =1)
+                return self.session.proxy_handler(self.iri, "serialise")
+
+    def __repr__(self):
+        # Pretty print format for the instance
+        properties = self.properties
+        output = [f"\n ** Printing The (Proxy) CUDS with iri: {self.iri}"]
+        for namespace, props in properties.items():
+            output.append(f"- Namespace: {namespace}")
+            for fragment, obj in props:
+                output.append(f"  - {fragment}: {obj}")
+            output.append("")  # Add a blank line between namespaces
+        return "\n".join(output)
+
+
+    @property
+    def add(self, p, o):
+        self.session.proxy_handler(self.iri, "add", p, o)
+
+    def remove(self, p, o):
+        self.session.proxy_handler(self.iri, "add", p, o)
+
+    def __iter__(self):
+        # Delegate the iteration to session proxy handler
+        return  self.session.proxy_handler(self.iri, "iter")
+
+    @property
+    def graph(self):
+        warnings.warn(
+            "cuds.graph is not available for proxy CUDS and is deprecated and will be removed in a future version from "
+            "the real CUDS. "
+            "Use iter method instead.",
+            DeprecationWarning,
+            stacklevel=2
+        )
         return NotImplemented
 
     def add_cuds(self, Cuds):

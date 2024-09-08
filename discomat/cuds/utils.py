@@ -3,6 +3,7 @@ import re
 import uuid
 from functools import wraps
 from typing import Union
+from urllib.parse import urlparse
 
 from mnemonic import Mnemonic
 from rdflib import URIRef, Literal
@@ -122,11 +123,25 @@ def prd(s):
     print(s)
     print(dashes)
 
+def split_uri(uri):  # fixme move to utils
+    # Split the URI into namespace and fragment
+    parsed_uri = urlparse(uri)
+    path = parsed_uri.path
+    if "#" in path:
+        namespace, fragment = path.split("#")
+    elif "/" in path:
+        namespace, fragment = path.rsplit("/", 1)
+    else:
+        namespace, fragment = path, ''
+    return parsed_uri.scheme + "://" + parsed_uri.netloc + namespace + "/", fragment
+
 
 """
 simple but often used sparql queries
 
 """
+
+
 
 
 class query_lib:
@@ -159,7 +174,7 @@ class query_lib:
         }"""
 
     @staticmethod
-    def subject_contains(substring):
+    def subject_contains_string(substring):
         return f"""
         SELECT ?s ?p ?o WHERE {{
           ?s ?p ?o .
@@ -167,7 +182,7 @@ class query_lib:
         }}"""
 
     @staticmethod
-    def all_objects_containing(substring):
+    def objects_containing_string(substring):
         return f"""
         SELECT ?s ?p ?o WHERE {{
           ?s ?p ?o .
@@ -175,15 +190,7 @@ class query_lib:
         }}"""
 
     @staticmethod
-    def all_subjects_containing(substring):
-        return f"""
-        SELECT ?s ?p ?o WHERE {{
-          ?s ?p ?o .
-          FILTER(CONTAINS(LCASE(STR(?s)), "{substring.lower()}"))
-        }}"""
-
-    @staticmethod
-    def all_predicates_containing(substring):
+    def predicates_containing_string(substring):
         return f"""
             SELECT ?s ?p ?o WHERE {{
               ?s ?p ?o .
@@ -191,12 +198,13 @@ class query_lib:
             }}"""
 
     @staticmethod
-    def all_triples_with_literal_objects():
+    def triples_with_literal_objects():
         return """
             SELECT ?s ?p ?o WHERE {
               ?s ?p ?o .
               FILTER(isLiteral(?o))
             }"""
+
     @staticmethod
     def triples_with_p_and_o_containing(pstr, ostr):
         return f"""
@@ -233,3 +241,46 @@ class query_lib:
           }
         }
         """
+
+    @staticmethod
+    def subject_as_graph(s, max_depth):
+        # supposed to find al s, p, o related to s up to specific depth, downward.
+        return """
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+            SELECT DISTINCT ?depth ?object WHERE {{
+              VALUES ?subject {{ <{subject}> }}
+
+              # Traverse up to depth n, capturing all intermediate objects
+              ?subject (rdf:Property|!rdf:Property){{1,{depth}}} ?object .
+
+              # Calculate depth by counting the properties traversed (optional)
+              BIND((strlen(str(?propertyPath)) - strlen(replace(str(?propertyPath), "/", ""))) AS ?depth)
+            }}
+            """.format(subject=s, depth=max_depth)
+
+    @staticmethod
+    def subject_relation(s, properties):
+
+        if properties:
+            property_path = "|".join(f"<{prop}>" for prop in properties)
+        else:
+            return []
+        return f"""
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+            SELECT DISTINCT ?object WHERE {{
+            VALUES ?subject {{ <{s}> }}
+            ?subject ({property_path}) ?object .
+            }}
+            """
+
+    @staticmethod
+    def subject_graph(self, s):
+        return f"""
+        SELECT ?predicate ?object
+        WHERE {{
+            <{s}> ?predicate ?object .
+        }}
+        """
+
