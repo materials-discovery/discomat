@@ -306,9 +306,8 @@ class Cuds:
         return NotImplemented
 
 
-class ProxyCuds(Cuds):  # should be inhereting from ABC_CUDS rather form CUDS (so is CUDS)
+class ProxyCuds(Cuds):  # should be inheriting from ABC_CUDS rather form CUDS (so is CUDS)
     """
-    Actually very similar to Session,
     """
 
     def __init__(self,
@@ -328,7 +327,7 @@ class ProxyCuds(Cuds):  # should be inhereting from ABC_CUDS rather form CUDS (s
             self._graph.add(_)
 
         sm = SessionManager()
-        s=sm.get_session(self.session_id)
+        s = sm.get_session(self.session_id)
 
         if isinstance(s, bool):
             print(f"cannot find session")
@@ -340,6 +339,7 @@ class ProxyCuds(Cuds):  # should be inhereting from ABC_CUDS rather form CUDS (s
 
     def __getattr__(self, key):
         return self.session.proxy_handler(self.iri, "getattr", key)
+
     @property
     def properties(self):
         # Retrieve all properties (predicates) and objects for c.iri
@@ -353,7 +353,7 @@ class ProxyCuds(Cuds):  # should be inhereting from ABC_CUDS rather form CUDS (s
     def serialize(self):
         # serialise the CUDS and return a string (as ttl).
         # a CUDS has only first neighbor relations, i.e, one edge only (depth =1)
-                return self.session.proxy_handler(self.iri, "serialise")
+        return self.session.proxy_handler(self.iri, "serialise")
 
     def __repr__(self):
         # Pretty print format for the instance
@@ -366,7 +366,6 @@ class ProxyCuds(Cuds):  # should be inhereting from ABC_CUDS rather form CUDS (s
             output.append("")  # Add a blank line between namespaces
         return "\n".join(output)
 
-
     @property
     def add(self, p, o):
         self.session.proxy_handler(self.iri, "add", p, o)
@@ -376,7 +375,7 @@ class ProxyCuds(Cuds):  # should be inhereting from ABC_CUDS rather form CUDS (s
 
     def __iter__(self):
         # Delegate the iteration to session proxy handler
-        return  self.session.proxy_handler(self.iri, "iter")
+        return self.session.proxy_handler(self.iri, "iter")
 
     @property
     def graph(self):

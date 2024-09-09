@@ -20,6 +20,7 @@ sm = SessionManager()
 
 sim2=session.add_cuds(sim)
 
+# print(sim2)
 # sim2=ProxyCuds(sim)
 # print(f"and the proxy is: {sim_proxy}")
 #
