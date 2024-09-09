@@ -7,7 +7,7 @@ from rdflib.namespace import DC, DCTERMS, PROV, XSD
 from rdflib import Namespace
 from discomat.cuds.utils import mnemonic_label, to_iri, arg_to_iri
 from discomat.ontology.namespaces import CUDS, MIO
-from discomat.cuds.cuds import Cuds
+from discomat.cuds.cuds import Cuds, ProxyCuds
 from discomat.cuds.session_manager import SessionManager
 from discomat.cuds.engine import Engine, RdflibEngine
 from pyvis.network import Network
@@ -176,6 +176,15 @@ class Session(Cuds):
             raise ValueError("s, p, and o are all None, at least one should be not None")
         self.engine.remove_quad(s, p, o, g_id)  # need to add provenance...
 
+    def add_cuds(self, cuds: Cuds, g_id=None):
+        """add the cuds to the session, optionally specifying the graph.  """
+        # every cuds instance (version) can belong to one and only one session
+        #
+        cuds.session_id = self.session_id
+        self.engine.add_cuds(cuds, g_id)
+
+        return ProxyCuds(cuds)
+
     def get_cuds(self, iri):
         """
         given an iri or the Cuds, search the session, i.e., all graphs for the
@@ -190,22 +199,6 @@ class Session(Cuds):
         """
         return NotImplemented
 
-    def add_cuds(self, cuds: Cuds, g_id=None):
-        """add the cuds to the session, optionally specifying the graph.  """
-        # every cuds instance (version) can belong to one and only one session
-        g_id = to_iri(g_id) if g_id else None
-        cuds.session = self.session_id
-
-        _cuds = Cuds(iri=cuds.iri, description="copy of a CUDS/test")
-        # for s, p, o in cuds:
-        #     cuds._graph.remove((s, p, o))
-        #     _cuds._graph.add((s, p, o))
-        _cuds._graph = cuds._graph
-        cuds._graph=Graph() # empty
-        cuds.add(CUDS.Is, CUDS.Deleted) #should be type deleted. fixme: catch CUDS.Is and render the iri as being
-        # subclass of deleted.
-        return _cuds
-
     def search_cuds(self, cuds):
         """ search for the CUDS, find if it is in the system using the iri of the CUDS
         could be replaced by smart __contains__ method, that based on the type of element queried, activates various
@@ -213,8 +206,45 @@ class Session(Cuds):
 
         return NotImplemented
 
-    def get_cuds_region(self, cuds, radiud):
+    def get_cuds_region(self, cuds, radius):
         """        get the cuds up to a specific radius
         could be same as get_cuds but with optional radius, see ontology manager etc for implementations.
 
         """
+
+    def proxy_cuds(self, cuds_iri, *args, **kwargs):
+        """
+
+        Parameters
+        ----------
+        cuds_iri
+        args
+        kwargs
+        """
+        print(f"calling proxy cuds with {args} and {kwargs}")
+
+    def proxy_handler(self, *, iri, ops, **kwargs):
+        if iri is None:
+            raise ValueError("iri in proxy handler CANNOT be not be None")
+        run = {
+            'setattr': self.proxy_setattr,
+            'getattr': self.proxy_getattr,
+            'properties': self.proxy_properties,
+            'serialise': self.proxy_serialise,
+            'add':self.proxy_add,
+            'iter': self.proxy_iter
+        }
+
+    def proxy_setattr(self, *, iri, **kwargs):
+        print(f"setting attribute of proxy cuds")
+        """
+        basically use the query or update of the engine (sparql really) to do the changes."""
+        pass
+
+    def proxy_getattr(self, *, iri, **kwargs):
+        print(f"getting attribute of proxy cuds")
+        pass
+
+    def proxy_properties(self, *, iri, **kwargs):
+        print(f"properties of proxy cuds")
+        pass

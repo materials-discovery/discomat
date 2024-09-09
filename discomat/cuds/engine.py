@@ -8,7 +8,7 @@ from rdflib import Namespace
 from rdflib.graph import DATASET_DEFAULT_GRAPH_ID
 
 from discomat.ontology.namespaces import CUDS, MIO
-from discomat.cuds.cuds import Cuds, add_to_root
+from discomat.cuds.cuds import Cuds, add_to_root, ProxyCuds
 from discomat.cuds.utils import to_iri
 
 from pyvis.network import Network
@@ -232,8 +232,11 @@ class RdflibEngine(Engine):
     def get_cuds(self, iri):
         pass
 
-    def add_cuds(self, cuds):
-        pass
+    def add_cuds(self, cuds, g_id):
+        g_id = to_iri(g_id) if g_id else self.default_graph_id
+        the_graph = self._dataset.graph(g_id)
+        for t in cuds:
+            the_graph.add(t)
 
     def search_cuds(self, cuds):
         pass
