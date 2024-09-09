@@ -202,6 +202,12 @@ class RdflibEngine(Engine):
         return MappingProxyType(self._graphs)  # Return a read-only proxy to the dictionary
 
     def __iter__(self):
+        """
+        iter over the graphs in a session?
+        Returns
+        -------
+
+        """
         return iter(self._graphs.values())
 
     def quads(self, s=None, p=None, o=None, g=None,/):
@@ -213,13 +219,13 @@ class RdflibEngine(Engine):
     def query(self, query):
         return self._dataset.query(query)
 
-    @add_to_root
+    # @add_to_root
     def add_triple(self, s=None, p=None, o=None):
         self._dataset.add((s, p, o))
         # for i, j, k in self._dataset.triples((None, None, None)):
         #     print(i, j, k)
 
-    @add_to_root
+    # @add_to_root
     def add_quad(self, s=None, p=None, o=None, g_id=None):
         return self._dataset.add((s, p, o, g_id))
 
@@ -324,13 +330,13 @@ class FusekiEngine(Engine):
     def query(self, query):
         return self._dataset.query(query)
 
-    @add_to_root
+    # @add_to_root
     def add_triple(self, s=None, p=None, o=None):
         self._dataset.add((s, p, o))
         # for i, j, k in self._dataset.triples((None, None, None)):
         #     print(i, j, k)
 
-    @add_to_root
+    # @add_to_root
     def add_quad(self, s=None, p=None, o=None, g_id=None):
         return self._dataset.add((s, p, o, g_id))
 

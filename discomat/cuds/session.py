@@ -20,6 +20,8 @@ import os, sys, warnings, pickle
 from types import MappingProxyType
 from typing import Union
 
+from discomat.ontology.ontomap import ONTOMAP
+
 
 class Session(Cuds):
     """
@@ -182,8 +184,8 @@ class Session(Cuds):
         #
         cuds.session_id = self.session_id
         self.engine.add_cuds(cuds, g_id)
-
-        return ProxyCuds(cuds)
+        c=ProxyCuds(cuds)
+        return c
 
     def get_cuds(self, iri):
         """
@@ -223,23 +225,32 @@ class Session(Cuds):
         """
         print(f"calling proxy cuds with {args} and {kwargs}")
 
-    def proxy_handler(self, *, iri, ops, **kwargs):
+    def proxy_handler(self, iri, ops, **kwargs):
         if iri is None:
             raise ValueError("iri in proxy handler CANNOT be not be None")
-        run = {
+        run = {   #move to __init__ so we do not start it again, in fact can be method variable.
             'setattr': self.proxy_setattr,
             'getattr': self.proxy_getattr,
             'properties': self.proxy_properties,
-            'serialise': self.proxy_serialise,
+            'serialise': self.proxy_serialize,
             'add':self.proxy_add,
             'iter': self.proxy_iter
         }
+
+        run[ops](iri=iri, **kwargs)
 
     def proxy_setattr(self, *, iri, **kwargs):
         print(f"setting attribute of proxy cuds")
         """
         basically use the query or update of the engine (sparql really) to do the changes."""
-        pass
+
+        k=kwargs['key']
+        v=kwargs['value']
+        if k in ONTOMAP:
+            self.engine.remove_triple(iri, to_iri(k), to_iri(v))
+            self.engine.add_triple(iri, to_iri(k), to_iri(v))
+        else:
+            raise KeyError(f"key {k} is not supported in core CUDS ontology")
 
     def proxy_getattr(self, *, iri, **kwargs):
         print(f"getting attribute of proxy cuds")
@@ -248,3 +259,25 @@ class Session(Cuds):
     def proxy_properties(self, *, iri, **kwargs):
         print(f"properties of proxy cuds")
         pass
+
+
+    def proxy_serialize(self, *, iri, **kwargs):
+        print(f"serialize proxy cuds")
+        pass
+
+
+    def proxy_add(self, *, iri, **kwargs):
+        #fixme find the graph in which the cuds is and add as 4th arg.
+        p = kwargs['p'] or None
+        o = kwargs['o'] or None
+        if isinstance(o, Cuds):
+            # for sc, pc, oc in o:
+            #     self.engine.add_triple(sc,pc,oc)
+            o=o.iri
+        self.engine.add_triple(iri, p, o)
+
+
+    def proxy_iter(self, *, iri, **kwargs):
+        print(f"iter proxy cuds")
+        pass
+
