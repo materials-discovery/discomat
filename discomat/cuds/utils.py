@@ -123,6 +123,7 @@ def prd(s):
     print(s)
     print(dashes)
 
+
 def split_uri(uri):  # fixme move to utils
     # Split the URI into namespace and fragment
     parsed_uri = urlparse(uri)
@@ -142,21 +143,25 @@ simple but often used sparql queries
 """
 
 
-
-
 class query_lib:
     @staticmethod
-    def all_triples():
+    def all_triples(s=None, p=None, o=None):
         """
 
         Returns
         -------
         return all triples in the default graph.
+        <{s}>
         """
-        return """
-        SELECT ?s ?p ?o WHERE {
-          ?s ?p ?o .
-        }"""
+        s = f"<{s}>" if s else f"?s"
+        p = f"<{p}>" if p else f"?p"
+        o = f"<{o}>" if o else f"?o"
+
+        return f"""
+        SELECT ?s ?p ?o WHERE {{
+          {s} {p} {o} .
+        }}
+        """
 
     @staticmethod
     def all_subjects():
@@ -254,11 +259,11 @@ class query_lib:
         return """
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-            SELECT DISTINCT ?depth ?object WHERE {{
+            SELECT DISTINCT ?depth ?o WHERE {{
               VALUES ?subject {{ <{subject}> }}
 
               # Traverse up to depth n, capturing all intermediate objects
-              ?subject (rdf:Property|!rdf:Property){{1,{depth}}} ?object .
+              ?subject (rdf:Property|!rdf:Property){{1,{depth}}} ?o .
 
               # Calculate depth by counting the properties traversed (optional)
               BIND((strlen(str(?propertyPath)) - strlen(replace(str(?propertyPath), "/", ""))) AS ?depth)
@@ -275,18 +280,18 @@ class query_lib:
         return f"""
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-            SELECT DISTINCT ?object WHERE {{
-            VALUES ?subject {{ <{s}> }}
-            ?subject ({property_path}) ?object .
+            SELECT DISTINCT ?o WHERE {{
+            VALUES ?s {{ <{s}> }}
+            ?s ({property_path}) ?o .
             }}
             """
 
     @staticmethod
     def subject_graph(s):
         return f"""
-        SELECT ?predicate ?object
+        SELECT ?p ?o
         WHERE {{
-            <{s}> ?predicate ?object .
+            <{s}> ?p ?o .
         }}
         """
 

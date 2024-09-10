@@ -234,6 +234,7 @@ class Session(Cuds):
             'properties': self.proxy_properties,
             'serialise': self.proxy_serialize,
             'add':self.proxy_add,
+            'remove':self.proxy_remove,
             'iter': self.proxy_iter
         }
 
@@ -261,13 +262,26 @@ class Session(Cuds):
         return v
 
     def proxy_properties(self, *, iri, **kwargs):
-        q=query_lib()
-        for gid in self.graphs():
-            g=self._session_graphs[gid]
-            print(g)
-        print(f"properties of proxy cuds")
-        pass
-
+        # q=query_lib()
+        # for gid in self.graphs():
+        #     g=self._session_graphs[gid]
+        #     print(g)
+        # print(f"properties of proxy cuds")
+        # pass
+        # now for each cuds, get all its properties
+        # starting from the first one
+        sub = iri
+        properties = defaultdict(list)
+        for g in self.list_graphs():
+            query = query_lib.all_triples(sub, None, None)  # should give the same result as above.
+            query = query_lib.augment_graph_query(query, g)  # augment it with a graph
+            res1 = self.query(query)
+            for r in res1:
+                p=r['p']
+                o=r['o']
+                print(sub, p, o)
+                namespace, fragment = self.split_uri2(p)
+                properties[namespace].append((fragment, o))
 
     def proxy_serialize(self, *, iri, **kwargs):
         print(f"serialize proxy cuds")
@@ -284,6 +298,15 @@ class Session(Cuds):
             o=o.iri
         self.engine.add_triple(iri, p, o)
 
+    def proxy_remove(self, *, iri, **kwargs):
+        # fixme find the graph in which the cuds is and add as 4th arg.
+        p = kwargs['p'] or None
+        o = kwargs['o'] or None
+        if isinstance(o, Cuds):
+            # for sc, pc, oc in o:
+            #     self.engine.add_triple(sc,pc,oc)
+            o = o.iri
+        self.engine.remove_triple(iri, p, o)
 
     def proxy_iter(self, *, iri, **kwargs):
         print(f"iter proxy cuds")

@@ -374,7 +374,7 @@ class ProxyCuds():  # should be inheriting from ABC_CUDS rather form CUDS (so is
         self.session.proxy_handler(self.iri, "add", p=p, o=o)
 
     def remove(self, p, o):
-        self.session.proxy_handler(self.iri, "add", p, o)
+        self.session.proxy_handler(self.iri, "remove", p, o)
 
     def __iter__(self):
         # Delegate the iteration to session proxy handler
