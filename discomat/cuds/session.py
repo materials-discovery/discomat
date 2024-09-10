@@ -5,7 +5,7 @@ from urllib.parse import urlparse, urldefrag, urlsplit
 from rdflib import Dataset, Graph, URIRef, Literal, RDF, RDFS
 from rdflib.namespace import DC, DCTERMS, PROV, XSD
 from rdflib import Namespace
-from discomat.cuds.utils import mnemonic_label, to_iri, arg_to_iri
+from discomat.cuds.utils import mnemonic_label, to_iri, arg_to_iri, query_lib
 from discomat.ontology.namespaces import CUDS, MIO
 from discomat.cuds.cuds import Cuds, ProxyCuds
 from discomat.cuds.session_manager import SessionManager
@@ -237,10 +237,9 @@ class Session(Cuds):
             'iter': self.proxy_iter
         }
 
-        run[ops](iri=iri, **kwargs)
+        return run[ops](iri=iri, **kwargs)
 
     def proxy_setattr(self, *, iri, **kwargs):
-        print(f"setting attribute of proxy cuds")
         """
         basically use the query or update of the engine (sparql really) to do the changes."""
 
@@ -253,10 +252,19 @@ class Session(Cuds):
             raise KeyError(f"key {k} is not supported in core CUDS ontology")
 
     def proxy_getattr(self, *, iri, **kwargs):
-        print(f"getting attribute of proxy cuds")
-        pass
+        k = kwargs['key']
+        if k in ONTOMAP:
+            for s, p, o in self.engine.triples(iri, to_iri(k), None):
+                v=o
+        else:
+            raise KeyError(f"key {k} is not supported in core CUDS ontology")
+        return v
 
     def proxy_properties(self, *, iri, **kwargs):
+        q=query_lib()
+        for gid in self.graphs():
+            g=self._session_graphs[gid]
+            print(g)
         print(f"properties of proxy cuds")
         pass
 

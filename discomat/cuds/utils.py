@@ -147,6 +147,12 @@ simple but often used sparql queries
 class query_lib:
     @staticmethod
     def all_triples():
+        """
+
+        Returns
+        -------
+        return all triples in the default graph.
+        """
         return """
         SELECT ?s ?p ?o WHERE {
           ?s ?p ?o .
@@ -276,7 +282,7 @@ class query_lib:
             """
 
     @staticmethod
-    def subject_graph(self, s):
+    def subject_graph(s):
         return f"""
         SELECT ?predicate ?object
         WHERE {{
@@ -284,3 +290,27 @@ class query_lib:
         }}
         """
 
+    @staticmethod
+    def augment_graph_query(query, graph_id):
+        """
+        tke a query and a named grap iri and retuen the query for the graph.
+        useful when looping over graphs inclduing the default one and performing the same operation.
+        Parameters
+        ----------
+        query
+        graph
+
+        Returns
+        -------
+
+        """
+        graph_query = f"""
+            SELECT ?s ?p ?o
+            WHERE {{
+              GRAPH <{graph_id}> {{
+                {query}
+              }}
+            }}
+            """
+
+        return graph_query

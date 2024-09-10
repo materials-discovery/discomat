@@ -3,7 +3,7 @@ import itertools
 from discomat.cuds.cuds import Cuds, ProxyCuds
 from discomat.cuds.session_manager import SessionManager
 from discomat.visualisation.cuds_vis import gvis
-from discomat.cuds.utils import uuid_from_string, to_iri
+from discomat.cuds.utils import uuid_from_string, to_iri, query_lib
 from discomat.cuds.session import Session
 from rdflib import URIRef, Graph, PROV, Literal
 
@@ -32,7 +32,7 @@ prox[sim1].description="sim1 created in base session, and moved with all its com
                        "session1"
 # change the property of sim1 through the proxy
 
-sim2 = Cuds(ontology_type=MISO.Simulation)
+sim2 = Cuds(ontology_type=MISO.Simulation, description="this is sim2")
 meth2 = Cuds(ontology_type=MISO.Method, description="method 2")
 bc2=Cuds(ontology_type=MISO.BoundryCondition, description="boundary condition 2")
 ms2 = Cuds(ontology_type=MISO.MaterialsSystem, description="some sort of materials system, part 2")
@@ -54,4 +54,21 @@ g_session=Graph()
 for i in  itertools.chain(session1.triples(), session2.triples()):
     g_session.add(i[:3])
 gvis(g_session, "Session1_and_2.html")
+
+print(prox2[sim2].description)
+
+query=query_lib.all_triples()
+
+print(f"getting list of graphs in the session")
+lg=session2.list_graphs()
+for g in lg:
+    print (g)
+    aq=query_lib.augment_graph_query(query, g)
+    print(aq)
+    res=session2.query(aq)
+# p=prox2[sim2].properties()
+
+print(f"loop over graphs and query them")
+for r in res:
+    print (r)
 

@@ -343,12 +343,6 @@ class ProxyCuds():  # should be inheriting from ABC_CUDS rather form CUDS (so is
         # calling_function = stack[1].function
         # print(f"__getattr__ called for attribute: '{key}', called from method: '{calling_function}'")
         #
-        # print(f"in getattr of proxy cuds: {self}, {key}")
-        # if key in self.__dict__:
-        #     print(f"'{key}' exists. fetching ist value")
-        # else:
-        #     raise KeyError(f"Graph {key} does not exist in this cuds")
-
         return self.session.proxy_handler(self.iri, "getattr", key=key)
 
     def properties(self):
