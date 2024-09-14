@@ -20,7 +20,8 @@ setup(
         'jsonpickle==3.2.2',
         'MarkupSafe==2.1.5',
         'matplotlib-inline==0.1.7',
-        'networkx==3.3',
+        #'networkx==3.3',
+        'networkx==3.2.1', # Needed for OMI
         'parso==0.8.4',
         'pexpect==4.9.0',
         'prompt_toolkit==3.0.47',
