@@ -8,12 +8,12 @@ setup(
         'pyvis==0.3.2',
         'mnemonic',  # Add version if needed
         'rdflib==7.0.0',
-        'uuid',  # uuid is part of the standard library, so you can remove it from here
         'setuptools~=65.5.0',
         'asttokens==2.4.1',
         'decorator==5.1.1',
         'executing==2.0.1',
-        'ipython==8.26.0',
+    #    'ipython==8.26.0',
+        'ipython==8.12.3', # Need this version for OMI
         'isodate==0.6.1',
         'jedi==0.19.1',
         'Jinja2==3.1.4',
