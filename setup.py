@@ -7,7 +7,7 @@ setup(
     install_requires=[
         'pyvis',
         'mnemonic',
-        'rdlib',
+        'rdflib',
         'uuid'
     ],
 )
