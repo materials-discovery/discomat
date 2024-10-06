@@ -320,7 +320,7 @@ class ProxyCuds():  # should be inheriting from ABC_CUDS rather form CUDS (so is
         # and this will lead to recursion.
         # super().__init__(ontology_type=ontology_type, iri=cuds.iri, pid=cuds.pid, description=cuds.description,
         #                  label=cuds.label)
-        object.__setattr__(self, 'session_id', cuds.session_id)
+        object.__setattr__(self, 'session_id', cuds.session_id) # todo: raise error if no session id is defined.
         object.__setattr__(self, 'iri', cuds.iri)
         object.__setattr__(self, '_graph', Graph())
 
@@ -331,7 +331,7 @@ class ProxyCuds():  # should be inheriting from ABC_CUDS rather form CUDS (so is
         s = sm.get_session(self.session_id)
         object.__setattr__(self, 'session', s)
         if isinstance(s, bool):
-            print(f"cannot find session")
+            print(f"cannot find sessiona - fixme: mae proxy cuds fail!") # fixme: proxy cuds should fail if not session defined.
         else:
             print(f"ProxyCuds: Creating a CUDS proxy with session  {s.session_id} \ n Note: graph support is WIP")
 
