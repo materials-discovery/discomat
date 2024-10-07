@@ -379,10 +379,73 @@ class InsertLib:
             update_query = f"""
             {prefix_section}
             INSERT DATA {{
-                {subject} {predicate} {obj} .
-                {subject} RDF.type CUDS.GraphId .
-                {subject} RDF.type CUDS.RootNode .
+                {s} {p} {o} .
             }}
             """
 
         return update_query
+
+
+    @staticmethod
+    def del_triple (subj=None, pred=None, obj=None, graph_id=None, prefixes=None):
+            """
+            Build a DELETE query to delete triples based on the provided parameters. If s, p, and o are specified,
+            delete all, if one is omitted, delete all triplets having this specific value.
+            E.g., del_triple(pred="some pred") will delete all triplets having this predicate,
+            regardless of teh subject and object.
+            If we leave all empty, it will delete everything in the specific graph, or the default graph.
+
+            :param subj: Optional, subject
+            :param pred: Optional, predicate
+            :param obj: Optional, object
+            :param graph_id: Optional, the graph where the data will be deleted
+            :param prefixes: Optional, a dictionary of prefixes {short_name: full_URI}
+            :return: The full SPARQL DELETE query as a string
+            """
+
+            # construct the prefix
+            prefix_part = ""
+            if prefixes:
+                for short_name, full_uri in prefixes.items():
+                    prefix_part += f"PREFIX {short_name}: <{full_uri}>\n"
+
+            # The WHERE part
+            conditions = []
+
+            if subj:
+                conditions.append(f"{subj}")    # use the given subj
+            else:
+                conditions.append("?s")
+
+            if pred:
+                conditions.append(f"{pred}")
+            else:
+                conditions.append("?p")
+
+            if obj:
+                conditions.append(f"{obj}")
+            else:
+                conditions.append("?o")
+
+            triples = " ".join(conditions) + " ."
+
+            # Build the query with or without the GRAPH section
+            if graph_id:
+                query = f"""
+                {prefix_part}
+                DELETE WHERE {{
+                    GRAPH {graph_id} {{
+                        {triples}
+                    }}
+                }}
+                """
+            else:
+                query = f"""
+                {prefix_part}
+                DELETE WHERE {{
+                    {triples}
+                }}
+                """
+
+            return query
+
