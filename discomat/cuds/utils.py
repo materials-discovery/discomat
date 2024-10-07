@@ -323,7 +323,7 @@ class QueryLib:
 
 class InsertLib:
     @staticmethod
-    def add_triple(s, p, o, g=None):
+    def add_triple_(s, p, o, g=None):
         """
         Return a SPARQL query to add a triple to a graph.
 
@@ -343,3 +343,46 @@ class InsertLib:
         query += "}"
 
         return query
+
+    @staticmethod
+    def add_triple (s, p, o, graph_id=None, prefixes=None):
+        """
+        Build an INSERT DATA query, with optional graph (as iri) and prefixes (as dict).
+        :param s: The subject of the triple
+        :param p: The predicate of the triple
+        :param o: The object of the triple
+        :param graph_id: Optional, the graph iri where the data will be inserted
+        :param prefixes: Optional, a dictionary of prefixes {short_name: full_URI}
+        :return: The full SPARQL query as a string
+        todo: we can add multiple inset liines (s p o) in one go, we can enhance so that the input is a list of s,o,p rather than just one.
+        this will enhance performance.
+        """
+
+        prefix_section = ""
+
+        # If prefixes are provided, expand them into the query
+        if prefixes:
+            for short_name, full_uri in prefixes.items():
+                prefix_section += f"PREFIX {short_name}: <{full_uri}>\n"
+
+        # query with  GRAPH section
+        if graph_id:
+            update_query = f"""
+            {prefix_section}
+            INSERT DATA {{
+                GRAPH {graph_id} {{
+                    {s} {p} {o} .  
+                }}
+            }}
+            """
+        else:
+            update_query = f"""
+            {prefix_section}
+            INSERT DATA {{
+                {subject} {predicate} {obj} .
+                {subject} RDF.type CUDS.GraphId .
+                {subject} RDF.type CUDS.RootNode .
+            }}
+            """
+
+        return update_query

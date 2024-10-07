@@ -1,8 +1,7 @@
 import uuid, datetime
 from collections import defaultdict
 from urllib.parse import urlparse, urldefrag, urlsplit
-from omikb.omikb import kb_toolbox
-
+from omikb.domekb import KbToolBox
 from rdflib import Dataset, Graph, URIRef, Literal, RDF, RDFS
 from rdflib.namespace import DC, DCTERMS, PROV, XSD
 from rdflib import Namespace
@@ -261,7 +260,7 @@ class RdflibEngine(Engine):
 
 class FusekiEngine(Engine):
     """
-    This is Fuseki session engine.
+    This is discomt Fuseki session engine. It supports all actions needed on anu CUDS a session.
     this means, we are not managing an entire fuseki service, but rather
     simply interacting with a CUDS iri stored in this graph.
     only the direct CUDS relations are guaranteed to be in same graph as the iri.
@@ -274,25 +273,32 @@ class FusekiEngine(Engine):
 
     1. get in init also the name of the configuration,
     2. initialise connection and set it up with omikn, rgistering the relevant additional
-    metadata to the _graph, which is the directly incured relations on the iri we define teh cuds for.
+    metadata to the _graph, which is the directly incurred relations on the iri we define teh cuds for.
+
+
+     service: the service name as in omikb.yml, of none, then use the default one (usually kb needed for oopenmode,
+     hence it is better to define one).
+
     """
 
     def __init__(self,
                  iri: Union[str, URIRef] = None,
                  pid: Union[str, URIRef] = None,
                  description=None,
-                 label=None):
+                 label=None,
+                 service=None):
 
-        kb = kb_toolbox() # we use omikb v 1.0, which needs update to use multiple profiles.
         #fixme update omikb to accept a service name, so support for both omi and dome is available
         # this will be omikb versin 1.01, if no name is provided, it uses the default one, so no change is needed there.
 
         ontology_type = CUDS.FusekiEngine
-        description = description or f"Feski discomat Engine using OmiKB v1.01"
+        description = description or f"Fuseki discomat Engine using OmiKB v1.01"
 
         super().__init__(iri, pid, description, label)
 
-        #self._dataset = # need to read it from omikb.yml
+        self._kb = KbToolBox(service)   # this has a different function depending in teh engine
+        # this is a structure that has: update_iri, query_iri, etc...
+
 
         self.default_graph_id = rdf_default_graphs["FUSEKI_DEFAULT_GRAPH"] #DATASET_DEFAULT_GRAPH_ID  # URIRef("f")
         # for fuseki we have urn:x-arq:DefaultGraph and urn:x-arq:UnionGraph as union!
@@ -301,9 +307,29 @@ class FusekiEngine(Engine):
         graph_id = to_iri(self.default_graph_id)
 
         self._graphs = {graph_id: graph_id} # we do not use an instance of g as for rdflib engine, but rather the name of the graph only
+        # use query to add relations.
+
         # g.add((graph_id, RDF.type, CUDS.GraphId))
         # g.add((graph_id, RDF.type, CUDS.RootNode))
-        # use query to add relations.
+        g = graph_id
+        update_query = f"""
+        PREFIX RDF: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX MISO: <https://materials-discovery.org/miso#>
+        PREFIX MIO: <https://materials-discovery.org/mio#>
+        PREFIX CUDS: <https://materials-discovery.org/cuds#>
+        PREFIX RDFS: <http://www.w3.org/2000/01/rdf-schema#>
+
+        INSERT DATA {{
+            GRAPH {g} {{
+                {graph_id} RDF.type CUDS.GraphId .
+                {graph_id} RDF.type CUDS.RootNode .
+            }}
+        }}
+        """
+
+        s = kb.update(update_query)
+        #we could add a function: fuseki_graph which returns a method that makes any query to be one on this graph.
+
 
     def create_graph(self, graph_id):
         """
