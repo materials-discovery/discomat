@@ -9,7 +9,7 @@ from urllib.parse import urlparse, urldefrag, urlsplit
 
 from rdflib import Graph, URIRef, RDF
 
-from discomat.cuds.session_manager import SessionManager
+from discomat.session.session_manager import SessionManager
 from discomat.cuds.utils import to_iri, mnemonic_label
 from discomat.ontology.namespaces import CUDS, MIO
 from discomat.ontology.ontomap import ONTOMAP
@@ -299,7 +299,7 @@ class Cuds:
                 g.add((s, p, o))
             print(g.serialize())
 
-        res = g.query(query_lib.all_subjects())
+        res = g.query(QueryLib.all_subjects())
         subs = [str(row[0]) for row in res] if len(res) > 0 else None
         iri = subs[0] if subs else None
         print(iri)

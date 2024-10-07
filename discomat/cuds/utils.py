@@ -143,7 +143,7 @@ simple but often used sparql queries
 """
 
 
-class query_lib:
+class QueryLib:
     @staticmethod
     def all_triples(s=None, p=None, o=None):
         """
@@ -319,3 +319,27 @@ class query_lib:
             """
 
         return graph_query
+
+
+class InsertLib:
+    @staticmethod
+    def add_triple(s, p, o, g=None):
+        """
+        Return a SPARQL query to add a triple to a graph.
+
+        :param s: The subject of the triple (URI or literal).
+        :param p: The predicate of the triple (URI).
+        :param o: The object of the triple (URI or literal).
+        :param g: Optional graph URI to insert the triple into.
+        :return: A proper SPARQL query string.
+        """
+        query = f"INSERT DATA {{\n"
+
+        if g:
+            query += f"  GRAPH <{g}> {{ <{s}> <{p}> <{o}> }}\n"
+        else:
+            query += f"  <{s}> <{p}> <{o}>\n"
+
+        query += "}"
+
+        return query

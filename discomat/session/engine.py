@@ -1,6 +1,7 @@
 import uuid, datetime
 from collections import defaultdict
 from urllib.parse import urlparse, urldefrag, urlsplit
+from omikb.omikb import kb_toolbox
 
 from rdflib import Dataset, Graph, URIRef, Literal, RDF, RDFS
 from rdflib.namespace import DC, DCTERMS, PROV, XSD
@@ -10,6 +11,7 @@ from rdflib.graph import DATASET_DEFAULT_GRAPH_ID
 from discomat.ontology.namespaces import CUDS, MIO
 from discomat.cuds.cuds import Cuds, add_to_root, ProxyCuds
 from discomat.cuds.utils import to_iri
+from enum import Enum
 
 from pyvis.network import Network
 from IPython.display import display, HTML
@@ -21,6 +23,12 @@ import os, sys, warnings, pickle
 from types import MappingProxyType
 from typing import Union
 
+
+rdf_default_graphs = {
+    "FUSEKI_UNION_GRAPH": URIRef("urn:x-arq:UnionGraph"),
+    "FUSEKI_DEFAULT_GRAPH": URIRef("urn:x-arq:defaultGraph"),
+    "RDFLIB_DEFAULT_GRAPH": URIRef("urn:x-rdflib:default")
+}
 
 class Engine(Cuds):
     """
@@ -39,7 +47,7 @@ class Engine(Cuds):
 
         super().__init__(iri=iri, pid=pid, ontology_type=ontology_type, description=description, label=label)
         self._graphs = {}
-        self.default_graph_id = to_iri(CUDS.defaultGraph)  # URIRef("urn:x-rdflib:default")
+        self.default_graph_id = to_iri(CUDS.defaultGraph)  # URIRef("urn:x-rdflib:default") fixme: different name for fuseki. this should be the default graph of discomat.
 
     # def __contains__(self, triple):
     #     s, p, o = triple
@@ -151,7 +159,7 @@ class RdflibEngine(Engine):
 
         super().__init__(iri, pid, description, label)
         self._dataset = Dataset()
-        self.default_graph_id = DATASET_DEFAULT_GRAPH_ID  # URIRef("urn:x-rdflib:default")
+        self.default_graph_id = rdf_default_graphs["RDFLIB_DEFAULT_GRAPH"] #DATASET_DEFAULT_GRAPH_ID  # URIRef("urn:x-rdflib:default")
 
         g = self._dataset.graph(self.default_graph_id)
         graph_id = to_iri(self.default_graph_id)
@@ -253,8 +261,20 @@ class RdflibEngine(Engine):
 
 class FusekiEngine(Engine):
     """
-    uses some aspects of OMI ToolBox.
-    for now just a compy of rdflib engine.
+    This is Fuseki session engine.
+    this means, we are not managing an entire fuseki service, but rather
+    simply interacting with a CUDS iri stored in this graph.
+    only the direct CUDS relations are guaranteed to be in same graph as the iri.
+
+
+    Uses some aspects of OMI ToolBox.
+    While in rdflib the engine talked to a _dataset, here we need to talk to
+    a sparql endpoint, and need something to keep track of it.
+    This is done by loading a specific configuration from omikb using omikb.yml
+
+    1. get in init also the name of the configuration,
+    2. initialise connection and set it up with omikn, rgistering the relevant additional
+    metadata to the _graph, which is the directly incured relations on the iri we define teh cuds for.
     """
 
     def __init__(self,
@@ -263,19 +283,27 @@ class FusekiEngine(Engine):
                  description=None,
                  label=None):
 
+        kb = kb_toolbox() # we use omikb v 1.0, which needs update to use multiple profiles.
+        #fixme update omikb to accept a service name, so support for both omi and dome is available
+        # this will be omikb versin 1.01, if no name is provided, it uses the default one, so no change is needed there.
+
         ontology_type = CUDS.FusekiEngine
-        description = description or f"Feski Engine"
+        description = description or f"Feski discomat Engine using OmiKB v1.01"
 
         super().__init__(iri, pid, description, label)
-        self._dataset = Dataset()
-        self.default_graph_id = DATASET_DEFAULT_GRAPH_ID  # URIRef("urn:x-rdflib:default")
 
-        g = self._dataset.graph(self.default_graph_id)
+        #self._dataset = # need to read it from omikb.yml
+
+        self.default_graph_id = rdf_default_graphs["FUSEKI_DEFAULT_GRAPH"] #DATASET_DEFAULT_GRAPH_ID  # URIRef("f")
+        # for fuseki we have urn:x-arq:DefaultGraph and urn:x-arq:UnionGraph as union!
+        # modify in the future to support arbitrary def graph from omikb.yml
+        # g = self._dataset.graph(self.default_graph_id)
         graph_id = to_iri(self.default_graph_id)
 
-        self._graphs = {graph_id: g}
-        g.add((graph_id, RDF.type, CUDS.GraphId))
-        g.add((graph_id, RDF.type, CUDS.RootNode))
+        self._graphs = {graph_id: graph_id} # we do not use an instance of g as for rdflib engine, but rather the name of the graph only
+        # g.add((graph_id, RDF.type, CUDS.GraphId))
+        # g.add((graph_id, RDF.type, CUDS.RootNode))
+        # use query to add relations.
 
     def create_graph(self, graph_id):
         """
