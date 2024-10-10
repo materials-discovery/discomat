@@ -8,7 +8,7 @@ from rdflib import Dataset, Graph, URIRef, Literal, RDF, RDFS
 
 # from discomat.ontology.namespaces import CUDS, MIO
 # from discomat.cuds.cuds import Cuds
-# from discomat.cuds.engine import Engine, RdflibEngine
+# from discomat.session.engine import Engine, RdflibEngine
 
 from pyvis.network import Network
 from IPython.display import display, HTML
@@ -55,7 +55,7 @@ class SessionManager:
             print("Creating a Session Manager instance")
             cls._self = super().__new__(cls)
         else:
-            print("Returning the existing Session Manager instance")
+            print("Using the existing Session Manager instance")
         return cls._self
 
     def __init__(self):
@@ -86,7 +86,7 @@ class SessionManager:
 
     def get_session(self, uuid):
         uuid=str(uuid)
-        print(f"Fetching session with uuid: {uuid}")
+        print(f"get session: Fetching session with uuid: {uuid}")
         return self._sessions.get(uuid, False)  # return session if exits, else false.
 
     @property

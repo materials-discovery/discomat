@@ -14,7 +14,7 @@ from pyvis.network import Network
 from rdflib import Graph, URIRef, RDF, RDFS, OWL
 from discomat.cuds.utils import uuid_from_string, short_uuid
 from discomat.cuds.cuds import Cuds
-from discomat.cuds.session import Session
+from discomat.session.session import Session
 from discomat.cuds.utils import extract_fragment
 
 def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):

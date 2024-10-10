@@ -1,6 +1,4 @@
-setuptools~=65.5.0asttokens==2.4.1
 decorator==5.1.1
--e git+ssh://git@github.com/materials-discovery/discomat.git@60d037677ab40cc9229c61918d997b5f8bd25a0f#egg=discomat&subdirectory=discomat
 executing==2.0.1
 ipython==8.26.0
 isodate==0.6.1
@@ -24,3 +22,5 @@ stack-data==0.6.3
 traitlets==5.14.3
 typing_extensions==4.12.2
 wcwidth==0.2.13
+mnemonic
+git+https://github.com/H2020-OpenModel/OMIKB-toolbox.git
