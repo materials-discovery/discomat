@@ -292,13 +292,19 @@ class FusekiEngine(Engine):
         # this will be omikb versin 1.01, if no name is provided, it uses the default one, so no change is needed there.
 
         ontology_type = CUDS.FusekiEngine
-        description = description or f"Fuseki discomat Engine using OmiKB v1.01"
+        description = description or f"Fuseki DiscoMat Engine using OmiKB v1.01"
 
-        super().__init__(iri, pid, description, label)
+        super().__init__(iri, pid, description, label) # this creates the _graph of the engine.
 
         self._kb = KbToolBox(service)   # this has a different function depending in teh engine
         # this is a structure that has: update_iri, query_iri, etc...
 
+        # testing
+        print("kb.ping", self._kb.ping())
+
+        print(self._kb.is_online)
+
+        print(self._kb.stats())
 
         self.default_graph_id = rdf_default_graphs["FUSEKI_DEFAULT_GRAPH"] #DATASET_DEFAULT_GRAPH_ID  # URIRef("f")
         # for fuseki we have urn:x-arq:DefaultGraph and urn:x-arq:UnionGraph as union!
@@ -312,23 +318,34 @@ class FusekiEngine(Engine):
         # g.add((graph_id, RDF.type, CUDS.GraphId))
         # g.add((graph_id, RDF.type, CUDS.RootNode))
         g = graph_id
-        update_query = f"""
-        PREFIX RDF: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX MISO: <https://materials-discovery.org/miso#>
-        PREFIX MIO: <https://materials-discovery.org/mio#>
-        PREFIX CUDS: <https://materials-discovery.org/cuds#>
-        PREFIX RDFS: <http://www.w3.org/2000/01/rdf-schema#>
-
-        INSERT DATA {{
-            GRAPH {g} {{
-                {graph_id} RDF.type CUDS.GraphId .
-                {graph_id} RDF.type CUDS.RootNode .
-            }}
-        }}
-        """
-
-        s = kb.update(update_query)
+        # We should not do anything but open the connection and test with KBtoolBox.
+        # update_query = f"""
+        # PREFIX RDF: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        # PREFIX MISO: <https://materials-discovery.org/miso#>
+        # PREFIX MIO: <https://materials-discovery.org/mio#>
+        # PREFIX CUDS: <https://materials-discovery.org/cuds#>
+        # PREFIX RDFS: <http://www.w3.org/2000/01/rdf-schema#>
+        #
+        # INSERT DATA {{
+        #     GRAPH {g} {{
+        #         {graph_id} RDF.type CUDS.GraphId .
+        #         {graph_id} RDF.type CUDS.RootNode .
+        #     }}
+        # }}
+        # """
+        #
+        # s = self._kb.update(update_query)
         #we could add a function: fuseki_graph which returns a method that makes any query to be one on this graph.
+        # now get all graphs already in teh system, and augment the _graphs, though this is not really needed in teh future, we need to make _graphs always query, as many users could be changing the databse at the same time.
+
+        query = """
+	            SELECT DISTINCT ?g WHERE {
+	              GRAPH ?g { ?s ?p ?o }
+	            }
+	            """
+        results = self._kb.query(query)
+        graph_list = [result['g']['value'] for result in results['results']['bindings']]
+        self._graphs = {graph_id: graph_id for graph_id in graph_list}
 
 
     def create_graph(self, graph_id):
@@ -341,11 +358,25 @@ class FusekiEngine(Engine):
         if graph_id is None:
             raise ValueError("We do not accept None as a name for named graph!")
         graph_id = to_iri(graph_id)
-        g = self._dataset.graph(graph_id)
-        # Add the basic root to the graph
-        g.add((graph_id, RDF.type, CUDS.GraphId))
-        g.add((graph_id, RDF.type, CUDS.RootNode))
-        self.add(CUDS.hasGraphId, graph_id)
+        g = graph_id
+        update_query = f"""
+        PREFIX RDF: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX MISO: <https://materials-discovery.org/miso#>
+        PREFIX MIO: <https://materials-discovery.org/mio#>
+        PREFIX CUDS: <https://materials-discovery.org/cuds#>
+        PREFIX RDFS: <http://www.w3.org/2000/01/rdf-schema#>
+
+        INSERT DATA {{
+            GRAPH {g} {{
+                {graph_id} RDF.type CUDS.GraphId .
+                {graph_id} RDF.type CUDS.RootNode .
+                {graph_id} CUDS.hasGraphId, graph_id .
+                
+            }}
+        }}
+        """
+
+        s = self._kb.update(update_query)
         self._graphs[graph_id] = g
         return graph_id
 
@@ -355,11 +386,13 @@ class FusekiEngine(Engine):
             g = self._graphs[graph_id]
             from discomat.cuds.utils import prd
             prd(f"in remove graph deep inside the engine: {g}, {graph_id}")
-            self._dataset.remove_graph(g)
-            del self._graphs[graph_id]
-            self.remove(CUDS.hasGraphId, graph_id)
+            query = f"""
+                DROP GRAPH <{graph_id}>
+                """
+            self._kb.update(query)
+
         except KeyError:
-            raise ValueError(f"Graph '{graph_id}' does not exist in this engine.")
+            raise ValueError(f"Graph '{graph_id}' does not exist in this engine or could not be deletet (dropped).")
 
         # todo:add log and provenance
 
@@ -370,40 +403,126 @@ class FusekiEngine(Engine):
         give back a read only proxy of the dict, so the user cannot change the graphs directly,
         only the engine can manage its own graphs.
         """
+        query = """
+        SELECT DISTINCT ?g WHERE {
+          GRAPH ?g { ?s ?p ?o }
+        }
+        """
+        results=self._kb.update(query)
+        graph_list = [result['g']['value'] for result in results['results']['bindings']]
+        self._graphs = {graph_id: graph_id for graph_id in graph_list}
+
         return MappingProxyType(self._graphs)  # Return a read-only proxy to the dictionary
 
     def __iter__(self):
         return iter(self._graphs.values())
 
-    def quads(self, s=None, p=None, o=None, g=None,/):
-        return self._dataset.quads((s, p, o, g))
+    def quads(self, s=None, p=None, o=None, g=None, /):
+        # we construct the query based on what is not given,
+        #it could be done more smartly but now I am focused on it working.
+
+        query = "SELECT ?g ?s ?p ?o WHERE {"
+
+        # If the g is not None, include the specific graph, otherwise its a query variable.
+        if g is not None:
+            query += f" GRAPH <{g}> {{"
+        else:
+            query += " GRAPH ?g {"
+
+        # same for the triples
+        query += f" {f'<{s}>' if s is not None else '?s'}"
+        query += f" {f'<{p}>' if p is not None else '?p'}"
+        query += f" {f'<{o}>' if o is not None else '?o'} ."
+
+        # close brackets in query # see also utils/libs...
+        query += " }"
+        if g is not None:
+         query += " }" #fixme add a check of we had one or two brackets.
+
+        results = self._kb.query(query)
+
+        # Iterate adn yield iterator
+        for result in results['results']['bindings']:
+            g = g if g is not None else result['g']['value']
+            s = s if s is not None else result['s']['value']
+            p = p if p is not None else result['p']['value']
+            o = o if o is not None else result['o']['value']
+
+            yield g, s, p, o
 
     def triples(self, s=None, p=None, o=None,/):
-        return self._dataset.triples((s, p, o))
+        for _, s, p, o in self.quads(s=s, p=p, o=o, g=None):
+            yield s, p, o
 
-    def query(self, query):
-        return self._dataset.query(query)
+    def query(self, query):  # need to make this aware of prefixes... simply by defining them in some method and using them in each query/update etc. could be part of kb.
+        return self._kb.query(query)
 
     # @add_to_root
     def add_triple(self, s=None, p=None, o=None):
-        self._dataset.add((s, p, o))
+        query = f"""
+            INSERT DATA {{
+              <{s}> <{p}> {self.to_sparql_query(o)} .
+            }}
+            """
+        self._kb.update(query)
         # for i, j, k in self._dataset.triples((None, None, None)):
         #     print(i, j, k)
 
     # @add_to_root
     def add_quad(self, s=None, p=None, o=None, g_id=None):
-        return self._dataset.add((s, p, o, g_id))
+        query = f"""
+        INSERT DATA {{
+          GRAPH <{g_id}> {{
+            <{s}> <{p}> {self.to_sparql_query(o)} .
+          }}
+        }}
+        """
+        self._kb.update(query)
+
 
     def remove_triple(self, s=None, p=None, o=None):
-        return self._dataset.remove((s, p, o))
+        query = f"""
+        DELETE DATA {{
+          <{s}> <{p}> {self.to_sparql_query(o)} .
+        }}
+        """
+        self._kb.update(query)
 
     def remove_quad(self, s=None, p=None, o=None, g_id=None):
-        return self._dataset.remove((s, p, o, g_id))
+        query = f"""
+        DELETE DATA {{
+          GRAPH <{g_id}> {{
+            <{s}> <{p}> {self.to_sparql_query(o)} .
+          }}
+        }}
+        """
+
+        self._kb.update(query)
+
 
     def get_cuds(self, iri):
-        pass
+        # This does not check if iri is a CUDS, we do not need this now, but in the future we may add a check
+        # and augment the entity with the CUDS metadata (see ONTOMAP)
+        query = f"""
+         SELECT ?p ?o WHERE {{
+           <{iri}> ?p ?o .
+         }}
+         """
+        results=self._kb.update(query)
+        #now we need to create a CUDS and return it, however, is it a proxy cuds or a real cuds?
+        c=Cuds()
+        # loop over the po and check what is in ONTOMAP, add it to, then add the rest, in effect we
+        # do c.add(p, o) for all po pairs, but we first check the ontomap, so that we can add them as default if not defined.
+        # for now, we add all:
+        for result in results['results']['bindings']:
+            p = result['p']['value']
+            o = result['o']['value']
+            c.add(p, o)
+
+        return c
 
     def add_cuds(self, cuds):
+        # loop over the cuds, and for each p and o add them
         pass
 
     def search_cuds(self, cuds):

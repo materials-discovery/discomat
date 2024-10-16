@@ -81,6 +81,9 @@ def add_to_root(func):
 
 class Cuds:
     """
+
+    CUDS the Common Universal Data Structures implementation in DiscoMat.
+
     Everything, when possible, is a CUDS (Common Universal data Structure)!
     CUDS has built in support for provenance and persistent identifiers (PID) though we are not
     doing this with a "formal external authority yet".
@@ -112,31 +115,18 @@ class Cuds:
 
         A Cuds will have an iri, which is unique for this instance of the CUDS.
 
-        Parameters
-        ----------
-        iri
-        pid
-        ontology_type
-        description
-        label
-
-        Cuds has a modified __setattr_ which uses an rdf graph to store the properties
-        of the CUDS, these are not limited to data properties.
-        so doing
+        Cuds has a modified __setattr_ which uses a rdf graph to store the properties
+        of the CUDS, these are not limited to data properties. So doing:
 
         c=Cuds()
         c.foo, and if ONTOMAP[foo]=bar, then this translates to c._g.add(c.iri, foo, bar)
         otherwise it is a normal attribute (if already defined). 
         
-        this is a step towards having all ontology classes represented on the fly as classes with out the 
+        This is a step towards having an all ontology classes represented on the fly as classes without the
         need to load them in.
         """
-        # this is useful for errors, should actually re-evaluate if it should be used.
-
-        # self.path = sys.modules[__name__].__file__ if __name__ == "__main__" else __file__
 
         self._graph = Graph()  # A CUDS is a little Graph Data Structure. This is the container concept.
-        # fixme change _graph to _data or _self_graph... as this is the data or knowledge this CUDS has
 
         _uuid = uuid.uuid4()
         self.iri = to_iri(iri) if iri else URIRef(f"https://www.ddmd.io/mio#cuds_iri_{_uuid}")
@@ -145,7 +135,6 @@ class Cuds:
 
         self.uuid = _uuid
         self.rdf_iri = self.iri  # fixme this is probably not needed. can be factored out
-        # URIRef(self.iri)  # make sure it is a URIRef
 
         if description is not None and len(description) > 500:
             raise ValueError("in {self.path}: The description cannot exceed 500 characters")
@@ -173,12 +162,11 @@ class Cuds:
             super().__setattr__(key, value)
             return
         elif key in ONTOMAP:
-            if key != 'ontology_type':  # only one value is allowed, exceot the type.
+            if key != 'ontology_type':  # only one value is allowed, except the type.
                 self._graph.remove((to_iri(self.iri), to_iri(ONTOMAP[key]), None))
             self._graph.add((to_iri(self.iri), to_iri(ONTOMAP[key]), to_iri(value)))
         else:
-            super().__setattr__(key, value)  # fixme there should be no "normal attributes" apaer from iri,
-            # so this should be gone.
+            super().__setattr__(key, value)  # fixme there should be no "normal attributes" apart from iri
 
     def __getattr__(self, key):
         if key in ONTOMAP:
@@ -213,9 +201,6 @@ class Cuds:
 
     def serialize(self):
         # serialise the CUDS and return a string (as ttl).
-        # first, make sure all attributes are in the _graph.
-        # different that ptint_graph in that is supports iri rint too.
-
         return self._graph.serialize(format="turtle")
 
     def __repr__(self):
@@ -277,46 +262,32 @@ class Cuds:
         # Delegate the iteration to rdflib Graph
         return iter(self._graph)
 
-    # def __getattr__(self, name):
-    #     print(f"Delegating atttribute: {name}")
-    #     # Delegate attribute access to self._graph
-    #     # Avoid infinite recursion by checking if the attribute is _graph
-    #     if name in ['_graph', '__deepcopy__']:
-    #         raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{name}'")
-    #     return getattr(self._graph, name)
     @property
     def graph(self):
         return self._graph
 
-    def create_copy(self):
-        """    if serialised_cuds:  # fix me, should be
-            g = Graph()
-            g.parse(data=serialised_cuds, format='turtle')
-            # get the iri
-        elif from_cuds:
-            g = Graph()
-            for s, p, o in from_cuds:
-                g.add((s, p, o))
-            print(g.serialize())
-
-        res = g.query(QueryLib.all_subjects())
-        subs = [str(row[0]) for row in res] if len(res) > 0 else None
-        iri = subs[0] if subs else None
-        print(iri)
-        """
-        return NotImplemented
-
-
 class ProxyCuds():  # should be inheriting from ABC_CUDS rather form CUDS (so is CUDS)
     """
+    A CUDS proxy, a way to handle a CUDS which is stored in a remote session and hence remote engine.
+    To create it, we need a real CUDS, i.e., the assumption is to convert a real CUDS to a proxy one.
+
+    if the CUDS is already in a remote session, but not in the local session, we need to use the session.get_cuds with
+    the iri to get it as a proxy.
+
+    c=Cuds()
+    c_proxy=ProxyCuds(c)
+
+    If it is in the session, and we need to create a proxy to it
+    c_proxy = session.get_cuds(iri)
+
+    i.e., if the cuds is in a remote session, get_cuds simply gets a proxy to it.
     """
 
     def __init__(self,
                  cuds: Cuds):
 
         ontology_type = CUDS.CudsProxy
-
-        # note we cannot use super, as the self will still be an instance of this class, i.e., proxy one.
+        # note we cannot use super, as the self will still be an instance of this class, i.e., a proxy one.
         # and this will lead to recursion.
         # super().__init__(ontology_type=ontology_type, iri=cuds.iri, pid=cuds.pid, description=cuds.description,
         #                  label=cuds.label)
@@ -325,24 +296,20 @@ class ProxyCuds():  # should be inheriting from ABC_CUDS rather form CUDS (so is
         object.__setattr__(self, '_graph', Graph())
 
         for _ in cuds._graph:
-            self._graph.add(_)
+            self._graph.add(_) #fixme delete this.
 
         sm = SessionManager()
         s = sm.get_session(self.session_id)
         object.__setattr__(self, 'session', s)
         if isinstance(s, bool):
-            print(f"cannot find sessiona - fixme: mae proxy cuds fail!") # fixme: proxy cuds should fail if not session defined.
+            print(f"cannot find session - fixme: critical proxy cuds fail!") # fixme: proxy cuds should fail if not session defined.
         else:
-            print(f"ProxyCuds: Creating a CUDS proxy with session  {s.session_id} \ n Note: graph support is WIP")
+            print(f"ProxyCuds: Creating a CUDS proxy in the session  {s.session_id} \ n Note: graph support is WIP")
 
     def __setattr__(self, key, value):
         self.session.proxy_handler(self.iri, "setattr", key=key, value=value)
 
     def __getattr__(self, key):
-        # stack = inspect.stack()
-        # calling_function = stack[1].function
-        # print(f"__getattr__ called for attribute: '{key}', called from method: '{calling_function}'")
-        #
         return self.session.proxy_handler(self.iri, "getattr", key=key)
 
     def properties(self):
@@ -357,7 +324,7 @@ class ProxyCuds():  # should be inheriting from ABC_CUDS rather form CUDS (so is
     def serialize(self):
         # serialise the CUDS and return a string (as ttl).
         # a CUDS has only first neighbor relations, i.e, one edge only (depth =1)
-        return self.session.proxy_handler(self.iri, "serialise")
+        return self.session.proxy_handler(self.iri, "serialize")
 
     # def __repr__(self):
     #     # Pretty print format for the instance
@@ -371,7 +338,7 @@ class ProxyCuds():  # should be inheriting from ABC_CUDS rather form CUDS (so is
     #     return "\n".join(output)
 
     def add(self, p, o):
-        self.session.proxy_handler(self.iri, "add", p=p, o=o)
+        self.session.proxy_handler(self.iri, "add", p=p, o=o) # we could have done proxy_handler.add too, but we do this way as it may be useful for even more network support.
 
     def remove(self, p, o):
         self.session.proxy_handler(self.iri, "remove", p, o)

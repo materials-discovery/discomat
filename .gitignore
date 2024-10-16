@@ -15,3 +15,6 @@ external/
 pvm/
 *.egg-info
 package.json
+.venv/
+*.js
+*.css

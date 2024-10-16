@@ -213,29 +213,28 @@ class Session(Cuds):
         could be same as get_cuds but with optional radius, see ontology manager etc for implementations.
 
         """
-
-    def proxy_cuds(self, cuds_iri, *args, **kwargs): #fixme: delete this function, not used.
-        """
-
-        Parameters
-        ----------
-        cuds_iri
-        args
-        kwargs
-        """
-        print(f"calling proxy cuds with {args} and {kwargs}")
+        pass
 
     def proxy_handler(self, iri, ops, **kwargs):
+        """
+        the idea is that at some point the proxy handler will live on
+        a different resource on teh network.
+        :param iri:
+        :param ops:
+        :param kwargs:
+        :return:
+        """
         if iri is None:
             raise ValueError("iri in proxy handler CANNOT be not be None")
         run = {   #move to __init__ so we do not start it again, in fact can be method variable.
             'setattr': self.proxy_setattr,
             'getattr': self.proxy_getattr,
             'properties': self.proxy_properties,
-            'serialise': self.proxy_serialize,
+            'serialize': self.proxy_serialize,
             'add':self.proxy_add,
             'remove':self.proxy_remove,
-            'iter': self.proxy_iter
+            'iter': self.proxy_iter,
+            'print_graph': self.proxy_print_graph,
         }
 
         return run[ops](iri=iri, **kwargs)
@@ -287,14 +286,18 @@ class Session(Cuds):
         print(f"serialize proxy cuds")
         pass
 
+    def  proxy_print_graph(self):
+        print(f"print proxy graph")
+        pass
 
     def proxy_add(self, *, iri, **kwargs):
-        #fixme find the graph in which the cuds is and add as 4th arg.
+        #fixme find the graph in which the cuds is in and add as 4th arg.?
+        # this does not add really a cuds, but creates the relation to the iri. so add is add_relation.
         p = kwargs['p'] or None
         o = kwargs['o'] or None
         if isinstance(o, Cuds):
             # for sc, pc, oc in o:
-            #     self.engine.add_triple(sc,pc,oc)
+            #     self.engine.add_triple(sc,pc,oc)  # we do not do this yet
             o=o.iri
         self.engine.add_triple(iri, p, o)
 

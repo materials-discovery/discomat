@@ -61,3 +61,16 @@ graph LR
     add[Square Rect] -- call session --> proxy_handler((Circle))
     proxy_handler --engine --> add_triple{Rhombus}
 ```
+
+
+# Prefixes and common name spaces
+```rdf
+DDMD: https://www.ddmd.io/
+MIO: https://www.ddmd.io/mio#cuds_iri_
+
+ PREFIX RDF: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX MISO: <https://materials-discovery.org/miso#>
+        PREFIX MIO: <https://materials-discovery.org/mio#>
+        PREFIX CUDS: <https://materials-discovery.org/cuds#>
+        PREFIX RDFS: <http://www.w3.org/2000/01/rdf-schema#>
+```

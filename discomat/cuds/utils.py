@@ -27,6 +27,22 @@ def to_iri(e: Union[str, URIRef]):
     return e
 
 
+from rdflib import URIRef
+
+def to_sparql_query(o):
+    """
+    If the object is an IRI (including URIRef), it is enclosed in angle brackets;
+    if it is a literal, it is enclosed in double quotes.
+
+    o: Object value, either an IRI (URIRef or string) or a literal.
+    """
+    if isinstance(o, URIRef):  #fixme, check if rdflib literal as well.
+        return f"<{str(o)}>"
+    elif isinstance(o, str) and (o.startswith("http://") or o.startswith("https://")):
+        return f"<{o}>"
+    else:
+        return f'"{o}"'  # as a literal
+
 def uuid_from_string(s: str = None, length: int = None):
     """
 
@@ -321,7 +337,7 @@ class QueryLib:
         return graph_query
 
 
-class InsertLib:
+class InsertLib:    # change to updateLib
     @staticmethod
     def add_triple_(s, p, o, g=None):
         """
