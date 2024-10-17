@@ -5,11 +5,11 @@ from urllib.parse import urlparse, urldefrag, urlsplit
 from rdflib import Dataset, Graph, URIRef, Literal, RDF, RDFS
 from rdflib.namespace import DC, DCTERMS, PROV, XSD
 from rdflib import Namespace
-from discomat.cuds.utils import mnemonic_label, to_iri, arg_to_iri
+from discomat.cuds.utils import mnemonic_label, to_iri, arg_to_iri,  QueryLib
 from discomat.ontology.namespaces import CUDS, MIO
 from discomat.cuds.cuds import Cuds, ProxyCuds
-from discomat.cuds.session_manager import SessionManager
-from discomat.cuds.engine import Engine, RdflibEngine
+from discomat.session.session_manager import SessionManager
+from discomat.session.engine import Engine, RdflibEngine
 from pyvis.network import Network
 from IPython.display import display, HTML
 
@@ -19,6 +19,8 @@ import os, sys, warnings, pickle
 
 from types import MappingProxyType
 from typing import Union
+
+from discomat.ontology.ontomap import ONTOMAP
 
 
 class Session(Cuds):
@@ -182,8 +184,8 @@ class Session(Cuds):
         #
         cuds.session_id = self.session_id
         self.engine.add_cuds(cuds, g_id)
-
-        return ProxyCuds(cuds)
+        c=ProxyCuds(cuds)
+        return c
 
     def get_cuds(self, iri):
         """
@@ -211,40 +213,105 @@ class Session(Cuds):
         could be same as get_cuds but with optional radius, see ontology manager etc for implementations.
 
         """
+        pass
 
-    def proxy_cuds(self, cuds_iri, *args, **kwargs):
+    def proxy_handler(self, iri, ops, **kwargs):
         """
-
-        Parameters
-        ----------
-        cuds_iri
-        args
-        kwargs
+        the idea is that at some point the proxy handler will live on
+        a different resource on teh network.
+        :param iri:
+        :param ops:
+        :param kwargs:
+        :return:
         """
-        print(f"calling proxy cuds with {args} and {kwargs}")
-
-    def proxy_handler(self, *, iri, ops, **kwargs):
         if iri is None:
             raise ValueError("iri in proxy handler CANNOT be not be None")
-        run = {
+        run = {   #move to __init__ so we do not start it again, in fact can be method variable.
             'setattr': self.proxy_setattr,
             'getattr': self.proxy_getattr,
             'properties': self.proxy_properties,
-            'serialise': self.proxy_serialise,
+            'serialize': self.proxy_serialize,
             'add':self.proxy_add,
-            'iter': self.proxy_iter
+            'remove':self.proxy_remove,
+            'iter': self.proxy_iter,
+            'print_graph': self.proxy_print_graph,
         }
 
+        return run[ops](iri=iri, **kwargs)
+
     def proxy_setattr(self, *, iri, **kwargs):
-        print(f"setting attribute of proxy cuds")
         """
         basically use the query or update of the engine (sparql really) to do the changes."""
-        pass
+
+        k=kwargs['key']
+        v=kwargs['value']
+        if k in ONTOMAP:
+            self.engine.remove_triple(iri, to_iri(k), to_iri(v))
+            self.engine.add_triple(iri, to_iri(k), to_iri(v))
+        else:
+            raise KeyError(f"key {k} is not supported in core CUDS ontology")
 
     def proxy_getattr(self, *, iri, **kwargs):
-        print(f"getting attribute of proxy cuds")
-        pass
+        k = kwargs['key']
+        if k in ONTOMAP:
+            for s, p, o in self.engine.triples(iri, to_iri(k), None):
+                v=o
+        else:
+            raise KeyError(f"key {k} is not supported in core CUDS ontology")
+        return v
 
     def proxy_properties(self, *, iri, **kwargs):
-        print(f"properties of proxy cuds")
+        # q=QueryLib()
+        # for gid in self.graphs():
+        #     g=self._session_graphs[gid]
+        #     print(g)
+        # print(f"properties of proxy cuds")
+        # pass
+        # now for each cuds, get all its properties
+        # starting from the first one
+        sub = iri
+        properties = defaultdict(list)
+        for g in self.list_graphs():
+            query = QueryLib.all_triples(sub, None, None)  # should give the same result as above.
+            query = QueryLib.augment_graph_query(query, g)  # augment it with a graph
+            res1 = self.query(query)
+            for r in res1:
+                p=r['p']
+                o=r['o']
+                print(sub, p, o)
+                namespace, fragment = self.split_uri2(p)
+                properties[namespace].append((fragment, o))
+
+    def proxy_serialize(self, *, iri, **kwargs):
+        print(f"serialize proxy cuds")
         pass
+
+    def  proxy_print_graph(self):
+        print(f"print proxy graph")
+        pass
+
+    def proxy_add(self, *, iri, **kwargs):
+        #fixme find the graph in which the cuds is in and add as 4th arg.?
+        # this does not add really a cuds, but creates the relation to the iri. so add is add_relation.
+        p = kwargs['p'] or None
+        o = kwargs['o'] or None
+        if isinstance(o, Cuds):
+            # for sc, pc, oc in o:
+            #     self.engine.add_triple(sc,pc,oc)  # we do not do this yet
+            o=o.iri
+        self.engine.add_triple(iri, p, o)
+
+    def proxy_remove(self, *, iri, **kwargs):
+        # fixme find the graph in which the cuds is and add as 4th arg.
+        p = kwargs['p'] or None
+        o = kwargs['o'] or None
+        if isinstance(o, Cuds):
+            # for sc, pc, oc in o:
+            #     self.engine.add_triple(sc,pc,oc)
+            o = o.iri
+        self.engine.remove_triple(iri, p, o)
+
+    def proxy_iter(self, *, iri, **kwargs):
+        print(f"iter proxy cuds")
+        pass
+

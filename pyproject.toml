@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "discomat"  # The Discovery of Materials Package
+version = "0.2.1"    #  Current version 
+description = "The Materials Discovery Package replacing SimPhoNy 4.0, (C) Adham Hashibon"
+authors = [{ name = "The Materials Discovery Group at UCL", email = "a.hashibon@ucl.ac.uk" }]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
+
+[project.urls]
+homepage = "https://materials-discovery.org/discomat"
+repository = "https://github.com/materials-discovery/discomat"
+
+[tool.setuptools.packages.find]
+where = ["./"]

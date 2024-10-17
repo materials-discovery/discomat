@@ -27,6 +27,22 @@ def to_iri(e: Union[str, URIRef]):
     return e
 
 
+from rdflib import URIRef
+
+def to_sparql_query(o):
+    """
+    If the object is an IRI (including URIRef), it is enclosed in angle brackets;
+    if it is a literal, it is enclosed in double quotes.
+
+    o: Object value, either an IRI (URIRef or string) or a literal.
+    """
+    if isinstance(o, URIRef):  #fixme, check if rdflib literal as well.
+        return f"<{str(o)}>"
+    elif isinstance(o, str) and (o.startswith("http://") or o.startswith("https://")):
+        return f"<{o}>"
+    else:
+        return f'"{o}"'  # as a literal
+
 def uuid_from_string(s: str = None, length: int = None):
     """
 
@@ -123,6 +139,7 @@ def prd(s):
     print(s)
     print(dashes)
 
+
 def split_uri(uri):  # fixme move to utils
     # Split the URI into namespace and fragment
     parsed_uri = urlparse(uri)
@@ -142,15 +159,25 @@ simple but often used sparql queries
 """
 
 
-
-
-class query_lib:
+class QueryLib:
     @staticmethod
-    def all_triples():
-        return """
-        SELECT ?s ?p ?o WHERE {
-          ?s ?p ?o .
-        }"""
+    def all_triples(s=None, p=None, o=None):
+        """
+
+        Returns
+        -------
+        return all triples in the default graph.
+        <{s}>
+        """
+        s = f"<{s}>" if s else f"?s"
+        p = f"<{p}>" if p else f"?p"
+        o = f"<{o}>" if o else f"?o"
+
+        return f"""
+        SELECT ?s ?p ?o WHERE {{
+          {s} {p} {o} .
+        }}
+        """
 
     @staticmethod
     def all_subjects():
@@ -248,11 +275,11 @@ class query_lib:
         return """
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-            SELECT DISTINCT ?depth ?object WHERE {{
+            SELECT DISTINCT ?depth ?o WHERE {{
               VALUES ?subject {{ <{subject}> }}
 
               # Traverse up to depth n, capturing all intermediate objects
-              ?subject (rdf:Property|!rdf:Property){{1,{depth}}} ?object .
+              ?subject (rdf:Property|!rdf:Property){{1,{depth}}} ?o .
 
               # Calculate depth by counting the properties traversed (optional)
               BIND((strlen(str(?propertyPath)) - strlen(replace(str(?propertyPath), "/", ""))) AS ?depth)
@@ -269,18 +296,172 @@ class query_lib:
         return f"""
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-            SELECT DISTINCT ?object WHERE {{
-            VALUES ?subject {{ <{s}> }}
-            ?subject ({property_path}) ?object .
+            SELECT DISTINCT ?o WHERE {{
+            VALUES ?s {{ <{s}> }}
+            ?s ({property_path}) ?o .
             }}
             """
 
     @staticmethod
-    def subject_graph(self, s):
+    def subject_graph(s):
         return f"""
-        SELECT ?predicate ?object
+        SELECT ?p ?o
         WHERE {{
-            <{s}> ?predicate ?object .
+            <{s}> ?p ?o .
         }}
         """
+
+    @staticmethod
+    def augment_graph_query(query, graph_id):
+        """
+        tke a query and a named grap iri and retuen the query for the graph.
+        useful when looping over graphs inclduing the default one and performing the same operation.
+        Parameters
+        ----------
+        query
+        graph
+
+        Returns
+        -------
+
+        """
+        graph_query = f"""
+            SELECT ?s ?p ?o
+            WHERE {{
+              GRAPH <{graph_id}> {{
+                {query}
+              }}
+            }}
+            """
+
+        return graph_query
+
+
+class InsertLib:    # change to updateLib
+    @staticmethod
+    def add_triple_(s, p, o, g=None):
+        """
+        Return a SPARQL query to add a triple to a graph.
+
+        :param s: The subject of the triple (URI or literal).
+        :param p: The predicate of the triple (URI).
+        :param o: The object of the triple (URI or literal).
+        :param g: Optional graph URI to insert the triple into.
+        :return: A proper SPARQL query string.
+        """
+        query = f"INSERT DATA {{\n"
+
+        if g:
+            query += f"  GRAPH <{g}> {{ <{s}> <{p}> <{o}> }}\n"
+        else:
+            query += f"  <{s}> <{p}> <{o}>\n"
+
+        query += "}"
+
+        return query
+
+    @staticmethod
+    def add_triple (s, p, o, graph_id=None, prefixes=None):
+        """
+        Build an INSERT DATA query, with optional graph (as iri) and prefixes (as dict).
+        :param s: The subject of the triple
+        :param p: The predicate of the triple
+        :param o: The object of the triple
+        :param graph_id: Optional, the graph iri where the data will be inserted
+        :param prefixes: Optional, a dictionary of prefixes {short_name: full_URI}
+        :return: The full SPARQL query as a string
+        todo: we can add multiple inset liines (s p o) in one go, we can enhance so that the input is a list of s,o,p rather than just one.
+        this will enhance performance.
+        """
+
+        prefix_section = ""
+
+        # If prefixes are provided, expand them into the query
+        if prefixes:
+            for short_name, full_uri in prefixes.items():
+                prefix_section += f"PREFIX {short_name}: <{full_uri}>\n"
+
+        # query with  GRAPH section
+        if graph_id:
+            update_query = f"""
+            {prefix_section}
+            INSERT DATA {{
+                GRAPH {graph_id} {{
+                    {s} {p} {o} .  
+                }}
+            }}
+            """
+        else:
+            update_query = f"""
+            {prefix_section}
+            INSERT DATA {{
+                {s} {p} {o} .
+            }}
+            """
+
+        return update_query
+
+
+    @staticmethod
+    def del_triple (subj=None, pred=None, obj=None, graph_id=None, prefixes=None):
+            """
+            Build a DELETE query to delete triples based on the provided parameters. If s, p, and o are specified,
+            delete all, if one is omitted, delete all triplets having this specific value.
+            E.g., del_triple(pred="some pred") will delete all triplets having this predicate,
+            regardless of teh subject and object.
+            If we leave all empty, it will delete everything in the specific graph, or the default graph.
+
+            :param subj: Optional, subject
+            :param pred: Optional, predicate
+            :param obj: Optional, object
+            :param graph_id: Optional, the graph where the data will be deleted
+            :param prefixes: Optional, a dictionary of prefixes {short_name: full_URI}
+            :return: The full SPARQL DELETE query as a string
+            """
+
+            # construct the prefix
+            prefix_part = ""
+            if prefixes:
+                for short_name, full_uri in prefixes.items():
+                    prefix_part += f"PREFIX {short_name}: <{full_uri}>\n"
+
+            # The WHERE part
+            conditions = []
+
+            if subj:
+                conditions.append(f"{subj}")    # use the given subj
+            else:
+                conditions.append("?s")
+
+            if pred:
+                conditions.append(f"{pred}")
+            else:
+                conditions.append("?p")
+
+            if obj:
+                conditions.append(f"{obj}")
+            else:
+                conditions.append("?o")
+
+            triples = " ".join(conditions) + " ."
+
+            # Build the query with or without the GRAPH section
+            if graph_id:
+                query = f"""
+                {prefix_part}
+                DELETE WHERE {{
+                    GRAPH {graph_id} {{
+                        {triples}
+                    }}
+                }}
+                """
+            else:
+                query = f"""
+                {prefix_part}
+                DELETE WHERE {{
+                    {triples}
+                }}
+                """
+
+            return query
 
