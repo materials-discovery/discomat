@@ -85,7 +85,7 @@ class Session(Cuds):
         #         del self._session_graphs[graph_id]
         #     self._graph.remove((to_iri(self.iri), to_iri(CUDS.hasGraph), to_iri(graph_id)))
         # except KeyError:
-            raise ValueError(f"Graph '{graph_id}' is not found in the session {e}")
+        #     raise ValueError(f"Graph '{graph_id}' is not found in the session {e}")
 
         except RuntimeError as e:
             raise ValueError(f"Graph '{graph_id}' does not exist in this engine. {e}")
