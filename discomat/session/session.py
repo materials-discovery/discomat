@@ -77,17 +77,14 @@ class Session(Cuds):
             print(f"Engine could not create graph {graph_id}: returned {e} as error")
             return None
 
-    # conflicts with cuds.graph method
-    # def graph(self, graph_id):
-    #    return self.create_graph(graph_id)
-
     def remove_graph(self, graph_id):
         try:
             self.engine.remove_graph(graph_id)
-            if graph_id in self._session_graphs:
-                del self._session_graphs[graph_id]
-            self._graph.remove((to_iri(self.iri), to_iri(CUDS.hasGraph), to_iri(graph_id)))
-        except KeyError:
+        #  fixme remove this
+        #   if graph_id in self._session_graphs:
+        #         del self._session_graphs[graph_id]
+        #     self._graph.remove((to_iri(self.iri), to_iri(CUDS.hasGraph), to_iri(graph_id)))
+        # except KeyError:
             raise ValueError(f"Graph '{graph_id}' is not found in the session {e}")
 
         except RuntimeError as e:
