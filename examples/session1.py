@@ -8,9 +8,12 @@ from rdflib import URIRef, Graph
 from rdflib.namespace import RDF, RDFS
 import copy
 from discomat.ontology.namespaces import CUDS, MISO, MIO
+from discomat.session.engine import FusekiEngine
+
+engine = FusekiEngine(description="test engine")
 
 # test session
-session = Session()
+session = Session(engine=engine)
 gvis(session, "cuds_session.html")
 print(f"This session has an engine of type: {type(session.engine)}")
 gvis(session.engine, "session_engine.html")

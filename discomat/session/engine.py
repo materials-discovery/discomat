@@ -279,6 +279,9 @@ class FusekiEngine(Engine):
      service: the service name as in omikb.yml, of none, then use the default one (usually kb needed for oopenmode,
      hence it is better to define one).
 
+     Note that it can be that the user session is using a remote session which in turn uses a remote engine, hence anotehr reason for teh proxy handler implementation with strings.
+
+
     """
 
     def __init__(self,
@@ -288,15 +291,17 @@ class FusekiEngine(Engine):
                  label=None,
                  service=None):
 
-        #fixme update omikb to accept a service name, so support for both omi and dome is available
-        # this will be omikb versin 1.01, if no name is provided, it uses the default one, so no change is needed there.
+        #  fixme update omikb to accept a service name, so support for both omi and
+        #  dome is available
+        #  this will be omikb versin 1.01, if no name is provided, it uses the default one,
+        #  so no change is needed there.
 
         ontology_type = CUDS.FusekiEngine
         description = description or f"Fuseki DiscoMat Engine using OmiKB v1.01"
 
         super().__init__(iri, pid, description, label) # this creates the _graph of the engine.
 
-        self._kb = KbToolBox(service)   # this has a different function depending in teh engine
+        self._kb = KbToolBox(service)   # this has a different function depending in the engine
         # this is a structure that has: update_iri, query_iri, etc...
 
         # testing
@@ -344,9 +349,26 @@ class FusekiEngine(Engine):
 	            }
 	            """
         results = self._kb.query(query)
-        graph_list = [result['g']['value'] for result in results['results']['bindings']]
-        self._graphs = {graph_id: graph_id for graph_id in graph_list}
+        print("results.josn()", results.json())
+        print("status code:", results.status_code)
 
+        """
+        the results are of the form (example):
+        
+        results.josn(): 
+        {'head': {'vars': ['g']}, 'results': {'bindings': [{'g': {'type': 'uri', 'value': 'http://dome40.io/dataset/data/platforms_dome_core_reasoned_Hermit'}}, {'g': {'type': 'uri', 'value': 'http://dome40.io/dataset/data/dome4.0_core_dataset_trial0_reasoned'}}]}}
+
+        so essentially we should later enhance the loop to check the type of the graph. 
+        """
+
+
+        #graph_list = [result['g']['value'] for result in results['results']['bindings']]
+        test=results.json()
+        graph_list = [result['g']['value'] for result in test['results']['bindings']]
+        print("Initialising the Fuseki Engine\n Found the following number of existing graphs", len(graph_list))
+        print("The graphs found are: ", graph_list)
+        self._graphs = {graph_id: graph_id for graph_id in graph_list}
+        print("Updated the session engine with the available graphs\n")
 
     def create_graph(self, graph_id):
         """

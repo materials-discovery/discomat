@@ -41,13 +41,14 @@ class Session(Cuds):
         super().__init__(ontology_type=ontology_type, iri=iri, pid=pid, description=description, label=label)
 
         self.remove(CUDS.Session, self.session)  # a session has no session
-        self.engine = engine or RdflibEngine()  # this is teh actual engine
+        self.engine = engine or RdflibEngine()  # this is teh actual engine, by default uses local rdflib
         self.engine_iri = self.engine.iri
 
         # new relationship, should be added and tracked. fixme: use the __set and __get attr methods to automanage.
         self.session_id = self.uuid
 
         self.is_open = False  # this is a helper, we do not need it in the ontology.
+        # fixme: remove, not needed any more.
 
         # we need to define the graphs managed by the session, these are managed by the engire.
         # dict of all graphs.
@@ -69,7 +70,7 @@ class Session(Cuds):
         try:
             engine_graph_id = self.engine.create_graph(graph_id)
             self._session_graphs[graph_id] = engine_graph_id
-            self.add(CUDS.hasGraphId, engine_graph_id)
+            #self.add(CUDS.hasGraphId, engine_graph_id) #fixme, do we need both _session_graphs, and the hasGraphId relatin?
             return engine_graph_id
 
         except ValueError as e:
@@ -92,10 +93,10 @@ class Session(Cuds):
         except RuntimeError as e:
             raise ValueError(f"Graph '{graph_id}' does not exist in this engine. {e}")
 
-    def __iter__(self):
+    def __iter__(self):  # fixme: iter over graphs? or quads?
         return iter(self.engine)
 
-    def __contains__(self, triple):
+    def __contains__(self, triple):  # fixme: work with teh engine, session should not know anything about the spo
         # Delegate
         s, p, o = triple
         # Delegate
@@ -179,9 +180,12 @@ class Session(Cuds):
         self.engine.remove_quad(s, p, o, g_id)  # need to add provenance...
 
     def add_cuds(self, cuds: Cuds, g_id=None):
-        """add the cuds to the session, optionally specifying the graph.  """
-        # every cuds instance (version) can belong to one and only one session
-        #
+        """
+        add the cuds to the session, optionally specifying the graph.
+
+        every cuds instance (version) can belong to one and only one session
+
+        """
         cuds.session_id = self.session_id
         self.engine.add_cuds(cuds, g_id)
         c=ProxyCuds(cuds)
@@ -218,7 +222,8 @@ class Session(Cuds):
     def proxy_handler(self, iri, ops, **kwargs):
         """
         the idea is that at some point the proxy handler will live on
-        a different resource on teh network.
+        a different resource on the network, hence we use strings to determine the action,
+        rather than methods.
         :param iri:
         :param ops:
         :param kwargs:
