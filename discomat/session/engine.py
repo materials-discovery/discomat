@@ -163,7 +163,7 @@ class RdflibEngine(Engine):
         g = self._dataset.graph(self.default_graph_id)
         graph_id = to_iri(self.default_graph_id)
 
-        self._graphs = {graph_id: g}
+        # self._graphs = {graph_id: g}
         g.add((graph_id, RDF.type, CUDS.GraphId))
         g.add((graph_id, RDF.type, CUDS.RootNode))
 
@@ -182,17 +182,17 @@ class RdflibEngine(Engine):
         g.add((graph_id, RDF.type, CUDS.GraphId))
         g.add((graph_id, RDF.type, CUDS.RootNode))
         self.add(CUDS.hasGraphId, graph_id)
-        self._graphs[graph_id] = g
+        #self._graphs[graph_id] = g
         return graph_id
 
     def remove_graph(self, graph_id):  # fixme, we need a type for graph_id and then do Union[g_id or Graph]
         try:
             graph_id = to_iri(graph_id)
-            g = self._graphs[graph_id]
+            #g = self._graphs[graph_id]
             from discomat.cuds.utils import prd
-            prd(f"in remove graph deep inside the engine: {g}, {graph_id}")
-            self._dataset.remove_graph(g)
-            del self._graphs[graph_id]
+            prd(f"in remove graph deep inside the engine: {graph_id}")
+            self._dataset.remove_graph(graph_id)
+            #del self._graphs[graph_id]
             self.remove(CUDS.hasGraphId, graph_id)
         except KeyError:
             raise ValueError(f"Graph '{graph_id}' does not exist in this engine.")
@@ -206,7 +206,11 @@ class RdflibEngine(Engine):
         give back a read only proxy of the dict, so the user cannot change the graphs directly,
         only the engine can manage its own graphs.
         """
-        return MappingProxyType(self._graphs)  # Return a read-only proxy to the dictionary
+        graphs = [gid for gid in self._dataset.graphs()]
+        return MappingProxyType(graphs)
+        # for c in self._dataset.graphs():
+        #     print(c)
+        # return MappingProxyType(self._graphs)  # Return a read-only proxy to the dictionary
 
     def __iter__(self):
         """
@@ -215,7 +219,8 @@ class RdflibEngine(Engine):
         -------
 
         """
-        return iter(self._graphs.values())
+        # return iter(self._graphs.values())
+        return iter(self._dataset.graphs())
 
     def quads(self, s=None, p=None, o=None, g=None,/):
         return self._dataset.quads((s, p, o, g))
