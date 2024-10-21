@@ -69,8 +69,8 @@ class Session(Cuds):
         """
         try:
             engine_graph_id = self.engine.create_graph(graph_id)
-            self._session_graphs[graph_id] = engine_graph_id
-            #self.add(CUDS.hasGraphId, engine_graph_id) #fixme, do we need both _session_graphs, and the hasGraphId relatin?
+            # fixme remove this:? self._session_graphs[graph_id] = engine_graph_id
+            self.add(CUDS.hasGraphId, engine_graph_id)
             return engine_graph_id
 
         except ValueError as e:
