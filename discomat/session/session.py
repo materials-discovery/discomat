@@ -95,6 +95,8 @@ class Session(Cuds):
 
     def __contains__(self, triple):
         return triple in self.engine
+        # todo: support if g in session too.
+
         # s, p, o = triple
         # # Delegate
         # s = to_iri(s)
