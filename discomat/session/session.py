@@ -93,17 +93,17 @@ class Session(Cuds):
     def __iter__(self):  # fixme: iter over graphs? or quads?
         return iter(self.engine)
 
-    def __contains__(self, triple):  # fixme: work with teh engine, session should not know anything about the spo
-        # Delegate
-        s, p, o = triple
-        # Delegate
-        s = to_iri(s)
-        p = to_iri(p)
-        o = to_iri(o)
-        for g in self:
-            if (s, p, o) in g:
-                return True
-        return False
+    def __contains__(self, triple):
+        return triple in self.engine
+        # s, p, o = triple
+        # # Delegate
+        # s = to_iri(s)
+        # p = to_iri(p)
+        # o = to_iri(o)
+        # for g in self:
+        #     if (s, p, o) in g:
+        #         return True
+        # return False
 
     def quads(self, s=None, p=None, o=None, g=None):
         return self.engine.quads(to_iri(s), to_iri(p), to_iri(o), g)
@@ -185,7 +185,7 @@ class Session(Cuds):
         """
         cuds.session_id = self.session_id
         self.engine.add_cuds(cuds, g_id)
-        c=ProxyCuds(cuds)
+        c=ProxyCuds(cuds)  # c now lives in the engine it self, i.e., it is not a local varialbe
         return c
 
     def get_cuds(self, iri):
