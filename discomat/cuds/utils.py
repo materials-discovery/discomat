@@ -10,20 +10,16 @@ from rdflib import URIRef, Literal
 
 
 def to_iri(e: Union[str, URIRef]):
-    try:
-        # first, we assume it is a CUds (we do not want to import it to avoid circular import).
-        e = to_iri(e.iri)
-    except AttributeError:
-        if isinstance(e, str) and (e.startswith("http://") or e.startswith("https://")):
+    if isinstance(e, str) and (e.startswith("http://") or e.startswith("https://")):
             e = URIRef(e)
-        elif isinstance(e, URIRef):
-            pass
-        elif isinstance(e, uuid.UUID):
-            e = Literal(e)
-        elif e is None:
-            return Literal("None")
-        else:
-            e = Literal(str(e))
+    elif isinstance(e, URIRef):
+        pass
+    elif isinstance(e, uuid.UUID):
+        e = Literal(e)
+    elif e is None:
+        return None
+    else:
+        e = Literal(str(e))
     return e
 
 

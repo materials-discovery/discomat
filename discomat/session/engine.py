@@ -9,7 +9,7 @@ from rdflib.graph import DATASET_DEFAULT_GRAPH_ID
 
 from discomat.ontology.namespaces import CUDS, MIO
 from discomat.cuds.cuds import Cuds, add_to_root, ProxyCuds
-from discomat.cuds.utils import to_iri
+from discomat.cuds.utils import to_iri, to_sparql_query
 from enum import Enum
 
 from pyvis.network import Network
@@ -45,9 +45,18 @@ class Engine(Cuds):
         description = description or f"Engine: No Description provided, dont be lazy.."
 
         super().__init__(iri=iri, pid=pid, ontology_type=ontology_type, description=description, label=label)
-        self._graphs = {}
         self.default_graph_id = to_iri(CUDS.defaultGraph)  # URIRef("urn:x-rdflib:default") fixme: different name for fuseki. this should be the default graph of discomat.
 
+
+    def _graphs(self):
+        """ example:
+        self._graphs = get_all_graph_ids()
+        return [
+            graph if graph is not None else "http://example.org/default-graph"
+            for graph in self._graphs
+        ]
+        """
+        pass
     # def __contains__(self, triple):
     #     s, p, o = triple
     #     # Delegate
@@ -63,13 +72,12 @@ class Engine(Cuds):
     #     return False
     def create_graph(self, graph_id):
         """
-        Create a graph within the Engine and assign it with graph_id.
-        graph_id is coming from the session? not good I think.
+        Create a graph within the Engine with graph_id which should be http://....
 
-        This, of course, assuming the engine
-        supports graphs. which may or may not be the case,
-        if the engine does not support it natively, we support it?!
         """
+        """
+        implement adding the graph example:
+            
         g = Graph()
         graph_id = to_iri(graph_id)
         # Add the basic root to the graph
@@ -77,13 +85,15 @@ class Engine(Cuds):
         g.add((graph_id, RDF.type, CUDS.RootNode))
 
         """
-        although the Engine is supposed to be very general, we alreay limit to rdflib. 
-        what if it is a lammps graph? perhaps it is easier to manage all data using rdflib, but 
-        some engines may have their own, non rdflib graph! """
-        self._graphs[graph_id] = g
-        return g
+
+
+        pass
 
     def remove_graph(self, graph_id):
+        """
+        remove the graph from the engine.
+        :param graph_id:
+        :return:
         graph_id = to_iri(graph_id)
         try:
             g = self._graphs[graph_id]
@@ -95,18 +105,24 @@ class Engine(Cuds):
         del (g)  # fixme: is there a safer way to do this? must be!
 
         # todo:add log and provenance
+        """
+        pass
 
     @property
     def graphs(self):
         """
+        obsolete:
         use https://docs.python.org/3/library/types.html#types.MappingProxyType
         give back a read only proxy of the dict, so the user cannot change the graphs directly,
         only the engine can manage its own graphs.
+
+        now this is simply calling the self._graphs method, which returns an iterator over the graphs, and return them as a list of
+        gid.
         """
-        return MappingProxyType(self._graphs)  # Return a read-only proxy to the dictionary
+        return  list(self._graphs)
 
     def __iter__(self):
-        return iter(self._graphs.values())
+        return self._graphs
 
     def quads(self, s=None, p=None, o=None, g=None):
         return NotImplemented
@@ -145,6 +161,7 @@ class Engine(Cuds):
 class RdflibEngine(Engine):
     """
     essentially uses an rdflib Dataset which is a modified conjuctive graph.
+    in discomat, an rdflibengine can have only one dataset and a set of graphs in this dataset.
     """
 
     def __init__(self,
@@ -166,6 +183,17 @@ class RdflibEngine(Engine):
         # self._graphs = {graph_id: g}
         g.add((graph_id, RDF.type, CUDS.GraphId))
         g.add((graph_id, RDF.type, CUDS.RootNode))
+
+    def _graphs(self):
+        """ example:
+        self._graphs = get_all_graph_ids()
+        return [
+            graph if graph is not None else "http://example.org/default-graph"
+            for graph in self._graphs
+        ]
+        """
+
+        return (graph.identifier for graph in self._dataset.contexts())
 
     def create_graph(self, graph_id):
         """
@@ -201,26 +229,18 @@ class RdflibEngine(Engine):
 
     @property
     def graphs(self):
-        """
-        use https://docs.python.org/3/library/types.html#types.MappingProxyType
-        give back a read only proxy of the dict, so the user cannot change the graphs directly,
-        only the engine can manage its own graphs.
-        """
-        graphs = [gid for gid in self._dataset.graphs()]
-        return MappingProxyType(graphs)
-        # for c in self._dataset.graphs():
-        #     print(c)
-        # return MappingProxyType(self._graphs)  # Return a read-only proxy to the dictionary
+        # this takes the iterator and casts it into a list!
+        return list(self._graphs())
 
     def __iter__(self):
         """
-        iter over the graphs in a session?
+        iter over the graph id's in a session, to iterate over triplets do self.triplets... or something like this
         Returns
         -------
-
+        graph id
         """
         # return iter(self._graphs.values())
-        return iter(self._dataset.graphs())
+        return self._graphs()
 
     def quads(self, s=None, p=None, o=None, g=None,/):
         return self._dataset.quads((s, p, o, g))
@@ -248,6 +268,8 @@ class RdflibEngine(Engine):
         return self._dataset.remove((s, p, o, g_id))
 
     def get_cuds(self, iri):
+        # we need a template of a cuds that we would use to iter all predicates.
+        # we call this ontology.cuds.template --> todo: support shacl, see issues.
         pass
 
     def add_cuds(self, cuds, g_id):
@@ -265,6 +287,8 @@ class RdflibEngine(Engine):
 
 class FusekiEngine(Engine):
     """
+    fixme: move to module engines, and separate files for different engines.
+
     This is discomt Fuseki session engine. It supports all actions needed on anu CUDS a session.
     this means, we are not managing an entire fuseki service, but rather
     simply interacting with a CUDS iri stored in this graph.
@@ -322,12 +346,8 @@ class FusekiEngine(Engine):
         # g = self._dataset.graph(self.default_graph_id)
         graph_id = to_iri(self.default_graph_id)
 
-        self._graphs = {graph_id: graph_id} # we do not use an instance of g as for rdflib engine, but rather the name of the graph only
-        # use query to add relations.
+    def _graphs(self):
 
-        # g.add((graph_id, RDF.type, CUDS.GraphId))
-        # g.add((graph_id, RDF.type, CUDS.RootNode))
-        g = graph_id
         # We should not do anything but open the connection and test with KBtoolBox.
         # update_query = f"""
         # PREFIX RDF: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -349,20 +369,20 @@ class FusekiEngine(Engine):
         # now get all graphs already in teh system, and augment the _graphs, though this is not really needed in teh future, we need to make _graphs always query, as many users could be changing the databse at the same time.
 
         query = """
-	            SELECT DISTINCT ?g WHERE {
-	              GRAPH ?g { ?s ?p ?o }
-	            }
-	            """
+                SELECT DISTINCT ?g WHERE {
+                  GRAPH ?g { ?s ?p ?o }
+                }
+                """
         results = self._kb.query(query)
-        print("results.josn()", results.json())
-        print("status code:", results.status_code)
+        # print("results.josn()", results.json())
+        # print("status code:", results.status_code)
 
         """
         the results are of the form (example):
         
         results.josn(): 
         {'head': {'vars': ['g']}, 'results': {'bindings': [{'g': {'type': 'uri', 'value': 'http://dome40.io/dataset/data/platforms_dome_core_reasoned_Hermit'}}, {'g': {'type': 'uri', 'value': 'http://dome40.io/dataset/data/dome4.0_core_dataset_trial0_reasoned'}}]}}
-
+    
         so essentially we should later enhance the loop to check the type of the graph. 
         """
 
@@ -372,8 +392,9 @@ class FusekiEngine(Engine):
         graph_list = [result['g']['value'] for result in test['results']['bindings']]
         print("Initialising the Fuseki Engine\n Found the following number of existing graphs", len(graph_list))
         print("The graphs found are: ", graph_list)
-        self._graphs = {graph_id: graph_id for graph_id in graph_list}
+
         print("Updated the session engine with the available graphs\n")
+        return iter(graph_list)
 
     def create_graph(self, graph_id):
         """
@@ -384,35 +405,32 @@ class FusekiEngine(Engine):
         """
         if graph_id is None:
             raise ValueError("We do not accept None as a name for named graph!")
-        graph_id = to_iri(graph_id)
-        g = graph_id
+        g = to_sparql_query(graph_id) # put <> if needed etc.
+        print("adding graph", g)
         update_query = f"""
-        PREFIX RDF: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX MISO: <https://materials-discovery.org/miso#>
-        PREFIX MIO: <https://materials-discovery.org/mio#>
-        PREFIX CUDS: <https://materials-discovery.org/cuds#>
-        PREFIX RDFS: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX RDF: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX MISO: <https://materials-discovery.org/miso#>
+            PREFIX MIO: <https://materials-discovery.org/mio#>
+            PREFIX CUDS: <https://materials-discovery.org/cuds#>
+            PREFIX RDFS: <http://www.w3.org/2000/01/rdf-schema#>
 
-        INSERT DATA {{
-            GRAPH {g} {{
-                {graph_id} RDF.type CUDS.GraphId .
-                {graph_id} RDF.type CUDS.RootNode .
-                {graph_id} CUDS.hasGraphId, graph_id .
-                
+            INSERT DATA {{
+                GRAPH {g} {{
+                    {g} RDF:type CUDS:GraphId .
+                    {g} RDF:type CUDS:RootNode .
+                    {g} CUDS:hasGraphId {g} .
+                }}
             }}
-        }}
         """
-
+        print("query", update_query)
         s = self._kb.update(update_query)
-        self._graphs[graph_id] = g
         return graph_id
 
     def remove_graph(self, graph_id):  # fixme, we need a type for graph_id and then do Union[g_id or Graph]
         try:
             graph_id = to_iri(graph_id)
-            g = self._graphs[graph_id]
             from discomat.cuds.utils import prd
-            prd(f"in remove graph deep inside the engine: {g}, {graph_id}")
+            prd(f"in remove graph deep inside the engine: {graph_id}")
             query = f"""
                 DROP GRAPH <{graph_id}>
                 """
@@ -430,52 +448,104 @@ class FusekiEngine(Engine):
         give back a read only proxy of the dict, so the user cannot change the graphs directly,
         only the engine can manage its own graphs.
         """
-        query = """
-        SELECT DISTINCT ?g WHERE {
-          GRAPH ?g { ?s ?p ?o }
-        }
-        """
-        results=self._kb.update(query)
-        graph_list = [result['g']['value'] for result in results['results']['bindings']]
-        self._graphs = {graph_id: graph_id for graph_id in graph_list}
-
-        return MappingProxyType(self._graphs)  # Return a read-only proxy to the dictionary
+        return list(self._graphs())
 
     def __iter__(self):
-        return iter(self._graphs.values())
+        return self._graphs()
 
-    def quads(self, s=None, p=None, o=None, g=None, /):
-        # we construct the query based on what is not given,
-        #it could be done more smartly but now I am focused on it working.
+    def quads2(self, s=None, p=None, o=None, g=None, /):
+        print("Function called with arguments:", s, p, o, g)  # Check arguments at function start
+        if s is None:
+            print(f"s is None: s = <{s}>")  # Expected output
+        else:
+            print(f"s is not None: s = <{s}>")
 
-        query = "SELECT ?g ?s ?p ?o WHERE {"
+        # Construct the query based on provided values for s, p, o, and g.
+        query = "SELECT ?s ?p ?o ?g WHERE {"
 
-        # If the g is not None, include the specific graph, otherwise its a query variable.
+        # Include the specific graph if `g` is not None, otherwise use a variable `?g`
         if g is not None:
             query += f" GRAPH <{g}> {{"
         else:
             query += " GRAPH ?g {"
 
-        # same for the triples
+        print(s,p,o)
+
+        if s is None:
+            print (f's is <{s}')
+
+        # Add the triple pattern, using variables where values are None
         query += f" {f'<{s}>' if s is not None else '?s'}"
         query += f" {f'<{p}>' if p is not None else '?p'}"
         query += f" {f'<{o}>' if o is not None else '?o'} ."
 
-        # close brackets in query # see also utils/libs...
+        # Close the GRAPH bracket
         query += " }"
-        if g is not None:
-         query += " }" #fixme add a check of we had one or two brackets.
 
+        # Close the main WHERE clause bracket
+        query += " }"
+
+        print("query=", query)
         results = self._kb.query(query)
+        results = results.json()
+        """
+                the results are of the form (example):
 
-        # Iterate adn yield iterator
-        for result in results['results']['bindings']:
-            g = g if g is not None else result['g']['value']
-            s = s if s is not None else result['s']['value']
-            p = p if p is not None else result['p']['value']
-            o = o if o is not None else result['o']['value']
+                results.josn(): 
+                {'head': {'vars': ['g']}, 'results': {'bindings': [{'g': {'type': 'uri', 'value': 'http://dome40.io/dataset/data/platforms_dome_core_reasoned_Hermit'}}, {'g': {'type': 'uri', 'value': 'http://dome40.io/dataset/data/dome4.0_core_dataset_trial0_reasoned'}}]}}
 
-            yield g, s, p, o
+                so essentially we should later enhance the loop to check the type of the graph. 
+                """
+        the_vars=[]
+        #print(results)
+        for i in results['head']['vars']:
+            the_vars.append(i)
+        print(f"the binding variables are {the_vars}")
+
+        for i in results['results']['bindings']:
+            q=[]
+            for v in the_vars:
+                q.append(i[v]['value'])
+            yield tuple(q)
+        #{'g': {'type': 'uri', 'value': 'http://dome40.io/dataset/data/platforms_dome_core_reasoned_Hermit'}, 's': {'type': 'uri', 'value': 'http://iserve.kmi.open.ac.uk/ns/msm#MessagePart'}, 'p': {'type': 'uri', 'value': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'}, 'o': {'type': 'uri', 'value': 'http://www.w3.org/2002/07/owl#Class'}}
+
+
+    def quads(self, s=None, p=None, o=None, g=None, /):
+        #FILTER(?g = < http: // graph2.com >)
+        query = """SELECT ?s ?p ?o ?g 
+        WHERE {
+            GRAPH ?g {
+                ?s ?p ?o .
+            }
+        """
+        query += f" {f'FILTER (?s = <{s}>)' if s is not None else ''}"
+        query += f" {f'FILTER (?p = <{p}>)' if p is not None else ''}"
+        query += f" {f'FILTER (?o = <{o}>)' if o is not None else ''}"
+        query += f" {f'FILTER (?g = <{g}>)' if g is not None else ''}"
+        query += " }"
+
+        print("query=", query)
+        results = self._kb.query(query)
+        results = results.json()
+        """
+                the results are of the form (example):
+
+                results.josn(): 
+                {'head': {'vars': ['g']}, 'results': {'bindings': [{'g': {'type': 'uri', 'value': 'http://dome40.io/dataset/data/platforms_dome_core_reasoned_Hermit'}}, {'g': {'type': 'uri', 'value': 'http://dome40.io/dataset/data/dome4.0_core_dataset_trial0_reasoned'}}]}}
+
+                so essentially we should later enhance the loop to check the type of the graph. 
+                """
+        the_vars = []
+        # print(results)
+        for i in results['head']['vars']:
+            the_vars.append(i)
+        print(f"the binding variables are {the_vars}")
+
+        for i in results['results']['bindings']:
+            q = []
+            for v in the_vars:
+                q.append(i[v]['value'])
+            yield tuple(q)
 
     def triples(self, s=None, p=None, o=None,/):
         for _, s, p, o in self.quads(s=s, p=p, o=o, g=None):
@@ -488,7 +558,7 @@ class FusekiEngine(Engine):
     def add_triple(self, s=None, p=None, o=None):
         query = f"""
             INSERT DATA {{
-              <{s}> <{p}> {self.to_sparql_query(o)} .
+              <{s}> <{p}> {to_sparql_query(o)} .
             }}
             """
         self._kb.update(query)
@@ -500,7 +570,7 @@ class FusekiEngine(Engine):
         query = f"""
         INSERT DATA {{
           GRAPH <{g_id}> {{
-            <{s}> <{p}> {self.to_sparql_query(o)} .
+            <{s}> <{p}> {to_sparql_query(o)} .
           }}
         }}
         """
@@ -510,7 +580,7 @@ class FusekiEngine(Engine):
     def remove_triple(self, s=None, p=None, o=None):
         query = f"""
         DELETE DATA {{
-          <{s}> <{p}> {self.to_sparql_query(o)} .
+          <{s}> <{p}> {to_sparql_query(o)} .
         }}
         """
         self._kb.update(query)
