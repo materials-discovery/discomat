@@ -1,4 +1,5 @@
 import uuid, datetime
+from typing import Tuple, Union, Optional
 from collections import defaultdict
 from urllib.parse import urlparse, urldefrag, urlsplit
 from omikb.domekb import KbToolBox
@@ -8,7 +9,7 @@ from rdflib import Namespace
 from rdflib.graph import DATASET_DEFAULT_GRAPH_ID
 
 from discomat.ontology.namespaces import CUDS, MIO
-from discomat.cuds.cuds import Cuds, add_to_root, ProxyCuds
+from discomat.cuds.cuds import Cuds, add_to_root, ProxyCuds, Triple, Quad, QuadOrTriple
 from discomat.cuds.utils import to_iri, to_sparql_query
 from enum import Enum
 
@@ -207,9 +208,9 @@ class RdflibEngine(Engine):
         graph_id = to_iri(graph_id)
         g = self._dataset.graph(graph_id)
         # Add the basic root to the graph
-        g.add((graph_id, RDF.type, CUDS.GraphId))
-        g.add((graph_id, RDF.type, CUDS.RootNode))
-        self.add(CUDS.hasGraphId, graph_id)
+        #g.add((graph_id, RDF.type, CUDS.GraphId))
+        #g.add((graph_id, RDF.type, CUDS.RootNode))
+        #todo: clean up! self.add(CUDS.hasGraphId, graph_id)
         #self._graphs[graph_id] = g
         return graph_id
 
@@ -221,7 +222,7 @@ class RdflibEngine(Engine):
             prd(f"in remove graph deep inside the engine: {graph_id}")
             self._dataset.remove_graph(graph_id)
             #del self._graphs[graph_id]
-            self.remove(CUDS.hasGraphId, graph_id)
+            #self.remove(CUDS.hasGraphId, graph_id) #todo: remove comment. we work with real time objects.
         except KeyError:
             raise ValueError(f"Graph '{graph_id}' does not exist in this engine.")
 
@@ -252,20 +253,20 @@ class RdflibEngine(Engine):
         return self._dataset.query(query)
 
     # @add_to_root
-    def add_triple(self, s=None, p=None, o=None):
-        self._dataset.add((s, p, o))
+    def add_triple(self, t:Triple):
+        self._dataset.add(t)
         # for i, j, k in self._dataset.triples((None, None, None)):
         #     print(i, j, k)
 
     # @add_to_root
-    def add_quad(self, s=None, p=None, o=None, g_id=None):
-        return self._dataset.add((s, p, o, g_id))
+    def add_quad(self, q:Quad):
+        return self._dataset.add(q)
 
-    def remove_triple(self, s=None, p=None, o=None):
-        return self._dataset.remove((s, p, o))
+    def remove_triple(self, t:Triple):
+        return self._dataset.remove(t)
 
-    def remove_quad(self, s=None, p=None, o=None, g_id=None):
-        return self._dataset.remove((s, p, o, g_id))
+    def remove_quad(self, q:Quad):
+        return self._dataset.remove(q)
 
     def get_cuds(self, iri):
         # we need a template of a cuds that we would use to iter all predicates.
@@ -555,7 +556,8 @@ class FusekiEngine(Engine):
         return self._kb.query(query)
 
     # @add_to_root
-    def add_triple(self, s=None, p=None, o=None):
+    def add_triple(self, t:Triple):
+        s, p, o = t
         query = f"""
             INSERT DATA {{
               <{s}> <{p}> {to_sparql_query(o)} .
@@ -566,7 +568,8 @@ class FusekiEngine(Engine):
         #     print(i, j, k)
 
     # @add_to_root
-    def add_quad(self, s=None, p=None, o=None, g_id=None):
+    def add_quad(self, q:Quad):
+        s, p, o, g_id = q
         query = f"""
         INSERT DATA {{
           GRAPH <{g_id}> {{
@@ -577,7 +580,8 @@ class FusekiEngine(Engine):
         self._kb.update(query)
 
 
-    def remove_triple(self, s=None, p=None, o=None):
+    def remove_triple(self, t:Triple):
+        s, p, o = t
         query = f"""
         DELETE DATA {{
           <{s}> <{p}> {to_sparql_query(o)} .
@@ -585,11 +589,13 @@ class FusekiEngine(Engine):
         """
         self._kb.update(query)
 
-    def remove_quad(self, s=None, p=None, o=None, g_id=None):
+    def remove_quad(self, q=Quad):
+        s,p,o,g_id=q
+        print(f"kb toolbox: remove quad called with: {s} {p} {o} {g_id} ")
         query = f"""
         DELETE DATA {{
           GRAPH <{g_id}> {{
-            <{s}> <{p}> {self.to_sparql_query(o)} .
+            <{s}> <{p}> {to_sparql_query(o)} .
           }}
         }}
         """

@@ -1,3 +1,4 @@
+from typing import Tuple, Union, Optional
 import datetime
 import inspect
 import uuid
@@ -13,6 +14,11 @@ from discomat.session.session_manager import SessionManager
 from discomat.cuds.utils import to_iri, mnemonic_label
 from discomat.ontology.namespaces import CUDS, MIO
 from discomat.ontology.ontomap import ONTOMAP
+
+# todo: enhance and use pydntic or dataclass across the board.
+Triple = Tuple[str, str, str]
+Quad = Tuple[str, str, str, Optional[str]]
+QuadOrTriple = Union[Triple, Quad]
 
 
 def add_to_root(func):

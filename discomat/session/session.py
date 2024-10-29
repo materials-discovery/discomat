@@ -1,5 +1,6 @@
 import copy
 import uuid, datetime
+from typing import Tuple, Union, Optional
 from collections import defaultdict
 from urllib.parse import urlparse, urldefrag, urlsplit
 from rdflib import Dataset, Graph, URIRef, Literal, RDF, RDFS
@@ -21,6 +22,7 @@ from types import MappingProxyType
 from typing import Union
 
 from discomat.ontology.ontomap import ONTOMAP
+from discomat.cuds.cuds import Cuds, add_to_root, ProxyCuds, Triple, Quad, QuadOrTriple
 
 
 class Session(Cuds):
@@ -52,9 +54,9 @@ class Session(Cuds):
 
         # we need to define the graphs managed by the session, these are managed by the engire.
         # dict of all graphs.
-        self._session_graphs = {'default_graph_id': self.engine.default_graph_id}
-        self.add(CUDS.hasGraphId, self.engine.default_graph_id)
-        self.default_graph_id = self.engine.default_graph_id
+        # self._session_graphs = {'default_graph_id': self.engine.default_graph_id}
+        # self.add(CUDS.hasGraphId, self.engine.default_graph_id)
+        # self.default_graph_id = self.engine.default_graph_id
 
         self.session_manager = SessionManager()  # fixme: move the definition of SessionManager before Session.
         self.session_manager.register(self)  # pass self to session manager
@@ -70,7 +72,7 @@ class Session(Cuds):
         try:
             engine_graph_id = self.engine.create_graph(graph_id)
             # fixme remove this:? self._session_graphs[graph_id] = engine_graph_id
-            self.add(CUDS.hasGraphId, engine_graph_id)
+            #todo:remove this complexity! self.add(CUDS.hasGraphId, engine_graph_id)
             return engine_graph_id
 
         except ValueError as e:
@@ -93,8 +95,8 @@ class Session(Cuds):
     def __iter__(self):  # fixme: iter over graphs? or quads?
         return iter(self.engine)
 
-    def __contains__(self, triple):
-        return triple in self.engine
+    def __contains__(self, t:Triple):
+        return t in self.engine
         # fixme: support if g in session too.
 
         # s, p, o = triple
@@ -150,33 +152,34 @@ class Session(Cuds):
         # by default, all the graphs are queried (Conjuctive) unless a graph is specified.
         return self.engine.query(query)
 
-    @arg_to_iri
-    def add_triple(self, s=None, p=None, o=None):
+    #@arg_to_iri
+    def add_triple(self, t:Triple):
         # added None as python does not allow no default following default
         # if not any([s, p, o]):  # or use all() for all not None, not sure...
         #     raise ValueError("s, p, and o are all None, at least one should be not None")
         # print(f"need to check provenance...")
-        self.engine.add_triple(s, p, o)
+        self.engine.add_triple(t)
 
-    @arg_to_iri
-    def add_quad(self, s=None, p=None, o=None, g_id=None):
+    #@arg_to_iri
+    def add_quad(self,q:Quad):
         # added None as python does not allow no default following default
         # if not any([s, p, o]):  # or use all() for all not None, not sure...
         #     raise ValueError("s, p, and o are all None, at least one should be not None")
         # print(f"need to check provenance...")
-        self.engine.add_quad(to_iri(s), to_iri(p), to_iri(o), g_id)
+        self.engine.add_quad(q)
 
-    @arg_to_iri
-    def remove_triple(self, s=None, p=None, o=None):
-        if not any([s, p, o]):  # or use all() for all not None, not sure...
-            raise ValueError("s, p, and o are all None, at least one should be not None")
-        self.engine.remove_triple(s, p, o)  # need to add provenance...
+    #@arg_to_iri
+    def remove_triple(self, t:Triple):
+        # if not any([s, p, o]):  # or use all() for all not None, not sure...
+        #     raise ValueError("s, p, and o are all None, at least one should be not None")
+        self.engine.remove_triple(t)  # need to add provenance...
 
-    @arg_to_iri
-    def remove_quad(self, s=None, p=None, o=None, g_id=None):
-        if not any([s, p, o]):  # or use all() for all not None, not sure...
-            raise ValueError("s, p, and o are all None, at least one should be not None")
-        self.engine.remove_quad(s, p, o, g_id)  # need to add provenance...
+    #@arg_to_iri
+    def remove_quad(self, q=Quad):
+        # s,p,o,g = q
+        # if not any([s, p, o,g]):  # or use all() for all not None, not sure...
+        #     raise ValueError("s, p, and o and g are all None, at least one should be not None")
+        self.engine.remove_quad(q)  # need to add provenance...
 
     def add_cuds(self, cuds: Cuds, g_id=None):
         """
@@ -250,8 +253,8 @@ class Session(Cuds):
         k=kwargs['key']
         v=kwargs['value']
         if k in ONTOMAP:
-            self.engine.remove_triple(iri, to_iri(k), to_iri(v))
-            self.engine.add_triple(iri, to_iri(k), to_iri(v))
+            self.engine.remove_triple((iri, to_iri(k), to_iri(v)))
+            self.engine.add_triple((iri, to_iri(k), to_iri(v)))
         else:
             raise KeyError(f"key {k} is not supported in core CUDS ontology")
 
@@ -303,7 +306,7 @@ class Session(Cuds):
             # for sc, pc, oc in o:
             #     self.engine.add_triple(sc,pc,oc)  # we do not do this yet
             o=o.iri
-        self.engine.add_triple(iri, p, o)
+        self.engine.add_triple((iri, p, o))
 
     def proxy_remove(self, *, iri, **kwargs):
         # fixme find the graph in which the cuds is and add as 4th arg.

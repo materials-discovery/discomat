@@ -15,8 +15,10 @@ engine = FusekiEngine(description="test engine")
 
 # test session
 session = Session(engine=engine)
-gvis(session, "cuds_session.html")
+#visualise the session.
+gvis(session, "A_Session.html")
 print(f"This session has an engine of type: {type(session.engine)}")
+#visualise the engine of this session.
 gvis(session.engine, "session_engine.html")
 
 prd("add graphs")
@@ -54,12 +56,12 @@ for i in gs:
     print(f"type(gs): {type(gs)}, {gs}")
 
 prd("\n Add  triples")
-session.add_triple(MISO.Simulation, RDF.type, RDFS.Class)
-session.add_triple(MISO.Simulation, RDFS.subClassOf, CUDS.Cuds)
-session.add_triple(MISO.simulation, RDF.type, MISO.Simulation)
+session.add_triple((MISO.Simulation, RDF.type, RDFS.Class))
+session.add_triple((MISO.Simulation, RDFS.subClassOf, CUDS.Cuds))
+session.add_triple((MISO.simulation, RDF.type, MISO.Simulation))
 
-session.add_quad(MISO.simulation, RDF.type, MISO.Simulation, "http://graph1.com")
-session.add_quad(MISO.simulation, CUDS.has, MISO.SimulationEngine, "http://graph1.com")
+session.add_quad((MISO.simulation, RDF.type, MISO.Simulation, "http://graph1.com"))
+session.add_quad((MISO.simulation, CUDS.has, MISO.SimulationEngine, "http://graph1.com"))
 
 
 # add it again as we use it below:
@@ -68,49 +70,50 @@ session.create_graph("http://graph3.com")
 session.create_graph("http://graph4.com")
 
 prd(f"add quads")
-session.add_quad(CUDS.root0, RDF.type, CUDS.RootNode)
-session.add_quad(CUDS.root1, RDF.type, CUDS.RootNode, "http://graph1.com")
-session.add_quad(CUDS.root2, RDF.type, CUDS.RootNode, "http://graph2.com")
-session.add_quad(CUDS.root3, RDF.type, CUDS.RootNode, "http://graph3.com")
-session.add_quad(CUDS.root4, RDF.type, CUDS.RootNode, "http://graph4.com")
+session.add_quad((CUDS.root0, RDF.type, CUDS.RootNode, "http://graph1.com"))
+session.add_quad((CUDS.root1, RDF.type, CUDS.RootNode, "http://graph1.com"))
+session.add_quad((CUDS.root2, RDF.type, CUDS.RootNode, "http://graph2.com"))
+session.add_quad((CUDS.root3, RDF.type, CUDS.RootNode, "http://graph3.com"))
+session.add_quad((CUDS.root4, RDF.type, CUDS.RootNode, "http://graph4.com"))
 
-session.add_quad("s1", "p1", "o1", "http://graph1.com")
-session.add_quad("s2", "p2", "o1", "http://graph1.com")
-session.add_quad("s3", "p3", "o3", "http://graph1.com")
-session.add_quad("o3", "p4", "o4", "http://graph1.com")
-session.add_quad("s3", "p5", "o4", "http://graph1.com")
-session.add_quad("s3", "p2", "o3", "http://graph1.com")
-session.add_quad("s3", "p3", "o3", "http://graph1.com")
-session.add_quad("s3", "p3", "o3", "http://graph1.com")
-session.add_quad("s4", "p4", "o4", "http://graph2.com")
-session.add_quad("s5", "p5", "o5", "http://graph2.com")
-session.add_quad("s6", "p6", "o6", "http://graph2.com")
+session.add_quad( ("s1", "p1", "o1", "http://graph1.com"))
+session.add_quad(("s2", "p2", "o1", "http://graph1.com"))
+session.add_quad(("s3", "p3", "o3", "http://graph1.com"))
+session.add_quad(("o3", "p4", "o4", "http://graph1.com"))
+session.add_quad(("s3", "p5", "o4", "http://graph1.com"))
+session.add_quad(("s3", "p2", "o3", "http://graph1.com"))
+session.add_quad(("s3", "p3", "o3", "http://graph1.com"))
+session.add_quad(("s3", "p3", "o3", "http://graph1.com"))
+session.add_quad(("s4", "p4", "o4", "http://graph2.com"))
+session.add_quad(("s5", "p5", "o5", "http://graph2.com"))
+session.add_quad(("s6", "p6", "o6", "http://graph2.com"))
 
 prd("\n Print and count quads")
 print(len(list(session.quads())))
 for quad in session.quads():
     print('quad',quad)
+    session.remove_quad(quad)
 
-for s, p, o, g in session.quads():
-    print("quads:", s, p, o, g)
-
-prd("test quads ")
-for s, p, o, g in session.quads(None, None, None, "http://graph2.com"):
-    print(f"testing {s}, {p}, {o}, {g}")
-
-prd("test triples\n")
-for s, p, o, g in session.triples(None, None, None):
-    print("triples:", s, p, o, g)
+# for s, p, o, g in session.quads():
+#     print("quads:", s, p, o, g)
+#
+# prd("test quads ")
+# for s, p, o, g in session.quads(None, None, None, "http://graph2.com"):
+#     print(f"testing {s}, {p}, {o}, {g}")
+#
+# prd("test triples\n")
+# for s, p, o, g in session.triples(None, None, None):
+#     print("triples:", s, p, o, g)
 
 prd("Delete a quad (s4, p4, o4, graph1)")
 
-if ("s4", "p4", "o4") in session:
+if (("s4", "p4", "o4")) in session:
     prd("its in")
 else:
     prd("not in")
 gvis(session, "session_all.html")
 
-session.remove_triple("s4", "p4", "o4")
+session.remove_triple(("s4", "p4", "o4"))
 gvis(session, "session_after_remove.html")
 
 if ("s4", "p4", "o4") in session:

@@ -15,7 +15,8 @@ ptyprocess
 pure_eval
 Pygments
 pyparsing
-pyvis
+#pyvis
+pyvis @ git+https://github.com/materials-discovery/pyvis.git@main
 rdflib
 six
 stack-data
