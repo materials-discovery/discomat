@@ -1,3 +1,4 @@
+from typing import Tuple, Union, Optional
 import datetime
 import inspect
 import uuid
@@ -13,6 +14,11 @@ from discomat.session.session_manager import SessionManager
 from discomat.cuds.utils import to_iri, mnemonic_label
 from discomat.ontology.namespaces import CUDS, MIO
 from discomat.ontology.ontomap import ONTOMAP
+
+# todo: enhance and use pydntic or dataclass across the board.
+Triple = Tuple[str, str, str]
+Quad = Tuple[str, str, str, Optional[str]]
+QuadOrTriple = Union[Triple, Quad]
 
 
 def add_to_root(func):
@@ -271,7 +277,9 @@ class ProxyCuds():  # should be inheriting from ABC_CUDS rather form CUDS (so is
     A CUDS proxy, a way to handle a CUDS which is stored in a remote session and hence remote engine.
     To create it, we need a real CUDS, i.e., the assumption is to convert a real CUDS to a proxy one.
 
-    if the CUDS is already in a remote session, but not in the local session, we need to use the session.get_cuds with
+
+    if the CUDS is already in a remote session, but not in the local session,
+    we need to use the session.get_cuds with
     the iri to get it as a proxy.
 
     c=Cuds()
@@ -296,7 +304,7 @@ class ProxyCuds():  # should be inheriting from ABC_CUDS rather form CUDS (so is
         object.__setattr__(self, '_graph', Graph())
 
         for _ in cuds._graph:
-            self._graph.add(_) #fixme delete this.
+            self._graph.add(_) #fixme delete this and keep only those attributes relevnt to the proxy.
 
         sm = SessionManager()
         s = sm.get_session(self.session_id)
@@ -357,15 +365,3 @@ class ProxyCuds():  # should be inheriting from ABC_CUDS rather form CUDS (so is
             stacklevel=2
         )
         return NotImplemented
-
-    def add_cuds(self, Cuds):
-        """
-        add a CUDS to an existing one with provision for
-        Parameters
-        ----------
-        Cuds
-
-        Returns
-        -------
-
-        """

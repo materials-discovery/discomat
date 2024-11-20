@@ -15,7 +15,8 @@ ptyprocess
 pure_eval
 Pygments
 pyparsing
-pyvis
+#pyvis
+#pyvis @ git+https://github.com/materials-discovery/pyvis.git@main
 rdflib
 six
 stack-data
@@ -23,5 +24,8 @@ traitlets
 typing_extensions
 wcwidth
 mnemonic
-git+https://github.com/H2020-OpenModel/OMIKB-toolbox.git
+git+https://github.com/H2020-OpenModel/OMIKB-toolbox.git@support_dome40
 wget
+executing
+ipython
+ipykernel

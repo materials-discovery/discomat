@@ -38,12 +38,18 @@ def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
     A MultiDiGraph in Python's NetworkX library is a 
     directed graph that allows multiple edges between any pair of nodes. 
     """
-    if isinstance(graph, Session):
-        x=Graph()
-        for g in graph:
-            x=x+g
-        graph = x+graph._graph
-    elif isinstance(graph, Cuds):
+    # if isinstance(graph, Session):
+    #     # get all graphs in the session, including the default
+    #     x=Graph()  # fix.
+    #     for g in graph:  # i.e. g in session.
+    #         x=x+g
+    #     graph = x+graph._graph
+    # elif isinstance(graph, Cuds):
+    #     graph = graph._graph
+
+    # this is a slight regression, the above took all graphs, but it works only for sessions with an engie which is rdflib one.
+
+    if isinstance(graph, Cuds):
         graph = graph._graph
 
     for s, p, o in graph:

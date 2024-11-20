@@ -16,4 +16,4 @@ homepage = "https://materials-discovery.org/discomat"
 repository = "https://github.com/materials-discovery/discomat"
 
 [tool.setuptools.packages.find]
-where = ["./"]
+where = ["."]

@@ -1,7 +1,7 @@
 from discomat.cuds.cuds import Cuds
 from discomat.visualisation.cuds_vis import gvis
 from discomat.cuds.utils import uuid_from_string, to_iri, pr, prd
-from discomat.session.session import Session
+from discomat.session .session import Session
 from discomat.ontology.namespaces import CUDS, MIO, MISO
 
 from rdflib import URIRef, Graph
