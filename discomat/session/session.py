@@ -112,8 +112,8 @@ class Session(Cuds):
     def quads(self, s=None, p=None, o=None, g=None):
         return self.engine.quads(to_iri(s), to_iri(p), to_iri(o), g)
 
-    def triples(self, s=None, p=None, o=None):
-        return self.engine.quads(s, p, o)
+    def triples(self, s=None, p=None, o=None, g=None):
+        return self.engine.triples(s, p, o, g)
 
     def list_graphs(self):
         l = []
