@@ -10,8 +10,8 @@ import copy
 from discomat.ontology.namespaces import CUDS, MISO, MIO
 from discomat.session.engine import FusekiEngine, RdflibEngine
 
-engine = FusekiEngine(description="test engine")
-#engine=RdflibEngine()
+# engine = FusekiEngine(description="test engine")
+engine=RdflibEngine()
 
 # test session
 session = Session(engine=engine)
@@ -76,17 +76,18 @@ session.add_quad((CUDS.root2, RDF.type, CUDS.RootNode, "http://graph2.com"))
 session.add_quad((CUDS.root3, RDF.type, CUDS.RootNode, "http://graph3.com"))
 session.add_quad((CUDS.root4, RDF.type, CUDS.RootNode, "http://graph4.com"))
 
-session.add_quad( ("s1", "p1", "o1", "http://graph1.com"))
-session.add_quad(("s2", "p2", "o1", "http://graph1.com"))
-session.add_quad(("s3", "p3", "o3", "http://graph1.com"))
-session.add_quad(("o3", "p4", "o4", "http://graph1.com"))
-session.add_quad(("s3", "p5", "o4", "http://graph1.com"))
-session.add_quad(("s3", "p2", "o3", "http://graph1.com"))
-session.add_quad(("s3", "p3", "o3", "http://graph1.com"))
-session.add_quad(("s3", "p3", "o3", "http://graph1.com"))
-session.add_quad(("s4", "p4", "o4", "http://graph2.com"))
-session.add_quad(("s5", "p5", "o5", "http://graph2.com"))
-session.add_quad(("s6", "p6", "o6", "http://graph2.com"))
+session.add_quad( (URIRef("s1"), URIRef("p1"), URIRef("o1"), URIRef("http://graph1.com")))
+session.add_quad((to_iri("s2"), to_iri("p2"), to_iri("o1"), "http://graph1.com"))
+session.add_quad((to_iri("s3"), to_iri("p3"), to_iri("o3"), to_iri("http://graph1.com")))
+session.add_quad((to_iri("o3"), to_iri("p4"), to_iri("o4"), "http://graph1.com"))
+session.add_quad((to_iri("s3"), to_iri("p5"), to_iri("o4"), "http://graph1.com"))
+session.add_quad((to_iri("s3"), to_iri("p5"), to_iri("o4"), "http://graph1.com"))
+session.add_quad((to_iri("s3"), to_iri("p2"), to_iri("o3"), "http://graph1.com"))
+session.add_quad((to_iri("s3"), to_iri("p3"), to_iri("o3"), "http://graph1.com"))
+session.add_quad((to_iri("s3"), to_iri("p3"), to_iri("o3"), "http://graph1.com"))
+session.add_quad((to_iri("s4"), to_iri("p4"), to_iri("o4"), "http://graph2.com"))
+session.add_quad((to_iri("s5"), to_iri("p5"), to_iri("o5"), "http://graph2.com"))
+session.add_quad((to_iri("s6"), to_iri("p6"), to_iri("o6"), "http://graph2.com"))
 
 prd("\n Print and count quads")
 print(len(list(session.quads())))

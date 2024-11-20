@@ -246,8 +246,8 @@ class RdflibEngine(Engine):
     def quads(self, s=None, p=None, o=None, g=None,/):
         return self._dataset.quads((s, p, o, g))
 
-    def triples(self, s=None, p=None, o=None,/):
-        return self._dataset.triples((s, p, o))
+    def triples(self, s=None, p=None, o=None,g=None, /):
+        return self._dataset.triples((s, p, o, g))
 
     def query(self, query):
         return self._dataset.query(query)

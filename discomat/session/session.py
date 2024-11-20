@@ -160,7 +160,7 @@ class Session(Cuds):
         # print(f"need to check provenance...")
         self.engine.add_triple(t)
 
-    #@arg_to_iri
+    # @arg_to_iri
     def add_quad(self,q:Quad):
         # added None as python does not allow no default following default
         # if not any([s, p, o]):  # or use all() for all not None, not sure...
