@@ -6,12 +6,14 @@ from discomat.visualisation.cuds_vis import gvis
 from discomat.cuds.utils import uuid_from_string, to_iri, QueryLib
 from discomat.session.session import Session
 from rdflib import URIRef, Graph, PROV, Literal, RDF
+from discomat.session.engine import FusekiEngine, RdflibEngine
 
 import copy
 
 from discomat.ontology.namespaces import CUDS, MISO, MIO
+engine = FusekiEngine(description="test engine")
 
-session1 = Session(label="Session 1", description="session 2")
+session1 = Session(label="Session 1", description="session 2",engine=engine)
 sim1 = Cuds(ontology_type=MISO.Simulation, description="simulation 1")
 meth1 = Cuds(ontology_type=MISO.Method, description="method 1")
 bc1 = Cuds(ontology_type=MISO.BoundryCondition, description="boundary condition 1")
