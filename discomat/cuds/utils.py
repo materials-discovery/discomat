@@ -17,7 +17,7 @@ def to_iri(e: Union[str, URIRef]):
     elif isinstance(e, uuid.UUID):
         e = Literal(e)
     elif e is None:
-        return None
+        return Literal(None)
     else:
         e = Literal(str(e))
     return e
