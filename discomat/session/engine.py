@@ -335,11 +335,13 @@ class FusekiEngine(Engine):
         # this is a structure that has: update_iri, query_iri, etc...
 
         # testing
+        print(self._kb.stats_iri)
         print("kb.ping", self._kb.ping())
 
         print(self._kb.is_online)
 
         print(self._kb.stats())
+        print(f"query_iri={self._kb.query_iri}, data_iri={self._kb.data_iri}")
 
         self.default_graph_id = rdf_default_graphs["FUSEKI_DEFAULT_GRAPH"] #DATASET_DEFAULT_GRAPH_ID  # URIRef("f")
         # for fuseki we have urn:x-arq:DefaultGraph and urn:x-arq:UnionGraph as union!
@@ -548,9 +550,54 @@ class FusekiEngine(Engine):
                 q.append(i[v]['value'])
             yield tuple(q)
 
-    def triples(self, s=None, p=None, o=None,/):
-        for _, s, p, o in self.quads(s=s, p=p, o=o, g=None):
-            yield s, p, o
+    # def triples(self, s=None, p=None, o=None,/):
+    #     for _, s, p, o in self.quads(s=s, p=p, o=o, g=None):
+    #         yield s, p, o
+    def triples(self, s=None, p=None, o=None, g=None, /):
+        if g is None:
+            query = """
+                SELECT ?s ?p ?o
+                WHERE {
+                    ?s ?p ?o .
+            """
+        else:
+            query = f"""
+                SELECT ?s ?p ?o
+                WHERE {{
+                    GRAPH <{g}> {{
+                        ?s ?p ?o .
+                    }}
+            """
+
+        query += f" {f'FILTER (?s = <{s}>)' if s is not None else ''}"
+        query += f" {f'FILTER (?p = <{p}>)' if p is not None else ''}"
+        query += f" {f'FILTER (?o = <{o}>)' if o is not None else ''}"
+
+        query += " }"
+
+        print("query=", query)
+
+        results = self._kb.query(query)
+        results = results.json()
+
+        """
+        Results format example:
+        {'head': {'vars': ['s', 'p', 'o']}, 
+         'results': {'bindings': [{'s': {'type': 'uri', 'value': 'http://example.com/subject1'},
+                                   'p': {'type': 'uri', 'value': 'http://example.com/predicate1'},
+                                   'o': {'type': 'uri', 'value': 'http://example.com/object1'}}]}}
+        """
+
+        the_vars = results['head']['vars']
+        print(f"The binding variables are {the_vars}")
+
+        # Iterate over results and yield as tuples
+        for i in results['results']['bindings']:
+            t = []
+            for v in the_vars:
+                value = i[v]['value'] if v in i else None
+                t.append(value)
+            yield tuple(t)
 
     def query(self, query):  # need to make this aware of prefixes... simply by defining them in some method and using them in each query/update etc. could be part of kb.
         return self._kb.query(query)
