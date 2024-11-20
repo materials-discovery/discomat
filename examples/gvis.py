@@ -38,7 +38,7 @@ gvis(g, 'rdf_graph.html')
 # note you may need to do this: Install Certificates.command (search the command in your python environment)
 mio_url = "http://raw.githubusercontent.com/materials-discovery/MIO/main/mio/mio.ttl"
 mio_file = "./mio.ttl"
-wget.download(mio_url, out=mio_file)
+#wget.download(mio_url, out=mio_file)
 mio=Graph()
 mio.parse("./mio.ttl")
 gvis(mio, 'mio_graph.html')
