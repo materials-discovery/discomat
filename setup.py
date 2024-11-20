@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="discomat",
-    version="0.01",
+    version="0.1",
     packages=find_packages(),
     install_requires=[
         'pyvis==0.3.2',
