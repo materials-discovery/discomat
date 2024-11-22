@@ -1,5 +1,3 @@
-from orca.guilabels import ACTIVATE
-
 from discomat.cuds.cuds import Cuds
 from discomat.visualisation.cuds_vis import gvis, gvis2
 from rdflib import Graph, Namespace, RDF, URIRef
