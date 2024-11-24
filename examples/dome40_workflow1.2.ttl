@@ -1,0 +1,289 @@
+@prefix CUDS: <http://www.ddmd.io/mio/cuds#> .
+@prefix MIO: <http://www.ddmd.io/mio#> .
+@prefix ns1: <https://nextgen.dome40.io/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+<https://www.ddmd.io/mio#cuds_iri_06044e60-c010-4bd8-9085-03f81fc226c0> a CUDS:Cuds,
+        <https://nextgen.dome40.io/activity/Login> ;
+    CUDS:CreationTime "2024-11-22 15:04:01.552244" ;
+    CUDS:PID MIO:cuds_pid_06044e60-c010-4bd8-9085-03f81fc226c0 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_06044e60-c010-4bd8-9085-03f81fc226c0> ;
+    CUDS:label "Mary Login" ;
+    CUDS:uuid "06044e60-c010-4bd8-9085-03f81fc226c0" ;
+    prov:startedAtTime "2024-11-21T10:00:00" ;
+    prov:wasAssociatedWith <https://www.ddmd.io/mio#cuds_iri_7bffd0bb-73c2-4d39-9b26-9c9eb93ae808> .
+
+<https://www.ddmd.io/mio#cuds_iri_06600d29-48f0-4e16-b72e-a72f8879157e> a CUDS:Cuds,
+        <https://nextgen.dome40.io/activity/Register> ;
+    CUDS:CreationTime "2024-11-22 15:04:01.551899" ;
+    CUDS:PID MIO:cuds_pid_06600d29-48f0-4e16-b72e-a72f8879157e ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_06600d29-48f0-4e16-b72e-a72f8879157e> ;
+    CUDS:label "Mary Registration" ;
+    CUDS:uuid "06600d29-48f0-4e16-b72e-a72f8879157e" ;
+    prov:generated <https://www.ddmd.io/mio#cuds_iri_dd894d9f-f761-4491-b136-ea7a4c9eadc4> ;
+    prov:startedAtTime "2024-11-21T09:00:00" ;
+    prov:wasAssociatedWith <https://www.ddmd.io/mio#cuds_iri_7bffd0bb-73c2-4d39-9b26-9c9eb93ae808> .
+
+<https://www.ddmd.io/mio#cuds_iri_4bbd651d-ee39-4ba5-a58c-7eb3ff299905> a CUDS:Cuds,
+        <https://nextgen.dome40.io/activity/AccessRequest> ;
+    CUDS:CreationTime "2024-11-22 15:04:01.552777" ;
+    CUDS:PID MIO:cuds_pid_4bbd651d-ee39-4ba5-a58c-7eb3ff299905 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_4bbd651d-ee39-4ba5-a58c-7eb3ff299905> ;
+    CUDS:label "David Access Request" ;
+    CUDS:uuid "4bbd651d-ee39-4ba5-a58c-7eb3ff299905" ;
+    prov:startedAtTime "2024-11-21T10:20:00" ;
+    prov:used <https://www.ddmd.io/mio#cuds_iri_c3de702a-e4d8-484b-b8c6-95d18e3397a5> ;
+    prov:wasAssociatedWith <https://www.ddmd.io/mio#cuds_iri_09ad34c2-f9db-4986-a7fe-cb7012a95e6d> .
+
+<https://www.ddmd.io/mio#cuds_iri_50a8328f-fcca-414f-afe2-2da8231f4867> a CUDS:Cuds,
+        <https://nextgen.dome40.io/activity/Login> ;
+    CUDS:CreationTime "2024-11-22 15:04:01.551515" ;
+    CUDS:PID MIO:cuds_pid_50a8328f-fcca-414f-afe2-2da8231f4867 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_50a8328f-fcca-414f-afe2-2da8231f4867> ;
+    CUDS:label "David Login" ;
+    CUDS:uuid "50a8328f-fcca-414f-afe2-2da8231f4867" ;
+    prov:startedAtTime "2024-11-21T10:00:00" ;
+    prov:wasAssociatedWith <https://www.ddmd.io/mio#cuds_iri_09ad34c2-f9db-4986-a7fe-cb7012a95e6d> .
+
+<https://www.ddmd.io/mio#cuds_iri_511ad0f3-2e94-40ab-8dad-7e661fa52880> a CUDS:Cuds,
+        <https://nextgen.dome40.io/activity/Visit> ;
+    CUDS:CreationTime "2024-11-22 15:04:01.552608" ;
+    CUDS:PID MIO:cuds_pid_511ad0f3-2e94-40ab-8dad-7e661fa52880 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_511ad0f3-2e94-40ab-8dad-7e661fa52880> ;
+    CUDS:label "DavidVisitShowcase1" ;
+    CUDS:uuid "511ad0f3-2e94-40ab-8dad-7e661fa52880" ;
+    prov:startedAtTime "2024-11-21T10:10:00" ;
+    prov:used <https://www.ddmd.io/mio#cuds_iri_c3de702a-e4d8-484b-b8c6-95d18e3397a5> ;
+    prov:wasAssociatedWith <https://www.ddmd.io/mio#cuds_iri_09ad34c2-f9db-4986-a7fe-cb7012a95e6d> .
+
+<https://www.ddmd.io/mio#cuds_iri_57a8eb99-47d0-4f7b-b7d9-da03742d0a90> a CUDS:Cuds,
+        <https://nextgen.dome40.io/activity/Register> ;
+    CUDS:CreationTime "2024-11-22 15:04:01.551001" ;
+    CUDS:PID MIO:cuds_pid_57a8eb99-47d0-4f7b-b7d9-da03742d0a90 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_57a8eb99-47d0-4f7b-b7d9-da03742d0a90> ;
+    CUDS:label "David Registration" ;
+    CUDS:uuid "57a8eb99-47d0-4f7b-b7d9-da03742d0a90" ;
+    prov:generated <https://www.ddmd.io/mio#cuds_iri_f7b3b652-4e8d-4940-8134-f04c8bde1a76> ;
+    prov:startedAtTime "2024-11-21T09:00:00" ;
+    prov:wasAssociatedWith <https://www.ddmd.io/mio#cuds_iri_09ad34c2-f9db-4986-a7fe-cb7012a95e6d> .
+
+<https://www.ddmd.io/mio#cuds_iri_c9901f0d-cfdb-4116-b981-c3210f835600> a CUDS:Cuds,
+        <https://nextgen.dome40.io/activity/Search> ;
+    CUDS:CreationTime "2024-11-22 15:04:01.554292" ;
+    CUDS:PID MIO:cuds_pid_c9901f0d-cfdb-4116-b981-c3210f835600 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_c9901f0d-cfdb-4116-b981-c3210f835600> ;
+    CUDS:label "David Search Vehicle" ;
+    CUDS:uuid "c9901f0d-cfdb-4116-b981-c3210f835600" ;
+    prov:wasAssociatedWith <https://www.ddmd.io/mio#cuds_iri_09ad34c2-f9db-4986-a7fe-cb7012a95e6d> ;
+    ns1:hasKey <https://www.ddmd.io/mio#cuds_iri_e4cc66b9-1e45-4cb2-a92e-acd79e49cecb> .
+
+<https://www.ddmd.io/mio#cuds_iri_eb961e84-2e00-48b8-8fb8-14b94e3eab31> a CUDS:Cuds,
+        <https://nextgen.dome40.io/activity/Upload> ;
+    CUDS:CreationTime "2024-11-22 15:04:01.556335" ;
+    CUDS:PID MIO:cuds_pid_eb961e84-2e00-48b8-8fb8-14b94e3eab31 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_eb961e84-2e00-48b8-8fb8-14b94e3eab31> ;
+    CUDS:label "Mary Upload" ;
+    CUDS:uuid "eb961e84-2e00-48b8-8fb8-14b94e3eab31" ;
+    prov:wasAssociatedWith <https://www.ddmd.io/mio#cuds_iri_7bffd0bb-73c2-4d39-9b26-9c9eb93ae808> .
+
+<https://www.ddmd.io/mio#cuds_iri_0fd8fdd2-1ac1-4a24-9508-b552975ea129> a CUDS:Cuds,
+        ns1:Ship ;
+    CUDS:CreationTime "2024-11-22 15:04:01.553719" ;
+    CUDS:PID MIO:cuds_pid_0fd8fdd2-1ac1-4a24-9508-b552975ea129 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_0fd8fdd2-1ac1-4a24-9508-b552975ea129> ;
+    CUDS:label "Ship2" ;
+    CUDS:uuid "0fd8fdd2-1ac1-4a24-9508-b552975ea129" .
+
+<https://www.ddmd.io/mio#cuds_iri_3e9fce70-e6d8-4a87-b320-40570fcbed31> a CUDS:Cuds,
+        ns1:Payment ;
+    CUDS:CreationTime "2024-11-22 15:04:01.553993" ;
+    CUDS:PID MIO:cuds_pid_3e9fce70-e6d8-4a87-b320-40570fcbed31 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_3e9fce70-e6d8-4a87-b320-40570fcbed31> ;
+    CUDS:label "Payment" ;
+    CUDS:uuid "3e9fce70-e6d8-4a87-b320-40570fcbed31" ;
+    prov:generated <https://www.ddmd.io/mio#cuds_iri_699a8796-6932-4a33-ba58-7f8743f025f8> ;
+    ns1:has <https://www.ddmd.io/mio#cuds_iri_563d8b70-15f4-4292-a2f2-112be8e4cfa8>,
+        <https://www.ddmd.io/mio#cuds_iri_93ac53c5-a95a-41b9-b395-799c5b1bfa9c> .
+
+<https://www.ddmd.io/mio#cuds_iri_47eee988-1a18-4638-b90f-a5eb175b4e46> a CUDS:Cuds,
+        ns1:Ship ;
+    CUDS:CreationTime "2024-11-22 15:04:01.553571" ;
+    CUDS:PID MIO:cuds_pid_47eee988-1a18-4638-b90f-a5eb175b4e46 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_47eee988-1a18-4638-b90f-a5eb175b4e46> ;
+    CUDS:label "Ship1" ;
+    CUDS:uuid "47eee988-1a18-4638-b90f-a5eb175b4e46" .
+
+<https://www.ddmd.io/mio#cuds_iri_563d8b70-15f4-4292-a2f2-112be8e4cfa8> a CUDS:Cuds,
+        ns1:Payer ;
+    CUDS:CreationTime "2024-11-22 15:04:01.555966" ;
+    CUDS:PID MIO:cuds_pid_563d8b70-15f4-4292-a2f2-112be8e4cfa8 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_563d8b70-15f4-4292-a2f2-112be8e4cfa8> ;
+    CUDS:label "Payer" ;
+    CUDS:uuid "563d8b70-15f4-4292-a2f2-112be8e4cfa8" .
+
+<https://www.ddmd.io/mio#cuds_iri_699a8796-6932-4a33-ba58-7f8743f025f8> a CUDS:Cuds,
+        ns1:MonetaryTransaction ;
+    CUDS:CreationTime "2024-11-22 15:04:01.554124" ;
+    CUDS:PID MIO:cuds_pid_699a8796-6932-4a33-ba58-7f8743f025f8 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_699a8796-6932-4a33-ba58-7f8743f025f8> ;
+    CUDS:label "Monetary Transaction" ;
+    CUDS:uuid "699a8796-6932-4a33-ba58-7f8743f025f8" ;
+    ns1:enables <https://www.ddmd.io/mio#cuds_iri_c24b0e5d-9904-46ab-bef7-4c11aab00c48> .
+
+<https://www.ddmd.io/mio#cuds_iri_73dce3d5-9ce1-408e-94fa-89bef9548cf0> a CUDS:Cuds,
+        ns1:Contract ;
+    CUDS:CreationTime "2024-11-22 15:04:01.553857" ;
+    CUDS:PID MIO:cuds_pid_73dce3d5-9ce1-408e-94fa-89bef9548cf0 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_73dce3d5-9ce1-408e-94fa-89bef9548cf0> ;
+    CUDS:label "Contract" ;
+    CUDS:uuid "73dce3d5-9ce1-408e-94fa-89bef9548cf0" ;
+    prov:generated <https://www.ddmd.io/mio#cuds_iri_3e9fce70-e6d8-4a87-b320-40570fcbed31> ;
+    ns1:has <https://www.ddmd.io/mio#cuds_iri_bb31fd73-d55c-4a5a-9a0d-dcdeb75a80f5>,
+        <https://www.ddmd.io/mio#cuds_iri_c1307a3e-5723-49b2-a1f4-62b6d23e6198>,
+        <https://www.ddmd.io/mio#cuds_iri_dbf66d28-da8d-4b04-acd4-91b202fc3040> .
+
+<https://www.ddmd.io/mio#cuds_iri_93ac53c5-a95a-41b9-b395-799c5b1bfa9c> a CUDS:Cuds,
+        ns1:Payee ;
+    CUDS:CreationTime "2024-11-22 15:04:01.556125" ;
+    CUDS:PID MIO:cuds_pid_93ac53c5-a95a-41b9-b395-799c5b1bfa9c ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_93ac53c5-a95a-41b9-b395-799c5b1bfa9c> ;
+    CUDS:label "Payee" ;
+    CUDS:uuid "93ac53c5-a95a-41b9-b395-799c5b1bfa9c" ;
+    prov:wasAssociatedWith <https://www.ddmd.io/mio#cuds_iri_7bffd0bb-73c2-4d39-9b26-9c9eb93ae808> .
+
+<https://www.ddmd.io/mio#cuds_iri_bb31fd73-d55c-4a5a-9a0d-dcdeb75a80f5> a CUDS:Cuds,
+        ns1:Access ;
+    CUDS:CreationTime "2024-11-22 15:04:01.555742" ;
+    CUDS:PID MIO:cuds_pid_bb31fd73-d55c-4a5a-9a0d-dcdeb75a80f5 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_bb31fd73-d55c-4a5a-9a0d-dcdeb75a80f5> ;
+    CUDS:label "access" ;
+    CUDS:uuid "bb31fd73-d55c-4a5a-9a0d-dcdeb75a80f5" .
+
+<https://www.ddmd.io/mio#cuds_iri_c1307a3e-5723-49b2-a1f4-62b6d23e6198> a CUDS:Cuds,
+        ns1:Duration ;
+    CUDS:CreationTime "2024-11-22 15:04:01.554611" ;
+    CUDS:PID MIO:cuds_pid_c1307a3e-5723-49b2-a1f4-62b6d23e6198 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_c1307a3e-5723-49b2-a1f4-62b6d23e6198> ;
+    CUDS:label "duration" ;
+    CUDS:uuid "c1307a3e-5723-49b2-a1f4-62b6d23e6198" .
+
+<https://www.ddmd.io/mio#cuds_iri_c24b0e5d-9904-46ab-bef7-4c11aab00c48> a CUDS:Cuds,
+        <https://nextgen.dome40.io/activity/AccessGranted> ;
+    CUDS:CreationTime "2024-11-22 15:04:01.553083" ;
+    CUDS:PID MIO:cuds_pid_c24b0e5d-9904-46ab-bef7-4c11aab00c48 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_c24b0e5d-9904-46ab-bef7-4c11aab00c48> ;
+    CUDS:label "AccessGrantedtoDavid" ;
+    CUDS:uuid "c24b0e5d-9904-46ab-bef7-4c11aab00c48" ;
+    prov:generated <https://www.ddmd.io/mio#cuds_iri_e3f09c0d-ec63-4ab6-b204-cd78d3774c0c> ;
+    prov:startedAtTime "2024-11-21T10:30:00" ;
+    prov:used <https://www.ddmd.io/mio#cuds_iri_c3de702a-e4d8-484b-b8c6-95d18e3397a5> ;
+    prov:wasAssociatedWith <https://www.ddmd.io/mio#cuds_iri_09ad34c2-f9db-4986-a7fe-cb7012a95e6d> ;
+    prov:wasInformedBy <https://www.ddmd.io/mio#cuds_iri_c6bcdf24-19d3-4ff4-a04e-52be2006d663> ;
+    ns1:isDerivedFrom <https://www.ddmd.io/mio#cuds_iri_73dce3d5-9ce1-408e-94fa-89bef9548cf0> .
+
+<https://www.ddmd.io/mio#cuds_iri_c6bcdf24-19d3-4ff4-a04e-52be2006d663> a CUDS:Cuds,
+        ns1:ClearingService ;
+    CUDS:CreationTime "2024-11-22 15:04:01.552944" ;
+    CUDS:PID MIO:cuds_pid_c6bcdf24-19d3-4ff4-a04e-52be2006d663 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_c6bcdf24-19d3-4ff4-a04e-52be2006d663> ;
+    CUDS:label "Clearing Service" ;
+    CUDS:uuid "c6bcdf24-19d3-4ff4-a04e-52be2006d663" .
+
+<https://www.ddmd.io/mio#cuds_iri_dbf66d28-da8d-4b04-acd4-91b202fc3040> a CUDS:Cuds,
+        ns1:NDA ;
+    CUDS:CreationTime "2024-11-22 15:04:01.554458" ;
+    CUDS:PID MIO:cuds_pid_dbf66d28-da8d-4b04-acd4-91b202fc3040 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_dbf66d28-da8d-4b04-acd4-91b202fc3040> ;
+    CUDS:label "NDA" ;
+    CUDS:uuid "dbf66d28-da8d-4b04-acd4-91b202fc3040" .
+
+<https://www.ddmd.io/mio#cuds_iri_dd894d9f-f761-4491-b136-ea7a4c9eadc4> a CUDS:Cuds,
+        ns1:TransactionRecord ;
+    CUDS:CreationTime "2024-11-22 15:04:01.552076" ;
+    CUDS:PID MIO:cuds_pid_dd894d9f-f761-4491-b136-ea7a4c9eadc4 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_dd894d9f-f761-4491-b136-ea7a4c9eadc4> ;
+    CUDS:label "Mary RegiRecord" ;
+    CUDS:uuid "dd894d9f-f761-4491-b136-ea7a4c9eadc4" .
+
+<https://www.ddmd.io/mio#cuds_iri_e3f09c0d-ec63-4ab6-b204-cd78d3774c0c> a CUDS:Cuds,
+        ns1:TransactionRecord ;
+    CUDS:CreationTime "2024-11-22 15:04:01.553256" ;
+    CUDS:PID MIO:cuds_pid_e3f09c0d-ec63-4ab6-b204-cd78d3774c0c ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_e3f09c0d-ec63-4ab6-b204-cd78d3774c0c> ;
+    CUDS:label "DownloadRecDavid" ;
+    CUDS:uuid "e3f09c0d-ec63-4ab6-b204-cd78d3774c0c" .
+
+<https://www.ddmd.io/mio#cuds_iri_f7b3b652-4e8d-4940-8134-f04c8bde1a76> a CUDS:Cuds,
+        ns1:TransactionRecord ;
+    CUDS:CreationTime "2024-11-22 15:04:01.551348" ;
+    CUDS:PID MIO:cuds_pid_f7b3b652-4e8d-4940-8134-f04c8bde1a76 ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_f7b3b652-4e8d-4940-8134-f04c8bde1a76> ;
+    CUDS:label "David RegiRecord" ;
+    CUDS:uuid "f7b3b652-4e8d-4940-8134-f04c8bde1a76" .
+
+<https://www.ddmd.io/mio#cuds_iri_e4cc66b9-1e45-4cb2-a92e-acd79e49cecb> a CUDS:Cuds,
+        ns1:Vehicle ;
+    CUDS:CreationTime "2024-11-22 15:04:01.553403" ;
+    CUDS:PID MIO:cuds_pid_e4cc66b9-1e45-4cb2-a92e-acd79e49cecb ;
+    CUDS:description "None" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_e4cc66b9-1e45-4cb2-a92e-acd79e49cecb> ;
+    CUDS:label "Vehicle" ;
+    CUDS:uuid "e4cc66b9-1e45-4cb2-a92e-acd79e49cecb" .
+
+<https://www.ddmd.io/mio#cuds_iri_c3de702a-e4d8-484b-b8c6-95d18e3397a5> a CUDS:Cuds,
+        <https://nextgen.dome40.io/showcase/Showcase> ;
+    CUDS:CreationTime "2024-11-22 15:04:01.552420" ;
+    CUDS:PID MIO:cuds_pid_c3de702a-e4d8-484b-b8c6-95d18e3397a5 ;
+    CUDS:description "Showcase about ship positioning." ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_c3de702a-e4d8-484b-b8c6-95d18e3397a5> ;
+    CUDS:label "Showcase1" ;
+    CUDS:uuid "c3de702a-e4d8-484b-b8c6-95d18e3397a5" ;
+    ns1:contains <https://www.ddmd.io/mio#cuds_iri_0fd8fdd2-1ac1-4a24-9508-b552975ea129>,
+        <https://www.ddmd.io/mio#cuds_iri_47eee988-1a18-4638-b90f-a5eb175b4e46>,
+        <https://www.ddmd.io/mio#cuds_iri_e4cc66b9-1e45-4cb2-a92e-acd79e49cecb> .
+
+<https://www.ddmd.io/mio#cuds_iri_7bffd0bb-73c2-4d39-9b26-9c9eb93ae808> a CUDS:Cuds,
+        prov:Agent ;
+    MIO:hasEmail "mary@example.com" ;
+    MIO:hasName "Mary" ;
+    CUDS:CreationTime "2024-11-22 15:04:01.551704" ;
+    CUDS:PID MIO:cuds_pid_7bffd0bb-73c2-4d39-9b26-9c9eb93ae808 ;
+    CUDS:description "this is a user wih email=mary@example.com" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_7bffd0bb-73c2-4d39-9b26-9c9eb93ae808> ;
+    CUDS:label "Mary" ;
+    CUDS:uuid "7bffd0bb-73c2-4d39-9b26-9c9eb93ae808" .
+
+<https://www.ddmd.io/mio#cuds_iri_09ad34c2-f9db-4986-a7fe-cb7012a95e6d> a CUDS:Cuds,
+        prov:Agent ;
+    MIO:hasEmail "david@example.com" ;
+    MIO:hasName "David" ;
+    CUDS:CreationTime "2024-11-22 15:04:01.550757" ;
+    CUDS:PID MIO:cuds_pid_09ad34c2-f9db-4986-a7fe-cb7012a95e6d ;
+    CUDS:description "this is a user wih email=david@example.com" ;
+    CUDS:iri <https://www.ddmd.io/mio#cuds_iri_09ad34c2-f9db-4986-a7fe-cb7012a95e6d> ;
+    CUDS:label "David" ;
+    CUDS:uuid "09ad34c2-f9db-4986-a7fe-cb7012a95e6d" .
+

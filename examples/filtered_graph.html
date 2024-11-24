@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1>Visualisation of filtered_graph.html</h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 1200px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "red", "id": "Monetary Transaction", "label": "Monetary Transaction", "shape": "dot", "size": 10, "title": "Monetary Transaction"}, {"color": "red", "id": "Upload Record", "label": "Upload Record", "shape": "dot", "size": 10, "title": "Upload Record"}, {"color": "red", "id": "Marie", "label": "Marie", "shape": "dot", "size": 10, "title": "Marie"}, {"color": "red", "id": "Access Granted", "label": "Access Granted", "shape": "dot", "size": 10, "title": "Access Granted"}, {"color": "red", "id": "DataSet1", "label": "DataSet1", "shape": "dot", "size": 10, "title": "DataSet1"}, {"color": "red", "id": "David", "label": "David", "shape": "dot", "size": 10, "title": "David"}, {"color": "red", "id": "Payment", "label": "Payment", "shape": "dot", "size": 10, "title": "Payment"}, {"color": "red", "id": "Access", "label": "Access", "shape": "dot", "size": 10, "title": "Access"}, {"color": "red", "id": "Connector", "label": "Connector", "shape": "dot", "size": 10, "title": "Connector"}, {"color": "red", "id": "External Platform", "label": "External Platform", "shape": "dot", "size": 10, "title": "External Platform"}, {"color": "red", "id": "Access Request", "label": "Access Request", "shape": "dot", "size": 10, "title": "Access Request"}, {"color": "red", "id": "DataSet2", "label": "DataSet2", "shape": "dot", "size": 10, "title": "DataSet2"}, {"color": "red", "id": "Search", "label": "Search", "shape": "dot", "size": 10, "title": "Search"}, {"color": "red", "id": "NDA", "label": "NDA", "shape": "dot", "size": 10, "title": "NDA"}, {"color": "red", "id": "Transaction Record", "label": "Transaction Record", "shape": "dot", "size": 10, "title": "Transaction Record"}, {"color": "red", "id": "Contract", "label": "Contract", "shape": "dot", "size": 10, "title": "Contract"}, {"color": "red", "id": "ClearingHouseService", "label": "ClearingHouseService", "shape": "dot", "size": 10, "title": "ClearingHouseService"}, {"color": "red", "id": "Search Record", "label": "Search Record", "shape": "dot", "size": 10, "title": "Search Record"}, {"color": "red", "id": "Marie Upload", "label": "Marie Upload", "shape": "dot", "size": 10, "title": "Marie Upload"}, {"color": "red", "id": "Duration", "label": "Duration", "shape": "dot", "size": 10, "title": "Duration"}, {"color": "red", "id": "DOME", "label": "DOME", "shape": "dot", "size": 10, "title": "DOME"}, {"color": "red", "id": "Vehicle", "label": "Vehicle", "shape": "dot", "size": 10, "title": "Vehicle"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "red", "from": "Monetary Transaction", "label": "label", "title": "rdf-schema#label", "to": "Monetary Transaction", "width": 1}, {"arrows": "to", "color": "red", "from": "Upload Record", "label": "label", "title": "rdf-schema#label", "to": "Upload Record", "width": 1}, {"arrows": "to", "color": "red", "from": "Marie", "label": "label", "title": "rdf-schema#label", "to": "Marie", "width": 1}, {"arrows": "to", "color": "red", "from": "Access Granted", "label": "label", "title": "rdf-schema#label", "to": "Access Granted", "width": 1}, {"arrows": "to", "color": "red", "from": "Access Granted", "label": "used", "title": "prov#used", "to": "DataSet1", "width": 1}, {"arrows": "to", "color": "red", "from": "Access Granted", "label": "wasAssociatedWith", "title": "prov#wasAssociatedWith", "to": "David", "width": 1}, {"arrows": "to", "color": "red", "from": "DataSet1", "label": "label", "title": "rdf-schema#label", "to": "DataSet1", "width": 1}, {"arrows": "to", "color": "red", "from": "Payment", "label": "label", "title": "rdf-schema#label", "to": "Payment", "width": 1}, {"arrows": "to", "color": "red", "from": "Access", "label": "label", "title": "rdf-schema#label", "to": "Access", "width": 1}, {"arrows": "to", "color": "red", "from": "Connector", "label": "used", "title": "prov#used", "to": "External Platform", "width": 1}, {"arrows": "to", "color": "red", "from": "Connector", "label": "label", "title": "rdf-schema#label", "to": "Connector", "width": 1}, {"arrows": "to", "color": "red", "from": "External Platform", "label": "label", "title": "rdf-schema#label", "to": "External Platform", "width": 1}, {"arrows": "to", "color": "red", "from": "Access Request", "label": "label", "title": "rdf-schema#label", "to": "Access Request", "width": 1}, {"arrows": "to", "color": "red", "from": "Access Request", "label": "used", "title": "prov#used", "to": "DataSet1", "width": 1}, {"arrows": "to", "color": "red", "from": "DataSet2", "label": "label", "title": "rdf-schema#label", "to": "DataSet2", "width": 1}, {"arrows": "to", "color": "red", "from": "Search", "label": "used", "title": "prov#used", "to": "DataSet1", "width": 1}, {"arrows": "to", "color": "red", "from": "Search", "label": "wasAssociatedWith", "title": "prov#wasAssociatedWith", "to": "David", "width": 1}, {"arrows": "to", "color": "red", "from": "Search", "label": "used", "title": "prov#used", "to": "Connector", "width": 1}, {"arrows": "to", "color": "red", "from": "Search", "label": "label", "title": "rdf-schema#label", "to": "Search", "width": 1}, {"arrows": "to", "color": "red", "from": "NDA", "label": "label", "title": "rdf-schema#label", "to": "NDA", "width": 1}, {"arrows": "to", "color": "red", "from": "David", "label": "label", "title": "rdf-schema#label", "to": "David", "width": 1}, {"arrows": "to", "color": "red", "from": "Transaction Record", "label": "label", "title": "rdf-schema#label", "to": "Transaction Record", "width": 1}, {"arrows": "to", "color": "red", "from": "Contract", "label": "label", "title": "rdf-schema#label", "to": "Contract", "width": 1}, {"arrows": "to", "color": "red", "from": "ClearingHouseService", "label": "label", "title": "rdf-schema#label", "to": "ClearingHouseService", "width": 1}, {"arrows": "to", "color": "red", "from": "Search Record", "label": "label", "title": "rdf-schema#label", "to": "Search Record", "width": 1}, {"arrows": "to", "color": "red", "from": "Marie Upload", "label": "label", "title": "rdf-schema#label", "to": "Marie Upload", "width": 1}, {"arrows": "to", "color": "red", "from": "Marie Upload", "label": "wasAssociatedWith", "title": "prov#wasAssociatedWith", "to": "Marie", "width": 1}, {"arrows": "to", "color": "red", "from": "Duration", "label": "label", "title": "rdf-schema#label", "to": "Duration", "width": 1}, {"arrows": "to", "color": "red", "from": "DOME", "label": "label", "title": "rdf-schema#label", "to": "DOME", "width": 1}, {"arrows": "to", "color": "red", "from": "Vehicle", "label": "label", "title": "rdf-schema#label", "to": "Vehicle", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+                    network.on("click", neighbourhoodHighlight);
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

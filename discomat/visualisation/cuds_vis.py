@@ -16,6 +16,7 @@ from discomat.cuds.utils import uuid_from_string, short_uuid
 from discomat.cuds.cuds import Cuds
 from discomat.session.session import Session
 from discomat.cuds.utils import extract_fragment
+from discomat.ontology.namespaces import CUDS, MIO
 
 def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
     """
@@ -131,6 +132,138 @@ def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
   }
     }
     """)
+
+    net.from_nx(G)  # Create directly from the NetworkX graph
+
+    #net.show_buttons(filter_=['physics', 'nodes'])  # Show physics control in the UI
+    # for edge in net.edges:
+    #     print(edge)
+    # Save the network to an HTML file
+    net.write_html(output_html_file)  # Write HTML file
+
+    file_uri = os.path.join(os.getcwd(), output_html_file)
+    file_uri = f"file://{urllib.parse.quote(file_uri)}"
+
+    print(f"Graph saved to {file_uri}")
+
+
+
+def gvis2 (graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
+    """
+    Plot the RDF graph using NetworkX and Pyvis.
+    Showing only the fragments of IRIs and ignoring RDFS.comments.
+
+    :param graph: The RDFLib graph to vizualize.
+
+    Could be a single CUDS or a whole graph, though performance could be an issue.
+
+
+    :param output_html_file: The HTML/JS output. Simply open in a browser!
+
+    fixme: add option to support notebooks.
+    """
+
+    #G = nx.DiGraph()
+    G = nx.MultiDiGraph()
+    """
+    A MultiDiGraph in Python's NetworkX library is a 
+    directed graph that allows multiple edges between any pair of nodes. 
+    """
+    # if isinstance(graph, Session):
+    #     # get all graphs in the session, including the default
+    #     x=Graph()  # fix.
+    #     for g in graph:  # i.e. g in session.
+    #         x=x+g
+    #     graph = x+graph._graph
+    # elif isinstance(graph, Cuds):
+    #     graph = graph._graph
+
+    # this is a slight regression, the above took all graphs, but it works only for sessions with an engie which is rdflib one.
+
+    if isinstance(graph, Cuds):
+        graph = graph._graph
+
+
+
+    for s, p, o in graph:
+
+        # Ignore comments, as some are quite large.
+        if p == RDFS.comment:
+            continue
+
+        if (o in {RDFS.Class, OWL.Class, OWL.DatatypeProperty, OWL.ObjectProperty,
+                                    OWL.NamedIndividual, CUDS.Cuds}):
+            continue
+
+        if (p in {RDFS.range, RDFS.domain, CUDS.description}):
+            continue
+
+        s_fragment = extract_fragment(str(s))
+        p_fragment = extract_fragment(str(p))
+        o_fragment = extract_fragment(str(o))
+
+        # s_fragment = uuid_from_string(s_fragment, 5) or s_fragment
+        # o_fragment = uuid_from_string(o_fragment, 5) or o_fragment
+        if len(o_fragment)>8:
+            o_fragment = short_uuid(o_fragment)
+
+        if len(s_fragment) > 8:
+            s_fragment = short_uuid(s_fragment)
+
+
+        # fixme: quick code, it has duplication and not efficient...
+
+        # Identify if the subject or object is a class
+        if (s, None, RDFS.Class) in graph or (s, None, OWL.Class) in graph:
+            G.add_node(s_fragment, title=str(s), color='orange')  # classes are RED
+        elif (s, None, None) not in graph:
+            G.add_node(s_fragment, title=str(s), color='green')
+        else:
+            G.add_node(s_fragment, title=str(s), color='red')
+
+        if (o, None, RDFS.Class) in graph or (o, None, OWL.Class) in graph:
+            G.add_node(o_fragment, title=str(o), color='orange')
+        elif (o, None, None) not in graph:
+            G.add_node(o_fragment, title=str(o), color='green')
+        else:
+            G.add_node(o_fragment, title=str(o), color='red')
+
+            # Add edges, using thick orange for subclass relations
+        edge_color = 'orange' if p == RDFS.subClassOf else 'red'
+        edge_width = 5 if p == RDFS.subClassOf else 2
+
+        G.add_edge(s_fragment, o_fragment, label=p_fragment, title=str(p), color=edge_color, width=edge_width)
+        # edges = G.edges(data=True)
+        # for edge in edges:
+        #     print(edge)
+    # Create a Pyvis network
+    net = Network(
+        height='1200px',
+        heading=f"Visualisation of {output_html_file}",
+        neighborhood_highlight=True,
+        directed=True,
+        notebook=False,  # Ensure this is set to False for non-notebook environments
+        select_menu=False,  # Optional: to select nodes and edges in the plot
+        filter_menu=False
+
+    )
+
+  #   net.set_options("""
+  #   var options = {
+  #       "configure": {
+  #   "enabled": true,
+  #   "filter": ["physics"]
+  #       },
+  #       "physics": {
+  #   "barnesHut": {
+  #     "gravitationalConstant": -36200,
+  #           "springLength": 40
+  #
+  #   },
+  #   "minVelocity": 0.75
+  # }
+  #   }
+  #   """)
 
     net.from_nx(G)  # Create directly from the NetworkX graph
 
