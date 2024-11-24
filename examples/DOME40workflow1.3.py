@@ -9,7 +9,7 @@ from discomat.ontology.namespaces import CUDS, MIO
 PROV = Namespace("http://www.w3.org/ns/prov#")
 DOME40 = Namespace("https://nextgen.dome40.io/")
 ACTIVITY = Namespace("https://nextgen.dome40.io/activity/")
-USER = Namespace("https://nextgen.dome40.io/user/")
+USER = Namespace("http://nextgen.dome40.io/user/")
 SHOWCASE = Namespace("https://nextgen.dome40.io/showcase/")
 
 # Define user data
@@ -181,4 +181,63 @@ qres3 = gall.query(query3)
 print("Number of activities each user is associated with:")
 for row in qres3:
     print(f"- User: {row.user}, Activities: {row.activityCount}")
+
+iii = row.user
+
+query_full = f"""
+PREFIX mio: <http://www.ddmd.io/mio#>
+SELECT DISTINCT ?s ?p ?o
+WHERE {{
+  {{
+    <{iii}> ?p ?o .  # Outgoing triples
+  }}
+  UNION
+  {{
+    ?s ?p <{iii}> .  # Incoming triples
+  }}
+    FILTER(?p = mio:hasName)
+
+}}
+"""
+res3_5=gall.query(query_full)
+for r in res3_5:
+    print("row", r)
+
+
+# query4="""
+# PREFIX prov: <http://www.w3.org/ns/prov#>
+# PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# PREFIX miodome: <http://www.ddmd.io/mio#>
+# PREFIX dome: <https://nextgen.dome40.io/>
+#
+# SELECT DISTINCT ?activity
+# WHERE {
+#   # Find all activities or instances of subclasses of prov:Activity
+#   ?activity a ?activityType .
+#   ?activityType rdfs:subClassOf* dome:Search .
+#
+#   # Ensure the activity is associated with a user
+#   ?activity prov:wasAssociatedWith ?user .
+#
+#   # Ensure the user has the name "David"
+#   ?user miodome:hasName "David" .
+# }
+#
+# """
+query4="""
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dome: <https://nextgen.dome40.io/>
+
+SELECT  ?activity
+WHERE {
+  # Find all instances of prov:Activity or its subclasses
+  ?activity a ?activityType .
+  ?activityType rdfs:subClassOf* dome:Search .
+}
+"""
+qres4 = gall.query(query4)
+print("query 4")
+for row in qres4:
+    print(f"- User: {row}")
 
