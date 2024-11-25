@@ -10,8 +10,8 @@ import copy
 from discomat.ontology.namespaces import CUDS, MISO, MIO
 from discomat.session.engine import FusekiEngine, RdflibEngine
 
-# engine = FusekiEngine(description="test engine")
-engine=RdflibEngine()
+engine = FusekiEngine(description="test engine")
+#engine=RdflibEngine()
 
 # test session
 session = Session(engine=engine)

@@ -513,7 +513,7 @@ class FusekiEngine(Engine):
         #{'g': {'type': 'uri', 'value': 'http://dome40.io/dataset/data/platforms_dome_core_reasoned_Hermit'}, 's': {'type': 'uri', 'value': 'http://iserve.kmi.open.ac.uk/ns/msm#MessagePart'}, 'p': {'type': 'uri', 'value': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'}, 'o': {'type': 'uri', 'value': 'http://www.w3.org/2002/07/owl#Class'}}
 
 
-    def quads(self, s=None, p=None, o=None, g=None, /):
+    def quads3(self, s=None, p=None, o=None, g=None, /):
         #FILTER(?g = < http: // graph2.com >)
         query = """SELECT ?s ?p ?o ?g 
         WHERE {
@@ -550,6 +550,62 @@ class FusekiEngine(Engine):
                 q.append(i[v]['value'])
             yield tuple(q)
 
+    def quads(self, s=None, p=None, o=None, g=None, /):
+        print(s, p, o, g)
+        print(type(s), type(p), type(o), type(g))
+        #FILTER(?g = < http: // graph2.com >)
+        query = """SELECT ?s ?p ?o ?g 
+        WHERE {
+            GRAPH ?g {
+                ?s ?p ?o .
+            }
+        """
+        # check if the argument an rdflib literal with valye None, other, or iri and add properly formated filter. 
+        def c_filter(var_, val):
+            if isinstance(val, Literal):
+                if val.value is not None:
+                    return f"FILTER (?{var_} = {val.n3()})"
+                else:
+                    return None
+            else:
+                return f"FILTER (?{var_} = <{val}>)"    
+
+        # Add filters conditionally for each variable
+        query += c_filter("s", s) or "" 
+        query += c_filter("p", p) or ""
+        query += c_filter("o", o) or ""
+        query += c_filter("g", g) or ""
+        #c_filter("s", s)
+        #c_filter("g", g)
+       
+        query += " }"
+
+        print("query=", query)
+        results = self._kb.query(query)
+        results = results.json()
+        """
+                the results are of the form (example):
+
+                results.josn(): 
+                {'head': {'vars': ['g']}, 'results': {'bindings': [{'g': {'type': 'uri', 'value': 'http://dome40.io/dataset/data/platforms_dome_core_reasoned_Hermit'}}, {'g': {'type': 'uri', 'value': 'http://dome40.io/dataset/data/dome4.0_core_dataset_trial0_reasoned'}}]}}
+
+                so essentially we should later enhance the loop to check the type of the graph. 
+                """
+        the_vars = []
+        # print(results)
+        for i in results['head']['vars']:
+            the_vars.append(i)
+        print(f"the binding variables are {the_vars}")
+
+        for i in results['results']['bindings']:
+            q = []
+            for v in the_vars:
+                q.append(i[v]['value'])
+            yield tuple(q)
+
+    # def triples(self, s=None, p=None, o=None,/):
+    #     for _, s, p, o in self.quads(s=s, p=p, o=o, g=None):
+    #         yield s, p, o
     # def triples(self, s=None, p=None, o=None,/):
     #     for _, s, p, o in self.quads(s=s, p=p, o=o, g=None):
     #         yield s, p, o
