@@ -10,7 +10,7 @@ PC = Namespace("http://dome40.eu/semantics/pc#")
 DOME = Namespace("http://dome40.eu/semantics/dome4.0_core#")
 ADE = Namespace("http://dome40.eu/semantics/reasoned/ade_reasoned#")
 PL = Namespace("https://dome40.eu/semantics/scenario/platforms#")
-MIO = Namespace("http//materials-discovery.org/semantics/mio#")
+MIO = Namespace("http://materials-discovery.org/semantics/mio#")
 
 # Define user data
 @dataclass
@@ -127,25 +127,26 @@ print(f"Total number of CUDS instances created: {len(all_cuds)}")
 
 
 
-# Create an RDF graph
-graph = rdflib.Graph()
+#Query
 
+# for s, p, o in graph:
+#    print(f"Subject: {s}, Predicate: {p}, Object: {o}")
+
+graph = rdflib.Graph()
 
 graph.parse("Dome40_workflow1.5.ttl", format="turtle")
 
-#for s, p, o in graph:
-#    print(f"Subject: {s}, Predicate: {p}, Object: {o}")
-
-
+# search for this
 david_name = rdflib.Literal("David")
-
 
 user_in_KB = False
 
-
+# Search for the subject where 'hasName' is 'David'
 for s, p, o in graph.triples((None, rdflib.URIRef("http://materials-discovery.org/semantics/mio#hasName"), david_name)):
     print(f"found: {s}, {p}, {o}")
+
     user_in_KB = True
+
 
 if user_in_KB:
     print(f"User with name 'David' is in the knowledge base.")
