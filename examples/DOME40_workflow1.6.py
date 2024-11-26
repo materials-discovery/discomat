@@ -11,6 +11,7 @@ DOME = Namespace("http://dome40.eu/semantics/dome4.0_core#")
 ADE = Namespace("http://dome40.eu/semantics/reasoned/ade_reasoned#")
 PL = Namespace("https://dome40.eu/semantics/scenario/platforms#")
 MIO = Namespace("http://materials-discovery.org/semantics/mio#")
+CUDS=Namespace("http://www.ddmd.io/mio/cuds#")
 
 
 # Define user data
@@ -119,72 +120,32 @@ for cuds_instance in all_cuds:
     for s, p, o in cuds_instance.graph:
         gall.add((s, p, o))
 
-gall.serialize(destination="Dome40_workflow1.5.ttl")
+gall.serialize(destination="Dome40_workflow1.6.ttl")
 
 # Visualize the graph using gvis2
-gvis2(gall, "Dome40_workflow1.5.html")
+gvis2(gall, "Dome40_workflow1.6.html")
 
 print(f"Total number of CUDS instances created: {len(all_cuds)}")
 
 
 
+# Filter
+def filter_graph_by_namespace(graph, exclude_namespaces):
+    filtered_graph = Graph()
+    for s, p, o in graph:
+        # Check if the predicate belongs to any excluded namespace
+        if not any(str(p).startswith(ns) for ns in exclude_namespaces):
+            filtered_graph.add((s, p, o))
+        # else:
+        #     print(f"Excluded triple: ({s}, {p}, {o})")
+    return filtered_graph
 
-# for s, p, o in graph:
-#    print(f"Subject: {s}, Predicate: {p}, Object: {o}")
-#
-# graph = rdflib.Graph()
-#
-# graph.parse("Dome40_workflow1.5.ttl", format="turtle")
-#
-# # search for this
-# david_name = rdflib.Literal("David")
-#
-# user_in_KB = False
-#
-# # Search for the subject where 'hasName' is 'David'
-# for s, p, o in graph.triples((None, rdflib.URIRef("http://materials-discovery.org/semantics/mio#hasName"), david_name)):
-#     print(f"found: {s}, {p}, {o}")
-#
-#     user_in_KB = True
-#
-#
-# if user_in_KB:
-#     print(f"User with name 'David' is in the knowledge base.")
-# else:
-#     print(f"User with name 'David' is not found in the knowledge base.")
+exclude_namespaces = [
+    str(CUDS),
+]
 
 
+filtered_gall = filter_graph_by_namespace(gall, exclude_namespaces)
 
+gvis2(filtered_gall, "Filtered_Dome40_workflow1.6.html")
 
-
-#Query
-from SPARQLWrapper import SPARQLWrapper, JSON
-
-# Fuseki endpoint URL
-sparql_endpoint = ""
-
-
-sparql = SPARQLWrapper(sparql_endpoint)
-
-
-query = """
-PREFIX mio: <http://materials-discovery.org/semantics/mio#>
-
-SELECT ?subject WHERE {
-  ?subject mio:hasName "David" .
-}
-"""
-
-
-sparql.setQuery(query)
-sparql.setReturnFormat(JSON)
-
-
-results = sparql.query().convert()
-
-
-if results["results"]["bindings"]:
-    for result in results["results"]["bindings"]:
-        print(f"Found subject: {result['subject']['value']}")
-else:
-    print("User with name 'David' is not found in the knowledge base.")
