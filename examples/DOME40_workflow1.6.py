@@ -1,9 +1,11 @@
+from _datetime import datetime
 from discomat.cuds.cuds import Cuds
 from discomat.visualisation.cuds_vis import gvis2
 import rdflib
 from rdflib import Graph, Namespace, Literal
 from dataclasses import dataclass
-
+from rdflib import RDF, RDFS, OWL
+from discomat.ontology.namespaces import CUDS, MIO
 
 PROV = Namespace("http://www.w3.org/ns/prov#")
 PC = Namespace("http://dome40.eu/semantics/pc#")
@@ -13,6 +15,10 @@ PL = Namespace("https://dome40.eu/semantics/scenario/platforms#")
 MIO = Namespace("http://materials-discovery.org/semantics/mio#")
 CUDS=Namespace("http://www.ddmd.io/mio/cuds#")
 
+def sub_class_of (super_class):
+    c = Cuds(ontology_type=OWL.Class)
+    c.add(RDFS.subClassOf, super_class)
+    return super_class
 
 # Define user data
 @dataclass
@@ -38,6 +44,8 @@ for user_data in users_data:
     all_cuds.append(user)
     user_entities[user_data.name] = user
 
+
+
 # Create Dataset Instances
 dataset1 = Cuds(ontology_type=PC.DataSet1)
 dataset2 = Cuds(ontology_type=PC.DataSet2)
@@ -48,6 +56,23 @@ connector = Cuds(ontology_type=PL.Connector)
 external_platform = Cuds(ontology_type=PL.ExternalPlatform)
 connector.add(PROV.used, external_platform)
 all_cuds.extend([connector, external_platform])
+
+# Define Login as a class
+login_class = sub_class_of(PROV.Acitivity)
+all_cuds.append(login_class)
+
+# Login Activity for David and Marie
+login_david_activity = Cuds(ontology_type=ADE.LoginActivity)
+login_david_activity.add(PROV.instanceOf, login_class)
+login_david_activity.add(PROV.wasAssociatedWith, user_entities["David"])
+login_david_activity.add(PROV.generatedAtTime, Literal(str(datetime.now())))
+all_cuds.append(login_david_activity)
+
+login_marie_activity = Cuds(ontology_type=ADE.LoginActivity)
+login_marie_activity.add(PROV.instanceOf, login_class)
+login_marie_activity.add(PROV.wasAssociatedWith, user_entities["Marie"])
+login_marie_activity.add(PROV.generatedAtTime, Literal(str(datetime.now())))
+all_cuds.append(login_marie_activity)
 
 # David associated with Search Activity
 search_activity = Cuds(ontology_type=ADE.SearchActivity)
@@ -76,6 +101,7 @@ all_cuds.extend([upload_activity, upload_record])
 access_request = Cuds(ontology_type=ADE.AccessRequestActivity)
 access_request.add(PROV.used, dataset1)
 access_request.add(PROV.used, DOME.ClearingHouse)
+search_activity.add(PROV.generated, access_request)
 all_cuds.append(access_request)
 
 # Contract, Payment, and Transaction Record
@@ -108,17 +134,24 @@ access_granted.add(PROV.wasAssociatedWith, user_entities["David"])
 monetary_transaction.add(PC.enables, access_granted)
 all_cuds.extend([monetary_transaction, access_granted])
 
+# Adding all CUDS to RDF Graph
+cuds_graph = Cuds()
+
 # Serialize and visualize the graph
 gall = Graph()
 gall.bind("MIO", MIO)
+gall.bind("CUDS", CUDS)
 gall.bind("DOME", DOME)
-gall.bind("PC", PC)
 gall.bind("ADE", ADE)
 gall.bind("PL", PL)
+gall.bind("PC", PC)
 
+# Now add triples from all CUDS instances
 for cuds_instance in all_cuds:
-    for s, p, o in cuds_instance.graph:
-        gall.add((s, p, o))
+    # Each CUDS instance should add its triples to the main graph
+    if hasattr(cuds_instance, 'graph'):
+        for s, p, o in cuds_instance.graph:
+            gall.add((s, p, o))
 
 gall.serialize(destination="Dome40_workflow1.6.ttl")
 
@@ -147,5 +180,5 @@ exclude_namespaces = [
 
 filtered_gall = filter_graph_by_namespace(gall, exclude_namespaces)
 
-gvis2(filtered_gall, "Filtered_Dome40_workflow1.6.html")
+gvis2(filtered_gall, "Dome40_workflow.html")
 
