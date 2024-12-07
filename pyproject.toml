@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "discomat"  # The Discovery of Materials Package
-version = "0.2.1"    #  Current version 
+version = "0.2.3"    #  Current version 
 description = "The Materials Discovery Package replacing SimPhoNy 4.0, (C) Adham Hashibon"
 authors = [{ name = "The Materials Discovery Group at UCL", email = "a.hashibon@ucl.ac.uk" }]
 readme = "README.md"
