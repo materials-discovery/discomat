@@ -551,8 +551,8 @@ class FusekiEngine(Engine):
             yield tuple(q)
 
     def quads(self, s=None, p=None, o=None, g=None, /):
-        print(s, p, o, g)
-        print(type(s), type(p), type(o), type(g))
+        print(f"DEBUG: in engine.quads, called with args: {s}, {p}, {o}, {g}")
+        print(f"DEBUG: in engine.quads, called with args types: {type(s)}, {type(p)}, {type(o)}, {type(g)}")
         #FILTER(?g = < http: // graph2.com >)
         query = """SELECT ?s ?p ?o ?g 
         WHERE {

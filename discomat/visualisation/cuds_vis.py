@@ -11,7 +11,7 @@ import argparse, urllib.parse, os
 from typing import Union
 import networkx as nx
 from pyvis.network import Network
-from rdflib import Graph, URIRef, RDF, RDFS, OWL
+from rdflib import Graph, URIRef, RDF, RDFS, OWL, PROV
 from discomat.cuds.utils import uuid_from_string, short_uuid
 from discomat.cuds.cuds import Cuds
 from discomat.session.session import Session
@@ -229,8 +229,25 @@ def gvis2 (graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
             G.add_node(o_fragment, title=str(o), color='red')
 
             # Add edges, using thick orange for subclass relations
-        edge_color = 'orange' if p == RDFS.subClassOf else 'red'
-        edge_width = 5 if p == RDFS.subClassOf else 2
+        #edge_color = 'orange' if p == RDFS.subClassOf else 'red'
+        #edge_width = 5 if p == RDFS.subClassOf else 2
+        if p == RDFS.subClassOf:
+            edge_color = 'orange'
+        elif p == PROV.wasAssociatedWith:
+            edge_color = 'purple'
+        elif p == PROV.wasAttributedTo:
+            edge_color = 'pink'
+        else:
+            edge_color = 'red'
+        
+        if  p == RDFS.subClassOf:
+            edge_width = 5 
+        elif p == PROV.wasAssociatedWith: 
+            edge_width = 10
+        elif p == PROV.wasAttributedTo:
+            edge_width == 10
+        else:
+            edge_width = 1
 
         G.add_edge(s_fragment, o_fragment, label=p_fragment, title=str(p), color=edge_color, width=edge_width)
         # edges = G.edges(data=True)
@@ -393,9 +410,26 @@ def gvis3 (graph: Union[Graph, Cuds]):
         else:
             G.add_node(o_fragment, title=str(o), color='red')
 
-            # Add edges, using thick orange for subclass relations
-        edge_color = 'orange' if p == RDFS.subClassOf else 'red'
-        edge_width = 5 if p == RDFS.subClassOf else 2
+        # Add edges, using thick orange for subclass relations
+        #edge_color = 'orange' if p == RDFS.subClassOf else 'red'
+        
+        if p == RDFS.subClassOf:
+            edge_color = 'orange'
+        elif p == PROV.wasAssociatedWith:
+            edge_color = 'purple'
+        elif p == PROV.wasAttributedTo:
+            edge_color = 'pink'
+        else:
+            edge_color = 'red'
+        
+        if  p == RDFS.subClassOf:
+            edge_width = 5 
+        elif p == PROV.wasAssociatedWith: 
+            edge_width = 10
+        elif p == PROV.wasAttributedTo:
+            edge_width == 10
+        else:
+            edge_width = 1
 
         G.add_edge(s_fragment, o_fragment, label=p_fragment, title=str(p), color=edge_color, width=edge_width)
         # edges = G.edges(data=True)
@@ -404,12 +438,11 @@ def gvis3 (graph: Union[Graph, Cuds]):
     # Create a Pyvis network
     net = Network(
         height='1200px',
-        heading=f"Visualisation of {output_html_file}",
         neighborhood_highlight=True,
         directed=True,
         notebook=False,  # Ensure this is set to False for non-notebook environments
-        select_menu=False,  # Optional: to select nodes and edges in the plot
-        filter_menu=False
+        select_menu=True,  # Optional: to select nodes and edges in the plot
+        filter_menu=True
 
     )
 
@@ -421,7 +454,8 @@ def gvis3 (graph: Union[Graph, Cuds]):
     # Save the network to an HTML file
     #net.write_html(output_html_file)  # Write HTML file
     og = net.generate_html()
-    print(f"{og}")
+    #print(f"{og}")
+    return (og)
 
 def main():
     parser = argparse.ArgumentParser(description="Visualize an ontology into a javascript/html file.")

@@ -1,5 +1,5 @@
 from discomat.cuds.cuds import Cuds
-from discomat.visualisation.cuds_vis import gvis, gvis2
+from discomat.visualisation.cuds_vis import gvis, gvis2, gvis3
 from rdflib import Graph, Namespace, RDF, URIRef
 from rdflib.plugins.sparql import prepareQuery
 from dataclasses import dataclass
