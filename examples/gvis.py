@@ -9,7 +9,7 @@ import networkx as nx
 from pyvis.network import Network
 from rdflib import Graph, URIRef, RDF, RDFS, OWL
 import wget
-from discomat.visualisation.cuds_vis import gvis
+from discomat.visualisation.cuds_vis import gvis, gvis2, gvis3
 
 g = Graph()
 g.parse(data='''
@@ -34,7 +34,11 @@ g.parse(data='''
 ''', format='turtle')
 
 gvis(g, 'rdf_graph.html')
+ghtml2=gvis2(g, 'rdf_graph_self_contained.html')
+ghtml3=gvis3(g)
+print(ghtml3)
 
+gvis(g, 'rdf_graph.html')
 # note you may need to do this: Install Certificates.command (search the command in your python environment)
 mio_url = "http://raw.githubusercontent.com/materials-discovery/MIO/main/mio/mio.ttl"
 mio_file = "./mio.ttl"
