@@ -18,6 +18,51 @@ from discomat.session.session import Session
 from discomat.cuds.utils import extract_fragment
 from discomat.ontology.namespaces import CUDS, MIO
 
+
+# pyvis does not yet allow creating fully in+line, i.e., html files that contain 
+# all scripts to enable running the html in a browser without needing to get the 
+# utils.js pyvis script from the local file system, so this method it to bypass this
+
+
+def gen_self_contained_html (net, html_path=None):
+  """
+  take a network object, net, and create and return the html with all scripts
+  inline, i.e. self contained, and optionally save to html_path (file name)
+
+  """
+  # this should have been enough, but it does not yet include 
+# support for utils.js etc. It is added here as a reminder for future. 
+
+  net.cdn_resources="in_line"
+  html_content = net.generate_html(local=False)
+
+  # Locate the utils.js file in the Pyvis package
+  try:
+    import pyvis
+    utils_js_path = os.path.join(os.path.dirname(pyvis.__file__), "lib", "bindings", "utils.js")
+    with open(utils_js_path, "r") as js_file:
+      utils_js_content = js_file.read()
+  except FileNotFoundError:
+    raise FileNotFoundError("The utils.js file was not found.")
+
+  # Replace the local.js <script> embedding utils.js content
+  html_content = html_content.replace(
+    '<script src="lib/bindings/utils.js"></script>',
+    f'<script type="text/javascript">{utils_js_content}</script>'
+    )
+
+  if html_path:
+    with open(html_path, "w") as file:
+      file.write(html_content)
+    print(f"self ontained graph saved to: {html_path}")
+
+  return html_content
+
+
+
+
+
+
 def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
     """
     Plot the RDF graph using NetworkX and Pyvis. 
@@ -166,25 +211,9 @@ def gvis2 (graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
 
     #G = nx.DiGraph()
     G = nx.MultiDiGraph()
-    """
-    A MultiDiGraph in Python's NetworkX library is a 
-    directed graph that allows multiple edges between any pair of nodes. 
-    """
-    # if isinstance(graph, Session):
-    #     # get all graphs in the session, including the default
-    #     x=Graph()  # fix.
-    #     for g in graph:  # i.e. g in session.
-    #         x=x+g
-    #     graph = x+graph._graph
-    # elif isinstance(graph, Cuds):
-    #     graph = graph._graph
-
-    # this is a slight regression, the above took all graphs, but it works only for sessions with an engie which is rdflib one.
 
     if isinstance(graph, Cuds):
         graph = graph._graph
-
-
 
     for s, p, o in graph:
 
@@ -229,7 +258,7 @@ def gvis2 (graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
         else:
             G.add_node(o_fragment, title=str(o), color='red')
 
-            # Add edges, using thick orange for subclass relations
+        # Add edges, using thick orange for subclass relations
         #edge_color = 'orange' if p == RDFS.subClassOf else 'red'
         #edge_width = 5 if p == RDFS.subClassOf else 2
         if p == RDFS.subClassOf:
@@ -261,27 +290,27 @@ def gvis2 (graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
         neighborhood_highlight=True,
         directed=True,
         notebook=False,  # Ensure this is set to False for non-notebook environments
-        select_menu=False,  # Optional: to select nodes and edges in the plot
-        filter_menu=False
+        select_menu=True,  # Optional: to select nodes and edges in the plot
+        filter_menu=True
 
     )
 
-  #   net.set_options("""
-  #   var options = {
-  #       "configure": {
-  #   "enabled": true,
-  #   "filter": ["physics"]
-  #       },
-  #       "physics": {
-  #   "barnesHut": {
-  #     "gravitationalConstant": -36200,
-  #           "springLength": 40
-  #
-  #   },
-  #   "minVelocity": 0.75
-  # }
-  #   }
-  #   """)
+    #   net.set_options("""
+    #   var options = {
+    #       "configure": {
+    #   "enabled": true,
+    #   "filter": ["physics"]
+    #       },
+    #       "physics": {
+    #   "barnesHut": {
+    #     "gravitationalConstant": -36200,
+    #           "springLength": 40
+    #
+    #   },
+    #   "minVelocity": 0.75
+    # }
+    #   }
+    #   """)
 
     net.from_nx(G)  # Create directly from the NetworkX graph
 
@@ -289,48 +318,16 @@ def gvis2 (graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
     # for edge in net.edges:
     #     print(edge)
     # Save the network to an HTML file
-    net.write_html(output_html_file )  # Write HTML file
+    #net.write_html(output_html_file )  # Write HTML file
+    
+    g=gen_self_contained_html (net, output_html_file)
+  
+    if output_html_file:
+      file_uri = os.path.join(os.getcwd(), output_html_file)
+      file_uri = f"file://{urllib.parse.quote(file_uri)}"
 
-    file_uri = os.path.join(os.getcwd(), output_html_file)
-    file_uri = f"file://{urllib.parse.quote(file_uri)}"
+      print(f"Graph saved to {file_uri}")
 
-    print(f"Graph saved to {file_uri}")
-
-# Usage example
-# g = Graph()
-# g.parse(data='''
-#     @prefix ex: <http://example.org/> .
-#     @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-#     @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-#     @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-#     @prefix prov: <http://www.w3.org/ns/prov#> .
-# 
-#     ex:Person a rdfs:Class;
-#              rdfs:subClassOf prov:Agent .
-# 
-#     ex:PersonA rdf:type ex:Person;
-#                foaf:knows ex:PersonB ;
-#                ex:worksAt ex:CompanyX ;
-#                foaf:name "Alice" .
-# 
-#     ex:PersonB rdf:type ex:Person;
-#                foaf:name "Bob" .
-# 
-#     ex:CompanyX ex:locatedIn "CityY" .
-# ''', format='turtle')
-# 
-# pyvis_graph_to_js(g, 'rdf_graph.html')
-# 
-# 
-# g2=Graph()
-# g2.parse("/Users/adham/dev/materials-discovery/MIO/mio/mio.ttl")
-# pyvis_graph_to_js(g2, 'rdf_graph3.html')
-# 
-# 
-# n=Graph()
-# n.parse("/Users/adham/Downloads/nasicon.ttl")
-# pyvis_graph_to_js(n, 'nasicon_graph.html')
-#
 def gvis3 (graph: Union[Graph, Cuds]):
     """
     Plot the RDF graph using NetworkX and Pyvis.
@@ -454,7 +451,8 @@ def gvis3 (graph: Union[Graph, Cuds]):
     #     print(edge)
     # Save the network to an HTML file
     #net.write_html(output_html_file)  # Write HTML file
-    og = net.generate_html()
+    og = gen_self_contained_html(net)
+    #og = net.generate_html()
     #print(f"{og}")
     return (og)
 
