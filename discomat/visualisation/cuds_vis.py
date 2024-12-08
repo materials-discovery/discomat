@@ -112,7 +112,8 @@ def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
         directed=True,
         notebook=False,  # Ensure this is set to False for non-notebook environments
         select_menu=True,  # Optional: to select nodes and edges in the plot
-        filter_menu=True
+        filter_menu=True,
+        cdn_resources='local'
 
     )
 
@@ -139,7 +140,7 @@ def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
     # for edge in net.edges:
     #     print(edge)
     # Save the network to an HTML file
-    net.write_html(output_html_file)  # Write HTML file
+    net.write_html(output_html_file, local=False)  # Write HTML file
 
     file_uri = os.path.join(os.getcwd(), output_html_file)
     file_uri = f"file://{urllib.parse.quote(file_uri)}"
@@ -288,7 +289,7 @@ def gvis2 (graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
     # for edge in net.edges:
     #     print(edge)
     # Save the network to an HTML file
-    net.write_html(output_html_file)  # Write HTML file
+    net.write_html(output_html_file )  # Write HTML file
 
     file_uri = os.path.join(os.getcwd(), output_html_file)
     file_uri = f"file://{urllib.parse.quote(file_uri)}"
