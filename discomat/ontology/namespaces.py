@@ -6,6 +6,8 @@ MISO=Namespace("http://www.ddmd.io/miso/")
 PROV = Namespace("http://www.w3.org/ns/prov#")
 PC = Namespace("http://dome40.eu/semantics/pc#")
 DOME = Namespace("http://dome40.eu/semantics/dome4.0_core#")
+domeDS = Namespace("http://dome40.eu/semantics/dome4.0_core_dataset#")
+
 ADE = Namespace("http://dome40.eu/semantics/reasoned/ade_reasoned#")
 PL = Namespace("https://dome40.eu/semantics/scenario/platforms#")
 
