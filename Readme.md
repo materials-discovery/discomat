@@ -1,4 +1,4 @@
-# Materials Informatics Platform for boosting *Disco* very of *Mat* erials. 
+# Materials Informatics Platform for boosting *Disco*very of *Mat*erials. 
 
 
 # Installation
