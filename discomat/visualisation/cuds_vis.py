@@ -384,27 +384,31 @@ def gvis3(
 
 
     for s, p, o in graph:
+        p_name = extract_fragment(str(p)).lower()
+
+        # Ignore comments, as some are quite large.
+        if p == RDFS.comment:
+            continue
+
         if clean:
             if p == CUDS.iri:
                 continue
-            p_name = extract_fragment(str(p)).lower()
-            if p_name in {"uuid", "pid", "creation_time", "creationtime", "label"}:
+
+            if p_name in {"uuid", "pid", "creation_time", "creationtime"}:
                 continue
-        # Ignore comments, as some are quite large.
-            if p == RDFS.comment:
-                continue
+
             if (not show_label) and (p_name == "label"):
                 continue
-            # Skip some ontology/meta triples
+
             if o in {
                 RDFS.Class, OWL.Class, OWL.DatatypeProperty, OWL.ObjectProperty,
                 OWL.NamedIndividual, CUDS.Cuds
             }:
                 continue
 
-            # Skip a few schema/description relations that tend to clutter (optional)
             if p in {RDFS.range, RDFS.domain, CUDS.description}:
                 continue
+
 
 
         s_label = _short_label(s)
