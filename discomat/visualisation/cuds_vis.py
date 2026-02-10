@@ -7,7 +7,7 @@ This version works well, for now, I only need to figure out why the title comes 
 The main purpose is to get a graph, assuming it is not huge, and focusing on showing the main class and individual relations with basic filtering. 
 
 """
-import argparse, urllib.parse, os
+import argparse, urllib.parse, os, re
 from typing import Union
 import networkx as nx
 from pyvis.network import Network
@@ -17,6 +17,8 @@ from discomat.cuds.cuds import Cuds
 from discomat.session.session import Session
 from discomat.cuds.utils import extract_fragment
 from discomat.ontology.namespaces import CUDS, MIO
+from rdflib import URIRef, BNode, Literal
+
 
 def gvis(graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
     """
@@ -312,7 +314,189 @@ def gvis2 (graph: Union[Graph, Cuds], output_html_file: str = 'mygraph.html'):
 # n=Graph()
 # n.parse("/Users/adham/Downloads/nasicon.ttl")
 # pyvis_graph_to_js(n, 'nasicon_graph.html')
-#
+
+###### gvis 3: If several subjects point to the same object, we clone the object node insteading of using the same point for visualization. ######
+def gvis3(
+    graph: Union[Graph, Cuds],
+    output_html_file: str = 'mygraph.html',
+    split_object_nodes_on_predicates=None,
+    clean: bool = False,
+    show_label: bool = False,
+    core_predicates = None,
+    clone_object_nodes_on_predicates: bool = True,   
+):
+
+    """
+    choose to split (clone) Literal objects (labels/values) or not.
+    Keep only CUDS-CUDS relationship for visualization.
+
+    **** How to use it: ****
+    gvis3(gall, output_html_file=" .html", clean=True) for clean view (no uuid, pid, description, creation time, LABLE etc)
+    gvis3(gall, output_html_file=" .html", clean=True, show_label=True) for clean view WITH LABELS (labels are mnemonic by default)
+    gvis3(gall, output_html_file=" .html") for full view
+    gvis3(
+        g,
+        "custom.html",
+        split_object_nodes_on_predicates={RDF.type, RDFS.subClassOf},
+        clone_object_nodes_on_predicates=False,   # dont clone object nodes for the listed predicates
+    )
+    gvis3(g, "big.html", clean=True, clone_object_nodes_on_predicates=False)
+
+    """
+
+
+    G = nx.MultiDiGraph()
+ 
+
+    # split RDF.type by default
+    if split_object_nodes_on_predicates is None:
+        split_object_nodes_on_predicates = {RDF.type}
+
+    # Core view: keep only type/label/subClassOf edges unless user overrides
+    if core_predicates is None:
+        core_predicates = {RDF.type, RDFS.label, RDFS.subClassOf}
+
+    if isinstance(graph, Cuds):
+        graph = graph._graph
+
+    clone_counter = 0
+
+    def _short_label(term) -> str:
+
+        if isinstance(term, Literal):
+            return str(term)
+        if isinstance(term, BNode):
+            return short_uuid(str(term))
+        frag = extract_fragment(str(term))
+        return short_uuid(frag) if len(frag) > 8 else frag
+
+    def _term_key(term) -> str:
+       
+        if isinstance(term, URIRef):
+            return str(term) 
+        if isinstance(term, BNode):
+            return f"_:{str(term)}"  
+        if isinstance(term, Literal):
+
+            return term.n3()
+        return str(term)
+
+    def _node_id(term, *, force_clone: bool = False, clone_hint: str = "") -> str:
+
+        nonlocal clone_counter
+        base = _term_key(term)
+        if not force_clone:
+            return base
+        clone_counter += 1
+        return f"{base}__clone_{clone_counter}__{clone_hint}"
+
+    def _add_node(node_id: str, *, label: str, title: str, color: str):
+        if node_id not in G:
+            G.add_node(node_id, label=label, title=title, color=color)
+
+
+
+    for s, p, o in graph:
+        p_name = extract_fragment(str(p)).lower()
+
+        # Ignore comments, as some are quite large.
+        if p == RDFS.comment:
+            continue
+
+        if clean:
+            if p == CUDS.iri:
+                continue
+
+            if p_name in {"uuid", "pid", "creation_time", "creationtime"}:
+                continue
+
+            if (not show_label) and (p_name == "label"):
+                continue
+
+            if o in {
+                RDFS.Class, OWL.Class, OWL.DatatypeProperty, OWL.ObjectProperty,
+                OWL.NamedIndividual, CUDS.Cuds
+            }:
+                continue
+
+            if p in {RDFS.range, RDFS.domain, CUDS.description}:
+                continue
+
+
+
+        s_label = _short_label(s)
+        p_fragment = extract_fragment(str(p))
+        o_label = _short_label(o)
+
+        s_id = _node_id(s, force_clone=False)
+
+
+        # split_obj = p in split_object_nodes_on_predicates
+        # o_id = _node_id(o, force_clone=split_obj, clone_hint=f"{s_id}|{p_fragment}")
+
+        # Always split Literal objects (e.g. labels/values), regardless of predicate.
+        # Also split objects for predicates explicitly listed (e.g. rdf:type).
+        split_obj = isinstance(o, Literal) or (clone_object_nodes_on_predicates and (p in split_object_nodes_on_predicates))
+
+        o_id = _node_id(o, force_clone=split_obj, clone_hint=f"{s_id}|{p_fragment}")
+
+        # Node styling (rough heuristic)
+        if (s, None, RDFS.Class) in graph or (s, None, OWL.Class) in graph:
+            _add_node(s_id, label=s_label, title=str(s), color='orange')
+        elif (s, None, None) not in graph:
+            _add_node(s_id, label=s_label, title=str(s), color='green')
+        else:
+            _add_node(s_id, label=s_label, title=str(s), color='red')
+
+        if (o, None, RDFS.Class) in graph or (o, None, OWL.Class) in graph:
+            _add_node(o_id, label=o_label, title=str(o), color='orange')
+        elif (o, None, None) not in graph:
+            _add_node(o_id, label=o_label, title=str(o), color='green')
+        else:
+            _add_node(o_id, label=o_label, title=str(o), color='red')
+
+        edge_color = 'orange' if p == RDFS.subClassOf else 'red'
+        edge_width = 5 if p == RDFS.subClassOf else 2
+
+        G.add_edge(s_id, o_id, label=p_fragment, title=str(p), color=edge_color, width=edge_width)
+
+    net = Network(
+        height='1200px',
+        heading="",
+        neighborhood_highlight=True,
+        directed=True,
+        notebook=False,
+        select_menu=False,
+        filter_menu=False
+    )
+
+    net.from_nx(G)
+
+    net.write_html(output_html_file)
+
+    #  heading settings
+    title_text = f"Visualisation of {os.path.basename(output_html_file)}"
+
+    with open(output_html_file, "r", encoding="utf-8") as f:
+        html = f.read()
+
+    custom_h1 = f'\n<h1 style="text-align:center; font-weight:bold; margin: 20px 0;">{title_text}</h1>\n'
+
+    if title_text not in html:
+        html = re.sub(r"(<body[^>]*>)", r"\1" + custom_h1, html, count=1, flags=re.IGNORECASE)
+
+    with open(output_html_file, "w", encoding="utf-8") as f:
+        f.write(html)
+
+
+
+    file_uri = os.path.join(os.getcwd(), output_html_file)
+    file_uri = f"file://{urllib.parse.quote(file_uri)}"
+    print(f"Graph saved to {file_uri}")
+
+
+
+
 def main():
     parser = argparse.ArgumentParser(description="Visualize an ontology into a javascript/html file.")
 
