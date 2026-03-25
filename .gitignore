@@ -18,3 +18,4 @@ package.json
 .venv/
 *.js
 *.css
+.DS_Store

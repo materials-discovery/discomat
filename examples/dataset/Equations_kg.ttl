@@ -1,0 +1,152 @@
+@prefix math: <http://example.org/math#> .
+
+<https://www.ddmd.io/mio#cuds_iri_012142f8-c374-47a4-bb84-2c5cb0d716ae> a math:Number ;
+    math:hasNumber "75.0" ;
+    math:isleftinputOf <https://www.ddmd.io/mio#cuds_iri_f66ca886-8c7e-429e-a9a3-6cf97c9fd553> .
+
+<https://www.ddmd.io/mio#cuds_iri_07fb44b2-1f72-4f99-a7c2-03acf2ddf40c> a math:Number ;
+    math:hasNumber "66.0" ;
+    math:isleftinputOf <https://www.ddmd.io/mio#cuds_iri_8c1843b4-d34b-42d7-92fb-ef67ea00ba5e> .
+
+<https://www.ddmd.io/mio#cuds_iri_0e8d9a38-6b7b-4b63-a271-168555ed0b37> a math:Number ;
+    math:hasNumber "99.0" ;
+    math:isrightinputOf <https://www.ddmd.io/mio#cuds_iri_c2ee13ac-9540-49a6-bac2-6e0161efdf85> .
+
+<https://www.ddmd.io/mio#cuds_iri_1e815c60-8d6d-450c-86fb-153d1c5e997c> a math:Number ;
+    math:hasNumber "95.0" ;
+    math:isrightinputOf <https://www.ddmd.io/mio#cuds_iri_f66ca886-8c7e-429e-a9a3-6cf97c9fd553> .
+
+<https://www.ddmd.io/mio#cuds_iri_340a62b3-8109-4418-a415-6613e2cf529d> a math:Number ;
+    math:hasNumber "2.0" ;
+    math:isleftinputOf <https://www.ddmd.io/mio#cuds_iri_8834e8f4-7c25-4673-8b04-20fd0ea24df7> .
+
+<https://www.ddmd.io/mio#cuds_iri_3d0b8236-e5f7-40c9-9b01-eb92743fe25d> a math:Number ;
+    math:hasNumber "100.0" ;
+    math:isrightinputOf <https://www.ddmd.io/mio#cuds_iri_24881850-9969-4f9c-9cc7-7bd12597eedc> .
+
+<https://www.ddmd.io/mio#cuds_iri_44c3ed32-3744-47ad-b372-cd6454b940ee> a math:Number ;
+    math:hasNumber "24.0" ;
+    math:isleftinputOf <https://www.ddmd.io/mio#cuds_iri_201cb433-1b33-4a2c-8d14-3c5fbc32b2f3> .
+
+<https://www.ddmd.io/mio#cuds_iri_44f74b36-c3c8-45fd-94f1-4a5ba468b036> a math:Number ;
+    math:hasNumber "12.0" ;
+    math:isrightinputOf <https://www.ddmd.io/mio#cuds_iri_8834e8f4-7c25-4673-8b04-20fd0ea24df7> .
+
+<https://www.ddmd.io/mio#cuds_iri_48cedd94-74f8-4833-b785-2a6c4205e7ca> a math:Number ;
+    math:hasNumber "27.0" ;
+    math:isleftinputOf <https://www.ddmd.io/mio#cuds_iri_c2ee13ac-9540-49a6-bac2-6e0161efdf85> .
+
+<https://www.ddmd.io/mio#cuds_iri_5baaf5fa-733d-4edd-9e6a-741eff08200c> a math:Number ;
+    math:hasNumber "8.0" ;
+    math:isleftinputOf <https://www.ddmd.io/mio#cuds_iri_18b337cc-fa41-4f7b-97e5-e843f5d018db> .
+
+<https://www.ddmd.io/mio#cuds_iri_86e35de3-68fe-46b9-976a-462feec62142> a math:Number ;
+    math:hasNumber "4.0" ;
+    math:isrightinputOf <https://www.ddmd.io/mio#cuds_iri_8c1843b4-d34b-42d7-92fb-ef67ea00ba5e> .
+
+<https://www.ddmd.io/mio#cuds_iri_888a2e20-8593-4429-bf6d-617681fcee0a> a math:Number ;
+    math:hasNumber "66.0" ;
+    math:isrightinputOf <https://www.ddmd.io/mio#cuds_iri_6d04d05d-ae81-4697-87fd-7e6752b7877a> .
+
+<https://www.ddmd.io/mio#cuds_iri_97451562-31a1-44b8-9523-1baad841d878> a math:Number ;
+    math:hasNumber "60.0" ;
+    math:isleftinputOf <https://www.ddmd.io/mio#cuds_iri_6d04d05d-ae81-4697-87fd-7e6752b7877a> .
+
+<https://www.ddmd.io/mio#cuds_iri_a40fcd66-f327-4423-a529-119a665e40b4> a math:Number ;
+    math:hasNumber "84.0" ;
+    math:isrightinputOf <https://www.ddmd.io/mio#cuds_iri_18b337cc-fa41-4f7b-97e5-e843f5d018db> .
+
+<https://www.ddmd.io/mio#cuds_iri_ab15d27a-54a6-4d6f-9b4c-3f225b8ecb45> a math:Number ;
+    math:hasNumber "6.0" ;
+    math:isrightinputOf <https://www.ddmd.io/mio#cuds_iri_560d71fa-abf6-47f0-8861-e2fe93ada0fc> .
+
+<https://www.ddmd.io/mio#cuds_iri_abc2cc0d-8304-4001-88b9-bcd8ec0b68d8> a math:Number ;
+    math:hasNumber "45.0" ;
+    math:isleftinputOf <https://www.ddmd.io/mio#cuds_iri_24881850-9969-4f9c-9cc7-7bd12597eedc> .
+
+<https://www.ddmd.io/mio#cuds_iri_d418cd2a-dc25-4efc-a590-a9d7d4bf6ba7> a math:Number ;
+    math:hasNumber "61.0" ;
+    math:isrightinputOf <https://www.ddmd.io/mio#cuds_iri_ba6c89f6-ba0c-4d00-85f1-5959088f2f54> .
+
+<https://www.ddmd.io/mio#cuds_iri_d9f3423b-484d-4f93-8a96-d63806ca0beb> a math:Number ;
+    math:hasNumber "96.0" ;
+    math:isleftinputOf <https://www.ddmd.io/mio#cuds_iri_560d71fa-abf6-47f0-8861-e2fe93ada0fc> .
+
+<https://www.ddmd.io/mio#cuds_iri_e1bc20ac-fe14-499a-a18e-3275e2fb0c79> a math:Number ;
+    math:hasNumber "45.0" ;
+    math:isrightinputOf <https://www.ddmd.io/mio#cuds_iri_201cb433-1b33-4a2c-8d14-3c5fbc32b2f3> .
+
+<https://www.ddmd.io/mio#cuds_iri_ea0d1221-d209-4ba6-8a86-ebeca3a70062> a math:Number ;
+    math:hasNumber "21.0" ;
+    math:isleftinputOf <https://www.ddmd.io/mio#cuds_iri_ba6c89f6-ba0c-4d00-85f1-5959088f2f54> .
+
+<https://www.ddmd.io/mio#cuds_iri_0b99ef9e-82d8-4443-97ec-3c4554a19881> a math:Number ;
+    math:hasNumber "-55.0" .
+
+<https://www.ddmd.io/mio#cuds_iri_2411192e-9967-4422-af92-be018da7ef7d> a math:Number ;
+    math:hasNumber "2673.0" .
+
+<https://www.ddmd.io/mio#cuds_iri_4adeffe9-4fa8-4062-93ce-578380034448> a math:Number ;
+    math:hasNumber "16.0" .
+
+<https://www.ddmd.io/mio#cuds_iri_64dd5489-d309-400c-82e3-cc187c057e37> a math:Number ;
+    math:hasNumber "672.0" .
+
+<https://www.ddmd.io/mio#cuds_iri_7526919a-8acb-4f20-a5fa-da7239c0e4c4> a math:Number ;
+    math:hasNumber "264.0" .
+
+<https://www.ddmd.io/mio#cuds_iri_84e63be7-b577-4e21-9d2a-afc8c17a99a0> a math:Number ;
+    math:hasNumber "0.3442622950819672" .
+
+<https://www.ddmd.io/mio#cuds_iri_de1deba6-1738-470f-829f-f3ab00e8c511> a math:Number ;
+    math:hasNumber "3960.0" .
+
+<https://www.ddmd.io/mio#cuds_iri_ebeb17bd-995c-4296-b0ea-3d38488c5d6f> a math:Number ;
+    math:hasNumber "0.7894736842105263" .
+
+<https://www.ddmd.io/mio#cuds_iri_f60ba1ff-82c8-4d8e-b704-32b40369bf5c> a math:Number ;
+    math:hasNumber "-21.0" .
+
+<https://www.ddmd.io/mio#cuds_iri_fc818d6b-94d6-47dd-b902-1270b4bf259c> a math:Number ;
+    math:hasNumber "24.0" .
+
+<https://www.ddmd.io/mio#cuds_iri_18b337cc-fa41-4f7b-97e5-e843f5d018db> a math:Operator ;
+    math:hasResult <https://www.ddmd.io/mio#cuds_iri_64dd5489-d309-400c-82e3-cc187c057e37> ;
+    math:hasSymbol "*" .
+
+<https://www.ddmd.io/mio#cuds_iri_201cb433-1b33-4a2c-8d14-3c5fbc32b2f3> a math:Operator ;
+    math:hasResult <https://www.ddmd.io/mio#cuds_iri_f60ba1ff-82c8-4d8e-b704-32b40369bf5c> ;
+    math:hasSymbol "-" .
+
+<https://www.ddmd.io/mio#cuds_iri_24881850-9969-4f9c-9cc7-7bd12597eedc> a math:Operator ;
+    math:hasResult <https://www.ddmd.io/mio#cuds_iri_0b99ef9e-82d8-4443-97ec-3c4554a19881> ;
+    math:hasSymbol "-" .
+
+<https://www.ddmd.io/mio#cuds_iri_560d71fa-abf6-47f0-8861-e2fe93ada0fc> a math:Operator ;
+    math:hasResult <https://www.ddmd.io/mio#cuds_iri_4adeffe9-4fa8-4062-93ce-578380034448> ;
+    math:hasSymbol "/" .
+
+<https://www.ddmd.io/mio#cuds_iri_6d04d05d-ae81-4697-87fd-7e6752b7877a> a math:Operator ;
+    math:hasResult <https://www.ddmd.io/mio#cuds_iri_de1deba6-1738-470f-829f-f3ab00e8c511> ;
+    math:hasSymbol "*" .
+
+<https://www.ddmd.io/mio#cuds_iri_8834e8f4-7c25-4673-8b04-20fd0ea24df7> a math:Operator ;
+    math:hasResult <https://www.ddmd.io/mio#cuds_iri_fc818d6b-94d6-47dd-b902-1270b4bf259c> ;
+    math:hasSymbol "*" .
+
+<https://www.ddmd.io/mio#cuds_iri_8c1843b4-d34b-42d7-92fb-ef67ea00ba5e> a math:Operator ;
+    math:hasResult <https://www.ddmd.io/mio#cuds_iri_7526919a-8acb-4f20-a5fa-da7239c0e4c4> ;
+    math:hasSymbol "*" .
+
+<https://www.ddmd.io/mio#cuds_iri_ba6c89f6-ba0c-4d00-85f1-5959088f2f54> a math:Operator ;
+    math:hasResult <https://www.ddmd.io/mio#cuds_iri_84e63be7-b577-4e21-9d2a-afc8c17a99a0> ;
+    math:hasSymbol "/" .
+
+<https://www.ddmd.io/mio#cuds_iri_c2ee13ac-9540-49a6-bac2-6e0161efdf85> a math:Operator ;
+    math:hasResult <https://www.ddmd.io/mio#cuds_iri_2411192e-9967-4422-af92-be018da7ef7d> ;
+    math:hasSymbol "*" .
+
+<https://www.ddmd.io/mio#cuds_iri_f66ca886-8c7e-429e-a9a3-6cf97c9fd553> a math:Operator ;
+    math:hasResult <https://www.ddmd.io/mio#cuds_iri_ebeb17bd-995c-4296-b0ea-3d38488c5d6f> ;
+    math:hasSymbol "/" .
+

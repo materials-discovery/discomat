@@ -9,5 +9,7 @@ DOME = Namespace("http://dome40.eu/semantics/dome4.0_core#")
 ADE = Namespace("http://dome40.eu/semantics/reasoned/ade_reasoned#")
 PL = Namespace("https://dome40.eu/semantics/scenario/platforms#")
 
+MAT = Namespace("http://www.ddmd.io/mio/materials#")
+
 # Export the CUDS namespace for direct import
 __all__ = ["CUDS"]

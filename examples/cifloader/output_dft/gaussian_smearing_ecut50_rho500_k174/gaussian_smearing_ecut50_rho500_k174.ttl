@@ -1,0 +1,2891 @@
+@prefix MAT: <http://www.ddmd.io/mio/materials#> .
+@prefix ns1: <http://www.ddmd.io/mio/cuds#> .
+
+<http://www.ddmd.io/mio/kg/material/aff4850f-2701-5fa7-bcf4-917ad5fed59c> a ns1:Cuds,
+        MAT:Material ;
+    ns1:CreationTime "2026-03-25 13:38:37.891112" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_fb534c56-9e86-4848-a7cd-616bbc9e59b3> ;
+    ns1:description "Imported from DFT inputs/outputs in gaussian_smearing_ecut50_rho500_k174" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/material/aff4850f-2701-5fa7-bcf4-917ad5fed59c> ;
+    ns1:label "CuSurface111" ;
+    ns1:uuid "fb534c56-9e86-4848-a7cd-616bbc9e59b3" ;
+    MAT:hasCalculation <http://www.ddmd.io/mio/kg/dft_calculation/a105afd4-8b13-5816-bc23-c309b4a7ec23> ;
+    MAT:materialId "CuSurface111" .
+
+<http://www.ddmd.io/mio/kg/atomic_species/ccefe104-2533-5588-b712-21b6af42bb75> a ns1:Cuds,
+        MAT:AtomicSpecies ;
+    ns1:CreationTime "2026-03-25 13:38:37.892538" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_30b52b1e-9186-472b-9227-66a9a2554bb7> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/atomic_species/ccefe104-2533-5588-b712-21b6af42bb75> ;
+    ns1:label "Cu_spec" ;
+    ns1:uuid "30b52b1e-9186-472b-9227-66a9a2554bb7" ;
+    MAT:element "Cu" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:mass "63.546" ;
+    MAT:pseudo_file "Cu.paw.z_11.ld1.psl.v1.0.0-low.upf" .
+
+<http://www.ddmd.io/mio/kg/bond/0190a633-a122-5a22-be92-055a2fbb5cfc> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.905302" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_e637502b-648e-4066-83b5-135cb6e255d8> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/0190a633-a122-5a22-be92-055a2fbb5cfc> ;
+    ns1:label "b12_15" ;
+    ns1:uuid "e637502b-648e-4066-83b5-135cb6e255d8" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e> ;
+    MAT:bondDistance "2.5314422766258797" .
+
+<http://www.ddmd.io/mio/kg/bond/032cd71a-06e3-5c27-b6c5-fac052fabbf8> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.902106" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_25441e9f-69b0-490b-8dab-16f912859025> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/032cd71a-06e3-5c27-b6c5-fac052fabbf8> ;
+    ns1:label "b5_11" ;
+    ns1:uuid "25441e9f-69b0-490b-8dab-16f912859025" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0> ;
+    MAT:bondDistance "2.531442276661046" .
+
+<http://www.ddmd.io/mio/kg/bond/035074b4-e0f7-5959-a93b-3f82d86da59d> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.898563" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_16decf79-9a4d-492d-856e-fdbb910d0f6d> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/035074b4-e0f7-5959-a93b-3f82d86da59d> ;
+    ns1:label "b0_7" ;
+    ns1:uuid "16decf79-9a4d-492d-856e-fdbb910d0f6d" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b> ;
+    MAT:bondDistance "2.5314422766258997" .
+
+<http://www.ddmd.io/mio/kg/bond/03575f65-c624-5f97-b312-d4c9bbb5673f> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.904558" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_801508c0-9f22-43af-9d6d-fadd941f0e7d> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/03575f65-c624-5f97-b312-d4c9bbb5673f> ;
+    ns1:label "b10_14" ;
+    ns1:uuid "801508c0-9f22-43af-9d6d-fadd941f0e7d" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a> ;
+    MAT:bondDistance "2.531442276656927" .
+
+<http://www.ddmd.io/mio/kg/bond/037fb084-283a-5d26-a9f6-5e9c2fe2a023> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.899392" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_2fac09c5-4367-4cd3-b9d7-747151214e5e> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/037fb084-283a-5d26-a9f6-5e9c2fe2a023> ;
+    ns1:label "b1_7" ;
+    ns1:uuid "2fac09c5-4367-4cd3-b9d7-747151214e5e" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b> ;
+    MAT:bondDistance "2.5314422766780593" .
+
+<http://www.ddmd.io/mio/kg/bond/03e8de0a-1914-5448-94fc-2a5e49d95efc> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.898470" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_7d7afeda-7297-410a-b8cb-5f9350bc68e5> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/03e8de0a-1914-5448-94fc-2a5e49d95efc> ;
+    ns1:label "b0_6" ;
+    ns1:uuid "7d7afeda-7297-410a-b8cb-5f9350bc68e5" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c> ;
+    MAT:bondDistance "2.5314422766280593" .
+
+<http://www.ddmd.io/mio/kg/bond/04263f20-9b38-5550-aa4e-1ad37cba0909> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.898068" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_99d6c36f-52d6-4764-bc04-6ccb61abc67a> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/04263f20-9b38-5550-aa4e-1ad37cba0909> ;
+    ns1:label "b0_1" ;
+    ns1:uuid "99d6c36f-52d6-4764-bc04-6ccb61abc67a" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7> ;
+    MAT:bondDistance "2.5314422765999995" .
+
+<http://www.ddmd.io/mio/kg/bond/04828111-db4c-5ed9-9436-cbd470d13584> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.905921" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_64bce662-a193-480d-8d56-735ad841405d> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/04828111-db4c-5ed9-9436-cbd470d13584> ;
+    ns1:label "b13_17" ;
+    ns1:uuid "64bce662-a193-480d-8d56-735ad841405d" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43> ;
+    MAT:bondDistance "2.5314422766715" .
+
+<http://www.ddmd.io/mio/kg/bond/052744e3-d84d-5a4b-88b5-126384a77670> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.912948" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_39bed15a-fd20-405a-b9ef-5f00955e6924> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/052744e3-d84d-5a4b-88b5-126384a77670> ;
+    ns1:label "b28_31" ;
+    ns1:uuid "39bed15a-fd20-405a-b9ef-5f00955e6924" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0> ;
+    MAT:bondDistance "2.5314422766258793" .
+
+<http://www.ddmd.io/mio/kg/bond/0636a39d-15f0-5f2a-ada4-e29bdff80296> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.908417" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_0bf4239a-4bb9-4abc-a02d-0f3fe2094dd7> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/0636a39d-15f0-5f2a-ada4-e29bdff80296> ;
+    ns1:label "b18_23" ;
+    ns1:uuid "0bf4239a-4bb9-4abc-a02d-0f3fe2094dd7" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c> ;
+    MAT:bondDistance "2.5314422766280607" .
+
+<http://www.ddmd.io/mio/kg/bond/0926e82b-613e-5771-b9b3-153724d073a4> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.905004" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_3e77b027-d641-40a8-9fba-da0f78a553c3> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/0926e82b-613e-5771-b9b3-153724d073a4> ;
+    ns1:label "b11_15" ;
+    ns1:uuid "3e77b027-d641-40a8-9fba-da0f78a553c3" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e> ;
+    MAT:bondDistance "2.531442276706927" .
+
+<http://www.ddmd.io/mio/kg/bond/09707d14-bcf4-5562-b924-0c48d725c4b2> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.899783" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_4266c864-c7e9-4b4f-9d91-bba8357ed692> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/09707d14-bcf4-5562-b924-0c48d725c4b2> ;
+    ns1:label "b2_3" ;
+    ns1:uuid "4266c864-c7e9-4b4f-9d91-bba8357ed692" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1> ;
+    MAT:bondDistance "2.53144227659568" .
+
+<http://www.ddmd.io/mio/kg/bond/09dbd93d-a31c-59e6-b2ef-1ae1f005ce76> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.910164" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_717b4d33-39d1-4f14-a26e-3e38bd8f67eb> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/09dbd93d-a31c-59e6-b2ef-1ae1f005ce76> ;
+    ns1:label "b22_26" ;
+    ns1:uuid "717b4d33-39d1-4f14-a26e-3e38bd8f67eb" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64> ;
+    MAT:bondDistance "2.531442276656927" .
+
+<http://www.ddmd.io/mio/kg/bond/0a48ae96-14bb-5e41-bcae-f77b613cae29> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.912349" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_9e66924d-2483-4891-b447-62bfbdb46bc1> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/0a48ae96-14bb-5e41-bcae-f77b613cae29> ;
+    ns1:label "b26_30" ;
+    ns1:uuid "9e66924d-2483-4891-b447-62bfbdb46bc1" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:bondDistance "2.531442276671501" .
+
+<http://www.ddmd.io/mio/kg/bond/0a7d139e-c09c-51e6-9273-33574e0095ad> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.911007" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_2c34bd4a-cc80-414e-9fc7-1d9dde8ce9e0> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/0a7d139e-c09c-51e6-9273-33574e0095ad> ;
+    ns1:label "b24_26" ;
+    ns1:uuid "2c34bd4a-cc80-414e-9fc7-1d9dde8ce9e0" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64> ;
+    MAT:bondDistance "2.5314422766280393" .
+
+<http://www.ddmd.io/mio/kg/bond/0c8c2ddd-c4fe-52d6-843e-d740f03fd70d> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.910520" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_e06de994-6a02-4651-9d98-ea4ad218fb2c> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/0c8c2ddd-c4fe-52d6-843e-d740f03fd70d> ;
+    ns1:label "b22_27" ;
+    ns1:uuid "e06de994-6a02-4651-9d98-ea4ad218fb2c" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f> ;
+    MAT:bondDistance "2.5314422766547673" .
+
+<http://www.ddmd.io/mio/kg/bond/0f37919e-c67c-58e6-a24e-fb8af181c8f9> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.912541" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_934d71d2-be0c-4c38-98d0-9a19bf9577e0> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/0f37919e-c67c-58e6-a24e-fb8af181c8f9> ;
+    ns1:label "b27_29" ;
+    ns1:uuid "934d71d2-be0c-4c38-98d0-9a19bf9577e0" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1> ;
+    MAT:bondDistance "2.5314422766728315" .
+
+<http://www.ddmd.io/mio/kg/bond/0f95a91e-f2f1-5fef-9f52-ec77ca7fd3c0> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.904365" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_fc5277e7-8ba4-48ce-8586-ab13a2460528> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/0f95a91e-f2f1-5fef-9f52-ec77ca7fd3c0> ;
+    ns1:label "b10_11" ;
+    ns1:uuid "fc5277e7-8ba4-48ce-8586-ab13a2460528" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0> ;
+    MAT:bondDistance "2.5314422765999995" .
+
+<http://www.ddmd.io/mio/kg/bond/119a02b3-f8e7-5651-9ea1-298ab2b94189> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.904756" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_d2ea09e4-af3b-406f-a1e6-7d47fdff7003> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/119a02b3-f8e7-5651-9ea1-298ab2b94189> ;
+    ns1:label "b11_13" ;
+    ns1:uuid "d2ea09e4-af3b-406f-a1e6-7d47fdff7003" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697> ;
+    MAT:bondDistance "2.531442276613766" .
+
+<http://www.ddmd.io/mio/kg/bond/12ce0adb-973a-5085-ac58-13eec3423483> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.907780" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_22dd526f-cdbe-40b0-bcd4-2e775682f4c6> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/12ce0adb-973a-5085-ac58-13eec3423483> ;
+    ns1:label "b17_20" ;
+    ns1:uuid "22dd526f-cdbe-40b0-bcd4-2e775682f4c6" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f> ;
+    MAT:bondDistance "2.5314422766280607" .
+
+<http://www.ddmd.io/mio/kg/bond/158f0bec-931f-5e0b-a7bb-7e3137b66094> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.907380" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_49d13e43-79df-46a1-abef-c9c8eb278586> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/158f0bec-931f-5e0b-a7bb-7e3137b66094> ;
+    ns1:label "b16_21" ;
+    ns1:uuid "49d13e43-79df-46a1-abef-c9c8eb278586" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:bondDistance "2.531442276625901" .
+
+<http://www.ddmd.io/mio/kg/bond/1625f749-2c72-5c44-8888-96ddd2a4a94e> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.905199" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_daa626ea-7a9f-47ba-b9fc-bcbe888c9731> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/1625f749-2c72-5c44-8888-96ddd2a4a94e> ;
+    ns1:label "b12_14" ;
+    ns1:uuid "daa626ea-7a9f-47ba-b9fc-bcbe888c9731" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a> ;
+    MAT:bondDistance "2.5314422766280393" .
+
+<http://www.ddmd.io/mio/kg/bond/16cfd6df-1542-5afb-aa86-ad81fd6ff7fe> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.911226" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_4d445e2c-50e4-4683-9f8c-2f4fb262fb4c> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/16cfd6df-1542-5afb-aa86-ad81fd6ff7fe> ;
+    ns1:label "b24_28" ;
+    ns1:uuid "4d445e2c-50e4-4683-9f8c-2f4fb262fb4c" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca> ;
+    MAT:bondDistance "2.531442276671501" .
+
+<http://www.ddmd.io/mio/kg/bond/16ddeb0f-40ab-54cf-9e8b-ee620e086658> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.910912" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_d903b8bd-eefc-46ed-8518-62224786c65d> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/16ddeb0f-40ab-54cf-9e8b-ee620e086658> ;
+    ns1:label "b24_25" ;
+    ns1:uuid "d903b8bd-eefc-46ed-8518-62224786c65d" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339> ;
+    MAT:bondDistance "2.5314422765999995" .
+
+<http://www.ddmd.io/mio/kg/bond/176582ae-2df5-58e2-87ed-c4323254cb4d> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.903823" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_ecf7c2fa-d15a-453b-8685-fa17684ef536> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/176582ae-2df5-58e2-87ed-c4323254cb4d> ;
+    ns1:label "b9_10" ;
+    ns1:uuid "ecf7c2fa-d15a-453b-8685-fa17684ef536" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6> ;
+    MAT:bondDistance "2.5314422766258793" .
+
+<http://www.ddmd.io/mio/kg/bond/17cc1d5b-6bee-5626-91cf-73ab559cbfaf> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.910058" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_d9fa8272-b048-4813-bc95-30f5c8df7f26> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/17cc1d5b-6bee-5626-91cf-73ab559cbfaf> ;
+    ns1:label "b22_24" ;
+    ns1:uuid "d9fa8272-b048-4813-bc95-30f5c8df7f26" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec> ;
+    MAT:bondDistance "2.531442276613766" .
+
+<http://www.ddmd.io/mio/kg/bond/19436a1e-c4c9-5170-bddf-9a16f60199ad> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.912013" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_5cdc0e0a-4c4d-4325-8192-ba310f6c1487> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/19436a1e-c4c9-5170-bddf-9a16f60199ad> ;
+    ns1:label "b26_27" ;
+    ns1:uuid "5cdc0e0a-4c4d-4325-8192-ba310f6c1487" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f> ;
+    MAT:bondDistance "2.53144227659568" .
+
+<http://www.ddmd.io/mio/kg/bond/1a215c8a-a516-5c60-ba17-4b517021100f> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.912751" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_e6b39fd5-dbbf-4ee5-9ef2-112d3717a40f> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/1a215c8a-a516-5c60-ba17-4b517021100f> ;
+    ns1:label "b28_29" ;
+    ns1:uuid "e6b39fd5-dbbf-4ee5-9ef2-112d3717a40f" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1> ;
+    MAT:bondDistance "2.5314422765999995" .
+
+<http://www.ddmd.io/mio/kg/bond/1acd2f17-5f44-54a4-a7dc-36c061688f0d> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.901177" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_61c7be43-fa96-4d6b-b8c9-7876e0f9618f> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/1acd2f17-5f44-54a4-a7dc-36c061688f0d> ;
+    ns1:label "b4_6" ;
+    ns1:uuid "61c7be43-fa96-4d6b-b8c9-7876e0f9618f" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c> ;
+    MAT:bondDistance "2.531442276628039" .
+
+<http://www.ddmd.io/mio/kg/bond/1bb8f7a6-d174-509b-9ec7-7fa6a5c300b4> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.906125" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_398fc891-cc91-4f1f-820e-898628d29bb1> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/1bb8f7a6-d174-509b-9ec7-7fa6a5c300b4> ;
+    ns1:label "b13_19" ;
+    ns1:uuid "398fc891-cc91-4f1f-820e-898628d29bb1" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b> ;
+    MAT:bondDistance "2.531442276678058" .
+
+<http://www.ddmd.io/mio/kg/bond/1d3c4f88-915f-525a-845c-811cfa1a9728> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.898674" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_b535f96b-bc3e-4f0e-975b-4443c89c7463> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/1d3c4f88-915f-525a-845c-811cfa1a9728> ;
+    ns1:label "b0_28" ;
+    ns1:uuid "b535f96b-bc3e-4f0e-975b-4443c89c7463" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca> ;
+    MAT:bondDistance "2.60800051126285" .
+
+<http://www.ddmd.io/mio/kg/bond/1d796057-166d-59d7-ac01-c32bc6cb7528> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.911821" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_13c7e7f4-eb9b-453d-b2f5-981ebe306a81> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/1d796057-166d-59d7-ac01-c32bc6cb7528> ;
+    ns1:label "b25_30" ;
+    ns1:uuid "13c7e7f4-eb9b-453d-b2f5-981ebe306a81" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:bondDistance "2.5314422766280593" .
+
+<http://www.ddmd.io/mio/kg/bond/1db109f4-10f3-52f7-9194-ae503db44ba6> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.904013" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_eabccd41-848c-47f8-a20b-bb01c7542947> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/1db109f4-10f3-52f7-9194-ae503db44ba6> ;
+    ns1:label "b9_12" ;
+    ns1:uuid "eabccd41-848c-47f8-a20b-bb01c7542947" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028> ;
+    MAT:bondDistance "2.5314422766547673" .
+
+<http://www.ddmd.io/mio/kg/bond/22693e51-6c6f-56ec-b344-0904c42bd17f> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.906018" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_9aacb122-0dc9-42d9-a952-a7c9d16dfb15> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/22693e51-6c6f-56ec-b344-0904c42bd17f> ;
+    ns1:label "b13_18" ;
+    ns1:uuid "9aacb122-0dc9-42d9-a952-a7c9d16dfb15" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413> ;
+    MAT:bondDistance "2.531442276628058" .
+
+<http://www.ddmd.io/mio/kg/bond/240cad38-1641-5171-8f18-831d1020c64a> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.900780" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_c9088655-8724-4c2f-8ec1-1dde82ab26e0> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/240cad38-1641-5171-8f18-831d1020c64a> ;
+    ns1:label "b3_28" ;
+    ns1:uuid "c9088655-8724-4c2f-8ec1-1dde82ab26e0" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca> ;
+    MAT:bondDistance "2.6080005112135125" .
+
+<http://www.ddmd.io/mio/kg/bond/2672abeb-b1c1-5010-8e6e-e96c56937563> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.910618" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_716d9037-6ade-4448-b35b-ed804ac60b87> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/2672abeb-b1c1-5010-8e6e-e96c56937563> ;
+    ns1:label "b23_25" ;
+    ns1:uuid "716d9037-6ade-4448-b35b-ed804ac60b87" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339> ;
+    MAT:bondDistance "2.531442276613766" .
+
+<http://www.ddmd.io/mio/kg/bond/29232402-36a5-5473-b455-2fcc5f76ddc4> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.911332" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_22cec367-2220-4e6a-90cb-3f79ed1fc72d> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/29232402-36a5-5473-b455-2fcc5f76ddc4> ;
+    ns1:label "b24_30" ;
+    ns1:uuid "22cec367-2220-4e6a-90cb-3f79ed1fc72d" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:bondDistance "2.5314422766280593" .
+
+<http://www.ddmd.io/mio/kg/bond/2c7edaa8-f789-5324-ba16-6f6be2203d85> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.909461" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_a9521829-dc26-4156-a183-984ef227c554> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/2c7edaa8-f789-5324-ba16-6f6be2203d85> ;
+    ns1:label "b21_22" ;
+    ns1:uuid "a9521829-dc26-4156-a183-984ef227c554" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c> ;
+    MAT:bondDistance "2.5314422766258793" .
+
+<http://www.ddmd.io/mio/kg/bond/2d1db2f9-86ec-5950-a863-d0ef273aa9ae> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.907684" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_6a0aa4c5-8811-4e2b-b49b-3132b3a38d16> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/2d1db2f9-86ec-5950-a863-d0ef273aa9ae> ;
+    ns1:label "b17_19" ;
+    ns1:uuid "6a0aa4c5-8811-4e2b-b49b-3132b3a38d16" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b> ;
+    MAT:bondDistance "2.531442276678039" .
+
+<http://www.ddmd.io/mio/kg/bond/31b55e3a-f2c9-50f5-8854-146ebcb15f05> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.911119" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_1d0c970d-b425-44bc-8ac4-ce50d26c1102> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/31b55e3a-f2c9-50f5-8854-146ebcb15f05> ;
+    ns1:label "b24_27" ;
+    ns1:uuid "1d0c970d-b425-44bc-8ac4-ce50d26c1102" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f> ;
+    MAT:bondDistance "2.5314422766258797" .
+
+<http://www.ddmd.io/mio/kg/bond/322891e6-b20f-5f2b-9e87-bcaca4033eb7> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.908097" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_697507ee-8e18-4f91-a364-68ff664c50cd> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/322891e6-b20f-5f2b-9e87-bcaca4033eb7> ;
+    ns1:label "b18_19" ;
+    ns1:uuid "697507ee-8e18-4f91-a364-68ff664c50cd" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b> ;
+    MAT:bondDistance "2.53144227659568" .
+
+<http://www.ddmd.io/mio/kg/bond/3381093e-b72c-5897-b075-4b7eb607c618> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.906558" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_032fd6d0-324b-44ec-b195-a3cfb224638d> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/3381093e-b72c-5897-b075-4b7eb607c618> ;
+    ns1:label "b14_18" ;
+    ns1:uuid "032fd6d0-324b-44ec-b195-a3cfb224638d" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413> ;
+    MAT:bondDistance "2.5314422766714997" .
+
+<http://www.ddmd.io/mio/kg/bond/352d9ac6-c1e8-5a2d-98bb-667896f445d8> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.909760" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_b20f8ed2-4767-4f29-a701-cbd34b0e2240> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/352d9ac6-c1e8-5a2d-98bb-667896f445d8> ;
+    ns1:label "b21_25" ;
+    ns1:uuid "b20f8ed2-4767-4f29-a701-cbd34b0e2240" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339> ;
+    MAT:bondDistance "2.531442276706927" .
+
+<http://www.ddmd.io/mio/kg/bond/35329f84-f6a2-5ae6-808f-5d58a09c9ec7> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.907057" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_00428a56-5353-44c1-b804-bb6f0b9e685a> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/35329f84-f6a2-5ae6-808f-5d58a09c9ec7> ;
+    ns1:label "b16_18" ;
+    ns1:uuid "00428a56-5353-44c1-b804-bb6f0b9e685a" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413> ;
+    MAT:bondDistance "2.531442276628039" .
+
+<http://www.ddmd.io/mio/kg/bond/3bbbbedc-c68c-599e-bd69-dafee4b9c005> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.906342" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_c48df359-8b65-4d3d-a7f6-8dcb7b6738c8> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/3bbbbedc-c68c-599e-bd69-dafee4b9c005> ;
+    ns1:label "b14_16" ;
+    ns1:uuid "c48df359-8b65-4d3d-a7f6-8dcb7b6738c8" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b> ;
+    MAT:bondDistance "2.53144227662283" .
+
+<http://www.ddmd.io/mio/kg/bond/3c446afb-476f-58af-bd28-612b3b34fcec> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.900665" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_347b10d8-34f7-4af4-8bf6-71f6b8147891> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/3c446afb-476f-58af-bd28-612b3b34fcec> ;
+    ns1:label "b3_7" ;
+    ns1:uuid "347b10d8-34f7-4af4-8bf6-71f6b8147891" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b> ;
+    MAT:bondDistance "2.531442276671501" .
+
+<http://www.ddmd.io/mio/kg/bond/42fe4d43-35ec-50a9-bdc1-c109413a08d8> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.904463" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_f5fe9c32-207f-4eb7-aaeb-c63776dc685e> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/42fe4d43-35ec-50a9-bdc1-c109413a08d8> ;
+    ns1:label "b10_12" ;
+    ns1:uuid "f5fe9c32-207f-4eb7-aaeb-c63776dc685e" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028> ;
+    MAT:bondDistance "2.531442276613766" .
+
+<http://www.ddmd.io/mio/kg/bond/4bdd2cc6-a9ad-5378-a04b-99731986c5f5> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.912446" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_defaa6f6-2961-4f1d-af9e-a48c0e2dfaa9> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/4bdd2cc6-a9ad-5378-a04b-99731986c5f5> ;
+    ns1:label "b27_28" ;
+    ns1:uuid "defaa6f6-2961-4f1d-af9e-a48c0e2dfaa9" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca> ;
+    MAT:bondDistance "2.531442276620672" .
+
+<http://www.ddmd.io/mio/kg/bond/4c2f1632-0411-503b-8152-4cc8aa29bb30> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.908316" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_cd8d8eae-33ff-4302-a581-76a5fe3058fc> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/4c2f1632-0411-503b-8152-4cc8aa29bb30> ;
+    ns1:label "b18_22" ;
+    ns1:uuid "cd8d8eae-33ff-4302-a581-76a5fe3058fc" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c> ;
+    MAT:bondDistance "2.5314422766280607" .
+
+<http://www.ddmd.io/mio/kg/bond/4e25c24a-1436-5d78-8543-18b011657d0a> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.911729" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_7becac0f-1392-4b89-8893-97253ff7a61c> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/4e25c24a-1436-5d78-8543-18b011657d0a> ;
+    ns1:label "b25_29" ;
+    ns1:uuid "7becac0f-1392-4b89-8893-97253ff7a61c" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1> ;
+    MAT:bondDistance "2.531442276671501" .
+
+<http://www.ddmd.io/mio/kg/bond/4fbf18be-767d-5b0e-8d75-8d084127b06f> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.902510" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_648240fc-1e3d-4613-8f10-981da33beed8> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/4fbf18be-767d-5b0e-8d75-8d084127b06f> ;
+    ns1:label "b6_11" ;
+    ns1:uuid "648240fc-1e3d-4613-8f10-981da33beed8" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0> ;
+    MAT:bondDistance "2.5314422766280593" .
+
+<http://www.ddmd.io/mio/kg/bond/523f2858-aed6-5df6-9964-82e8d83eeba0> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.906942" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_85156bad-24d3-4dc2-81af-f4c3c1f6f6b9> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/523f2858-aed6-5df6-9964-82e8d83eeba0> ;
+    ns1:label "b16_17" ;
+    ns1:uuid "85156bad-24d3-4dc2-81af-f4c3c1f6f6b9" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43> ;
+    MAT:bondDistance "2.5314422765999995" .
+
+<http://www.ddmd.io/mio/kg/bond/536da5bc-7033-531d-a6b8-5cbe4466b067> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.909250" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_87a48bf2-52f4-4f78-b9b3-8dce43e45788> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/536da5bc-7033-531d-a6b8-5cbe4466b067> ;
+    ns1:label "b20_25" ;
+    ns1:uuid "87a48bf2-52f4-4f78-b9b3-8dce43e45788" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339> ;
+    MAT:bondDistance "2.531442276656927" .
+
+<http://www.ddmd.io/mio/kg/bond/538ac1ec-80d1-583b-aaf3-3fe3741ed537> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.903051" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_6797f63c-cc5f-4b6a-962c-9b59c4c44095> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/538ac1ec-80d1-583b-aaf3-3fe3741ed537> ;
+    ns1:label "b8_10" ;
+    ns1:uuid "6797f63c-cc5f-4b6a-962c-9b59c4c44095" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6> ;
+    MAT:bondDistance "2.531442276628039" .
+
+<http://www.ddmd.io/mio/kg/bond/54536a5d-4afe-544b-844d-b92226acebb8> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.898282" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_9d690095-83b1-4da5-b9e9-a96d7686335d> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/54536a5d-4afe-544b-844d-b92226acebb8> ;
+    ns1:label "b0_3" ;
+    ns1:uuid "9d690095-83b1-4da5-b9e9-a96d7686335d" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1> ;
+    MAT:bondDistance "2.5314422766258797" .
+
+<http://www.ddmd.io/mio/kg/bond/548582ac-f219-51ec-a7a4-e6f45b743196> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.898376" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_4a483dea-3e64-4bdc-a2d4-877033a64267> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/548582ac-f219-51ec-a7a4-e6f45b743196> ;
+    ns1:label "b0_4" ;
+    ns1:uuid "4a483dea-3e64-4bdc-a2d4-877033a64267" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda> ;
+    MAT:bondDistance "2.531442276671501" .
+
+<http://www.ddmd.io/mio/kg/bond/54a5fd25-aef5-537c-883b-9bb09ced2554> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.901590" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_e76415a2-257b-41b3-9b6d-69083c4d7385> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/54a5fd25-aef5-537c-883b-9bb09ced2554> ;
+    ns1:label "b4_10" ;
+    ns1:uuid "e76415a2-257b-41b3-9b6d-69083c4d7385" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6> ;
+    MAT:bondDistance "2.531442276661046" .
+
+<http://www.ddmd.io/mio/kg/bond/56869760-e113-5566-a2be-446f76c2a2e9> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.898862" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_bb57a642-60d3-44ed-892a-3d0afb27fef6> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/56869760-e113-5566-a2be-446f76c2a2e9> ;
+    ns1:label "b0_31" ;
+    ns1:uuid "bb57a642-60d3-44ed-892a-3d0afb27fef6" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0> ;
+    MAT:bondDistance "2.608000511218587" .
+
+<http://www.ddmd.io/mio/kg/bond/5a647aa4-566e-50d4-a253-5042a4bf36d5> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.898769" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_c876578b-728b-4415-b8d5-bb52dd638dd0> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/5a647aa4-566e-50d4-a253-5042a4bf36d5> ;
+    ns1:label "b0_30" ;
+    ns1:uuid "c876578b-728b-4415-b8d5-bb52dd638dd0" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:bondDistance "2.608000511220683" .
+
+<http://www.ddmd.io/mio/kg/bond/5acce4a7-33b4-57d5-b501-38a69c9d40da> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.902299" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_06e371a0-2fd7-4aac-ab06-0d158c87b47d> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/5acce4a7-33b4-57d5-b501-38a69c9d40da> ;
+    ns1:label "b6_8" ;
+    ns1:uuid "06e371a0-2fd7-4aac-ab06-0d158c87b47d" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:bondDistance "2.531442276671501" .
+
+<http://www.ddmd.io/mio/kg/bond/5c5b7bf2-e6d8-57e5-bb96-4d1446eb0d4a> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.909649" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_cbbac277-3c19-4cb3-a8f7-ff586395486b> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/5c5b7bf2-e6d8-57e5-bb96-4d1446eb0d4a> ;
+    ns1:label "b21_24" ;
+    ns1:uuid "cbbac277-3c19-4cb3-a8f7-ff586395486b" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec> ;
+    MAT:bondDistance "2.5314422766547673" .
+
+<http://www.ddmd.io/mio/kg/bond/5c6abf27-9fbc-5af5-8b4f-b6518b6e17aa> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.912852" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_dfe1e2d1-ed3a-4138-9209-e29685ca028b> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/5c6abf27-9fbc-5af5-8b4f-b6518b6e17aa> ;
+    ns1:label "b28_30" ;
+    ns1:uuid "dfe1e2d1-ed3a-4138-9209-e29685ca028b" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:bondDistance "2.531442276628039" .
+
+<http://www.ddmd.io/mio/kg/bond/5ec7a1bc-ce9f-5d24-9d44-6d7108a3128c> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.898956" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_031479a0-5928-4b58-b0fb-ba2a4b038fc1> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/5ec7a1bc-ce9f-5d24-9d44-6d7108a3128c> ;
+    ns1:label "b1_2" ;
+    ns1:uuid "031479a0-5928-4b58-b0fb-ba2a4b038fc1" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de> ;
+    MAT:bondDistance "2.5314422766280393" .
+
+<http://www.ddmd.io/mio/kg/bond/604983be-1921-55a4-8a18-4f06fbc2e38c> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.911427" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_bf99a762-04f6-4afe-a6f9-aff3d0fbdaf7> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/604983be-1921-55a4-8a18-4f06fbc2e38c> ;
+    ns1:label "b24_31" ;
+    ns1:uuid "bf99a762-04f6-4afe-a6f9-aff3d0fbdaf7" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0> ;
+    MAT:bondDistance "2.5314422766258997" .
+
+<http://www.ddmd.io/mio/kg/bond/6077526c-c39b-552d-9e7a-74ddcb71c3c7> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.913278" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_073e0d99-bf9d-40af-8125-62a46afbd980> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/6077526c-c39b-552d-9e7a-74ddcb71c3c7> ;
+    ns1:label "b30_31" ;
+    ns1:uuid "073e0d99-bf9d-40af-8125-62a46afbd980" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0> ;
+    MAT:bondDistance "2.53144227659568" .
+
+<http://www.ddmd.io/mio/kg/bond/64c2450f-812b-5adc-a8f3-6a7f809b13b0> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.904245" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_c19a67b1-6b7c-4dc4-9da9-3a373f08e7b1> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/64c2450f-812b-5adc-a8f3-6a7f809b13b0> ;
+    ns1:label "b9_15" ;
+    ns1:uuid "c19a67b1-6b7c-4dc4-9da9-3a373f08e7b1" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e> ;
+    MAT:bondDistance "2.5314422766033107" .
+
+<http://www.ddmd.io/mio/kg/bond/650b713f-be90-50b1-9140-2f110a284f92> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.902413" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_2addcdbe-c924-4430-bcd3-d00fba492ff9> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/650b713f-be90-50b1-9140-2f110a284f92> ;
+    ns1:label "b6_10" ;
+    ns1:uuid "2addcdbe-c924-4430-bcd3-d00fba492ff9" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6> ;
+    MAT:bondDistance "2.5314422766280593" .
+
+<http://www.ddmd.io/mio/kg/bond/66348b09-8c98-57c1-bf37-24908ad2b677> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.902726" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_111f7ca1-dc98-4d3c-b37f-b00a19f9c2c9> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/66348b09-8c98-57c1-bf37-24908ad2b677> ;
+    ns1:label "b7_10" ;
+    ns1:uuid "111f7ca1-dc98-4d3c-b37f-b00a19f9c2c9" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6> ;
+    MAT:bondDistance "2.5314422766258997" .
+
+<http://www.ddmd.io/mio/kg/bond/67766fc2-eb15-5325-8545-bd83d9e07a0e> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.902956" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_d304da8a-e7eb-4d94-b2ae-d31e6268c986> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/67766fc2-eb15-5325-8545-bd83d9e07a0e> ;
+    ns1:label "b8_9" ;
+    ns1:uuid "d304da8a-e7eb-4d94-b2ae-d31e6268c986" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336> ;
+    MAT:bondDistance "2.53144227659568" .
+
+<http://www.ddmd.io/mio/kg/bond/692c0e42-e86b-5edd-8271-b0fe2996b061> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.911522" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_4b27b3ea-4c51-4ede-8b27-cf6b22b90a0c> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/692c0e42-e86b-5edd-8271-b0fe2996b061> ;
+    ns1:label "b25_26" ;
+    ns1:uuid "4b27b3ea-4c51-4ede-8b27-cf6b22b90a0c" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64> ;
+    MAT:bondDistance "2.5314422766280393" .
+
+<http://www.ddmd.io/mio/kg/bond/6e1ba3cd-5c7b-53d7-b013-c554b35c5bf4> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.906441" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_02cad86d-d211-415c-a819-bbe246983936> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/6e1ba3cd-5c7b-53d7-b013-c554b35c5bf4> ;
+    ns1:label "b14_17" ;
+    ns1:uuid "02cad86d-d211-415c-a819-bbe246983936" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43> ;
+    MAT:bondDistance "2.53144227662283" .
+
+<http://www.ddmd.io/mio/kg/bond/6f6a630b-7c56-52a5-bc48-26cf014f3bd7> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.913044" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_613429f5-200a-4d2f-88f9-299199b83d07> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/6f6a630b-7c56-52a5-bc48-26cf014f3bd7> ;
+    ns1:label "b29_30" ;
+    ns1:uuid "613429f5-200a-4d2f-88f9-299199b83d07" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:bondDistance "2.531442276628039" .
+
+<http://www.ddmd.io/mio/kg/bond/71b62a49-4a4c-5110-8487-ee34a8691123> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.899876" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_34b16005-fe1f-4f08-999c-88284cb64210> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/71b62a49-4a4c-5110-8487-ee34a8691123> ;
+    ns1:label "b2_4" ;
+    ns1:uuid "34b16005-fe1f-4f08-999c-88284cb64210" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda> ;
+    MAT:bondDistance "2.531442276622832" .
+
+<http://www.ddmd.io/mio/kg/bond/7601bafa-3a96-5747-8bc7-418c54225c36> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.901494" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_e1e2d77d-b150-46d4-bfba-5406d6dcf986> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/7601bafa-3a96-5747-8bc7-418c54225c36> ;
+    ns1:label "b4_9" ;
+    ns1:uuid "e1e2d77d-b150-46d4-bfba-5406d6dcf986" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336> ;
+    MAT:bondDistance "2.5314422766258997" .
+
+<http://www.ddmd.io/mio/kg/bond/7699d371-20ce-58cb-99e2-1f10a79cfc16> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.913152" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_11bb08f1-f3da-4366-9fcc-816093dff271> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/7699d371-20ce-58cb-99e2-1f10a79cfc16> ;
+    ns1:label "b29_31" ;
+    ns1:uuid "11bb08f1-f3da-4366-9fcc-816093dff271" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0> ;
+    MAT:bondDistance "2.531442276678039" .
+
+<http://www.ddmd.io/mio/kg/bond/785aab61-b60c-546b-976d-2801700a276d> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.904656" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_5c3b6364-7e86-4290-8fe6-48efc501d25d> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/785aab61-b60c-546b-976d-2801700a276d> ;
+    ns1:label "b10_15" ;
+    ns1:uuid "5c3b6364-7e86-4290-8fe6-48efc501d25d" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e> ;
+    MAT:bondDistance "2.5314422766547673" .
+
+<http://www.ddmd.io/mio/kg/bond/78e8f1d4-9e6e-59ba-92db-cd4a07297f04> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.912139" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_2fc6f857-dc4b-417e-87f0-fea018030eaf> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/78e8f1d4-9e6e-59ba-92db-cd4a07297f04> ;
+    ns1:label "b26_28" ;
+    ns1:uuid "2fc6f857-dc4b-417e-87f0-fea018030eaf" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca> ;
+    MAT:bondDistance "2.531442276622832" .
+
+<http://www.ddmd.io/mio/kg/bond/7bc61752-be1b-51fd-9de2-4fd838807111> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.900272" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_64a6384b-3f97-43a5-9b1d-b5b02f4305ed> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/7bc61752-be1b-51fd-9de2-4fd838807111> ;
+    ns1:label "b2_29" ;
+    ns1:uuid "64a6384b-3f97-43a5-9b1d-b5b02f4305ed" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1> ;
+    MAT:bondDistance "2.608000511215609" .
+
+<http://www.ddmd.io/mio/kg/bond/7c0b8fe3-0b6f-5090-8f0c-a5cea760981e> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.900367" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_80dcce9e-17bf-4618-b707-3174a60b3af5> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/7c0b8fe3-0b6f-5090-8f0c-a5cea760981e> ;
+    ns1:label "b2_30" ;
+    ns1:uuid "80dcce9e-17bf-4618-b707-3174a60b3af5" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:bondDistance "2.6080005112628495" .
+
+<http://www.ddmd.io/mio/kg/bond/7ce5c581-67f4-5143-94dd-71e508d5c83b> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.908522" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_1fcb8c1f-a356-455a-b799-16458e51a772> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/7ce5c581-67f4-5143-94dd-71e508d5c83b> ;
+    ns1:label "b19_21" ;
+    ns1:uuid "1fcb8c1f-a356-455a-b799-16458e51a772" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:bondDistance "2.5314422766715023" .
+
+<http://www.ddmd.io/mio/kg/bond/7f5e8b32-bd61-5c23-8962-915b855cdb99> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.902009" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_feb6979d-c119-4365-9b0a-9c46f2fe8ea5> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/7f5e8b32-bd61-5c23-8962-915b855cdb99> ;
+    ns1:label "b5_9" ;
+    ns1:uuid "feb6979d-c119-4365-9b0a-9c46f2fe8ea5" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336> ;
+    MAT:bondDistance "2.5314422766780593" .
+
+<http://www.ddmd.io/mio/kg/bond/859e19ad-f1ce-5145-8a86-137718d8c67b> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.901073" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_765c2d75-8270-42d7-afe6-15370745a4cd> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/859e19ad-f1ce-5145-8a86-137718d8c67b> ;
+    ns1:label "b4_5" ;
+    ns1:uuid "765c2d75-8270-42d7-afe6-15370745a4cd" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1> ;
+    MAT:bondDistance "2.5314422765999995" .
+
+<http://www.ddmd.io/mio/kg/bond/867a4296-d874-5843-8a4a-cd426f4dd7eb> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.900974" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_6e6817e0-5e4a-4e1d-9c9d-ab22308a2b64> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/867a4296-d874-5843-8a4a-cd426f4dd7eb> ;
+    ns1:label "b3_31" ;
+    ns1:uuid "6e6817e0-5e4a-4e1d-9c9d-ab22308a2b64" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0> ;
+    MAT:bondDistance "2.6080005112628495" .
+
+<http://www.ddmd.io/mio/kg/bond/8d05cb15-f801-5c77-a52e-7039ed641a38> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.903920" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_33e94382-dd10-4a40-a60a-6206ecf5a2ae> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/8d05cb15-f801-5c77-a52e-7039ed641a38> ;
+    ns1:label "b9_11" ;
+    ns1:uuid "33e94382-dd10-4a40-a60a-6206ecf5a2ae" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0> ;
+    MAT:bondDistance "2.531442276678039" .
+
+<http://www.ddmd.io/mio/kg/bond/8d7a601c-3162-5959-abec-2fbb231becf3> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.909023" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_515efb00-9d2e-489d-8b16-46ec83074e92> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/8d7a601c-3162-5959-abec-2fbb231becf3> ;
+    ns1:label "b20_23" ;
+    ns1:uuid "515efb00-9d2e-489d-8b16-46ec83074e92" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c> ;
+    MAT:bondDistance "2.531442276628039" .
+
+<http://www.ddmd.io/mio/kg/bond/8da07e06-0efa-5b6f-b2a3-9894857e1640> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.906752" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_2dcde9d2-3146-4ba8-88dd-ed51817cd24b> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/8da07e06-0efa-5b6f-b2a3-9894857e1640> ;
+    ns1:label "b15_17" ;
+    ns1:uuid "2dcde9d2-3146-4ba8-88dd-ed51817cd24b" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43> ;
+    MAT:bondDistance "2.5314422766728306" .
+
+<http://www.ddmd.io/mio/kg/bond/90c47e5c-f44e-5a27-97c2-e8a3fafea085> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.901272" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_27e104d3-7090-46d0-8b84-328516ab17c7> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/90c47e5c-f44e-5a27-97c2-e8a3fafea085> ;
+    ns1:label "b4_7" ;
+    ns1:uuid "27e104d3-7090-46d0-8b84-328516ab17c7" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b> ;
+    MAT:bondDistance "2.5314422766258793" .
+
+<http://www.ddmd.io/mio/kg/bond/95305483-525d-52c9-bb70-d6db675022dc> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.900881" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_687acc26-c5fa-498e-9205-e620c249bf6a> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/95305483-525d-52c9-bb70-d6db675022dc> ;
+    ns1:label "b3_29" ;
+    ns1:uuid "687acc26-c5fa-498e-9205-e620c249bf6a" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1> ;
+    MAT:bondDistance "2.6080005112641413" .
+
+<http://www.ddmd.io/mio/kg/bond/96424579-2884-5b93-bac6-7a169bb1155d> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.908734" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_c35d2905-d2db-46f8-b7d4-46d34c17ec54> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/96424579-2884-5b93-bac6-7a169bb1155d> ;
+    ns1:label "b19_23" ;
+    ns1:uuid "c35d2905-d2db-46f8-b7d4-46d34c17ec54" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c> ;
+    MAT:bondDistance "2.5314422766780607" .
+
+<http://www.ddmd.io/mio/kg/bond/981b96a2-491d-5777-a5ef-2d2f49c5071c> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.909362" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_809334fa-93c3-4b6a-9155-adade6401f51> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/981b96a2-491d-5777-a5ef-2d2f49c5071c> ;
+    ns1:label "b20_26" ;
+    ns1:uuid "809334fa-93c3-4b6a-9155-adade6401f51" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64> ;
+    MAT:bondDistance "2.5314422766033107" .
+
+<http://www.ddmd.io/mio/kg/bond/982483cd-e948-5c5b-ad85-ed2f90ee9560> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.906234" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_b7e31069-8fd6-4065-9e7d-329478d7208a> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/982483cd-e948-5c5b-ad85-ed2f90ee9560> ;
+    ns1:label "b14_15" ;
+    ns1:uuid "b7e31069-8fd6-4065-9e7d-329478d7208a" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e> ;
+    MAT:bondDistance "2.53144227659568" .
+
+<http://www.ddmd.io/mio/kg/bond/9d717a1e-3bde-50a9-aae7-fb2c43101d69> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.907975" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_ff8619c7-bed7-4e74-a9f9-dba1560468f6> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/9d717a1e-3bde-50a9-aae7-fb2c43101d69> ;
+    ns1:label "b17_23" ;
+    ns1:uuid "ff8619c7-bed7-4e74-a9f9-dba1560468f6" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c> ;
+    MAT:bondDistance "2.531442276661047" .
+
+<http://www.ddmd.io/mio/kg/bond/9e64df5c-6dfa-59ab-bd05-ad3f11f79d12> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.903246" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_76f8ab4a-c68a-4ff2-b0ac-2e7f4398d02c> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/9e64df5c-6dfa-59ab-bd05-ad3f11f79d12> ;
+    ns1:label "b8_12" ;
+    ns1:uuid "76f8ab4a-c68a-4ff2-b0ac-2e7f4398d02c" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028> ;
+    MAT:bondDistance "2.531442276656927" .
+
+<http://www.ddmd.io/mio/kg/bond/a26ecb6a-c411-5fa1-9bba-d3c7c25ab933> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.899670" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_9a49adcf-4357-4417-926c-eaf120fd6266> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/a26ecb6a-c411-5fa1-9bba-d3c7c25ab933> ;
+    ns1:label "b1_31" ;
+    ns1:uuid "9a49adcf-4357-4417-926c-eaf120fd6266" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0> ;
+    MAT:bondDistance "2.6080005112692155" .
+
+<http://www.ddmd.io/mio/kg/bond/a383edb3-77d4-5824-b497-87655a873a37> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.900062" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_96909e2e-c3bb-43f8-bee2-92afc433114e> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/a383edb3-77d4-5824-b497-87655a873a37> ;
+    ns1:label "b2_6" ;
+    ns1:uuid "96909e2e-c3bb-43f8-bee2-92afc433114e" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c> ;
+    MAT:bondDistance "2.531442276671501" .
+
+<http://www.ddmd.io/mio/kg/bond/a3a503b1-72a5-5a91-b48a-c79d5f589fa3> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.907588" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_081ba2e0-61d2-4f38-a032-15d37bc1302f> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/a3a503b1-72a5-5a91-b48a-c79d5f589fa3> ;
+    ns1:label "b17_18" ;
+    ns1:uuid "081ba2e0-61d2-4f38-a032-15d37bc1302f" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413> ;
+    MAT:bondDistance "2.531442276628039" .
+
+<http://www.ddmd.io/mio/kg/bond/a4ff8b4e-2c1e-5a3a-842d-6a3214c6f95f> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.906848" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_f6055747-7037-4e20-a4f9-8d49e7a2352d> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/a4ff8b4e-2c1e-5a3a-842d-6a3214c6f95f> ;
+    ns1:label "b15_19" ;
+    ns1:uuid "f6055747-7037-4e20-a4f9-8d49e7a2352d" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b> ;
+    MAT:bondDistance "2.5314422766714997" .
+
+<http://www.ddmd.io/mio/kg/bond/acd3e790-4d3a-5058-8c57-e800cd205421> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.905099" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_ece8b388-a867-4d72-9db3-4ca7c7a78a8a> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/acd3e790-4d3a-5058-8c57-e800cd205421> ;
+    ns1:label "b12_13" ;
+    ns1:uuid "ece8b388-a867-4d72-9db3-4ca7c7a78a8a" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697> ;
+    MAT:bondDistance "2.5314422765999995" .
+
+<http://www.ddmd.io/mio/kg/bond/ae1d6684-3544-5d6c-a1dd-f3f59eed9c92> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.910813" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_9204167f-e183-42db-9185-1045a7b65203> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/ae1d6684-3544-5d6c-a1dd-f3f59eed9c92> ;
+    ns1:label "b23_27" ;
+    ns1:uuid "9204167f-e183-42db-9185-1045a7b65203" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f> ;
+    MAT:bondDistance "2.531442276706927" .
+
+<http://www.ddmd.io/mio/kg/bond/ae7d9ec5-4467-5cc1-b9d8-12abaed845cd> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.901801" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_40bdc887-64be-4e7d-ba05-ad76c90281e4> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/ae7d9ec5-4467-5cc1-b9d8-12abaed845cd> ;
+    ns1:label "b5_7" ;
+    ns1:uuid "40bdc887-64be-4e7d-ba05-ad76c90281e4" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b> ;
+    MAT:bondDistance "2.531442276678039" .
+
+<http://www.ddmd.io/mio/kg/bond/b32ad982-92ac-5bb5-9402-bc15868d7e58> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.905714" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_67a5ad50-1477-440a-a5d7-f0a9b3c78f17> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/b32ad982-92ac-5bb5-9402-bc15868d7e58> ;
+    ns1:label "b13_14" ;
+    ns1:uuid "67a5ad50-1477-440a-a5d7-f0a9b3c78f17" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a> ;
+    MAT:bondDistance "2.5314422766280393" .
+
+<http://www.ddmd.io/mio/kg/bond/b3a04676-3a3a-5896-b6e3-ce6e5008f9fe> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.904891" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_9e3fac40-1fae-4aad-80d2-d5ada8409a52> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/b3a04676-3a3a-5896-b6e3-ce6e5008f9fe> ;
+    ns1:label "b11_14" ;
+    ns1:uuid "9e3fac40-1fae-4aad-80d2-d5ada8409a52" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a> ;
+    MAT:bondDistance "2.531442276656927" .
+
+<http://www.ddmd.io/mio/kg/bond/b567415b-29d7-5601-92fb-10563941c451> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.902200" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_db1d8d8c-020f-471b-a3a9-00461ca673a5> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/b567415b-29d7-5601-92fb-10563941c451> ;
+    ns1:label "b6_7" ;
+    ns1:uuid "db1d8d8c-020f-471b-a3a9-00461ca673a5" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b> ;
+    MAT:bondDistance "2.53144227659568" .
+
+<http://www.ddmd.io/mio/kg/bond/b630b576-32cf-54ec-a86f-11d6de944f0d> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.899066" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_1e04ac08-19d1-4b13-ae1c-5e71602180f4> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/b630b576-32cf-54ec-a86f-11d6de944f0d> ;
+    ns1:label "b1_3" ;
+    ns1:uuid "1e04ac08-19d1-4b13-ae1c-5e71602180f4" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1> ;
+    MAT:bondDistance "2.5314422766780393" .
+
+<http://www.ddmd.io/mio/kg/bond/ba97c7f0-9ea4-5d51-9fe1-c94361e0cbb2> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.907880" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_5ba0d36c-394a-4bea-897c-2e9fe9cd216e> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/ba97c7f0-9ea4-5d51-9fe1-c94361e0cbb2> ;
+    ns1:label "b17_21" ;
+    ns1:uuid "5ba0d36c-394a-4bea-897c-2e9fe9cd216e" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:bondDistance "2.5314422766780607" .
+
+<http://www.ddmd.io/mio/kg/bond/bcfa54e4-5f34-525e-bdd0-a35fae15cedb> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.907167" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_73c29620-860a-40e8-9a93-52de2465e7a5> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/bcfa54e4-5f34-525e-bdd0-a35fae15cedb> ;
+    ns1:label "b16_19" ;
+    ns1:uuid "73c29620-860a-40e8-9a93-52de2465e7a5" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b> ;
+    MAT:bondDistance "2.5314422766258793" .
+
+<http://www.ddmd.io/mio/kg/bond/be60598d-90f7-55b2-a843-978e3a26f089> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.906653" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_141d5daa-b850-475b-9bf5-5ebe5e0e658f> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/be60598d-90f7-55b2-a843-978e3a26f089> ;
+    ns1:label "b15_16" ;
+    ns1:uuid "141d5daa-b850-475b-9bf5-5ebe5e0e658f" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b> ;
+    MAT:bondDistance "2.531442276620671" .
+
+<http://www.ddmd.io/mio/kg/bond/beb3823a-dbfa-5913-9020-97096e11b0e0> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.905520" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_b6ddf74f-61bb-4b68-8c18-5006472eb315> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/beb3823a-dbfa-5913-9020-97096e11b0e0> ;
+    ns1:label "b12_18" ;
+    ns1:uuid "b6ddf74f-61bb-4b68-8c18-5006472eb315" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413> ;
+    MAT:bondDistance "2.531442276628058" .
+
+<http://www.ddmd.io/mio/kg/bond/bf06f1d8-87d0-563b-820e-e47879d2f301> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.902618" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_dac57a3d-2f0c-4d5a-a779-1da9f33f7f6f> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/bf06f1d8-87d0-563b-820e-e47879d2f301> ;
+    ns1:label "b7_9" ;
+    ns1:uuid "dac57a3d-2f0c-4d5a-a779-1da9f33f7f6f" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336> ;
+    MAT:bondDistance "2.531442276671501" .
+
+<http://www.ddmd.io/mio/kg/bond/c2133a5c-3032-5aa6-a7b8-e562b90906cb> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.908831" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_2c80e7f3-c01a-4424-88fe-92e2f698e9e6> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/c2133a5c-3032-5aa6-a7b8-e562b90906cb> ;
+    ns1:label "b20_21" ;
+    ns1:uuid "2c80e7f3-c01a-4424-88fe-92e2f698e9e6" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:bondDistance "2.53144227659568" .
+
+<http://www.ddmd.io/mio/kg/bond/c32e73f1-c5ec-52be-83ea-f048efaec036> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.903147" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_d4524e2a-4a07-4c9d-9a44-33d6b023ad84> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/c32e73f1-c5ec-52be-83ea-f048efaec036> ;
+    ns1:label "b8_11" ;
+    ns1:uuid "d4524e2a-4a07-4c9d-9a44-33d6b023ad84" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0> ;
+    MAT:bondDistance "2.531442276628039" .
+
+<http://www.ddmd.io/mio/kg/bond/c3cb430a-4049-52eb-aa56-3093a06fce43> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.901701" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_1ccb5c56-7ed4-4457-8d60-5bc911532efe> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/c3cb430a-4049-52eb-aa56-3093a06fce43> ;
+    ns1:label "b5_6" ;
+    ns1:uuid "1ccb5c56-7ed4-4457-8d60-5bc911532efe" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c> ;
+    MAT:bondDistance "2.531442276628039" .
+
+<http://www.ddmd.io/mio/kg/bond/c835e898-5d96-552f-8c70-31835c74456b> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.900565" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_cb2ca4fb-fe0d-4f89-907b-df4726c6d23a> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/c835e898-5d96-552f-8c70-31835c74456b> ;
+    ns1:label "b3_5" ;
+    ns1:uuid "cb2ca4fb-fe0d-4f89-907b-df4726c6d23a" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1> ;
+    MAT:bondDistance "2.5314422766728315" .
+
+<http://www.ddmd.io/mio/kg/bond/c84bfdbe-cd64-5b20-a484-f2624fbc91a3> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.903449" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_dadd9e18-8868-47bf-af90-a393384d6063> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/c84bfdbe-cd64-5b20-a484-f2624fbc91a3> ;
+    ns1:label "b8_14" ;
+    ns1:uuid "dadd9e18-8868-47bf-af90-a393384d6063" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a> ;
+    MAT:bondDistance "2.5314422766033107" .
+
+<http://www.ddmd.io/mio/kg/bond/cae1efdb-f63c-5e7c-9c43-3f2f0c0d11c1> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.899968" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_9c35339f-5dc4-4126-8eb0-1a449aaf3c3c> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/cae1efdb-f63c-5e7c-9c43-3f2f0c0d11c1> ;
+    ns1:label "b2_5" ;
+    ns1:uuid "9c35339f-5dc4-4126-8eb0-1a449aaf3c3c" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1> ;
+    MAT:bondDistance "2.531442276622832" .
+
+<http://www.ddmd.io/mio/kg/bond/cb9ba732-ba17-54b1-addb-c59f3961f784> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.901390" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_b5aaec6b-f1b5-4105-9c17-fb03b590bc95> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/cb9ba732-ba17-54b1-addb-c59f3961f784> ;
+    ns1:label "b4_8" ;
+    ns1:uuid "b5aaec6b-f1b5-4105-9c17-fb03b590bc95" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:bondDistance "2.5314422766280593" .
+
+<http://www.ddmd.io/mio/kg/bond/cc151cfe-5bff-52bb-8aee-476816f623b8> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.905616" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_d2eb8dfe-e287-48e8-bc7a-8df7df6d6a74> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/cc151cfe-5bff-52bb-8aee-476816f623b8> ;
+    ns1:label "b12_19" ;
+    ns1:uuid "d2eb8dfe-e287-48e8-bc7a-8df7df6d6a74" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b> ;
+    MAT:bondDistance "2.5314422766258984" .
+
+<http://www.ddmd.io/mio/kg/bond/ce4ee58f-3cad-5d86-a42f-c47503de672d> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.908206" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_6f1302c8-2a55-4ca3-b33c-9d8aff04c516> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/ce4ee58f-3cad-5d86-a42f-c47503de672d> ;
+    ns1:label "b18_20" ;
+    ns1:uuid "6f1302c8-2a55-4ca3-b33c-9d8aff04c516" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f> ;
+    MAT:bondDistance "2.5314422766715023" .
+
+<http://www.ddmd.io/mio/kg/bond/ce710c62-1086-5949-a94c-d579a10fe1f4> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.909861" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_507ddb7d-f482-4d70-bc4c-6bc399588411> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/ce710c62-1086-5949-a94c-d579a10fe1f4> ;
+    ns1:label "b21_27" ;
+    ns1:uuid "507ddb7d-f482-4d70-bc4c-6bc399588411" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f> ;
+    MAT:bondDistance "2.5314422766033107" .
+
+<http://www.ddmd.io/mio/kg/bond/d4048923-6cc6-535a-a341-76a41fb4ab98> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.909127" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_d9591720-5375-4291-9699-c8469533e44a> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/d4048923-6cc6-535a-a341-76a41fb4ab98> ;
+    ns1:label "b20_24" ;
+    ns1:uuid "d9591720-5375-4291-9699-c8469533e44a" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec> ;
+    MAT:bondDistance "2.531442276656927" .
+
+<http://www.ddmd.io/mio/kg/bond/d9a1d268-79e6-59f5-881d-0ab4039784fb> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.911917" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_1ed5826b-0296-4fe7-adae-8053ce396e36> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/d9a1d268-79e6-59f5-881d-0ab4039784fb> ;
+    ns1:label "b25_31" ;
+    ns1:uuid "1ed5826b-0296-4fe7-adae-8053ce396e36" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0> ;
+    MAT:bondDistance "2.5314422766780593" .
+
+<http://www.ddmd.io/mio/kg/bond/da13bbe2-3b44-5833-8c56-b1b1e6d10ca7> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.912654" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_95232a2f-26d7-4723-a740-e2986126fd2b> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/da13bbe2-3b44-5833-8c56-b1b1e6d10ca7> ;
+    ns1:label "b27_31" ;
+    ns1:uuid "95232a2f-26d7-4723-a740-e2986126fd2b" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0> ;
+    MAT:bondDistance "2.531442276671501" .
+
+<http://www.ddmd.io/mio/kg/bond/db7cff99-667c-5c25-a90a-06943072f0f6> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.899182" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_7c55b5d9-bcb0-4ec9-92fc-16a1fc66add2> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/db7cff99-667c-5c25-a90a-06943072f0f6> ;
+    ns1:label "b1_5" ;
+    ns1:uuid "7c55b5d9-bcb0-4ec9-92fc-16a1fc66add2" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1> ;
+    MAT:bondDistance "2.531442276671501" .
+
+<http://www.ddmd.io/mio/kg/bond/dd1c8d3d-25b3-5a3e-a4e2-0a93345ce015> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.908616" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_6229999d-a162-4d9d-b6e2-4b6136cf8d0d> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/dd1c8d3d-25b3-5a3e-a4e2-0a93345ce015> ;
+    ns1:label "b19_22" ;
+    ns1:uuid "6229999d-a162-4d9d-b6e2-4b6136cf8d0d" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c> ;
+    MAT:bondDistance "2.531442276625901" .
+
+<http://www.ddmd.io/mio/kg/bond/dd3e1004-06b6-537f-b4e5-970d698f49eb> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.910715" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_80296b23-aefa-4bcd-8fe0-52852e3ab3d3> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/dd3e1004-06b6-537f-b4e5-970d698f49eb> ;
+    ns1:label "b23_26" ;
+    ns1:uuid "80296b23-aefa-4bcd-8fe0-52852e3ab3d3" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64> ;
+    MAT:bondDistance "2.531442276656927" .
+
+<http://www.ddmd.io/mio/kg/bond/e1517fde-bddd-55ed-bbd2-04b0ca713f25> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.908927" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_c96804ba-6bb8-4148-933e-8305ba0fd5ca> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/e1517fde-bddd-55ed-bbd2-04b0ca713f25> ;
+    ns1:label "b20_22" ;
+    ns1:uuid "c96804ba-6bb8-4148-933e-8305ba0fd5ca" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c> ;
+    MAT:bondDistance "2.531442276628039" .
+
+<http://www.ddmd.io/mio/kg/bond/e3810ca7-5af6-5bde-a029-073aaebb0e57> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.904119" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_b0dff289-88a4-40ac-9f02-98aa8462e2e0> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/e3810ca7-5af6-5bde-a029-073aaebb0e57> ;
+    ns1:label "b9_13" ;
+    ns1:uuid "b0dff289-88a4-40ac-9f02-98aa8462e2e0" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697> ;
+    MAT:bondDistance "2.531442276706927" .
+
+<http://www.ddmd.io/mio/kg/bond/e5a0954e-4c1c-5b7f-b0a0-3d850070c6a2> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.911633" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_48d6d595-c94d-4e41-bb2e-f6a47f5236dc> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/e5a0954e-4c1c-5b7f-b0a0-3d850070c6a2> ;
+    ns1:label "b25_27" ;
+    ns1:uuid "48d6d595-c94d-4e41-bb2e-f6a47f5236dc" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f> ;
+    MAT:bondDistance "2.5314422766780393" .
+
+<http://www.ddmd.io/mio/kg/bond/e77d2325-ce6e-5d93-91ff-fca3f0eab01a> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.907272" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_56a5bcb7-8f86-428e-b674-e3320016e71b> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/e77d2325-ce6e-5d93-91ff-fca3f0eab01a> ;
+    ns1:label "b16_20" ;
+    ns1:uuid "56a5bcb7-8f86-428e-b674-e3320016e71b" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f> ;
+    MAT:bondDistance "2.5314422766280607" .
+
+<http://www.ddmd.io/mio/kg/bond/e856c8e6-0e14-5eec-a4b2-8d2a8b95c5a2> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.909959" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_77ade1d8-c563-4b53-8199-a972d1cf95b2> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/e856c8e6-0e14-5eec-a4b2-8d2a8b95c5a2> ;
+    ns1:label "b22_23" ;
+    ns1:uuid "77ade1d8-c563-4b53-8199-a972d1cf95b2" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c> ;
+    MAT:bondDistance "2.5314422765999995" .
+
+<http://www.ddmd.io/mio/kg/bond/e8f93189-92b4-55a3-a61c-a3227f2cf04d> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.905423" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_503aeb41-49d5-4997-b78f-0086c382fd0b> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/e8f93189-92b4-55a3-a61c-a3227f2cf04d> ;
+    ns1:label "b12_16" ;
+    ns1:uuid "503aeb41-49d5-4997-b78f-0086c382fd0b" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b> ;
+    MAT:bondDistance "2.5314422766715" .
+
+<http://www.ddmd.io/mio/kg/bond/e9bb7420-ea9f-56a9-a493-eed347b15ad2> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.901912" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_b1ebd87b-6dec-447d-9a68-ef4ada5a27eb> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/e9bb7420-ea9f-56a9-a493-eed347b15ad2> ;
+    ns1:label "b5_8" ;
+    ns1:uuid "b1ebd87b-6dec-447d-9a68-ef4ada5a27eb" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:bondDistance "2.5314422766280593" .
+
+<http://www.ddmd.io/mio/kg/bond/eaa78ddb-48ec-5510-a3a3-23290df20325> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.903355" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_5f9e881e-8dc0-40fc-9dfa-511a2d8f3b2e> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/eaa78ddb-48ec-5510-a3a3-23290df20325> ;
+    ns1:label "b8_13" ;
+    ns1:uuid "5f9e881e-8dc0-40fc-9dfa-511a2d8f3b2e" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697> ;
+    MAT:bondDistance "2.531442276656927" .
+
+<http://www.ddmd.io/mio/kg/bond/f0f348cc-cf4a-5f10-82bd-5b651c4b8130> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.899297" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_f19ae6c3-7be1-4ad8-b734-91f7934ee35d> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/f0f348cc-cf4a-5f10-82bd-5b651c4b8130> ;
+    ns1:label "b1_6" ;
+    ns1:uuid "f19ae6c3-7be1-4ad8-b734-91f7934ee35d" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c> ;
+    MAT:bondDistance "2.5314422766280593" .
+
+<http://www.ddmd.io/mio/kg/bond/f2d338ff-1415-53b7-bc94-1ca66ee488f5> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.909555" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_61656b60-d743-412d-834f-64e4d31544d1> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/f2d338ff-1415-53b7-bc94-1ca66ee488f5> ;
+    ns1:label "b21_23" ;
+    ns1:uuid "61656b60-d743-412d-834f-64e4d31544d1" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c> ;
+    MAT:bondDistance "2.531442276678039" .
+
+<http://www.ddmd.io/mio/kg/bond/f426d560-0c49-5e7f-ace2-427eee7e6403> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.907474" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_8749126c-66ea-4a2a-a616-ae22492b481b> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/f426d560-0c49-5e7f-ace2-427eee7e6403> ;
+    ns1:label "b16_22" ;
+    ns1:uuid "8749126c-66ea-4a2a-a616-ae22492b481b" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c> ;
+    MAT:bondDistance "2.531442276661047" .
+
+<http://www.ddmd.io/mio/kg/bond/f4380efb-8a23-5214-a07b-e23ac681705d> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.912244" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_633867d2-2183-453b-aa83-103f0ff51baa> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/f4380efb-8a23-5214-a07b-e23ac681705d> ;
+    ns1:label "b26_29" ;
+    ns1:uuid "633867d2-2183-453b-aa83-103f0ff51baa" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1> ;
+    MAT:bondDistance "2.531442276622832" .
+
+<http://www.ddmd.io/mio/kg/bond/f627c518-2d19-5109-b2cb-50c399a71c5c> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.900470" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_44cb639e-997b-444b-b5fd-600222da14d5> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/f627c518-2d19-5109-b2cb-50c399a71c5c> ;
+    ns1:label "b3_4" ;
+    ns1:uuid "44cb639e-997b-444b-b5fd-600222da14d5" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda> ;
+    MAT:bondDistance "2.531442276620672" .
+
+<http://www.ddmd.io/mio/kg/bond/f94bf545-7ac7-5aae-a2b8-bc5bda1dd1ea> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.899485" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_111643db-2d3d-4390-b308-17b92e744b75> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/f94bf545-7ac7-5aae-a2b8-bc5bda1dd1ea> ;
+    ns1:label "b1_29" ;
+    ns1:uuid "111643db-2d3d-4390-b308-17b92e744b75" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1> ;
+    MAT:bondDistance "2.60800051126285" .
+
+<http://www.ddmd.io/mio/kg/bond/f9ee5f46-00c6-5e2d-aa74-34927cf5b7d1> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.898184" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_103d2337-2520-47be-b66b-aefb25192e76> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/f9ee5f46-00c6-5e2d-aa74-34927cf5b7d1> ;
+    ns1:label "b0_2" ;
+    ns1:uuid "103d2337-2520-47be-b66b-aefb25192e76" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de> ;
+    MAT:bondDistance "2.5314422766280393" .
+
+<http://www.ddmd.io/mio/kg/bond/fcb4b311-f70a-5c75-8416-7633d34bbea6> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.902835" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_9b2afcff-7d35-4bca-bb63-d429b3911fe7> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/fcb4b311-f70a-5c75-8416-7633d34bbea6> ;
+    ns1:label "b7_11" ;
+    ns1:uuid "9b2afcff-7d35-4bca-bb63-d429b3911fe7" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0> ;
+    MAT:bondDistance "2.5314422766780593" .
+
+<http://www.ddmd.io/mio/kg/bond/fd7db775-906b-5e1b-b8f3-bd0c583c6f16> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.899578" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_003aca7b-6f2d-474c-aca6-9c85046e3cc8> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/fd7db775-906b-5e1b-b8f3-bd0c583c6f16> ;
+    ns1:label "b1_30" ;
+    ns1:uuid "003aca7b-6f2d-474c-aca6-9c85046e3cc8" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:bondDistance "2.608000511220683" .
+
+<http://www.ddmd.io/mio/kg/bond/fd9491a0-84d9-54ca-9856-46b82b600d68> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.905809" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_fc7af231-c454-40eb-88d2-845679bd3601> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/fd9491a0-84d9-54ca-9856-46b82b600d68> ;
+    ns1:label "b13_15" ;
+    ns1:uuid "fc7af231-c454-40eb-88d2-845679bd3601" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e> ;
+    MAT:bondDistance "2.5314422766780393" .
+
+<http://www.ddmd.io/mio/kg/bond/fdc515ef-7a01-5680-8c0c-b270b45bd49e> a ns1:Cuds,
+        MAT:Bond ;
+    ns1:CreationTime "2026-03-25 13:38:37.900157" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_b4aeb041-d792-4b3c-8da8-7ba025462db9> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/bond/fdc515ef-7a01-5680-8c0c-b270b45bd49e> ;
+    ns1:label "b2_28" ;
+    ns1:uuid "b4aeb041-d792-4b3c-8da8-7ba025462db9" ;
+    MAT:bondAtom1 <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de> ;
+    MAT:bondAtom2 <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca> ;
+    MAT:bondDistance "2.608000511215609" .
+
+<http://www.ddmd.io/mio/kg/dft_calculation/a105afd4-8b13-5816-bc23-c309b4a7ec23> a ns1:Cuds,
+        MAT:DFTCalculation ;
+    ns1:CreationTime "2026-03-25 13:38:37.891268" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_3611189b-d94c-4d22-8320-aa8d7f5b712c> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/dft_calculation/a105afd4-8b13-5816-bc23-c309b4a7ec23> ;
+    ns1:label "gaussian_smearing_ec" ;
+    ns1:uuid "3611189b-d94c-4d22-8320-aa8d7f5b712c" ;
+    MAT:calculationId "gaussian_smearing_ecut50_rho500_k174" ;
+    MAT:hasInput <http://www.ddmd.io/mio/kg/dft_input/551e9c56-776f-5c43-9812-e37d6f0e63cf> ;
+    MAT:hasOutput <http://www.ddmd.io/mio/kg/dft_output/218ba4d6-81d5-5dcd-ad81-92d89ed77e79> ;
+    MAT:hasStructure <http://www.ddmd.io/mio/kg/structure/cdc975bd-cce2-501f-8c2f-6bb99bc20f81> ;
+    MAT:prefix "CuSurface111_scf_e50_r500_k174" ;
+    MAT:runDirectory "examples/cifloader/DFT_input_output/gaussian_smearing_ecut50_rho500_k174" .
+
+<http://www.ddmd.io/mio/kg/dft_input/551e9c56-776f-5c43-9812-e37d6f0e63cf> a ns1:Cuds,
+        MAT:DFTInput ;
+    ns1:CreationTime "2026-03-25 13:38:37.891423" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_bdec6088-837d-4a77-afe3-ea86f02ac681> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/dft_input/551e9c56-776f-5c43-9812-e37d6f0e63cf> ;
+    ns1:label "dft_input" ;
+    ns1:uuid "bdec6088-837d-4a77-afe3-ea86f02ac681" ;
+    MAT:calculation "scf" ;
+    MAT:cell_unit "angstrom" ;
+    MAT:control_calculation "scf" ;
+    MAT:control_disk_io "none" ;
+    MAT:control_etot_conv_thr "4e-05" ;
+    MAT:control_forc_conv_thr "0.0001" ;
+    MAT:control_outdir "./out" ;
+    MAT:control_prefix "CuSurface111_scf_e50_r500_k174" ;
+    MAT:control_pseudo_dir "/work/scratch/ucaqhaj/pp/upf" ;
+    MAT:control_tprnfor "true" ;
+    MAT:control_tstress "true" ;
+    MAT:control_verbosity "high" ;
+    MAT:electrons_conv_thr "8e-10" ;
+    MAT:electrons_electron_maxstep "1000" ;
+    MAT:electrons_mixing_beta "0.3" ;
+    MAT:hasAtomicSpecies <http://www.ddmd.io/mio/kg/atomic_species/ccefe104-2533-5588-b712-21b6af42bb75> ;
+    MAT:hasKPointGrid <http://www.ddmd.io/mio/kg/kpoint_grid/fd770b62-6d41-5608-b7a6-644787900b85> ;
+    MAT:position_unit "angstrom" ;
+    MAT:system_degauss "0.02" ;
+    MAT:system_ecutrho "500" ;
+    MAT:system_ecutwfc "50" ;
+    MAT:system_ibrav "0" ;
+    MAT:system_nat "32" ;
+    MAT:system_nosym "false" ;
+    MAT:system_ntyp "1" ;
+    MAT:system_occupations "smearing" ;
+    MAT:system_smearing "gaussian" .
+
+<http://www.ddmd.io/mio/kg/dft_output/218ba4d6-81d5-5dcd-ad81-92d89ed77e79> a ns1:Cuds,
+        MAT:DFTOutput ;
+    ns1:CreationTime "2026-03-25 13:38:37.891536" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_f0932da5-152f-47db-94c3-9271d25c2567> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/dft_output/218ba4d6-81d5-5dcd-ad81-92d89ed77e79> ;
+    ns1:label "dft_output" ;
+    ns1:uuid "f0932da5-152f-47db-94c3-9271d25c2567" ;
+    MAT:converged "true" ;
+    MAT:end_time "15:44:49  19Mar2026" ;
+    MAT:fermi_energy_ev "12.8731" ;
+    MAT:num_k_points "15" ;
+    MAT:processor_cores "24" ;
+    MAT:qe_version "7.5" ;
+    MAT:scf_iterations "22" ;
+    MAT:smearing_contribution_ry "-0.04547736" ;
+    MAT:smearing_scheme "Gaussian" ;
+    MAT:smearing_width_ry "0.02" ;
+    MAT:start_time "19Mar2026 at 15:41:44" ;
+    MAT:total_cpu_time "2m58.05s" ;
+    MAT:total_energy_ry "-6732.54634853" ;
+    MAT:total_wall_time "3m 4.77s" .
+
+<http://www.ddmd.io/mio/kg/kpoint_grid/fd770b62-6d41-5608-b7a6-644787900b85> a ns1:Cuds,
+        MAT:KPointGrid ;
+    ns1:CreationTime "2026-03-25 13:38:37.892292" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_96f3acc7-a9ac-4a4b-b41a-067366183e2b> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/kpoint_grid/fd770b62-6d41-5608-b7a6-644787900b85> ;
+    ns1:label "kgrid" ;
+    ns1:uuid "96f3acc7-a9ac-4a4b-b41a-067366183e2b" ;
+    MAT:grid_x "1" ;
+    MAT:grid_y "7" ;
+    MAT:grid_z "4" ;
+    MAT:mode "automatic" ;
+    MAT:shift_x "0" ;
+    MAT:shift_y "0" ;
+    MAT:shift_z "0" .
+
+<http://www.ddmd.io/mio/kg/structure/cdc975bd-cce2-501f-8c2f-6bb99bc20f81> a ns1:Cuds,
+        MAT:CrystalStructure ;
+    ns1:CreationTime "2026-03-25 13:38:37.891637" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_64aff754-25c4-4c61-acc9-a939cb2767c2> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/structure/cdc975bd-cce2-501f-8c2f-6bb99bc20f81> ;
+    ns1:label "structure" ;
+    ns1:uuid "64aff754-25c4-4c61-acc9-a939cb2767c2" ;
+    MAT:hasAtomicSite <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e>,
+        <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697>,
+        <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1>,
+        <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0>,
+        <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c>,
+        <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b>,
+        <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a>,
+        <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1>,
+        <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336>,
+        <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339>,
+        <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec>,
+        <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b>,
+        <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f>,
+        <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6>,
+        <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c>,
+        <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de>,
+        <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43>,
+        <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0>,
+        <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b>,
+        <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff>,
+        <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64>,
+        <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028>,
+        <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7>,
+        <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda>,
+        <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca>,
+        <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c>,
+        <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f>,
+        <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1>,
+        <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596>,
+        <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413>,
+        <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255>,
+        <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:hasBond <http://www.ddmd.io/mio/kg/bond/0190a633-a122-5a22-be92-055a2fbb5cfc>,
+        <http://www.ddmd.io/mio/kg/bond/032cd71a-06e3-5c27-b6c5-fac052fabbf8>,
+        <http://www.ddmd.io/mio/kg/bond/035074b4-e0f7-5959-a93b-3f82d86da59d>,
+        <http://www.ddmd.io/mio/kg/bond/03575f65-c624-5f97-b312-d4c9bbb5673f>,
+        <http://www.ddmd.io/mio/kg/bond/037fb084-283a-5d26-a9f6-5e9c2fe2a023>,
+        <http://www.ddmd.io/mio/kg/bond/03e8de0a-1914-5448-94fc-2a5e49d95efc>,
+        <http://www.ddmd.io/mio/kg/bond/04263f20-9b38-5550-aa4e-1ad37cba0909>,
+        <http://www.ddmd.io/mio/kg/bond/04828111-db4c-5ed9-9436-cbd470d13584>,
+        <http://www.ddmd.io/mio/kg/bond/052744e3-d84d-5a4b-88b5-126384a77670>,
+        <http://www.ddmd.io/mio/kg/bond/0636a39d-15f0-5f2a-ada4-e29bdff80296>,
+        <http://www.ddmd.io/mio/kg/bond/0926e82b-613e-5771-b9b3-153724d073a4>,
+        <http://www.ddmd.io/mio/kg/bond/09707d14-bcf4-5562-b924-0c48d725c4b2>,
+        <http://www.ddmd.io/mio/kg/bond/09dbd93d-a31c-59e6-b2ef-1ae1f005ce76>,
+        <http://www.ddmd.io/mio/kg/bond/0a48ae96-14bb-5e41-bcae-f77b613cae29>,
+        <http://www.ddmd.io/mio/kg/bond/0a7d139e-c09c-51e6-9273-33574e0095ad>,
+        <http://www.ddmd.io/mio/kg/bond/0c8c2ddd-c4fe-52d6-843e-d740f03fd70d>,
+        <http://www.ddmd.io/mio/kg/bond/0f37919e-c67c-58e6-a24e-fb8af181c8f9>,
+        <http://www.ddmd.io/mio/kg/bond/0f95a91e-f2f1-5fef-9f52-ec77ca7fd3c0>,
+        <http://www.ddmd.io/mio/kg/bond/119a02b3-f8e7-5651-9ea1-298ab2b94189>,
+        <http://www.ddmd.io/mio/kg/bond/12ce0adb-973a-5085-ac58-13eec3423483>,
+        <http://www.ddmd.io/mio/kg/bond/158f0bec-931f-5e0b-a7bb-7e3137b66094>,
+        <http://www.ddmd.io/mio/kg/bond/1625f749-2c72-5c44-8888-96ddd2a4a94e>,
+        <http://www.ddmd.io/mio/kg/bond/16cfd6df-1542-5afb-aa86-ad81fd6ff7fe>,
+        <http://www.ddmd.io/mio/kg/bond/16ddeb0f-40ab-54cf-9e8b-ee620e086658>,
+        <http://www.ddmd.io/mio/kg/bond/176582ae-2df5-58e2-87ed-c4323254cb4d>,
+        <http://www.ddmd.io/mio/kg/bond/17cc1d5b-6bee-5626-91cf-73ab559cbfaf>,
+        <http://www.ddmd.io/mio/kg/bond/19436a1e-c4c9-5170-bddf-9a16f60199ad>,
+        <http://www.ddmd.io/mio/kg/bond/1a215c8a-a516-5c60-ba17-4b517021100f>,
+        <http://www.ddmd.io/mio/kg/bond/1acd2f17-5f44-54a4-a7dc-36c061688f0d>,
+        <http://www.ddmd.io/mio/kg/bond/1bb8f7a6-d174-509b-9ec7-7fa6a5c300b4>,
+        <http://www.ddmd.io/mio/kg/bond/1d3c4f88-915f-525a-845c-811cfa1a9728>,
+        <http://www.ddmd.io/mio/kg/bond/1d796057-166d-59d7-ac01-c32bc6cb7528>,
+        <http://www.ddmd.io/mio/kg/bond/1db109f4-10f3-52f7-9194-ae503db44ba6>,
+        <http://www.ddmd.io/mio/kg/bond/22693e51-6c6f-56ec-b344-0904c42bd17f>,
+        <http://www.ddmd.io/mio/kg/bond/240cad38-1641-5171-8f18-831d1020c64a>,
+        <http://www.ddmd.io/mio/kg/bond/2672abeb-b1c1-5010-8e6e-e96c56937563>,
+        <http://www.ddmd.io/mio/kg/bond/29232402-36a5-5473-b455-2fcc5f76ddc4>,
+        <http://www.ddmd.io/mio/kg/bond/2c7edaa8-f789-5324-ba16-6f6be2203d85>,
+        <http://www.ddmd.io/mio/kg/bond/2d1db2f9-86ec-5950-a863-d0ef273aa9ae>,
+        <http://www.ddmd.io/mio/kg/bond/31b55e3a-f2c9-50f5-8854-146ebcb15f05>,
+        <http://www.ddmd.io/mio/kg/bond/322891e6-b20f-5f2b-9e87-bcaca4033eb7>,
+        <http://www.ddmd.io/mio/kg/bond/3381093e-b72c-5897-b075-4b7eb607c618>,
+        <http://www.ddmd.io/mio/kg/bond/352d9ac6-c1e8-5a2d-98bb-667896f445d8>,
+        <http://www.ddmd.io/mio/kg/bond/35329f84-f6a2-5ae6-808f-5d58a09c9ec7>,
+        <http://www.ddmd.io/mio/kg/bond/3bbbbedc-c68c-599e-bd69-dafee4b9c005>,
+        <http://www.ddmd.io/mio/kg/bond/3c446afb-476f-58af-bd28-612b3b34fcec>,
+        <http://www.ddmd.io/mio/kg/bond/42fe4d43-35ec-50a9-bdc1-c109413a08d8>,
+        <http://www.ddmd.io/mio/kg/bond/4bdd2cc6-a9ad-5378-a04b-99731986c5f5>,
+        <http://www.ddmd.io/mio/kg/bond/4c2f1632-0411-503b-8152-4cc8aa29bb30>,
+        <http://www.ddmd.io/mio/kg/bond/4e25c24a-1436-5d78-8543-18b011657d0a>,
+        <http://www.ddmd.io/mio/kg/bond/4fbf18be-767d-5b0e-8d75-8d084127b06f>,
+        <http://www.ddmd.io/mio/kg/bond/523f2858-aed6-5df6-9964-82e8d83eeba0>,
+        <http://www.ddmd.io/mio/kg/bond/536da5bc-7033-531d-a6b8-5cbe4466b067>,
+        <http://www.ddmd.io/mio/kg/bond/538ac1ec-80d1-583b-aaf3-3fe3741ed537>,
+        <http://www.ddmd.io/mio/kg/bond/54536a5d-4afe-544b-844d-b92226acebb8>,
+        <http://www.ddmd.io/mio/kg/bond/548582ac-f219-51ec-a7a4-e6f45b743196>,
+        <http://www.ddmd.io/mio/kg/bond/54a5fd25-aef5-537c-883b-9bb09ced2554>,
+        <http://www.ddmd.io/mio/kg/bond/56869760-e113-5566-a2be-446f76c2a2e9>,
+        <http://www.ddmd.io/mio/kg/bond/5a647aa4-566e-50d4-a253-5042a4bf36d5>,
+        <http://www.ddmd.io/mio/kg/bond/5acce4a7-33b4-57d5-b501-38a69c9d40da>,
+        <http://www.ddmd.io/mio/kg/bond/5c5b7bf2-e6d8-57e5-bb96-4d1446eb0d4a>,
+        <http://www.ddmd.io/mio/kg/bond/5c6abf27-9fbc-5af5-8b4f-b6518b6e17aa>,
+        <http://www.ddmd.io/mio/kg/bond/5ec7a1bc-ce9f-5d24-9d44-6d7108a3128c>,
+        <http://www.ddmd.io/mio/kg/bond/604983be-1921-55a4-8a18-4f06fbc2e38c>,
+        <http://www.ddmd.io/mio/kg/bond/6077526c-c39b-552d-9e7a-74ddcb71c3c7>,
+        <http://www.ddmd.io/mio/kg/bond/64c2450f-812b-5adc-a8f3-6a7f809b13b0>,
+        <http://www.ddmd.io/mio/kg/bond/650b713f-be90-50b1-9140-2f110a284f92>,
+        <http://www.ddmd.io/mio/kg/bond/66348b09-8c98-57c1-bf37-24908ad2b677>,
+        <http://www.ddmd.io/mio/kg/bond/67766fc2-eb15-5325-8545-bd83d9e07a0e>,
+        <http://www.ddmd.io/mio/kg/bond/692c0e42-e86b-5edd-8271-b0fe2996b061>,
+        <http://www.ddmd.io/mio/kg/bond/6e1ba3cd-5c7b-53d7-b013-c554b35c5bf4>,
+        <http://www.ddmd.io/mio/kg/bond/6f6a630b-7c56-52a5-bc48-26cf014f3bd7>,
+        <http://www.ddmd.io/mio/kg/bond/71b62a49-4a4c-5110-8487-ee34a8691123>,
+        <http://www.ddmd.io/mio/kg/bond/7601bafa-3a96-5747-8bc7-418c54225c36>,
+        <http://www.ddmd.io/mio/kg/bond/7699d371-20ce-58cb-99e2-1f10a79cfc16>,
+        <http://www.ddmd.io/mio/kg/bond/785aab61-b60c-546b-976d-2801700a276d>,
+        <http://www.ddmd.io/mio/kg/bond/78e8f1d4-9e6e-59ba-92db-cd4a07297f04>,
+        <http://www.ddmd.io/mio/kg/bond/7bc61752-be1b-51fd-9de2-4fd838807111>,
+        <http://www.ddmd.io/mio/kg/bond/7c0b8fe3-0b6f-5090-8f0c-a5cea760981e>,
+        <http://www.ddmd.io/mio/kg/bond/7ce5c581-67f4-5143-94dd-71e508d5c83b>,
+        <http://www.ddmd.io/mio/kg/bond/7f5e8b32-bd61-5c23-8962-915b855cdb99>,
+        <http://www.ddmd.io/mio/kg/bond/859e19ad-f1ce-5145-8a86-137718d8c67b>,
+        <http://www.ddmd.io/mio/kg/bond/867a4296-d874-5843-8a4a-cd426f4dd7eb>,
+        <http://www.ddmd.io/mio/kg/bond/8d05cb15-f801-5c77-a52e-7039ed641a38>,
+        <http://www.ddmd.io/mio/kg/bond/8d7a601c-3162-5959-abec-2fbb231becf3>,
+        <http://www.ddmd.io/mio/kg/bond/8da07e06-0efa-5b6f-b2a3-9894857e1640>,
+        <http://www.ddmd.io/mio/kg/bond/90c47e5c-f44e-5a27-97c2-e8a3fafea085>,
+        <http://www.ddmd.io/mio/kg/bond/95305483-525d-52c9-bb70-d6db675022dc>,
+        <http://www.ddmd.io/mio/kg/bond/96424579-2884-5b93-bac6-7a169bb1155d>,
+        <http://www.ddmd.io/mio/kg/bond/981b96a2-491d-5777-a5ef-2d2f49c5071c>,
+        <http://www.ddmd.io/mio/kg/bond/982483cd-e948-5c5b-ad85-ed2f90ee9560>,
+        <http://www.ddmd.io/mio/kg/bond/9d717a1e-3bde-50a9-aae7-fb2c43101d69>,
+        <http://www.ddmd.io/mio/kg/bond/9e64df5c-6dfa-59ab-bd05-ad3f11f79d12>,
+        <http://www.ddmd.io/mio/kg/bond/a26ecb6a-c411-5fa1-9bba-d3c7c25ab933>,
+        <http://www.ddmd.io/mio/kg/bond/a383edb3-77d4-5824-b497-87655a873a37>,
+        <http://www.ddmd.io/mio/kg/bond/a3a503b1-72a5-5a91-b48a-c79d5f589fa3>,
+        <http://www.ddmd.io/mio/kg/bond/a4ff8b4e-2c1e-5a3a-842d-6a3214c6f95f>,
+        <http://www.ddmd.io/mio/kg/bond/acd3e790-4d3a-5058-8c57-e800cd205421>,
+        <http://www.ddmd.io/mio/kg/bond/ae1d6684-3544-5d6c-a1dd-f3f59eed9c92>,
+        <http://www.ddmd.io/mio/kg/bond/ae7d9ec5-4467-5cc1-b9d8-12abaed845cd>,
+        <http://www.ddmd.io/mio/kg/bond/b32ad982-92ac-5bb5-9402-bc15868d7e58>,
+        <http://www.ddmd.io/mio/kg/bond/b3a04676-3a3a-5896-b6e3-ce6e5008f9fe>,
+        <http://www.ddmd.io/mio/kg/bond/b567415b-29d7-5601-92fb-10563941c451>,
+        <http://www.ddmd.io/mio/kg/bond/b630b576-32cf-54ec-a86f-11d6de944f0d>,
+        <http://www.ddmd.io/mio/kg/bond/ba97c7f0-9ea4-5d51-9fe1-c94361e0cbb2>,
+        <http://www.ddmd.io/mio/kg/bond/bcfa54e4-5f34-525e-bdd0-a35fae15cedb>,
+        <http://www.ddmd.io/mio/kg/bond/be60598d-90f7-55b2-a843-978e3a26f089>,
+        <http://www.ddmd.io/mio/kg/bond/beb3823a-dbfa-5913-9020-97096e11b0e0>,
+        <http://www.ddmd.io/mio/kg/bond/bf06f1d8-87d0-563b-820e-e47879d2f301>,
+        <http://www.ddmd.io/mio/kg/bond/c2133a5c-3032-5aa6-a7b8-e562b90906cb>,
+        <http://www.ddmd.io/mio/kg/bond/c32e73f1-c5ec-52be-83ea-f048efaec036>,
+        <http://www.ddmd.io/mio/kg/bond/c3cb430a-4049-52eb-aa56-3093a06fce43>,
+        <http://www.ddmd.io/mio/kg/bond/c835e898-5d96-552f-8c70-31835c74456b>,
+        <http://www.ddmd.io/mio/kg/bond/c84bfdbe-cd64-5b20-a484-f2624fbc91a3>,
+        <http://www.ddmd.io/mio/kg/bond/cae1efdb-f63c-5e7c-9c43-3f2f0c0d11c1>,
+        <http://www.ddmd.io/mio/kg/bond/cb9ba732-ba17-54b1-addb-c59f3961f784>,
+        <http://www.ddmd.io/mio/kg/bond/cc151cfe-5bff-52bb-8aee-476816f623b8>,
+        <http://www.ddmd.io/mio/kg/bond/ce4ee58f-3cad-5d86-a42f-c47503de672d>,
+        <http://www.ddmd.io/mio/kg/bond/ce710c62-1086-5949-a94c-d579a10fe1f4>,
+        <http://www.ddmd.io/mio/kg/bond/d4048923-6cc6-535a-a341-76a41fb4ab98>,
+        <http://www.ddmd.io/mio/kg/bond/d9a1d268-79e6-59f5-881d-0ab4039784fb>,
+        <http://www.ddmd.io/mio/kg/bond/da13bbe2-3b44-5833-8c56-b1b1e6d10ca7>,
+        <http://www.ddmd.io/mio/kg/bond/db7cff99-667c-5c25-a90a-06943072f0f6>,
+        <http://www.ddmd.io/mio/kg/bond/dd1c8d3d-25b3-5a3e-a4e2-0a93345ce015>,
+        <http://www.ddmd.io/mio/kg/bond/dd3e1004-06b6-537f-b4e5-970d698f49eb>,
+        <http://www.ddmd.io/mio/kg/bond/e1517fde-bddd-55ed-bbd2-04b0ca713f25>,
+        <http://www.ddmd.io/mio/kg/bond/e3810ca7-5af6-5bde-a029-073aaebb0e57>,
+        <http://www.ddmd.io/mio/kg/bond/e5a0954e-4c1c-5b7f-b0a0-3d850070c6a2>,
+        <http://www.ddmd.io/mio/kg/bond/e77d2325-ce6e-5d93-91ff-fca3f0eab01a>,
+        <http://www.ddmd.io/mio/kg/bond/e856c8e6-0e14-5eec-a4b2-8d2a8b95c5a2>,
+        <http://www.ddmd.io/mio/kg/bond/e8f93189-92b4-55a3-a61c-a3227f2cf04d>,
+        <http://www.ddmd.io/mio/kg/bond/e9bb7420-ea9f-56a9-a493-eed347b15ad2>,
+        <http://www.ddmd.io/mio/kg/bond/eaa78ddb-48ec-5510-a3a3-23290df20325>,
+        <http://www.ddmd.io/mio/kg/bond/f0f348cc-cf4a-5f10-82bd-5b651c4b8130>,
+        <http://www.ddmd.io/mio/kg/bond/f2d338ff-1415-53b7-bc94-1ca66ee488f5>,
+        <http://www.ddmd.io/mio/kg/bond/f426d560-0c49-5e7f-ace2-427eee7e6403>,
+        <http://www.ddmd.io/mio/kg/bond/f4380efb-8a23-5214-a07b-e23ac681705d>,
+        <http://www.ddmd.io/mio/kg/bond/f627c518-2d19-5109-b2cb-50c399a71c5c>,
+        <http://www.ddmd.io/mio/kg/bond/f94bf545-7ac7-5aae-a2b8-bc5bda1dd1ea>,
+        <http://www.ddmd.io/mio/kg/bond/f9ee5f46-00c6-5e2d-aa74-34927cf5b7d1>,
+        <http://www.ddmd.io/mio/kg/bond/fcb4b311-f70a-5c75-8416-7633d34bbea6>,
+        <http://www.ddmd.io/mio/kg/bond/fd7db775-906b-5e1b-b8f3-bd0c583c6f16>,
+        <http://www.ddmd.io/mio/kg/bond/fd9491a0-84d9-54ca-9856-46b82b600d68>,
+        <http://www.ddmd.io/mio/kg/bond/fdc515ef-7a01-5680-8c0c-b270b45bd49e> ;
+    MAT:hasUnitCell <http://www.ddmd.io/mio/kg/unitcell/2deec719-9a77-5931-b451-113a9987440c> .
+
+<http://www.ddmd.io/mio/kg/unitcell/2deec719-9a77-5931-b451-113a9987440c> a ns1:Cuds,
+        MAT:UnitCell ;
+    ns1:CreationTime "2026-03-25 13:38:37.891721" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_2cc47734-34a5-4ab6-bd70-b568bc2f673e> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/unitcell/2deec719-9a77-5931-b451-113a9987440c> ;
+    ns1:label "unitcell" ;
+    ns1:uuid "2cc47734-34a5-4ab6-bd70-b568bc2f673e" ;
+    MAT:a "5.06288455329568" ;
+    MAT:aVector "5.06288455329568 0.0 0.0" ;
+    MAT:alpha "90.0" ;
+    MAT:b "4.38458663958189" ;
+    MAT:bVector "0.0 4.38458663958189 0.0" ;
+    MAT:beta "90.0" ;
+    MAT:c "16.62839774589202" ;
+    MAT:cVector "0.0 0.0 16.62839774589202" ;
+    MAT:cellVectorUnit "angstrom" ;
+    MAT:gamma "90.0" .
+
+<http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.894983" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_270341d2-4103-4cb1-8ca1-36530c925642> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e> ;
+    ns1:label "Cu15" ;
+    ns1:uuid "270341d2-4103-4cb1-8ca1-36530c925642" ;
+    MAT:cartX "3.797163415" ;
+    MAT:cartY "3.6538221997" ;
+    MAT:cartZ "7.2807418911" ;
+    MAT:fractX "0.7500000000055778" ;
+    MAT:fractY "0.8333333333443775" ;
+    MAT:fractZ "0.4378498759989475" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697>,
+        <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b>,
+        <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a>,
+        <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336>,
+        <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6>,
+        <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43>,
+        <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0>,
+        <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b>,
+        <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.894668" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_7a5bd462-d37c-4933-94f5-64f7daed8a71> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697> ;
+    ns1:label "Cu13" ;
+    ns1:uuid "7a5bd462-d37c-4933-94f5-64f7daed8a71" ;
+    MAT:cartX "2.5314422766" ;
+    MAT:cartY "1.4615288799" ;
+    MAT:cartZ "7.2807418911" ;
+    MAT:fractX "0.4999999999905508" ;
+    MAT:fractY "0.33333333334231247" ;
+    MAT:fractZ "0.4378498759989475" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e>,
+        <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b>,
+        <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a>,
+        <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336>,
+        <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43>,
+        <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0>,
+        <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028>,
+        <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413>,
+        <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.893411" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_8cb565cd-08f7-43db-80fb-74c61634c5c3> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1> ;
+    ns1:label "Cu5" ;
+    ns1:uuid "8cb565cd-08f7-43db-80fb-74c61634c5c3" ;
+    MAT:cartX "2.5314422766" ;
+    MAT:cartY "0.0" ;
+    MAT:cartZ "3.1469139637" ;
+    MAT:fractX "0.4999999999905508" ;
+    MAT:fractY "0.0" ;
+    MAT:fractZ "0.18924937999377794" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1>,
+        <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336>,
+        <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b>,
+        <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de>,
+        <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0>,
+        <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7>,
+        <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda>,
+        <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c>,
+        <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.897618" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_843a6328-c8e0-4bdf-ab8a-355a7f9b4b0c> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0> ;
+    ns1:label "Cu31" ;
+    ns1:uuid "843a6328-c8e0-4bdf-ab8a-355a7f9b4b0c" ;
+    MAT:cartX "3.797163415" ;
+    MAT:cartY "2.1922933198" ;
+    MAT:cartZ "15.5483977459" ;
+    MAT:fractX "0.7500000000055778" ;
+    MAT:fractY "0.5000000000020651" ;
+    MAT:fractZ "0.9350508680092866" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1>,
+        <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339>,
+        <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec>,
+        <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff>,
+        <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7>,
+        <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca>,
+        <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f>,
+        <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1>,
+        <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.895992" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_60161406-51ea-4ca9-8e57-429ffafa5591> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c> ;
+    ns1:label "Cu22" ;
+    ns1:uuid "60161406-51ea-4ca9-8e57-429ffafa5591" ;
+    MAT:cartX "0.0" ;
+    MAT:cartY "2.9230577597" ;
+    MAT:cartZ "11.4145698185" ;
+    MAT:fractX "0.0" ;
+    MAT:fractY "0.6666666666618177" ;
+    MAT:fractZ "0.6864503720041171" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b>,
+        <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec>,
+        <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f>,
+        <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c>,
+        <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b>,
+        <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64>,
+        <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f>,
+        <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413>,
+        <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.895544" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_10823ff4-4f6e-4f70-bcca-bb7d52de9dbb> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b> ;
+    ns1:label "Cu19" ;
+    ns1:uuid "10823ff4-4f6e-4f70-bcca-bb7d52de9dbb" ;
+    MAT:cartX "3.797163415" ;
+    MAT:cartY "2.1922933198" ;
+    MAT:cartZ "9.3476558548" ;
+    MAT:fractX "0.7500000000055778" ;
+    MAT:fractY "0.5000000000020651" ;
+    MAT:fractZ "0.5621501240015322" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e>,
+        <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697>,
+        <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c>,
+        <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c>,
+        <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43>,
+        <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b>,
+        <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028>,
+        <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413>,
+        <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.894827" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_da3f0610-5e01-482a-9c77-0aa0b08d96bc> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a> ;
+    ns1:label "Cu14" ;
+    ns1:uuid "da3f0610-5e01-482a-9c77-0aa0b08d96bc" ;
+    MAT:cartX "1.2657211383" ;
+    MAT:cartY "3.6538221997" ;
+    MAT:cartZ "7.2807418911" ;
+    MAT:fractX "0.2499999999952754" ;
+    MAT:fractY "0.8333333333443775" ;
+    MAT:fractZ "0.4378498759989475" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e>,
+        <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697>,
+        <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6>,
+        <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43>,
+        <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0>,
+        <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b>,
+        <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028>,
+        <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413>,
+        <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.893128" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_214cf3fd-a33b-410b-828e-3b59c5ea1bc6> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1> ;
+    ns1:label "Cu3" ;
+    ns1:uuid "214cf3fd-a33b-410b-828e-3b59c5ea1bc6" ;
+    MAT:cartX "3.797163415" ;
+    MAT:cartY "3.6538221997" ;
+    MAT:cartZ "1.08" ;
+    MAT:fractX "0.7500000000055778" ;
+    MAT:fractY "0.8333333333443775" ;
+    MAT:fractZ "0.06494913199119318" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1>,
+        <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0>,
+        <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b>,
+        <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de>,
+        <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff>,
+        <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7>,
+        <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda>,
+        <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca>,
+        <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.894002" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_336efe6b-0d72-4e17-aaeb-1c38122feb28> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336> ;
+    ns1:label "Cu9" ;
+    ns1:uuid "336efe6b-0d72-4e17-aaeb-1c38122feb28" ;
+    MAT:cartX "3.797163415" ;
+    MAT:cartY "0.7307644399" ;
+    MAT:cartZ "5.2138279274" ;
+    MAT:fractX "0.7500000000055778" ;
+    MAT:fractY "0.16666666665975263" ;
+    MAT:fractZ "0.3135496279963627" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e>,
+        <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697>,
+        <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1>,
+        <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b>,
+        <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6>,
+        <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0>,
+        <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028>,
+        <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda>,
+        <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.896787" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_41819b10-d71b-4bed-a515-7098f46caf81> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339> ;
+    ns1:label "Cu25" ;
+    ns1:uuid "41819b10-d71b-4bed-a515-7098f46caf81" ;
+    MAT:cartX "2.5314422766" ;
+    MAT:cartY "1.4615288799" ;
+    MAT:cartZ "13.4814837822" ;
+    MAT:fractX "0.4999999999905508" ;
+    MAT:fractY "0.33333333334231247" ;
+    MAT:fractZ "0.8107506200067018" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0>,
+        <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec>,
+        <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f>,
+        <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c>,
+        <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64>,
+        <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f>,
+        <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1>,
+        <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596>,
+        <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.896272" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_b18ed33e-1e02-4b16-b317-b76bb35d3ffc> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec> ;
+    ns1:label "Cu24" ;
+    ns1:uuid "b18ed33e-1e02-4b16-b317-b76bb35d3ffc" ;
+    MAT:cartX "0.0" ;
+    MAT:cartY "1.4615288799" ;
+    MAT:cartZ "13.4814837822" ;
+    MAT:fractX "0.0" ;
+    MAT:fractY "0.33333333334231247" ;
+    MAT:fractZ "0.8107506200067018" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0>,
+        <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c>,
+        <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339>,
+        <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f>,
+        <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64>,
+        <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca>,
+        <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f>,
+        <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596>,
+        <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.893708" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_720fe08c-1781-40b9-9be0-b40fd31fce1c> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b> ;
+    ns1:label "Cu7" ;
+    ns1:uuid "720fe08c-1781-40b9-9be0-b40fd31fce1c" ;
+    MAT:cartX "3.797163415" ;
+    MAT:cartY "2.1922933198" ;
+    MAT:cartZ "3.1469139637" ;
+    MAT:fractX "0.7500000000055778" ;
+    MAT:fractY "0.5000000000020651" ;
+    MAT:fractZ "0.18924937999377794" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1>,
+        <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1>,
+        <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336>,
+        <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6>,
+        <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0>,
+        <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff>,
+        <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7>,
+        <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda>,
+        <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.895703" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_a09c5010-57ee-4b5c-a061-643e749b4053> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f> ;
+    ns1:label "Cu20" ;
+    ns1:uuid "a09c5010-57ee-4b5c-a061-643e749b4053" ;
+    MAT:cartX "1.2657211383" ;
+    MAT:cartY "0.7307644399" ;
+    MAT:cartZ "11.4145698185" ;
+    MAT:fractX "0.2499999999952754" ;
+    MAT:fractY "0.16666666665975263" ;
+    MAT:fractZ "0.6864503720041171" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c>,
+        <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339>,
+        <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec>,
+        <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c>,
+        <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43>,
+        <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b>,
+        <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64>,
+        <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413>,
+        <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.894158" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_10c9685f-16ea-4d88-a001-9cc90f033009> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6> ;
+    ns1:label "Cu10" ;
+    ns1:uuid "10c9685f-16ea-4d88-a001-9cc90f033009" ;
+    MAT:cartX "0.0" ;
+    MAT:cartY "2.9230577597" ;
+    MAT:cartZ "5.2138279274" ;
+    MAT:fractX "0.0" ;
+    MAT:fractY "0.6666666666618177" ;
+    MAT:fractZ "0.3135496279963627" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e>,
+        <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a>,
+        <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336>,
+        <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b>,
+        <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0>,
+        <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028>,
+        <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda>,
+        <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c>,
+        <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.896127" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_3608c79f-91df-411f-83f5-2efdfcbae2d0> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c> ;
+    ns1:label "Cu23" ;
+    ns1:uuid "3608c79f-91df-411f-83f5-2efdfcbae2d0" ;
+    MAT:cartX "2.5314422766" ;
+    MAT:cartY "2.9230577597" ;
+    MAT:cartZ "11.4145698185" ;
+    MAT:fractX "0.4999999999905508" ;
+    MAT:fractY "0.6666666666618177" ;
+    MAT:fractZ "0.6864503720041171" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c>,
+        <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b>,
+        <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339>,
+        <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f>,
+        <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43>,
+        <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64>,
+        <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f>,
+        <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413>,
+        <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.892963" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_7eb73a5c-878f-475e-b28a-09095ac5a321> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de> ;
+    ns1:label "Cu2" ;
+    ns1:uuid "7eb73a5c-878f-475e-b28a-09095ac5a321" ;
+    MAT:cartX "1.2657211383" ;
+    MAT:cartY "3.6538221997" ;
+    MAT:cartZ "1.08" ;
+    MAT:fractX "0.2499999999952754" ;
+    MAT:fractY "0.8333333333443775" ;
+    MAT:fractZ "0.06494913199119318" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1>,
+        <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1>,
+        <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff>,
+        <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7>,
+        <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda>,
+        <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca>,
+        <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c>,
+        <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1>,
+        <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.895275" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_be555fc6-13e2-4a47-82e1-38209c5772e8> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43> ;
+    ns1:label "Cu17" ;
+    ns1:uuid "be555fc6-13e2-4a47-82e1-38209c5772e8" ;
+    MAT:cartX "2.5314422766" ;
+    MAT:cartY "0.0" ;
+    MAT:cartZ "9.3476558548" ;
+    MAT:fractX "0.4999999999905508" ;
+    MAT:fractY "0.0" ;
+    MAT:fractZ "0.5621501240015322" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e>,
+        <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697>,
+        <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b>,
+        <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a>,
+        <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f>,
+        <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c>,
+        <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b>,
+        <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413>,
+        <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.894323" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_bdcbe050-76ff-4a3b-b343-e33cd8c8a4a2> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0> ;
+    ns1:label "Cu11" ;
+    ns1:uuid "bdcbe050-76ff-4a3b-b343-e33cd8c8a4a2" ;
+    MAT:cartX "2.5314422766" ;
+    MAT:cartY "2.9230577597" ;
+    MAT:cartZ "5.2138279274" ;
+    MAT:fractX "0.4999999999905508" ;
+    MAT:fractY "0.6666666666618177" ;
+    MAT:fractZ "0.3135496279963627" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e>,
+        <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697>,
+        <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1>,
+        <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a>,
+        <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336>,
+        <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b>,
+        <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6>,
+        <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c>,
+        <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.895139" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_a008fccb-e33f-43dc-b3b6-cfb514aa5caa> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b> ;
+    ns1:label "Cu16" ;
+    ns1:uuid "a008fccb-e33f-43dc-b3b6-cfb514aa5caa" ;
+    MAT:cartX "0.0" ;
+    MAT:cartY "0.0" ;
+    MAT:cartZ "9.3476558548" ;
+    MAT:fractX "0.0" ;
+    MAT:fractY "0.0" ;
+    MAT:fractZ "0.5621501240015322" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e>,
+        <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c>,
+        <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b>,
+        <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a>,
+        <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f>,
+        <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43>,
+        <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028>,
+        <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413>,
+        <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.892655" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_2437e1d1-f16a-48d4-831b-e58ae8a46f41> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff> ;
+    ns1:label "Cu0" ;
+    ns1:uuid "2437e1d1-f16a-48d4-831b-e58ae8a46f41" ;
+    MAT:cartX "0.0" ;
+    MAT:cartY "1.4615288799" ;
+    MAT:cartZ "1.08" ;
+    MAT:fractX "0.0" ;
+    MAT:fractY "0.33333333334231247" ;
+    MAT:fractZ "0.06494913199119318" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0>,
+        <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1>,
+        <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b>,
+        <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de>,
+        <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7>,
+        <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda>,
+        <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca>,
+        <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c>,
+        <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.896926" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_48279896-3c36-4255-9948-d3de447c5ff7> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64> ;
+    ns1:label "Cu26" ;
+    ns1:uuid "48279896-3c36-4255-9948-d3de447c5ff7" ;
+    MAT:cartX "1.2657211383" ;
+    MAT:cartY "3.6538221997" ;
+    MAT:cartZ "13.4814837822" ;
+    MAT:fractX "0.2499999999952754" ;
+    MAT:fractY "0.8333333333443775" ;
+    MAT:fractZ "0.8107506200067018" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c>,
+        <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339>,
+        <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec>,
+        <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f>,
+        <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c>,
+        <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca>,
+        <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f>,
+        <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1>,
+        <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.894507" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_c7bbcacb-4286-4d53-8d8b-79536361ac16> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028> ;
+    ns1:label "Cu12" ;
+    ns1:uuid "c7bbcacb-4286-4d53-8d8b-79536361ac16" ;
+    MAT:cartX "0.0" ;
+    MAT:cartY "1.4615288799" ;
+    MAT:cartZ "7.2807418911" ;
+    MAT:fractX "0.0" ;
+    MAT:fractY "0.33333333334231247" ;
+    MAT:fractZ "0.4378498759989475" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/01328cc2-c3a0-5ac9-b1f6-7d39d7c0c68e>,
+        <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697>,
+        <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b>,
+        <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a>,
+        <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336>,
+        <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6>,
+        <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b>,
+        <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413>,
+        <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.892797" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_0f5f3d51-d004-4b70-82e2-bc77f2dc4d35> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7> ;
+    ns1:label "Cu1" ;
+    ns1:uuid "0f5f3d51-d004-4b70-82e2-bc77f2dc4d35" ;
+    MAT:cartX "2.5314422766" ;
+    MAT:cartY "1.4615288799" ;
+    MAT:cartZ "1.08" ;
+    MAT:fractX "0.4999999999905508" ;
+    MAT:fractY "0.33333333334231247" ;
+    MAT:fractZ "0.06494913199119318" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1>,
+        <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0>,
+        <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1>,
+        <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b>,
+        <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de>,
+        <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff>,
+        <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c>,
+        <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1>,
+        <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.893269" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_481b90d4-909a-4780-a99d-24b3579407f7> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda> ;
+    ns1:label "Cu4" ;
+    ns1:uuid "481b90d4-909a-4780-a99d-24b3579407f7" ;
+    MAT:cartX "0.0" ;
+    MAT:cartY "0.0" ;
+    MAT:cartZ "3.1469139637" ;
+    MAT:fractX "0.0" ;
+    MAT:fractY "0.0" ;
+    MAT:fractZ "0.18924937999377794" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1>,
+        <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1>,
+        <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336>,
+        <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b>,
+        <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6>,
+        <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de>,
+        <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff>,
+        <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c>,
+        <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.897192" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_f90a3669-4a26-4d35-b80c-87926fa0ed6f> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca> ;
+    ns1:label "Cu28" ;
+    ns1:uuid "f90a3669-4a26-4d35-b80c-87926fa0ed6f" ;
+    MAT:cartX "0.0" ;
+    MAT:cartY "0.0" ;
+    MAT:cartZ "15.5483977459" ;
+    MAT:fractX "0.0" ;
+    MAT:fractY "0.0" ;
+    MAT:fractZ "0.9350508680092866" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0>,
+        <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1>,
+        <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec>,
+        <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de>,
+        <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff>,
+        <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64>,
+        <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f>,
+        <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1>,
+        <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.893551" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_b73cfc1f-c83e-4a66-af2e-9afd123a7d2e> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c> ;
+    ns1:label "Cu6" ;
+    ns1:uuid "b73cfc1f-c83e-4a66-af2e-9afd123a7d2e" ;
+    MAT:cartX "1.2657211383" ;
+    MAT:cartY "2.1922933198" ;
+    MAT:cartZ "3.1469139637" ;
+    MAT:fractX "0.2499999999952754" ;
+    MAT:fractY "0.5000000000020651" ;
+    MAT:fractZ "0.18924937999377794" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1>,
+        <http://www.ddmd.io/mio/kg/site/2c34d3ca-0015-56e3-b005-f684fc53226b>,
+        <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6>,
+        <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de>,
+        <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0>,
+        <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff>,
+        <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7>,
+        <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda>,
+        <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.897060" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_110a7b4f-63d3-428c-94c4-34066609f772> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f> ;
+    ns1:label "Cu27" ;
+    ns1:uuid "110a7b4f-63d3-428c-94c4-34066609f772" ;
+    MAT:cartX "3.797163415" ;
+    MAT:cartY "3.6538221997" ;
+    MAT:cartZ "13.4814837822" ;
+    MAT:fractX "0.7500000000055778" ;
+    MAT:fractY "0.8333333333443775" ;
+    MAT:fractZ "0.8107506200067018" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0>,
+        <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c>,
+        <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339>,
+        <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec>,
+        <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c>,
+        <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64>,
+        <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca>,
+        <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1>,
+        <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.897325" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_effed5a1-2d35-4081-9f14-4264b4c475e5> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1> ;
+    ns1:label "Cu29" ;
+    ns1:uuid "effed5a1-2d35-4081-9f14-4264b4c475e5" ;
+    MAT:cartX "2.5314422766" ;
+    MAT:cartY "0.0" ;
+    MAT:cartZ "15.5483977459" ;
+    MAT:fractX "0.4999999999905508" ;
+    MAT:fractY "0.0" ;
+    MAT:fractZ "0.9350508680092866" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0>,
+        <http://www.ddmd.io/mio/kg/site/1af7f9b2-3e3f-5af5-814f-e77895c7b8a1>,
+        <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339>,
+        <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de>,
+        <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64>,
+        <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7>,
+        <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca>,
+        <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f>,
+        <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.897483" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_f51c216f-3799-4837-a32c-5366b646afe2> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/e7d661fa-7680-5e86-acbb-3f296678b596> ;
+    ns1:label "Cu30" ;
+    ns1:uuid "f51c216f-3799-4837-a32c-5366b646afe2" ;
+    MAT:cartX "1.2657211383" ;
+    MAT:cartY "2.1922933198" ;
+    MAT:cartZ "15.5483977459" ;
+    MAT:fractX "0.2499999999952754" ;
+    MAT:fractY "0.5000000000020651" ;
+    MAT:fractZ "0.9350508680092866" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/098c2b28-ca49-5fba-8653-af61eaa473d0>,
+        <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339>,
+        <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec>,
+        <http://www.ddmd.io/mio/kg/site/4745f484-38ab-57cc-a2ba-f264527e21de>,
+        <http://www.ddmd.io/mio/kg/site/8418e85a-8346-53b3-919e-0b57e73dfdff>,
+        <http://www.ddmd.io/mio/kg/site/8e2d596b-f1ce-512e-af9d-0a6a898fff64>,
+        <http://www.ddmd.io/mio/kg/site/b287b38c-00d1-5f4f-990a-a106f69245d7>,
+        <http://www.ddmd.io/mio/kg/site/bdad6480-e9ba-5922-8b02-a59c73f532ca>,
+        <http://www.ddmd.io/mio/kg/site/dd5dbda3-8959-502f-b09b-4ab4b84bb2b1> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.895408" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_5c3678b7-1a7e-468d-8a91-2fb49935fc22> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/f4ef798f-17fb-524a-8e2c-7f0881c5b413> ;
+    ns1:label "Cu18" ;
+    ns1:uuid "5c3678b7-1a7e-468d-8a91-2fb49935fc22" ;
+    MAT:cartX "1.2657211383" ;
+    MAT:cartY "2.1922933198" ;
+    MAT:cartZ "9.3476558548" ;
+    MAT:fractX "0.2499999999952754" ;
+    MAT:fractY "0.5000000000020651" ;
+    MAT:fractZ "0.5621501240015322" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697>,
+        <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c>,
+        <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b>,
+        <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a>,
+        <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f>,
+        <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c>,
+        <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43>,
+        <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b>,
+        <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.893860" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_4216a3ac-abdd-47a9-a65a-67324324c763> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/f7a84dea-de2d-5dce-afb5-791d513e3255> ;
+    ns1:label "Cu8" ;
+    ns1:uuid "4216a3ac-abdd-47a9-a65a-67324324c763" ;
+    MAT:cartX "1.2657211383" ;
+    MAT:cartY "0.7307644399" ;
+    MAT:cartZ "5.2138279274" ;
+    MAT:fractX "0.2499999999952754" ;
+    MAT:fractY "0.16666666665975263" ;
+    MAT:fractZ "0.3135496279963627" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/07bc8c08-3848-51ff-bf7e-5e0572a06697>,
+        <http://www.ddmd.io/mio/kg/site/09886760-935c-5436-a66e-ecc4e25c51d1>,
+        <http://www.ddmd.io/mio/kg/site/196813fe-82a4-51f8-9951-c61598f4c54a>,
+        <http://www.ddmd.io/mio/kg/site/1dca5239-7d6a-5283-a46e-9bf7437f4336>,
+        <http://www.ddmd.io/mio/kg/site/3641b108-0cdc-5620-a3af-80b415535cc6>,
+        <http://www.ddmd.io/mio/kg/site/6d26f006-946c-5d97-b8d9-9e6e723be1d0>,
+        <http://www.ddmd.io/mio/kg/site/99e28444-acc5-5855-a755-89ccf93b2028>,
+        <http://www.ddmd.io/mio/kg/site/bae23a8a-897d-5a43-9643-4b65faaf2bda>,
+        <http://www.ddmd.io/mio/kg/site/c668cc9e-cb71-5a77-a250-343d7fd2420c> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> a ns1:Cuds,
+        MAT:AtomicSite ;
+    ns1:CreationTime "2026-03-25 13:38:37.895855" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_6178b2e7-0907-4dd2-9a6f-b2b51d77352d> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/site/fce0a733-298b-521a-803e-517f30b3546d> ;
+    ns1:label "Cu21" ;
+    ns1:uuid "6178b2e7-0907-4dd2-9a6f-b2b51d77352d" ;
+    MAT:cartX "3.797163415" ;
+    MAT:cartY "0.7307644399" ;
+    MAT:cartZ "11.4145698185" ;
+    MAT:fractX "0.7500000000055778" ;
+    MAT:fractY "0.16666666665975263" ;
+    MAT:fractZ "0.6864503720041171" ;
+    MAT:hasElement <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    MAT:neighborOf <http://www.ddmd.io/mio/kg/site/0e6674f2-808d-5080-9d7b-e2b1fdc2222c>,
+        <http://www.ddmd.io/mio/kg/site/10f3de79-a288-5c48-b5fd-d73cb3a0f74b>,
+        <http://www.ddmd.io/mio/kg/site/1f57185b-bdf1-5334-9a6e-6a8561f3d339>,
+        <http://www.ddmd.io/mio/kg/site/2b8e26f7-1337-59cc-8d40-cc35d2444dec>,
+        <http://www.ddmd.io/mio/kg/site/2fc14c93-6c34-58ca-9d5c-9fcd1eaf666f>,
+        <http://www.ddmd.io/mio/kg/site/3692e748-2322-58cc-ba35-57631b46dc2c>,
+        <http://www.ddmd.io/mio/kg/site/5c11514a-c3eb-57f8-ad97-f81530d8eb43>,
+        <http://www.ddmd.io/mio/kg/site/83891790-3a4e-53b1-9de8-8fe24bf45c3b>,
+        <http://www.ddmd.io/mio/kg/site/cf7a4b63-5e44-5ba0-9b75-1aac3f27ec1f> ;
+    MAT:positionUnit "angstrom" .
+
+<http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> a ns1:Cuds,
+        MAT:Element ;
+    ns1:CreationTime "2026-03-25 13:38:37.892456" ;
+    ns1:PID <http://www.ddmd.io/mio#cuds_pid_dce438f4-ca65-49a3-b63c-5abad68f7bbe> ;
+    ns1:description "None" ;
+    ns1:iri <http://www.ddmd.io/mio/kg/element/e78a7318-fc22-5fe8-ab08-74968594c76d> ;
+    ns1:label "Cu" ;
+    ns1:uuid "dce438f4-ca65-49a3-b63c-5abad68f7bbe" .
+
