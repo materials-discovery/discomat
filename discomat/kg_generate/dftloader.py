@@ -125,11 +125,20 @@ def _block_after(lines: List[str], header: str) -> Tuple[Optional[str], List[str
         rest = stripped[len(header):].strip()
         block: List[str] = []
         for inner in lines[idx + 1:]:
-            if not inner.strip():
+            inner_stripped = inner.strip()
+            if not inner_stripped:
                 break
             if inner.lstrip().startswith("&"):
                 break
-            if re.match(r"^[A-Z_]+\b", inner.strip()) and inner.strip().upper() == inner.strip():
+            token = inner_stripped.split()[0] if inner_stripped.split() else ""
+            if token.upper() in {
+                "ATOMIC_SPECIES",
+                "ATOMIC_POSITIONS",
+                "CELL_PARAMETERS",
+                "K_POINTS",
+                "CONSTRAINTS",
+                "OCCUPATIONS",
+            }:
                 break
             block.append(inner.rstrip())
         return (_clean_str(rest) or None), block
